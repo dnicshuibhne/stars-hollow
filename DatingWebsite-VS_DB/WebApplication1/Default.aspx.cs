@@ -7,7 +7,8 @@ using System.Web.UI.WebControls;
 //
 using System.Data.SqlClient;
 using System.Configuration;
-using DAL;
+using BLL;
+using UserDataModel;
 
 namespace WebApplication1
 {
@@ -44,7 +45,7 @@ namespace WebApplication1
             string username = txtUsername.Text;
             string password = txtPassword.Text;
 
-            DBConnection.Login(username, password);
+            UserModel user = BLLLogin.Login(username, password);
 
             gvResults.DataBind();
         }

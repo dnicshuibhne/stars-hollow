@@ -10,7 +10,7 @@ using System.Data;
 
 namespace DAL //Data Access Layer
 {
-    public class DBConnection
+    public class DALLogin
     {
         private const string CS_NAME = "SqlSrvrMgmtCS";
         private const string TABLE_NAME = "tblUsers";
@@ -25,9 +25,10 @@ namespace DAL //Data Access Layer
                 {
                     con.Open();
                     SqlDataReader dr = cmd.ExecuteReader();
-                        DataSet ds = dr.
+                       // DataSet ds = dr.
                 }
             }
+            return null;
         }
     }
 }
