@@ -45,9 +45,19 @@ namespace WebApplication1
             string username = txtUsername.Text;
             string password = txtPassword.Text;
 
-            UserModel user = BLLLogin.Login(username, password);
+            BLLUserMngr m = new BLLUserMngr();
+            UserModel user = m.Login(username, password);
 
-            gvResults.DataBind();
+            if (user == null)
+            {
+                Response.Write("Login Failed.");
+            }
+            else
+            {
+                Response.Write("Login Success.");
+            }
+
+            //gvResults.DataBind();
         }
     }
 }
