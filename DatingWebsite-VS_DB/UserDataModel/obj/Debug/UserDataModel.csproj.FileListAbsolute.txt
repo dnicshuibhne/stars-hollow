@@ -1,0 +1,5 @@
+C:\Users\user\Documents\GitHub\stars-hollow\DatingWebsite-VS_DB\UserDataModel\bin\Debug\UserDataModel.dll
+C:\Users\user\Documents\GitHub\stars-hollow\DatingWebsite-VS_DB\UserDataModel\bin\Debug\UserDataModel.pdb
+C:\Users\user\Documents\GitHub\stars-hollow\DatingWebsite-VS_DB\UserDataModel\obj\Debug\UserDataModel.csprojResolveAssemblyReference.cache
+C:\Users\user\Documents\GitHub\stars-hollow\DatingWebsite-VS_DB\UserDataModel\obj\Debug\UserDataModel.dll
+C:\Users\user\Documents\GitHub\stars-hollow\DatingWebsite-VS_DB\UserDataModel\obj\Debug\UserDataModel.pdb

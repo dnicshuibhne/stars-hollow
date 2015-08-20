@@ -1,0 +1,6 @@
+C:\Users\user\Desktop\Doireann\DBWeb\Assignment\DatingWebsite-VS_DB\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\user\Documents\GitHub\stars-hollow\DatingWebsite-VS_DB\DAL\bin\Debug\DAL.dll
+C:\Users\user\Documents\GitHub\stars-hollow\DatingWebsite-VS_DB\DAL\bin\Debug\DAL.pdb
+C:\Users\user\Documents\GitHub\stars-hollow\DatingWebsite-VS_DB\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\user\Documents\GitHub\stars-hollow\DatingWebsite-VS_DB\DAL\obj\Debug\DAL.dll
+C:\Users\user\Documents\GitHub\stars-hollow\DatingWebsite-VS_DB\DAL\obj\Debug\DAL.pdb
