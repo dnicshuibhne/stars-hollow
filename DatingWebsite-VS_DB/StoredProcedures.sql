@@ -69,3 +69,50 @@ Left Join  UserLogin
 On UserInformation.UserId = UserLogin.UserId
 
 SElect * From [UserLogin_W_UserName]
+
+
+CREATE PROCEDURE uspAddNewUser
+@UserName varchar(50),
+@Password varchar (50),
+@Email varchar(50)
+AS
+
+DECLARE @NewID INT
+
+INSERT INTO UserInformation(UserName) VALUES(@userName)
+
+SELECT @NewID = SCOPE_IDENTITY()
+
+INSERT INTO UserLogin(UserID,Email,Password) VALUES(@NewID,@Password,@Email)
+
+
+exec uspAddNewUser 'Grainne','Password','Grainne@gmail.com'
+
+CREATE PROCEDURE uspAddUserDetails
+@userid int,
+@profession varchar(50),
+@location varchar (50),
+@gender varchar(50),
+@orientation varchar (50),
+@age varchar(50),
+@haircolour varchar(50),
+@eyecolour varchar(50),
+@height varchar (50),
+@build varchar(50),
+@profilepic varchar(max)
+AS
+UPDATE UserInformation SET Profession =@profession,
+						   Location=@location,
+						   Gender=@gender,
+						   SexualOrientation=@orientation,
+						   AgeRange=@age,
+						   HairColour=@haircolour,
+						   EyeColour=@eyecolour,
+						   Height=@height,
+						   Build=@build,
+						   ProfilePicturePath=@profilepic
+				
+
+WHERE UserId=@userid
+
+exec uspAddUserDetails 16, 'Dublin','Teacher','Female','Straight','18-25','Brown','Green','Tall','Slim','wwwe'
