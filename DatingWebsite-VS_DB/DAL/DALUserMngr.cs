@@ -7,18 +7,45 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
+using System.Diagnostics;
 
 namespace DAL //Data Access Layer
 {
     public class DALUserMngr
     {
-        private const string CS_NAME = "SqlSrvrMgmtCS";
-        private const string TABLE_NAME = "tblUsers";
+        //private const string CS_NAME = "SqlSrvrMgmtCS";
+        private const string CS_NAME = "VSProjectCS";
+        private const string USER_TABLE_NAME = "UserLogin";
 
+        public DataSet DALGetAttribute(String attributeTable)
+        {
+            string sql = string.Format("SELECT * FROM {0}",attributeTable);
+            string conString = ConfigurationManager.ConnectionStrings[CS_NAME].ConnectionString;
+            DataSet data = new DataSet();
+
+            using (SqlConnection con = new SqlConnection(conString))
+            {
+                using (SqlDataAdapter adapter = new SqlDataAdapter(sql, con))
+                {
+                    adapter.SelectCommand.CommandType = CommandType.Text;
+                    adapter.SelectCommand.CommandText = sql;
+
+                    con.Open();
+                    int rowsAffected = adapter.Fill(data);
+
+                    if (rowsAffected < 1)
+                    {
+                        throw new Exception("No Results Returned.");
+                    }
+                    con.Close();
+                }
+            }
+            return data;
+        }
 
         public int Login(string username, string password)
         {
-            string conString = ConfigurationManager.ConnectionStrings["SqlSrvrMgmtCS"].ConnectionString;
+            string conString = ConfigurationManager.ConnectionStrings[CS_NAME].ConnectionString;
             int UserID = 0;
 
             using (SqlConnection con = new SqlConnection(conString))
@@ -27,18 +54,21 @@ namespace DAL //Data Access Layer
                 {
                     adapter.SelectCommand = new SqlCommand("spUserLogin", con);
                     adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                    
-                    adapter.SelectCommand.Parameters.AddWithValue("@username",SqlDbType.NVarChar).Value = username;
-                    adapter.SelectCommand.Parameters.AddWithValue("@password",SqlDbType.NVarChar).Value = password;
-                    
+
+                    adapter.SelectCommand.Parameters.AddWithValue("@username", SqlDbType.NVarChar).Value = username;
+                    adapter.SelectCommand.Parameters.AddWithValue("@password", SqlDbType.NVarChar).Value = password;
+
                     con.Open();
-                    SqlDataReader reader = adapter.SelectCommand.ExecuteReader();
-                    if (reader.Read())
+                    using (SqlDataReader reader = adapter.SelectCommand.ExecuteReader())
                     {
-                        UserID = reader.GetInt32(0);
+                        if (reader.Read())
+                        {
+                            UserID = reader.GetInt32(0);
+                        }
+                        reader.Close();
+                        con.Close();
                     }
                 }
-                con.Close();
             }
             return UserID;
         }
