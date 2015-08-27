@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserDataModel", "UserDataModel\UserDataModel.csproj", "{1C6D6AB8-EBF2-4D10-AEFF-ADFE4E7D6F97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BD Web Group Project Webpages v1", "..\..\..\..\Software Dev Course\DB Web\Assignment\BD Web Group Project Webpages v2\BD Web Group Project Webpages v5\BD Web Group Project Webpages v1\BD Web Group Project Webpages v1.csproj", "{3BC83E78-48EB-472F-BB7C-6CCA19335BFF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BD Web Group Project Webpages v1", "BD Web Group Project Webpages v1\BD Web Group Project Webpages v1.csproj", "{3BC83E78-48EB-472F-BB7C-6CCA19335BFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
