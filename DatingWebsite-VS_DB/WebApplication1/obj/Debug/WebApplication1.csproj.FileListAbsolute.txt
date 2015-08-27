@@ -14,3 +14,15 @@ C:\Users\user\Documents\GitHub\stars-hollow\DatingWebsite-VS_DB\WebApplication1\
 C:\Users\user\Documents\GitHub\stars-hollow\DatingWebsite-VS_DB\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
 C:\Users\user\Documents\GitHub\stars-hollow\DatingWebsite-VS_DB\WebApplication1\obj\Debug\WebApplication1.dll
 C:\Users\user\Documents\GitHub\stars-hollow\DatingWebsite-VS_DB\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\Users\Claire\Documents\GitHub\stars-hollow\DatingWebsite-VS_DB\WebApplication1\bin\WebApplication1.dll.config
+C:\Users\Claire\Documents\GitHub\stars-hollow\DatingWebsite-VS_DB\WebApplication1\bin\WebApplication1.dll
+C:\Users\Claire\Documents\GitHub\stars-hollow\DatingWebsite-VS_DB\WebApplication1\bin\WebApplication1.pdb
+C:\Users\Claire\Documents\GitHub\stars-hollow\DatingWebsite-VS_DB\WebApplication1\bin\BLL.dll
+C:\Users\Claire\Documents\GitHub\stars-hollow\DatingWebsite-VS_DB\WebApplication1\bin\UserDataModel.dll
+C:\Users\Claire\Documents\GitHub\stars-hollow\DatingWebsite-VS_DB\WebApplication1\bin\DAL.dll
+C:\Users\Claire\Documents\GitHub\stars-hollow\DatingWebsite-VS_DB\WebApplication1\bin\BLL.pdb
+C:\Users\Claire\Documents\GitHub\stars-hollow\DatingWebsite-VS_DB\WebApplication1\bin\UserDataModel.pdb
+C:\Users\Claire\Documents\GitHub\stars-hollow\DatingWebsite-VS_DB\WebApplication1\bin\DAL.pdb
+C:\Users\Claire\Documents\GitHub\stars-hollow\DatingWebsite-VS_DB\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+C:\Users\Claire\Documents\GitHub\stars-hollow\DatingWebsite-VS_DB\WebApplication1\obj\Debug\WebApplication1.dll
+C:\Users\Claire\Documents\GitHub\stars-hollow\DatingWebsite-VS_DB\WebApplication1\obj\Debug\WebApplication1.pdb
