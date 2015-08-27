@@ -1,0 +1,158 @@
+﻿
+/* The following commented-out code is my failed attempt at declaring variables
+    and so is a reminder to try again later. */
+/*
+$bgd: white; 
+    */
+
+
+body {
+    background-color: white;
+}
+
+nav {
+    color: black;
+    border: 1px solid grey;
+}
+
+section {
+    color: white;
+    background-color: #A352AA; /* purple */
+    border-radius: 40px;
+    padding: 70px;
+}
+
+aside {
+    float: left;
+    width: 200px;
+    height: 100vh;
+}
+
+footer {
+    background: #414141; /* grey */
+    color: white;
+}
+
+
+h1 {
+    color: white;
+    font-size: 70px;
+    margin: 20px;
+}
+
+h2 {
+    color: #72B4FF; /* blue */
+    font-size: 50px;
+}
+
+h3 {
+    color: white;
+    font-size: 50px;
+    margin: 5px;
+    margin-left: auto;
+    text-align: center;
+}
+
+html * {
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+.blueButton {
+    background: #72B4FF;
+    border-radius: 5em;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.purpleButton {
+    background: #A352AA;
+    border-radius: 5em;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: absolute;
+}
+
+/* The following style is used to display Validator controls in block format */
+/* I'm commenting it out for now until I can test the page's visual layout.
+
+span.validator[style*="inline"]{
+    display: block !important;
+}
+    */
+
+/* Default Page styles */
+
+.loginScreen{
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    position: fixed;
+    padding-top: 30vh;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.defaultPgMainForm {
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+}
+#mainFormBox{
+    width: 100vw;
+    position: fixed;
+}
+.loginSection {
+    width:600px;
+    padding: 30px;
+    font-size: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    position:fixed;
+    vertical-align:auto;
+    left:0;
+    right:0;
+    display: inline-block;
+}
+.loginContents {
+    width:430px;
+    margin: auto;
+}
+.loginTextBox{
+    width: 230px;
+    margin-bottom: 15px;
+}
+.loginButtons{
+    margin-left: auto; 
+    margin-right: auto;
+    text-align: center; 
+}
+#defaultPgAboutUs{
+    background-color: #72B4FF;
+    height: 100vh;
+    z-index: 5;
+    position: relative;
+}
+#defaultPgMatch{
+    background-color: #A352AA;
+    height: 100vh;
+    z-index: 5;
+    position: relative;
+}
+#defaultPgAboutUsContents {
+    padding: 100px 200px;
+    text-align: center;
+}
+#defaultPgMatchContents {
+    padding: 120px 200px;
+    text-align: center;
+}
+#defaultPgMatch, #defaultPgAboutUs p {
+    color: white;
+    font-size: 30px;
+    text-align: center;
+}
+
+/* DashBoard styles */
+
+.cphDashboardMain{
+    float: left;
+}

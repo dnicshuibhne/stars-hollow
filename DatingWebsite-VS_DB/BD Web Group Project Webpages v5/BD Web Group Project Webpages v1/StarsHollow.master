@@ -1,0 +1,17 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="StarsHollow.master.cs" Inherits="BD_Web_Group_Project_Webpages_v1.StarsHollow" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="cphFirstTierHead" runat="server">
+
+    <!-- This Master page is for all pages except the Default Page. -->
+
+    <asp:ContentPlaceHolder ID="cphStarsHollowHead" runat="server"></asp:ContentPlaceHolder>
+
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="cphFirstTierBody" runat="server">
+    <header>
+        StarsHollowHeaderImage.jpg
+    </header>
+    <nav>
+        Nav bar goes here
+    </nav>
+    <asp:ContentPlaceHolder ID="cphStarsHollowBody" runat="server"></asp:ContentPlaceHolder>
+</asp:Content>
