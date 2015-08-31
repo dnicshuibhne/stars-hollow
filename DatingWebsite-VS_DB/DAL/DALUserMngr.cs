@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +26,7 @@ namespace DAL //Data Access Layer
 
         public DataSet DALGetAttribute(String attributeTable)
         {
-            string sql = string.Format("SELECT * FROM {0}",attributeTable);
+            string sql = string.Format("SELECT * FROM {0}", attributeTable);
             DataSet data = new DataSet();
 
             using (SqlConnection con = new SqlConnection(conString))
@@ -86,7 +86,7 @@ namespace DAL //Data Access Layer
 
             using (SqlConnection con = new SqlConnection(conString))
             {
-                using(SqlDataAdapter adapter = new SqlDataAdapter(sql,con))
+                using (SqlDataAdapter adapter = new SqlDataAdapter(sql, con))
                 {
                     adapter.Fill(data);
                 }
