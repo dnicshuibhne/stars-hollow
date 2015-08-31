@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -37,7 +37,7 @@ namespace WebApplication1
             ddlAgeRange.DataTextField = AGE_RANGE_COLUMN;
             ddlAgeRange.DataBind();
             //ddlAgeRange.RenderControl();
-            
+
             attributes = m.BLLGetBuild();
             ddlBuild.DataSource = attributes;
             ddlBuild.DataTextField = BUILD_COLUMN;
@@ -68,7 +68,7 @@ namespace WebApplication1
             cblHobbies.DataValueField = HOBBIES_ID_COLUMN;
             cblHobbies.DataTextField = HOBBIES_NAME_COLUMN;
             cblHobbies.DataBind();
-            
+
             attributes = m.BLLGetSexualOrientation();
             ddlSexualOrientation.DataSource = attributes;
             ddlSexualOrientation.DataTextField = SEXUAL_ORIENTATION_COLUMN;
@@ -80,7 +80,7 @@ namespace WebApplication1
             user = new UserModel(txtUsername.Text, txtPassword1.Text);
 
         }
-        
+
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             string ageRange, build, eyeColor, gender, hairColor, height, sexualOrientation;
