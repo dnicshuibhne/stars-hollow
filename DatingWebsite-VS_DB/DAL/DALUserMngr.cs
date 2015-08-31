@@ -8,6 +8,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
 using System.Diagnostics;
+using UserDataModel;
 
 namespace DAL //Data Access Layer
 {
@@ -16,11 +17,16 @@ namespace DAL //Data Access Layer
         //private const string CS_NAME = "SqlSrvrMgmtCS";
         private const string CS_NAME = "VSProjectCS";
         private const string USER_TABLE_NAME = "UserLogin";
+        private string conString;
+
+        public DALUserMngr()
+        {
+            conString = ConfigurationManager.ConnectionStrings[CS_NAME].ConnectionString;
+        }
 
         public DataSet DALGetAttribute(String attributeTable)
         {
             string sql = string.Format("SELECT * FROM {0}",attributeTable);
-            string conString = ConfigurationManager.ConnectionStrings[CS_NAME].ConnectionString;
             DataSet data = new DataSet();
 
             using (SqlConnection con = new SqlConnection(conString))
@@ -45,7 +51,6 @@ namespace DAL //Data Access Layer
 
         public int Login(string username, string password)
         {
-            string conString = ConfigurationManager.ConnectionStrings[CS_NAME].ConnectionString;
             int UserID = 0;
 
             using (SqlConnection con = new SqlConnection(conString))
@@ -71,6 +76,23 @@ namespace DAL //Data Access Layer
                 }
             }
             return UserID;
+        }
+
+        public int CreateUser(UserModel user)
+        {
+            int userID = 0;
+            string sql = "";
+            DataSet data = new DataSet();
+
+            using (SqlConnection con = new SqlConnection(conString))
+            {
+                using(SqlDataAdapter adapter = new SqlDataAdapter(sql,con))
+                {
+                    adapter.Fill(data);
+                }
+            }
+
+            return userID;
         }
     }
 }
