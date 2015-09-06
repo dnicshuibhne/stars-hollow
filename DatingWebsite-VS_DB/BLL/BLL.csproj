@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLLAttributeMngr.cs" />
     <Compile Include="BLLUserMngr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -47,9 +48,9 @@
       <Project>{a38df677-0fe1-4134-b5b0-723833dc0dd6}</Project>
       <Name>DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\UserDataModel\UserDataModel.csproj">
+    <ProjectReference Include="..\UserDataModel\DataModels.csproj">
       <Project>{1c6d6ab8-ebf2-4d10-aeff-adfe4e7d6f97}</Project>
-      <Name>UserDataModel</Name>
+      <Name>DataModels</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
