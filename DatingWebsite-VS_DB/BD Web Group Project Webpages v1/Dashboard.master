@@ -1,0 +1,22 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/StarsHollow.master" AutoEventWireup="true" CodeBehind="Dashboard.master.cs" Inherits="BD_Web_Group_Project_Webpages_v1.Dashboard1" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="cphStarsHollowHead" runat="server">
+
+    <!-- This Master page is for all pages under the dashboard umbrella -->
+
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="cphStarsHollowBody" runat="server">
+    <aside>
+        <nav>
+            Dashboard-specific navigation bar goes here.
+            <br />
+            It links to all the different sections that might be in the Dashboard, for example,
+            an 'edit account details' option, an 'edit personal details' option,
+            an 'edit hobbies' option, a 'manage profile pictures' option,
+            a 'messages' option, etc.
+        </nav>
+    </aside>
+    <h2>Dashboard</h2>
+    <section>
+        <asp:ContentPlaceHolder ID="cphDashboardMain" runat="server"></asp:ContentPlaceHolder>
+    </section>
+</asp:Content>

@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2012 for Web
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{016FB9E2-D6BE-4FFF-B72E-7C349B436B5D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{A38DF677-0FE1-4134-B5B0-723833DC0DD6}"
@@ -8,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{047900B1-3237-4EB7-A38D-B1DF47BF79DE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserDataModel", "UserDataModel\UserDataModel.csproj", "{1C6D6AB8-EBF2-4D10-AEFF-ADFE4E7D6F97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BD Web Group Project Webpages v1", "BD Web Group Project Webpages v1\BD Web Group Project Webpages v1.csproj", "{3BC83E78-48EB-472F-BB7C-6CCA19335BFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +35,10 @@ Global
 		{1C6D6AB8-EBF2-4D10-AEFF-ADFE4E7D6F97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C6D6AB8-EBF2-4D10-AEFF-ADFE4E7D6F97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C6D6AB8-EBF2-4D10-AEFF-ADFE4E7D6F97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BC83E78-48EB-472F-BB7C-6CCA19335BFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BC83E78-48EB-472F-BB7C-6CCA19335BFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BC83E78-48EB-472F-BB7C-6CCA19335BFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BC83E78-48EB-472F-BB7C-6CCA19335BFF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
