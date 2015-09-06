@@ -13,13 +13,13 @@ namespace BD_Web_Group_Project_Webpages_v1 {
     public partial class Home {
         
         /// <summary>
-        /// cphFirstTierHead control.
+        /// cphDefaultHead control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder cphFirstTierHead;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder cphDefaultHead;
         
         /// <summary>
         /// form1 control.
@@ -31,12 +31,12 @@ namespace BD_Web_Group_Project_Webpages_v1 {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// cphFirstTierBody control.
+        /// cphDefaultBody control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder cphFirstTierBody;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder cphDefaultBody;
     }
 }

@@ -1,17 +1,37 @@
-﻿<%@ Master Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="StarsHollow.master.cs" Inherits="BD_Web_Group_Project_Webpages_v1.StarsHollow" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="cphFirstTierHead" runat="server">
+﻿<%@ Master Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" CodeBehind="StarsHollow.master.cs" Inherits="BD_Web_Group_Project_Webpages_v1.StarsHollow" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="cphDefaultHead" runat="server">
 
     <!-- This Master page is for all pages except the Default Page. -->
 
     <asp:ContentPlaceHolder ID="cphStarsHollowHead" runat="server"></asp:ContentPlaceHolder>
 
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="cphFirstTierBody" runat="server">
-    <header>
-        StarsHollowHeaderImage.jpg
-    </header>
-    <nav>
-        Nav bar goes here
-    </nav>
+<asp:Content ID="Content2" ContentPlaceHolderID="cphDefaultBody" runat="server">
+    <div id="topNavBar">
+        <header>
+            <img src="Images/BD Web Sitename Placeholder Small.png" alt="Site Name" />
+        </header>
+        <nav>
+            <asp:Menu runat="server" Orientation="Horizontal" ForeColor="Black" >
+                <DynamicMenuItemStyle BackColor="White" BorderColor="Black" HorizontalPadding="20px" ItemSpacing="10px" VerticalPadding="20px" />
+                <Items>
+                    <asp:MenuItem NavigateUrl="~/Dashboard.aspx" Text="Dashboard" Value="Dashboard">
+                        <asp:MenuItem NavigateUrl="~/Dashboard/DashboardPersonal.aspx" Text="Edit Personal Details" value="Edit Personal Details"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/Dashboard/DashboardAccount.aspx" Text="Edit Account Details" value="Edit Account Details"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/Dashboard/MyGallery.aspx" Text="My Gallery" value="My Gallery"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/Dashboard/MyMessages.aspx" Text="My Messages" value="My Messages"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/Dashboard/MyProfile.aspx" Text="View My Profile" value="View My Profile"></asp:MenuItem>
+                    </asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/SearchFor.aspx" Text="Search" Value="Search"></asp:MenuItem>
+                </Items>
+
+                
+                <StaticMenuItemStyle BorderColor="#CCCCCC" BorderStyle="Solid" BorderWidth="1px" HorizontalPadding="20px" VerticalPadding="35px" Width="100px" />
+                <StaticSelectedStyle BackColor="#333333" ForeColor="White" />
+
+                
+            </asp:Menu> 
+        </nav>
+    </div>
     <asp:ContentPlaceHolder ID="cphStarsHollowBody" runat="server"></asp:ContentPlaceHolder>
 </asp:Content>

@@ -1,7 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Home.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="BD_Web_Group_Project_Webpages_v1.Default" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="cphFirstTierHead" runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="BD_Web_Group_Project_Webpages_v1.Default" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="cphDefaultHead" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="cphFirstTierBody" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="cphDefaultBody" runat="server">
     
     <div class="loginScreen" runat="server">
 

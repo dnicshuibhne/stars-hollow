@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Home.master.cs" Inherits="BD_Web_Group_Project_Webpages_v1.Home" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Default.Master.cs" Inherits="BD_Web_Group_Project_Webpages_v1.Home" %>
 
 <!DOCTYPE html>
 
@@ -9,13 +9,13 @@
         
     <!-- This Master page is for all pages -->
     
-    <asp:ContentPlaceHolder ID="cphFirstTierHead" runat="server">
+    <asp:ContentPlaceHolder ID="cphDefaultHead" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-        <asp:ContentPlaceHolder ID="cphFirstTierBody" runat="server">
+        <asp:ContentPlaceHolder ID="cphDefaultBody" runat="server">
         
         </asp:ContentPlaceHolder>
     </div>
