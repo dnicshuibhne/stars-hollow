@@ -8,11 +8,20 @@ $bgd: white;
 
 body {
     background-color: white;
+    display: block;
+}
+
+
+header {
+    float: left;
+    display:inline;
 }
 
 nav {
+
+    clear: right;
+    display:inline;
     color: black;
-    border: 1px solid grey;
 }
 
 section {
@@ -56,6 +65,17 @@ h3 {
 html * {
     font-family: 'Merriweather Sans', sans-serif;
 }
+
+#topNavBar{
+    display: block;
+    vertical-align:central;
+    border-bottom: 1px solid black;
+}
+
+#menuTopNavBar{
+    width:80px;
+}
+
 
 .blueButton {
     background: #72B4FF;
