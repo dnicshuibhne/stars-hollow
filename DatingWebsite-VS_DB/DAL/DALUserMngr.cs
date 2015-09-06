@@ -24,31 +24,6 @@ namespace DAL //Data Access Layer
             conString = ConfigurationManager.ConnectionStrings[CS_NAME].ConnectionString;
         }
 
-        public DataSet DALGetAttribute(String attributeTable)
-        {
-            string sql = string.Format("SELECT * FROM {0}", attributeTable);
-            DataSet data = new DataSet();
-
-            using (SqlConnection con = new SqlConnection(conString))
-            {
-                using (SqlDataAdapter adapter = new SqlDataAdapter(sql, con))
-                {
-                    adapter.SelectCommand.CommandType = CommandType.Text;
-                    adapter.SelectCommand.CommandText = sql;
-
-                    con.Open();
-                    int rowsAffected = adapter.Fill(data);
-
-                    if (rowsAffected < 1)
-                    {
-                        throw new Exception("No Results Returned.");
-                    }
-                    con.Close();
-                }
-            }
-            return data;
-        }
-
         public int Login(string username, string password)
         {
             int UserID = 0;

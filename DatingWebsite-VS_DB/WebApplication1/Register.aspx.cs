@@ -23,14 +23,13 @@ namespace WebApplication1
         private const string HOBBIES_NAME_COLUMN = "HobbyName";
         private const string SEXUAL_ORIENTATION_COLUMN = "Orientation";
 
-        BLLUserMngr m;
+        BLLAttributeMngr m;
         DataSet attributes;
         UserModel user;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            m = new BLLUserMngr();
-
+            m = new BLLAttributeMngr();
 
             attributes = m.BLLGetAgeRange();
             ddlAgeRange.DataSource = attributes;
