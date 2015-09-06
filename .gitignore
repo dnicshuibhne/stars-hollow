@@ -1,7 +1,8 @@
 *.dll
-DatingWebsite-VS_DB/DAL/obj/Debug/DAL.csproj.FileListAbsolute.txt
-DatingWebsite-VS_DB/UserDataModel/obj/Debug/DataModels.csproj.FileListAbsolute.txt
 *.suo
 *.mdf
 *.pdb
 *.cache
+DatingWebsite-VS_DB/DAL/obj/Debug/DAL.csproj.FileListAbsolute.txt
+DatingWebsite-VS_DB/UserDataModel/obj/Debug/DataModels.csproj.FileListAbsolute.txt
+*.txt
