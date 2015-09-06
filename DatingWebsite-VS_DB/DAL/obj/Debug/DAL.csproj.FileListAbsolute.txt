@@ -14,3 +14,5 @@ C:\Users\Stephen\Documents\GitHub\stars-hollow\stars-hollow\DatingWebsite-VS_DB\
 C:\Users\Stephen\Documents\GitHub\stars-hollow\stars-hollow\DatingWebsite-VS_DB\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
 C:\Users\Stephen\Documents\GitHub\stars-hollow\stars-hollow\DatingWebsite-VS_DB\DAL\obj\Debug\DAL.dll
 C:\Users\Stephen\Documents\GitHub\stars-hollow\stars-hollow\DatingWebsite-VS_DB\DAL\obj\Debug\DAL.pdb
+C:\Users\user\Desktop\Doireann\Github\stars-hollow\DatingWebsite-VS_DB\DAL\bin\Debug\UserDataModel.dll
+C:\Users\user\Desktop\Doireann\Github\stars-hollow\DatingWebsite-VS_DB\DAL\bin\Debug\UserDataModel.pdb
