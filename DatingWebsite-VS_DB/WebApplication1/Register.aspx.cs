@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 //
 using BLL;
 using System.Data;
+using UserDataModel;
 
 namespace WebApplication1
 {
@@ -18,18 +19,24 @@ namespace WebApplication1
         private const string GENDER_COLUMN = "Gender";
         private const string HAIR_COLOR_COLUMN = "HairColour";
         private const string HEIGHT_COLUMN = "Height";
-        private const string HOBBIES_COLUMN = "HobbyName";
+        private const string HOBBIES_ID_COLUMN = "HobbyID";
+        private const string HOBBIES_NAME_COLUMN = "HobbyName";
         private const string SEXUAL_ORIENTATION_COLUMN = "Orientation";
+
+        BLLUserMngr m;
+        DataSet attributes;
+        UserModel user;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            BLLUserMngr m = new BLLUserMngr();
-            DataSet attributes;
-            
-            attributes= m.BLLGetAgeRange();
+            m = new BLLUserMngr();
+
+
+            attributes = m.BLLGetAgeRange();
             ddlAgeRange.DataSource = attributes;
             ddlAgeRange.DataTextField = AGE_RANGE_COLUMN;
             ddlAgeRange.DataBind();
+            //ddlAgeRange.RenderControl();
 
             attributes = m.BLLGetBuild();
             ddlBuild.DataSource = attributes;
@@ -57,9 +64,10 @@ namespace WebApplication1
             ddlHeight.DataBind();
 
             attributes = m.BLLGetHobbies();
-            rblHobbies.DataSource = attributes;
-            rblHobbies.DataTextField = HOBBIES_COLUMN;
-            rblHobbies.DataBind();
+            cblHobbies.DataSource = attributes;
+            cblHobbies.DataValueField = HOBBIES_ID_COLUMN;
+            cblHobbies.DataTextField = HOBBIES_NAME_COLUMN;
+            cblHobbies.DataBind();
 
             attributes = m.BLLGetSexualOrientation();
             ddlSexualOrientation.DataSource = attributes;
@@ -67,9 +75,42 @@ namespace WebApplication1
             ddlSexualOrientation.DataBind();
         }
 
-        protected void btnSubmit1_Click(object sender, EventArgs e)
+        protected void btnRegister_Click(object sender, EventArgs e)
         {
+            user = new UserModel(txtUsername.Text, txtPassword1.Text);
 
         }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            string ageRange, build, eyeColor, gender, hairColor, height, sexualOrientation;
+            List<int> hobbies = new List<int>();
+
+            ageRange = ddlAgeRange.SelectedValue;
+            build = ddlBuild.SelectedValue;
+            eyeColor = ddlEyeColor.SelectedValue;
+            gender = ddlGender.SelectedValue;
+            hairColor = ddlHairColor.SelectedValue;
+            height = ddlHeight.SelectedValue;
+            sexualOrientation = ddlSexualOrientation.SelectedValue;
+
+            foreach (ListItem hobby in cblHobbies.Items)
+            {
+                if (hobby.Selected)
+                {
+                    hobbies.Add(int.Parse(hobby.Text));
+                }
+            }
+
+            //regForm.Visible = false;
+            Response.Write(ageRange + "<br />");
+            Response.Write(build + "<br />");
+            Response.Write(eyeColor + "<br />");
+            Response.Write(gender + "<br />");
+            Response.Write(hairColor + "<br />");
+            Response.Write(height + "<br />");
+            Response.Write(sexualOrientation + "<br />");
+        }
+
     }
 }

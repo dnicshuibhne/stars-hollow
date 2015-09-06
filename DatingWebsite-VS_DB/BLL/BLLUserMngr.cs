@@ -33,16 +33,27 @@ namespace BLL
 
         public UserModel Login(string username, string password)
         {
-            DALUserMngr m = new DALUserMngr();
-            int userID = m.Login(username, password);
+            int userID = new DALUserMngr().Login(username, password);
 
             UserModel user = null;
             if (userID > 0)
             {
                 user = new UserModel(userID, username, password);
             }
-            
+
             return user;
+        }
+
+        public bool CreateUser(UserModel user)
+        {
+            int userID = new DALUserMngr().CreateUser(user);
+
+            if (userID > 0)
+            {
+                user.ID = userID;
+                return true;
+            }
+            return false;
         }
     }
 }
