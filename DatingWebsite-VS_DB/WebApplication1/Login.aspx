@@ -7,7 +7,7 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="loginForm" runat="server">
     <div>
     
         <asp:Label ID="lblUsername" runat="server" Text="Username: "></asp:Label>

@@ -12,6 +12,7 @@ using UserDataModel;
 
 namespace DAL //Data Access Layer
 {
+    /* User Manager Contains methods for creating and authenticating (log in) users */
     public class DALUserMngr
     {
         //private const string CS_NAME = "SqlSrvrMgmtCS";
@@ -19,36 +20,17 @@ namespace DAL //Data Access Layer
         private const string USER_TABLE_NAME = "UserLogin";
         private string conString;
 
+        /* Constructor  - loads connection string from config file */
         public DALUserMngr()
         {
             conString = ConfigurationManager.ConnectionStrings[CS_NAME].ConnectionString;
         }
 
-        public DataSet DALGetAttribute(String attributeTable)
-        {
-            string sql = string.Format("SELECT * FROM {0}", attributeTable);
-            DataSet data = new DataSet();
-
-            using (SqlConnection con = new SqlConnection(conString))
-            {
-                using (SqlDataAdapter adapter = new SqlDataAdapter(sql, con))
-                {
-                    adapter.SelectCommand.CommandType = CommandType.Text;
-                    adapter.SelectCommand.CommandText = sql;
-
-                    con.Open();
-                    int rowsAffected = adapter.Fill(data);
-
-                    if (rowsAffected < 1)
-                    {
-                        throw new Exception("No Results Returned.");
-                    }
-                    con.Close();
-                }
-            }
-            return data;
-        }
-
+        /* 
+         * Login Method
+         * Uses stored proc in DB to verify username & password
+         * If successful, the user's ID is returned
+         */
         public int Login(string username, string password)
         {
             int UserID = 0;
@@ -78,6 +60,12 @@ namespace DAL //Data Access Layer
             return UserID;
         }
 
+
+        /* 
+         * CreateUser Method
+         * Uses stored proc in DB to create new user
+         * If successful, the user's ID is returned
+         */
         public int CreateUser(UserModel user)
         {
             int userID = 0;

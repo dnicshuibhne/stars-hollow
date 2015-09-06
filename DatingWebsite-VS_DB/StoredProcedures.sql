@@ -1,4 +1,5 @@
-﻿CREATE PROCEDURE uspUserProfile_UserName
+﻿-- Select user by UserName
+CREATE PROCEDURE uspUserProfile_UserName
 @Name NVarChar(50)
 AS  
 SELECT
@@ -18,7 +19,7 @@ FROM UserInformation
 wHERE UserName=@Name
 
 
-
+-- Search for users by gender & sexual orientation
 CREATE PROCEDURE uspSearchByGender_Orientation
 @Gender NVarChar(50),
 @Orientation NVarChar(50)
@@ -42,11 +43,12 @@ wHERE Gender= @Gender
 And
 SexualOrientation=@Orientation
 
+-- Select a user's profile information for a given ID
 CREATE PROCEDURE uspUserProfile_UserID
 @UserId int
 AS  
 SELECT
-	UserInformation.UserId,
+	--UserInformation.UserId,
 	UserInformation.UserName,
 	UserInformation.Location,
 	UserInformation.Profession,
@@ -62,6 +64,7 @@ FROM UserInformation
 wHERE UserId=@UserId
 
 
+-- 
 CREATE VIEW [UserLogin_W_UserName] AS
 SELECT UserInformation.UserName, UserLogin.UserId, UserLogin.Email, UserLogin.Password
 FROM UserInformation
@@ -71,6 +74,7 @@ On UserInformation.UserId = UserLogin.UserId
 SElect * From [UserLogin_W_UserName]
 
 
+-- Add basic user information 
 CREATE PROCEDURE uspAddNewUser
 @UserName varchar(50),
 @Password varchar (50),
@@ -88,6 +92,8 @@ INSERT INTO UserLogin(UserID,Email,Password) VALUES(@NewID,@Password,@Email)
 
 exec uspAddNewUser 'Grainne','Password','Grainne@gmail.com'
 
+
+-- Add details for an existing user
 CREATE PROCEDURE uspAddUserDetails
 @userid int,
 @profession varchar(50),

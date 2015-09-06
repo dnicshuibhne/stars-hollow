@@ -8,32 +8,28 @@ using UserDataModel;
 using DAL;
 using System.Data;
 
-namespace BLL
-{
-    //Business Logic Layer
+namespace BLL //Business Logic Layer
+{ 
+    // User Manager Contains methods for creating and validating (log in) users
     public class BLLUserMngr
     {
-        private const string AGE_RANGE_TABLE = "AgeRange";
-        private const string BUILD_TABLE = "Build";
-        private const string EYE_COLOR_TABLE = "EyeColour";
-        private const string GENDER_TABLE = "Gender";
-        private const string HAIR_COLOR_TABLE = "HairColour";
-        private const string HEIGHT_TABLE = "Height";
-        private const string HOBBIES_TABLE = "Hobbies";
-        private const string SEXUAL_ORIENTATION_TABLE = "SexualOrientation";
+        private DALUserMngr DalUserManager;
 
-        public DataSet BLLGetAgeRange() { return new DALUserMngr().DALGetAttribute(AGE_RANGE_TABLE); }
-        public DataSet BLLGetBuild() { return new DALUserMngr().DALGetAttribute(BUILD_TABLE); }
-        public DataSet BLLGetEyeColor() { return new DALUserMngr().DALGetAttribute(EYE_COLOR_TABLE); }
-        public DataSet BLLGetGenders() { return new DALUserMngr().DALGetAttribute(GENDER_TABLE); }
-        public DataSet BLLGetHairColor() { return new DALUserMngr().DALGetAttribute(HAIR_COLOR_TABLE); }
-        public DataSet BLLGetHeight() { return new DALUserMngr().DALGetAttribute(HEIGHT_TABLE); }
-        public DataSet BLLGetHobbies() { return new DALUserMngr().DALGetAttribute(HOBBIES_TABLE); }
-        public DataSet BLLGetSexualOrientation() { return new DALUserMngr().DALGetAttribute(SEXUAL_ORIENTATION_TABLE); }
+        /* Constructor - initialises Data Access Layer */
+        public BLLUserMngr()
+        {
+            DalUserManager = new DALUserMngr();
+        }
 
+        /*
+         * User Login Method
+         * Takes the username and password of a potentially valid user and passes to Data Access Layer for validation.
+         * Sucessful validation will return a valid user id, and then this method returns a User object.
+         * Unsuccessful validation will not return a valid id, and this method will return null.
+         */
         public UserModel Login(string username, string password)
         {
-            int userID = new DALUserMngr().Login(username, password);
+            int userID = DalUserManager.Login(username, password);
 
             UserModel user = null;
             if (userID > 0)
@@ -44,9 +40,15 @@ namespace BLL
             return user;
         }
 
+        /*
+         * Create New User Method
+         * Takes a UserModel object of a new user and passes to Data Access layer
+         * If User creation is succesful, a valid user id will be be retrieved, and this method returns true
+         * Otherwise the id will be in valid and this method will return false;
+         */
         public bool CreateUser(UserModel user)
         {
-            int userID = new DALUserMngr().CreateUser(user);
+            int userID = DalUserManager.CreateUser(user);
 
             if (userID > 0)
             {
