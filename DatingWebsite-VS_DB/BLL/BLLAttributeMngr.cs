@@ -21,7 +21,7 @@ namespace BLL
         private const string HOBBIES_TABLE = "Hobbies";
         private const string SEXUAL_ORIENTATION_TABLE = "SexualOrientation";
 
-        private DALAttributeMngr DalAttributeMngr;
+        private DALAttributeMngr DalAttributeMngr; // Database Access Layer Manager
 
         /* Constructor - Intialise Database Access Layer*/
         public BLLAttributeMngr()
@@ -29,6 +29,7 @@ namespace BLL
             DalAttributeMngr = new DALAttributeMngr();
         }
 
+        /*Methods to individually retrieve specific attributes*/
         public DataSet BLLGetAgeRange() { return DalAttributeMngr.DALGetAttribute(AGE_RANGE_TABLE); }
         public DataSet BLLGetBuild() { return DalAttributeMngr.DALGetAttribute(BUILD_TABLE); }
         public DataSet BLLGetEyeColor() { return DalAttributeMngr.DALGetAttribute(EYE_COLOR_TABLE); }
@@ -37,33 +38,36 @@ namespace BLL
         public DataSet BLLGetHeight() { return DalAttributeMngr.DALGetAttribute(HEIGHT_TABLE); }
         public DataSet BLLGetHobbies() { return DalAttributeMngr.DALGetAttribute(HOBBIES_TABLE); }
         public DataSet BLLGetSexualOrientation() { return DalAttributeMngr.DALGetAttribute(SEXUAL_ORIENTATION_TABLE); }
+        
+        /* 
+         * Method to return all attributes and their values
+         */
+        //public Dictionary<string, List<string>> BLLGetAllAttributes()
+        //{
+        //    DataTable dt = DalAttributeMngr.DALGetAllAttributes();
 
-        public Dictionary<string, List<string>> BLLGetAllAttributes()
-        {
-            DataTable dt = DalAttributeMngr.DALGetAllAttributes();
+        //    Dictionary<string,List<string>> attributes;
+        //    attributes = new Dictionary<string, List<string>>();
 
-            Dictionary<string,List<string>> attributes;
-            attributes = new Dictionary<string, List<string>>();
+        //    for (int i = 0; i < dt.Rows.Count; i++)
+        //    {
+        //        Object[] objArray = dt.Rows[i].ItemArray;
+        //        string key = objArray[0].ToString();
+        //        string value = objArray[1].ToString();
 
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                Object[] objArray = dt.Rows[i].ItemArray;
-                string key = objArray[0].ToString();
-                string value = objArray[1].ToString();
+        //        if (attributes.ContainsKey(key))
+        //        {
+        //            attributes[key].Add(value);
+        //        }
+        //        else
+        //        {
+        //            List<string> vals = new List<string>();
+        //            vals.Add(value);
+        //            attributes.Add(key, vals);
+        //        }
+        //    }
 
-                if (attributes.ContainsKey(key))
-                {
-                    attributes[key].Add(value);
-                }
-                else
-                {
-                    List<string> vals = new List<string>();
-                    vals.Add(value);
-                    attributes.Add(key, vals);
-                }
-            }
-
-            return attributes;
-        }
+        //    return attributes;
+        //}
     }
 }

@@ -57,32 +57,32 @@ namespace DAL // Data Access Layer
          * Data set is in a key - value format, where the first column is the attribute
          * and the second is the value
          */
-        public DataTable DALGetAllAttributes()
-        {
-            string viewName = "ViewAllAttributeValues";
-            string sql = "SELECT * FROM " + viewName;
-            DataSet data = null;
-            DataTable table = null;
+        //public DataTable DALGetAllAttributes()
+        //{
+        //    string viewName = "ViewAllAttributeValues";
+        //    string sql = "SELECT * FROM " + viewName;
+        //    DataSet data = null;
+        //    DataTable table = null;
 
-            using (SqlConnection con = new SqlConnection(conString))
-            {
-                using(SqlDataAdapter adapter = new SqlDataAdapter())
-                {
-                    adapter.SelectCommand = new SqlCommand(sql, con);
-                    adapter.SelectCommand.CommandType = CommandType.Text;
+        //    using (SqlConnection con = new SqlConnection(conString))
+        //    {
+        //        using(SqlDataAdapter adapter = new SqlDataAdapter())
+        //        {
+        //            adapter.SelectCommand = new SqlCommand(sql, con);
+        //            adapter.SelectCommand.CommandType = CommandType.Text;
 
-                    con.Open();
-                    data = new DataSet();
-                    int rowsAffected = adapter.Fill(data);
-                    table = data.Tables[viewName];
-                    if (rowsAffected < 1 || table == null)
-                    {
-                        throw new Exception("No Results Returned.");
-                    }
-                    con.Close();
-                }
-            }
-            return table;
-        }
+        //            con.Open();
+        //            data = new DataSet();
+        //            int rowsAffected = adapter.Fill(data);
+        //            table = data.Tables[viewName];
+        //            if (rowsAffected < 1 || table == null)
+        //            {
+        //                throw new Exception("No Results Returned.");
+        //            }
+        //            con.Close();
+        //        }
+        //    }
+        //    return table;
+        //}
     }
 }

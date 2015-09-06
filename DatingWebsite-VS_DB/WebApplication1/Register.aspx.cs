@@ -13,6 +13,7 @@ namespace WebApplication1
 {
     public partial class Register : System.Web.UI.Page
     {
+        // Attribute column names
         private const string AGE_RANGE_COLUMN = "AgeRange";
         private const string BUILD_COLUMN = "Build";
         private const string EYE_COLOR_COLUMN = "EyeColour";
@@ -27,8 +28,10 @@ namespace WebApplication1
         DataSet attributes;
         UserModel user;
 
+        /* Generate page data */
         protected void Page_Load(object sender, EventArgs e)
         {
+            /*Retrieve and load the values of each attribute*/
             m = new BLLAttributeMngr();
 
             attributes = m.BLLGetAgeRange();
@@ -74,12 +77,15 @@ namespace WebApplication1
             ddlSexualOrientation.DataBind();
         }
 
+
+        /* Add a new user */
         protected void btnRegister_Click(object sender, EventArgs e)
         {
             user = new UserModel(txtUsername.Text, txtPassword1.Text);
 
         }
 
+        /* Add user details */
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             string ageRange, build, eyeColor, gender, hairColor, height, sexualOrientation;
