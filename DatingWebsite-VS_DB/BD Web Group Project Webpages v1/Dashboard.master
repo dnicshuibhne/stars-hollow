@@ -6,14 +6,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphStarsHollowBody" runat="server">
     <aside>
-        <nav>
             Dashboard-specific navigation bar goes here.
             <br />
             It links to all the different sections that might be in the Dashboard, for example,
             an 'edit account details' option, an 'edit personal details' option,
             an 'edit hobbies' option, a 'manage profile pictures' option,
             a 'messages' option, etc.
-        </nav>
     </aside>
     <h2>Dashboard</h2>
     <section>

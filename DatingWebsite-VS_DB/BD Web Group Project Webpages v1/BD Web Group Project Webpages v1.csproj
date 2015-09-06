@@ -87,12 +87,12 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Home.Master.cs">
-      <DependentUpon>Home.Master</DependentUpon>
+    <Compile Include="Default.Master.cs">
+      <DependentUpon>Default.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Home.Master.designer.cs">
-      <DependentUpon>Home.Master</DependentUpon>
+    <Compile Include="Default.Master.designer.cs">
+      <DependentUpon>Default.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StarsHollow.master.cs">
@@ -104,7 +104,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Home.Master" />
+    <Content Include="Default.Master" />
     <Content Include="App_Themes\WhiteTheme\DefaultSkin.skin" />
     <Content Include="StarsHollow.master" />
     <Content Include="Dashboard.master" />
@@ -114,6 +114,7 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+    <Content Include="Web.sitemap" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
