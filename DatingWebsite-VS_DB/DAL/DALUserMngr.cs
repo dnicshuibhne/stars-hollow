@@ -12,6 +12,7 @@ using UserDataModel;
 
 namespace DAL //Data Access Layer
 {
+    /* User Manager Contains methods for creating and authenticating (log in) users */
     public class DALUserMngr
     {
         //private const string CS_NAME = "SqlSrvrMgmtCS";
@@ -19,11 +20,17 @@ namespace DAL //Data Access Layer
         private const string USER_TABLE_NAME = "UserLogin";
         private string conString;
 
+        /* Constructor  - loads connection string from config file */
         public DALUserMngr()
         {
             conString = ConfigurationManager.ConnectionStrings[CS_NAME].ConnectionString;
         }
 
+        /* 
+         * Login Method
+         * Uses stored proc in DB to verify username & password
+         * If successful, the user's ID is returned
+         */
         public int Login(string username, string password)
         {
             int UserID = 0;
@@ -53,6 +60,12 @@ namespace DAL //Data Access Layer
             return UserID;
         }
 
+
+        /* 
+         * CreateUser Method
+         * Uses stored proc in DB to create new user
+         * If successful, the user's ID is returned
+         */
         public int CreateUser(UserModel user)
         {
             int userID = 0;

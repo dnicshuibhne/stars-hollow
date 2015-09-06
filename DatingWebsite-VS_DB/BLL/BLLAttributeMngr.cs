@@ -11,6 +11,7 @@ namespace BLL
 {
     public class BLLAttributeMngr
     {
+        /* Attribute Table Names */
         private const string AGE_RANGE_TABLE = "AgeRange";
         private const string BUILD_TABLE = "Build";
         private const string EYE_COLOR_TABLE = "EyeColour";
@@ -20,13 +21,49 @@ namespace BLL
         private const string HOBBIES_TABLE = "Hobbies";
         private const string SEXUAL_ORIENTATION_TABLE = "SexualOrientation";
 
-        public DataSet BLLGetAgeRange() { return new DALUserMngr().DALGetAttribute(AGE_RANGE_TABLE); }
-        public DataSet BLLGetBuild() { return new DALUserMngr().DALGetAttribute(BUILD_TABLE); }
-        public DataSet BLLGetEyeColor() { return new DALUserMngr().DALGetAttribute(EYE_COLOR_TABLE); }
-        public DataSet BLLGetGenders() { return new DALUserMngr().DALGetAttribute(GENDER_TABLE); }
-        public DataSet BLLGetHairColor() { return new DALUserMngr().DALGetAttribute(HAIR_COLOR_TABLE); }
-        public DataSet BLLGetHeight() { return new DALUserMngr().DALGetAttribute(HEIGHT_TABLE); }
-        public DataSet BLLGetHobbies() { return new DALUserMngr().DALGetAttribute(HOBBIES_TABLE); }
-        public DataSet BLLGetSexualOrientation() { return new DALUserMngr().DALGetAttribute(SEXUAL_ORIENTATION_TABLE); }
+        private DALAttributeMngr DalAttributeMngr;
+
+        /* Constructor - Intialise Database Access Layer*/
+        public BLLAttributeMngr()
+        {
+            DalAttributeMngr = new DALAttributeMngr();
+        }
+
+        public DataSet BLLGetAgeRange() { return DalAttributeMngr.DALGetAttribute(AGE_RANGE_TABLE); }
+        public DataSet BLLGetBuild() { return DalAttributeMngr.DALGetAttribute(BUILD_TABLE); }
+        public DataSet BLLGetEyeColor() { return DalAttributeMngr.DALGetAttribute(EYE_COLOR_TABLE); }
+        public DataSet BLLGetGenders() { return DalAttributeMngr.DALGetAttribute(GENDER_TABLE); }
+        public DataSet BLLGetHairColor() { return DalAttributeMngr.DALGetAttribute(HAIR_COLOR_TABLE); }
+        public DataSet BLLGetHeight() { return DalAttributeMngr.DALGetAttribute(HEIGHT_TABLE); }
+        public DataSet BLLGetHobbies() { return DalAttributeMngr.DALGetAttribute(HOBBIES_TABLE); }
+        public DataSet BLLGetSexualOrientation() { return DalAttributeMngr.DALGetAttribute(SEXUAL_ORIENTATION_TABLE); }
+
+        public Dictionary<string, List<string>> BLLGetAllAttributes()
+        {
+            DataTable dt = DalAttributeMngr.DALGetAllAttributes();
+
+            Dictionary<string,List<string>> attributes;
+            attributes = new Dictionary<string, List<string>>();
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                Object[] objArray = dt.Rows[i].ItemArray;
+                string key = objArray[0].ToString();
+                string value = objArray[1].ToString();
+
+                if (attributes.ContainsKey(key))
+                {
+                    attributes[key].Add(value);
+                }
+                else
+                {
+                    List<string> vals = new List<string>();
+                    vals.Add(value);
+                    attributes.Add(key, vals);
+                }
+            }
+
+            return attributes;
+        }
     }
 }

@@ -70,6 +70,7 @@
       <DependentUpon>DatingWebsite.mdf</DependentUpon>
     </Content>
     <Content Include="Register.aspx" />
+    <Content Include="RegistrationV2.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -90,6 +91,13 @@
     </Compile>
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrationV2.aspx.cs">
+      <DependentUpon>RegistrationV2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrationV2.aspx.designer.cs">
+      <DependentUpon>RegistrationV2.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
