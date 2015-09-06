@@ -97,9 +97,9 @@
       <Project>{047900b1-3237-4eb7-a38d-b1df47bf79de}</Project>
       <Name>BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\UserDataModel\UserDataModel.csproj">
+    <ProjectReference Include="..\UserDataModel\DataModels.csproj">
       <Project>{1c6d6ab8-ebf2-4d10-aeff-adfe4e7d6f97}</Project>
-      <Name>UserDataModel</Name>
+      <Name>DataModels</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -45,9 +45,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UserDataModel\UserDataModel.csproj">
+    <ProjectReference Include="..\UserDataModel\DataModels.csproj">
       <Project>{1c6d6ab8-ebf2-4d10-aeff-adfe4e7d6f97}</Project>
-      <Name>UserDataModel</Name>
+      <Name>DataModels</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
