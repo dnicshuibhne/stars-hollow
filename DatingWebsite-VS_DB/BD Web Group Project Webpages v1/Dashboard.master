@@ -4,17 +4,30 @@
     <!-- This Master page is for all pages under the dashboard umbrella -->
 
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="cphStarsHollowBody" runat="server">
+<asp:Content ID="cphStarsHollowBody" ContentPlaceHolderID="cphStarsHollowBody" runat="server">
     <aside>
-            Dashboard-specific navigation bar goes here.
-            <br />
-            It links to all the different sections that might be in the Dashboard, for example,
-            an 'edit account details' option, an 'edit personal details' option,
-            an 'edit hobbies' option, a 'manage profile pictures' option,
-            a 'messages' option, etc.
+           <asp:Menu ID="Menu1" runat="server" Orientation="vertical" ForeColor="Black" >
+                <DynamicMenuItemStyle BackColor="White" BorderColor="Black" HorizontalPadding="20px" ItemSpacing="10px" VerticalPadding="20px" />
+                <Items>
+                   <asp:MenuItem NavigateUrl="~/DashboardPersonal.aspx" Text="Edit Personal Details" value="Edit Personal Details"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/DashboardAccount.aspx" Text="Edit Account Details" value="Edit Account Details"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/MyGallery.aspx" Text="My Gallery" value="My Gallery"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/MyMessages.aspx" Text="My Messages" value="My Messages"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/MyProfile.aspx" Text="View My Profile" value="View My Profile"></asp:MenuItem>
+                </Items>
+                <StaticMenuItemStyle BorderColor="#CCCCCC" BorderStyle="Solid" BorderWidth="1px" HorizontalPadding="20px" VerticalPadding="35px" Width="100px" />
+                <StaticSelectedStyle BackColor="#333333" ForeColor="White" />
+            </asp:Menu> 
     </aside>
-    <h2>Dashboard</h2>
-    <section>
-        <asp:ContentPlaceHolder ID="cphDashboardMain" runat="server"></asp:ContentPlaceHolder>
-    </section>
+    <div id="bodyContents">
+        <h2 id="pageHeader">Dashboard</h2>
+        <section>
+            <asp:ContentPlaceHolder ID="cphDashboardMain" runat="server"></asp:ContentPlaceHolder>
+        </section>
+    </div>
+    <footer>
+        kljhklj
+        jkl;hjk
+        khklj
+    </footer>
 </asp:Content>
