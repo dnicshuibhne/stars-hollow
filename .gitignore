@@ -3,7 +3,7 @@
 **.mdf
 **.pdb
 **.cache
-**.txt
+**.FileListAbsolute.txt
 DatingWebsite-VS_DB/BD Web Group Project Webpages v1/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 DatingWebsite-VS_DB/BLL/obj/Debug/BLL.csproj.FileListAbsolute.txt
 DatingWebsite-VS_DB/WebApplication1/obj/Debug/WebApplication1.csproj.FileListAbsolute.txt
