@@ -7,64 +7,82 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BD_Web_Group_Project_Webpages_v1 {
+namespace WebApplication1 {
     
     
-    public partial class DashboardPersonal {
+    public partial class AttributeForm {
         
         /// <summary>
-        /// lblLocation control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLocation;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// txtLocation control.
+        /// attributeForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLocation;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl attributeForm;
         
         /// <summary>
-        /// regxvLocation control.
+        /// lblAgeRange control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator regxvLocation;
+        protected global::System.Web.UI.WebControls.Label lblAgeRange;
         
         /// <summary>
-        /// lblProfesssion control.
+        /// ddlAgeRange control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblProfesssion;
+        protected global::System.Web.UI.WebControls.DropDownList ddlAgeRange;
         
         /// <summary>
-        /// txtProfession control.
+        /// lblBuild control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtProfession;
+        protected global::System.Web.UI.WebControls.Label lblBuild;
         
         /// <summary>
-        /// regxvProfession control.
+        /// ddlBuild control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator regxvProfession;
+        protected global::System.Web.UI.WebControls.DropDownList ddlBuild;
+        
+        /// <summary>
+        /// lblEyeColor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEyeColor;
+        
+        /// <summary>
+        /// ddlEyeColor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlEyeColor;
         
         /// <summary>
         /// lblGender control.
@@ -85,76 +103,58 @@ namespace BD_Web_Group_Project_Webpages_v1 {
         protected global::System.Web.UI.WebControls.DropDownList ddlGender;
         
         /// <summary>
-        /// lblOrientation control.
+        /// lblHairColor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblOrientation;
+        protected global::System.Web.UI.WebControls.Label lblHairColor;
         
         /// <summary>
-        /// ddlOrientation control.
+        /// ddlHairColor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlOrientation;
+        protected global::System.Web.UI.WebControls.DropDownList ddlHairColor;
         
         /// <summary>
-        /// lblEyeColour control.
+        /// lblHeight control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEyeColour;
+        protected global::System.Web.UI.WebControls.Label lblHeight;
         
         /// <summary>
-        /// ddlEyeColour control.
+        /// ddlHeight control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEyeColour;
+        protected global::System.Web.UI.WebControls.DropDownList ddlHeight;
         
         /// <summary>
-        /// lblHairColour control.
+        /// lblSexualOrientation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHairColour;
+        protected global::System.Web.UI.WebControls.Label lblSexualOrientation;
         
         /// <summary>
-        /// ddlHairColour control.
+        /// ddlSexualOrientation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlHairColour;
-        
-        /// <summary>
-        /// lblAge control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAge;
-        
-        /// <summary>
-        /// ddlAge control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlAge;
+        protected global::System.Web.UI.WebControls.DropDownList ddlSexualOrientation;
         
         /// <summary>
         /// lblHobbies control.
@@ -175,12 +175,12 @@ namespace BD_Web_Group_Project_Webpages_v1 {
         protected global::System.Web.UI.WebControls.CheckBoxList cblHobbies;
         
         /// <summary>
-        /// btnUpdateDetails control.
+        /// btnSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUpdateDetails;
+        protected global::System.Web.UI.WebControls.Button btnSubmit;
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 //
-using UserDataModel;
+using DataModels;
 using DAL;
 using System.Data;
 
@@ -56,6 +56,11 @@ namespace BLL //Business Logic Layer
                 return true;
             }
             return false;
+        }
+
+        public bool userExists(string username)
+        {
+            return DalUserManager.userExists(username);
         }
     }
 }

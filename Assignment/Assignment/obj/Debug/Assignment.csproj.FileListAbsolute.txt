@@ -1,5 +1,0 @@
-C:\Users\user\Documents\GitHub\stars-hollow\Assignment\Assignment\bin\Assignment.dll
-C:\Users\user\Documents\GitHub\stars-hollow\Assignment\Assignment\bin\Assignment.pdb
-C:\Users\user\Documents\GitHub\stars-hollow\Assignment\Assignment\obj\Debug\Assignment.csprojResolveAssemblyReference.cache
-C:\Users\user\Documents\GitHub\stars-hollow\Assignment\Assignment\obj\Debug\Assignment.dll
-C:\Users\user\Documents\GitHub\stars-hollow\Assignment\Assignment\obj\Debug\Assignment.pdb

@@ -10,8 +10,8 @@ SELECT
 	UserInformation.Gender,
 	UserInformation.AgeRange,
 	UserInformation.SexualOrientation,
-	UserInformation.EyeColour,
-	UserInformation.HairColour,
+	UserInformation.EyeColor,
+	UserInformation.HairColor,
 	UserInformation.Height,
 	UserInformation.Build
 
@@ -33,8 +33,8 @@ SELECT
 	UserInformation.Gender,
 	UserInformation.AgeRange,
 	UserInformation.SexualOrientation,
-	UserInformation.EyeColour,
-	UserInformation.HairColour,
+	UserInformation.EyeColor,
+	UserInformation.HairColor,
 	UserInformation.Height,
 	UserInformation.Build
 
@@ -55,8 +55,8 @@ SELECT
 	UserInformation.Gender,
 	UserInformation.AgeRange,
 	UserInformation.SexualOrientation,
-	UserInformation.EyeColour,
-	UserInformation.HairColour,
+	UserInformation.EyeColor,
+	UserInformation.HairColor,
 	UserInformation.Height,
 	UserInformation.Build
 
@@ -101,8 +101,8 @@ CREATE PROCEDURE uspAddUserDetails
 @gender varchar(50),
 @orientation varchar (50),
 @age varchar(50),
-@haircolour varchar(50),
-@eyecolour varchar(50),
+@haircolor varchar(50),
+@eyecolor varchar(50),
 @height varchar (50),
 @build varchar(50),
 @profilepic varchar(max)
@@ -112,8 +112,8 @@ UPDATE UserInformation SET Profession =@profession,
 						   Gender=@gender,
 						   SexualOrientation=@orientation,
 						   AgeRange=@age,
-						   HairColour=@haircolour,
-						   EyeColour=@eyecolour,
+						   HairColor=@haircolor,
+						   EyeColor=@eyecolor,
 						   Height=@height,
 						   Build=@build,
 						   ProfilePicturePath=@profilepic

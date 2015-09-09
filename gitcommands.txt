@@ -1,0 +1,11 @@
+Open Git shell
+Navigate to your stars-hollow directory
+
+Execute
+git rm --cached *.dll
+git rm --cached *.pdb
+git rm --cached *.FileListAbsolute.txt
+git rm --cached *.cache
+git rm --cached *.suo
+
+git commit -m "remove tmp and bin files"

@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphDefaultBody" runat="server">
     
-    <div class="loginScreen" runat="server">
+    <div id="loginScreen" class="loginScreen" runat="server">
 
         <!-- .loginScreen should set to 'display: none;' on page load, and when btnCancel is clicked.
             Its display should set to 'inline' when btnLogin is clicked.
@@ -15,9 +15,9 @@
                 <br />
                 <br />
                 <asp:Label ID="Label1" runat="server" Text="Username: "></asp:Label>
-                <asp:TextBox ID="TextBox1" runat="server" class="loginTextBox" ></asp:TextBox>
+                <asp:TextBox ID="TextBox1" runat="server" CssClass="loginTextBox" ></asp:TextBox>
                 <asp:Label ID="lblPassword" runat="server" Text="Password: "></asp:Label>
-                <asp:TextBox ID="txtPassword" runat="server" class="loginTextBox" ></asp:TextBox>
+                <asp:TextBox ID="txtPassword" runat="server" CssClass="loginTextBox" ></asp:TextBox>
                 <br />
                 <br />
                 <div class="loginButtons">
@@ -28,7 +28,7 @@
         </section>
     </div>
 
-    <!-- The .defaultPgMainForm class is an 'empty' box taking up the height of the screen 
+    <!-- The .defaultPgMainForm CssClass is an 'empty' box taking up the height of the screen 
         which pushes subsequent content down the page.  -->
     
     <div class="defaultPgMainForm">
@@ -38,7 +38,7 @@
             when the user scrolls down the page, #mainFormBox is obscured by subsequent content.-->
         
         <div id="mainFormBox">
-            <asp:Button ID="btnLogin" runat="server" Text="LOGIN" Font-Size="15px" CssClass="blueButton" style="float: right; padding: 5px 20px; margin: 20px 30px; position: relative;"/>
+            <asp:Button ID="btnLogin" runat="server" Text="LOGIN" Font-Size="15px" CssClass="blueButton" style="float: right; padding: 5px 20px; margin: 20px 30px; position: relative;" OnClick="btnLogin_Click"/>
             <br />
             <img src="Images/BD%20Web%20Sitename%20Placeholder%20Large.png" style="display: block;  margin-left:auto; margin-right:auto; margin-top: 40px"/>
             <section class="loginSection">
@@ -48,18 +48,20 @@
                 
                 <div id="loginPage1" runat="server" class="loginContents">
                     <asp:Label ID="lblUsername" runat="server" Text="Username " ></asp:Label>
-                    <asp:TextBox ID="txtUserName" runat="server" class="loginTextBox" ValidationGroup="vgRegisterPage1" ></asp:TextBox>
+                    <asp:TextBox ID="txtUserName" runat="server" CssClass="loginTextBox" ValidationGroup="vgRegisterPage1" ></asp:TextBox>
                     <asp:RegularExpressionValidator ID="regxvUserName" runat="server" ControlToValidate="txtUserName" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9]+" ValidationGroup="vgRegisterPage1"> Your username may only contain letters and numbers</asp:RegularExpressionValidator>
-                        <asp:RequiredFieldValidator ID="rfvUserName" runat="server" ControlToValidate="txtUserName" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage1"> Required</asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvUserName" runat="server" ControlToValidate="txtUserName" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage1"> Required</asp:RequiredFieldValidator>
+                    <asp:Label ID="valUserAvail" runat="server" Text="This username is taken, please try another." style="font: 12px arial " CssClass="validator" ForeColor="Red" Visible="False"></asp:Label>
+                    <%--<asp:CustomValidator ID="valUserAvail" runat="server" ErrorMessage="This username is taken, please try another." Display="Dynamic"></asp:CustomValidator>--%>
                     <br />            
                     <asp:Label ID="lblIAmA" runat="server" Text="I am a " ></asp:Label>
                     <asp:DropDownList ID="ddlOrientation" runat="server" style="width: 114px;" ValidationGroup="vgRegisterPage1"></asp:DropDownList>
                     <asp:DropDownList ID="ddlGender" runat="server" style="width: 114px;" ValidationGroup="vgRegisterPage1"></asp:DropDownList>        
                     <asp:RequiredFieldValidator ID="rfvOrientation" runat="server" ControlToValidate="ddlOrientation" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage1"> Please select your Orientation</asp:RequiredFieldValidator>
-                        <asp:RequiredFieldValidator ID="rfvGender" runat="server" ControlToValidate="ddlGender" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage1"> Please select your Gender</asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvGender" runat="server" ControlToValidate="ddlGender" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage1"> Please select your Gender</asp:RequiredFieldValidator>
                     <br />      
                     <asp:Label ID="lblLocation" runat="server" Text="Location " ></asp:Label>
-                    <asp:TextBox ID="txtLocation" runat="server" class="loginTextBox" ValidationGroup="vgRegisterPage1" ></asp:TextBox>
+                    <asp:TextBox ID="txtLocation" runat="server" CssClass="loginTextBox" ValidationGroup="vgRegisterPage1" ></asp:TextBox>
                     <asp:RegularExpressionValidator ID="regxvLocation" runat="server" ControlToValidate="txtLocation" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9\s\,\.\-]+" ValidationGroup="vgRegisterPage1"> Your location may only contain the following characters: <br /> [A-Z] [a-z] [0-9] [space] [,] [.] [-]</asp:RegularExpressionValidator>
                         <asp:RequiredFieldValidator ID="rfvLocation" runat="server" ControlToValidate="txtLocation" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage1"> Required</asp:RequiredFieldValidator>
                     <br />        
@@ -69,22 +71,22 @@
                         #loginPage1 div is hidden and #loginPage2 div is shown -->
                     
                     <div class="loginButtons">
-                        <asp:Button ID="btnContinueReg" runat="server" Text="Continue" CssClass="blueButton" Font-Size="20px" style="margin-left: auto; margin-right: auto; padding-left: 2em; padding-right: 2em;" ValidationGroup="vgRegisterPage1"/>
+                        <asp:Button ID="btnContinueReg" runat="server" Text="Continue" CssClass="blueButton" Font-Size="20px" style="margin-left: auto; margin-right: auto; padding-left: 2em; padding-right: 2em;" ValidationGroup="vgRegisterPage1" OnClick="btnContinueReg_Click"/>
                     </div>
                 </div>
                 <div id="loginPage2" runat="server" class="loginContents">
                     <asp:Label ID="lblEmail" runat="server" Text="Email " ></asp:Label>
-                    <asp:TextBox ID="txtEmail" runat="server" class="loginTextBox" ValidationGroup="vgRegisterPage2" ></asp:TextBox>
+                    <asp:TextBox ID="txtEmail" runat="server" CssClass="loginTextBox" ValidationGroup="vgRegisterPage2" ></asp:TextBox>
                     <asp:RegularExpressionValidator ID="regxvEmail" runat="server" ControlToValidate="txtEmail" Display="Dynamic" CssClass="validator" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="vgRegisterPage2">Please enter a valid email address, eg. example@web.com</asp:RegularExpressionValidator>
                         <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ControlToValidate="txtEmail" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage2"> Required</asp:RequiredFieldValidator>
                     <br />            
                     <asp:Label ID="lblCreatePwd" runat="server" Text="Password" ></asp:Label>
-                    <asp:TextBox ID="txtCreatePwd" runat="server" class="loginTextBox" ValidationGroup="vgRegisterPage2" ></asp:TextBox>
+                    <asp:TextBox ID="txtCreatePwd" runat="server" CssClass="loginTextBox" ValidationGroup="vgRegisterPage2" ></asp:TextBox>
                     <asp:RegularExpressionValidator ID="regxvCreatePwd" runat="server" ControlToValidate="txtCreatePwd" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9_\s\!\@]{6,12}" ValidationGroup="vgRegisterPage2"> Your password must be 6-12 characters long and may only contain the following characters: [A-Z] [a-z] [0-9] [_] [!] [@]</asp:RegularExpressionValidator>
                         <asp:RequiredFieldValidator ID="rfvCreatePwd" runat="server" ControlToValidate="txtCreatePwd" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage2"> Required</asp:RequiredFieldValidator>
                     <br />      
                     <asp:Label ID="lblConfirmPwd" runat="server" Text="Confirm Password" ></asp:Label>
-                    <asp:TextBox ID="txtConfirmPwd" runat="server" class="loginTextBox" ValidationGroup="vgRegisterPage2" ></asp:TextBox>
+                    <asp:TextBox ID="txtConfirmPwd" runat="server" CssClass="loginTextBox" ValidationGroup="vgRegisterPage2" ></asp:TextBox>
                     <asp:RegularExpressionValidator ID="regxvConfirmPwd" runat="server" ControlToValidate="txtConfirmPwd" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9_\s\!\@]{6,12}" ValidationGroup="vgRegisterPage2"> Your password must be 6-12 characters long and may only contain the following characters: [A-Z] [a-z] [0-9] [_] [!] [@]</asp:RegularExpressionValidator>
                         <asp:CompareValidator ID="cvConfirmPwd" runat="server" ControlToCompare="txtCreatePwd" ControlToValidate="txtConfirmPwd" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage2"> Your passwords don&#39;t match</asp:CompareValidator>
                         <asp:RequiredFieldValidator ID="rfvConfirmPwd" runat="server" ControlToValidate="txtConfirmPwd" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage2"> Required</asp:RequiredFieldValidator>
@@ -98,8 +100,8 @@
                          to their dashboard, where further personal details can be filled in -->
                     
                     <div class="loginButtons">
-                        <asp:Button ID="btnBack" runat="server" Text="Back" CssClass="blueButton" Font-Size="20px" style="margin-left: auto; margin-right: auto; padding-left: 2em; padding-right: 2em;"/>
-                        <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="blueButton" Font-Size="20px" style="margin-left: auto; margin-right: auto; padding-left: 2em; padding-right: 2em;" ValidationGroup="vgRegisterPage2"/>
+                        <asp:Button ID="btnBack" runat="server" Text="Back" CssClass="blueButton" Font-Size="20px" style="margin-left: auto; margin-right: auto; padding-left: 2em; padding-right: 2em;" OnClick="btnBack_Click"/>
+                        <asp:Button ID="btnRegister" runat="server" Text="Register" CssClass="blueButton" Font-Size="20px" style="margin-left: auto; margin-right: auto; padding-left: 2em; padding-right: 2em;" ValidationGroup="vgRegisterPage2" OnClick="btnRegister_Click"/>
                     </div>
                 </div>
             </section>

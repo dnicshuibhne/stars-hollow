@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace BD_Web_Group_Project_Webpages_v1
 {
-    public partial class Dashboard : System.Web.UI.Page
+    public partial class DashboardPersonal : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

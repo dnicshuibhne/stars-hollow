@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UserDataModel
+namespace DataModels
 {
     public class UserModel
     {
         public int ID { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        public string Email { get; set; }
 
         public string AgeRange { get; set; }
         public string Build { get; set; }
@@ -19,13 +20,19 @@ namespace UserDataModel
         public string HairColor { get; set; }
         public string Height { get; set; }
         public string SexualOrientation { get; set; }
-        List<int> Hobbies = new List<int>();
+        public List<int> Hobbies { get; set; }
+        public string Location { get; set; }
 
+
+        public UserModel(){
+            Hobbies = new List<int>();
+        }
 
         public UserModel(string Username, string Password)
         {
             this.Username = Username;
             this.Password = Password;
+            Hobbies = new List<int>();
         }
 
         public UserModel(int ID, string Username, string Password)
@@ -33,6 +40,7 @@ namespace UserDataModel
             this.ID = ID;
             this.Username = Username;
             this.Password = Password;
+            Hobbies = new List<int>();
         }
     }
 }

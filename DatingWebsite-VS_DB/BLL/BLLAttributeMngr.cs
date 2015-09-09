@@ -14,9 +14,9 @@ namespace BLL
         /* Attribute Table Names */
         private const string AGE_RANGE_TABLE = "AgeRange";
         private const string BUILD_TABLE = "Build";
-        private const string EYE_COLOR_TABLE = "EyeColour";
+        private const string EYE_COLOR_TABLE = "EyeColor";
         private const string GENDER_TABLE = "Gender";
-        private const string HAIR_COLOR_TABLE = "HairColour";
+        private const string HAIR_COLOR_TABLE = "HairColor";
         private const string HEIGHT_TABLE = "Height";
         private const string HOBBIES_TABLE = "Hobbies";
         private const string SEXUAL_ORIENTATION_TABLE = "SexualOrientation";

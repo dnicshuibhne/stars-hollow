@@ -1,23 +1,14 @@
-DROP PROCEDURE spUserLogin
-GO
-
-CREATE PROCEDURE dbo.spUserLogin
+CREATE OR REPLACE PROCEDURE dbo.spUserLogin
 @username nvarchar(20),
 @password nvarchar(50)
 AS
 BEGIN
 	SET NOCOUNT ON
 
-	SELECT 
-		ID
-	FROM 
-		dbo.tblUsers
-	WHERE
-		Username=@username
-	OR
-		Email=@username
-	AND
-		Password=@password
+	SELECT 		ID
+	FROM 		dbo.[User]
+	WHERE		Username=@username OR Email=@username
+		AND		Password=@password
 END
 GO
 
@@ -32,10 +23,7 @@ AS
 BEGIN
 	SET NOCOUNT ON
 
-	DECLARE @IdInserted TABLE
-	(
-		IdValue INTEGER
-	);
+	DECLARE @IdInserted TABLE(IdValue INTEGER);	
 
 	INSERT INTO 
 		dbo.tblUsers (Username, Password, Email)
