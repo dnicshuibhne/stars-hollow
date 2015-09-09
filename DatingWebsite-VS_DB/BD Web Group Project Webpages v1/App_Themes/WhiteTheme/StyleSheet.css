@@ -70,6 +70,10 @@ h2 {
     margin: 50px 60px;
 }
 
+#asideheader {
+
+}
+
 h3 {
     color: white;
     font-size: 50px;
@@ -81,6 +85,13 @@ h3 {
 h4 {
     font-size: 30px;
     margin-bottom: 20px;
+}
+
+h5 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-style:italic;
+    text-align:center;
 }
 
 a {
@@ -334,5 +345,42 @@ span.validator[style*="inline"]{
 .searchForWrapper {
     margin-left: 15vw;
     margin-right: auto;
-    border: 1px solid black;
+}
+
+.resultBox {
+    border: 3px solid #824187; /* dark purple */
+    border-radius: 40px;
+    background-color: white; /* light blue */
+    padding: 20px 20px;
+    min-height: 120px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.resultText {
+    margin-left: 120px;
+    margin-right: 80px;
+    
+
+}
+
+.resultName {
+    font-size: 25px;
+    
+}
+
+.resultLocation {
+    font-size: 15px;
+    margin: 10px 0px;
+    font-style:italic;
+    
+}
+.resultProfession {
+    font-size: 18px;
+}
+.resultImage {
+    max-width: 100px;
+    height: auto;
+    float: left;
+    
 }
