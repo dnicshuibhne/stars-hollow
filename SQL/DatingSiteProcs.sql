@@ -11,7 +11,7 @@ BEGIN
 	SELECT 
 		ID
 	FROM 
-		dbo.tblUsers
+		dbo.[User]
 	WHERE
 		Username=@username
 	OR

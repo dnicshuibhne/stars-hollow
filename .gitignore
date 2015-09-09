@@ -5,3 +5,16 @@
 **.cache
 **.txt
 DatingWebsite-VS_DB/BD Web Group Project Webpages v1/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+DatingWebsite-VS_DB/BLL/obj/Debug/BLL.csproj.FileListAbsolute.txt
+DatingWebsite-VS_DB/WebApplication1/obj/Debug/WebApplication1.csproj.FileListAbsolute.txt
+DatingWebsite-VS_DB/BLL/bin/Debug/BLL.dll
+DatingWebsite-VS_DB/BLL/bin/Debug/DAL.dll
+DatingWebsite-VS_DB/BLL/obj/Debug/BLL.csprojResolveAssemblyReference.cache
+DatingWebsite-VS_DB/DAL/bin/Debug/DAL.dll
+DatingWebsite-VS_DB/DAL/obj/Debug/DAL.csprojResolveAssemblyReference.cache
+DatingWebsite-VS_DB/WebApplication1.v11.suo
+DatingWebsite-VS_DB/WebApplication1/bin/BLL.dll
+DatingWebsite-VS_DB/WebApplication1/bin/DAL.dll
+DatingWebsite-VS_DB/WebApplication1/bin/WebApplication1.pdb
+DatingWebsite-VS_DB/WebApplication1/obj/Debug/WebApplication1.csproj.FileListAbsolute.txt
+DatingWebsite-VS_DB/WebApplication1/obj/Debug/WebApplication1.dll
