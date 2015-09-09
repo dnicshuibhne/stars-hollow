@@ -67,6 +67,7 @@
     <Content Include="Images\blank-profile-grey.png" />
     <Content Include="Images\rsz_1008006-glossy-black-icon-arrows-arrowhead2-right.png" />
     <Content Include="MyMessages.aspx" />
+    <Content Include="SearchFor.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -113,6 +114,13 @@
       <DependentUpon>MyMessages.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchFor.aspx.cs">
+      <DependentUpon>SearchFor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SearchFor.aspx.designer.cs">
+      <DependentUpon>SearchFor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="StarsHollow.master.cs">
       <DependentUpon>StarsHollow.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

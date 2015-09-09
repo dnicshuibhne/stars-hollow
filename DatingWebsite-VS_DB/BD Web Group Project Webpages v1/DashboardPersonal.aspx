@@ -17,10 +17,6 @@
             <asp:RegularExpressionValidator ID="regxvProfession" runat="server" ControlToValidate="txtProfession" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z\s\-]+" ValidationGroup="vgRegisterPage1"><br />Your profession may only contain the following characters: <br /> [A-Z] [a-z] [space] [-]</asp:RegularExpressionValidator>
             <br />
             <br />
-            <asp:Label ID="lblProfilePic" runat="server" Text="Profile Picture "></asp:Label>
-             [To be added later]
-            <br />
-            <br />
             <asp:Label ID="lblGender" runat="server" Text="Gender "></asp:Label>
             <asp:DropDownList ID="ddlGender" runat="server"></asp:DropDownList>
             <br />
