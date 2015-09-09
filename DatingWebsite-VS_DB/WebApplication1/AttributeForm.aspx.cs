@@ -25,53 +25,52 @@ namespace WebApplication1
         private const string SEXUAL_ORIENTATION_COLUMN = "Orientation";
 
 
-        BLLAttributeMngr m;
+        BLLAttributeMngr attManager;
         DataSet attributes;
 
         /* Generate page data */
         protected void Page_Load(object sender, EventArgs e)
         {
             /*Retrieve and load the values of each attribute*/
-            m = new BLLAttributeMngr();
+            attManager = new BLLAttributeMngr();
 
-            attributes = m.BLLGetAgeRange();
+            attributes = attManager.BLLGetAgeRange();
             ddlAgeRange.DataSource = attributes;
             ddlAgeRange.DataTextField = AGE_RANGE_COLUMN;
             ddlAgeRange.DataBind();
-            //ddlAgeRange.RenderControl();
 
-            attributes = m.BLLGetBuild();
+            attributes = attManager.BLLGetBuild();
             ddlBuild.DataSource = attributes;
             ddlBuild.DataTextField = BUILD_COLUMN;
             ddlBuild.DataBind();
 
-            attributes = m.BLLGetEyeColor();
+            attributes = attManager.BLLGetEyeColor();
             ddlEyeColor.DataSource = attributes;
             ddlEyeColor.DataTextField = EYE_COLOR_COLUMN;
             ddlEyeColor.DataBind();
 
-            attributes = m.BLLGetGenders();
+            attributes = attManager.BLLGetGenders();
             ddlGender.DataSource = attributes;
             ddlGender.DataTextField = GENDER_COLUMN;
             ddlGender.DataBind();
 
-            attributes = m.BLLGetHairColor();
+            attributes = attManager.BLLGetHairColor();
             ddlHairColor.DataSource = attributes;
             ddlHairColor.DataTextField = HAIR_COLOR_COLUMN;
             ddlHairColor.DataBind();
 
-            attributes = m.BLLGetHeight();
+            attributes = attManager.BLLGetHeight();
             ddlHeight.DataSource = attributes;
             ddlHeight.DataTextField = HEIGHT_COLUMN;
             ddlHeight.DataBind();
 
-            attributes = m.BLLGetHobbies();
+            attributes = attManager.BLLGetHobbies();
             cblHobbies.DataSource = attributes;
             cblHobbies.DataValueField = HOBBIES_ID_COLUMN;
             cblHobbies.DataTextField = HOBBIES_NAME_COLUMN;
             cblHobbies.DataBind();
 
-            attributes = m.BLLGetSexualOrientation();
+            attributes = attManager.BLLGetSexualOrientation();
             ddlSexualOrientation.DataSource = attributes;
             ddlSexualOrientation.DataTextField = SEXUAL_ORIENTATION_COLUMN;
             ddlSexualOrientation.DataBind();

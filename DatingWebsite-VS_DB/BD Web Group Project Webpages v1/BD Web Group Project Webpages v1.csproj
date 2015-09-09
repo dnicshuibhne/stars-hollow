@@ -163,10 +163,6 @@
       <Project>{1c6d6ab8-ebf2-4d10-aeff-adfe4e7d6f97}</Project>
       <Name>DataModels</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebApplication1\WebApplication1.csproj">
-      <Project>{016fb9e2-d6be-4fff-b72e-7c349b436b5d}</Project>
-      <Name>WebApplication1</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

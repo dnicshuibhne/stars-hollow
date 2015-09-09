@@ -13,13 +13,13 @@ namespace WebApplication1
     public partial class Register : System.Web.UI.Page
     {
 
-        BLLUserMngr m;
+        BLLUserMngr userManager;
         UserModel user;
 
         /* Generate page data */
         protected void Page_Load(object sender, EventArgs e)
         {
-            m = new BLLUserMngr();
+            userManager = new BLLUserMngr();
         }
 
 
@@ -30,7 +30,7 @@ namespace WebApplication1
             user = new UserModel(txtUsername.Text, txtPassword1.Text);
             user.Email = txtEmail.Text;
 
-            if (m.CreateUser(user))
+            if (userManager.CreateUser(user))
             {
                 //Redirect to Dashboard
                 Response.Write("User Created");
