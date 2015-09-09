@@ -25,9 +25,4 @@
             <asp:ContentPlaceHolder ID="cphDashboardMain" runat="server"></asp:ContentPlaceHolder>
         </section>
     </div>
-    <footer>
-        kljhklj
-        jkl;hjk
-        khklj
-    </footer>
 </asp:Content>

@@ -32,6 +32,7 @@ section {
     width: 50vw;
     float: left;
     margin-left: 5vw;
+    margin-bottom: 60px;
 }
 
 aside {
@@ -69,6 +70,10 @@ h2 {
     margin: 50px 60px;
 }
 
+#asideheader {
+
+}
+
 h3 {
     color: white;
     font-size: 50px;
@@ -80,6 +85,13 @@ h3 {
 h4 {
     font-size: 30px;
     margin-bottom: 20px;
+}
+
+h5 {
+    font-size: 20px;
+    margin-bottom: 20px;
+    font-style:italic;
+    text-align:center;
 }
 
 a {
@@ -159,9 +171,14 @@ span.validator[style*="inline"]{
     margin-bottom: 60px;
 }
 
+.standardLabel {
+    display: inline-block; 
+    width: 180px;
+}
+
 /* Default Page styles */
 
-.loginScreen{
+.loginScreen {
     width: 100vw;
     height: 100vh;
     z-index: 10;
@@ -169,6 +186,7 @@ span.validator[style*="inline"]{
     padding-top: 30vh;
     background: rgba(0, 0, 0, 0.7);
 }
+
 
 .defaultPgMainForm {
     height: 100vh;
@@ -294,4 +312,75 @@ span.validator[style*="inline"]{
     margin-left: 120px;
     font-size: 15px;
     font-style: italic;
+}
+
+#convoMessages {
+    margin-left: 100px;
+    margin-top: 50px;
+    width: 400px;
+    height: 500px;
+    overflow-y: scroll;
+    vertical-align:bottom;
+    border-top: 1px solid #5C5C5C;
+    border-bottom: 1px solid #5C5C5C;
+    color: #5C5C5C;
+}
+
+.theirMessage, .myMessage {
+    background-color: #dbdbdb;
+    padding: 5px 40px;
+    margin: 10px 10px;
+    border-radius: 5em;
+    display: block;
+    font-size: 15px;
+}
+.theirMessage {
+    float: left;
+}
+.myMessage {
+    float: right;
+}
+
+/* Search For page styles */
+.searchForWrapper {
+    margin-left: 15vw;
+    margin-right: auto;
+}
+
+.resultBox {
+    border: 3px solid #824187; /* dark purple */
+    border-radius: 40px;
+    background-color: white; /* light blue */
+    padding: 20px 20px;
+    min-height: 120px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.resultText {
+    margin-left: 120px;
+    margin-right: 80px;
+    
+
+}
+
+.resultName {
+    font-size: 25px;
+    
+}
+
+.resultLocation {
+    font-size: 15px;
+    margin: 10px 0px;
+    font-style:italic;
+    
+}
+.resultProfession {
+    font-size: 18px;
+}
+.resultImage {
+    max-width: 100px;
+    height: auto;
+    float: left;
+    
 }

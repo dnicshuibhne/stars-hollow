@@ -32,5 +32,12 @@
         </nav>
     </div>
     <div id="topNavBarInvsBox"></div> <!-- Invisible box accompanying #topNavBar for page positioning -->
-    <asp:ContentPlaceHolder ID="cphStarsHollowBody" runat="server"></asp:ContentPlaceHolder>
+    <asp:ContentPlaceHolder ID="cphStarsHollowBody" runat="server">
+
+    </asp:ContentPlaceHolder>
+    <footer>
+            kljhklj
+            jkl;hjk
+            khklj
+    </footer>
 </asp:Content>
