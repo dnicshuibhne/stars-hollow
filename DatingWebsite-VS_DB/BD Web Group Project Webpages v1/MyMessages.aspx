@@ -11,9 +11,7 @@
         Div 1. is invisible until a Div 2 is clicked.
         --%>
 
-
-    
-        <div id="myMessage" class="conversationBox theirImage" runat="server" >
+        <div id="myMessage"  visible="false" class="conversationBox theirImage" runat="server" >
             <asp:Button ID="closeThisMessage" runat="server" Text="X" class="purpleButton" style="margin: 10px 10px; float:right;"/>
             <asp:Image ID="imgTheirProfilePic" runat="server" ImageUrl="~/Images/blank-profile-grey.png" style="position: absolute; bottom:0px; margin-left:40px;"/>
             <div id="convoMessages" >
@@ -77,16 +75,8 @@
             </div>
             <asp:TextBox ID="txtNewMessage" runat="server" TextMode="MultiLine" style="margin-top: 20px; margin-left: 125px; margin-bottom: 20px;" ForeColor="Black" Height="50px" Width="250px"></asp:TextBox>
             <asp:ImageButton ID="imgBtnSendMessage" runat="server" ImageUrl="~/Images/rsz_1008006-glossy-black-icon-arrows-arrowhead2-right.png" />
-                
-                
-                
-            <!-- I STOPPED HERE -->
-
         </div>
-   
 
-    
-        
     <!-- Using a repeater to load messages from the database and present as conversation summaries -->
 
     <!--
@@ -106,7 +96,7 @@
                 rptModules.DataBind();
             } 
         -->
-    <div id="myConversations" visible="false" class="detailsBox myMessagesWrapper"  runat="server">
+    <div id="myConversations" visible="true" class="detailsBox myMessagesWrapper"  runat="server">
         <asp:Repeater ID="rptConversations" runat="server">
             <ItemTemplate>
                 <div class="conversationBox linkingDiv">
