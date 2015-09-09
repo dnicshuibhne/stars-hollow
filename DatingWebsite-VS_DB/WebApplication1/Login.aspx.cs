@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Configuration;
 using BLL;
-using UserDataModel;
+using DataModels;
 
 namespace WebApplication1
 {

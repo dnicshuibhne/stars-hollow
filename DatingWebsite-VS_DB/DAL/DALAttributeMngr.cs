@@ -12,8 +12,7 @@ namespace DAL // Data Access Layer
 {
     public class DALAttributeMngr
     {
-        //private const string CS_NAME = "SqlSrvrMgmtCS";
-        private const string CS_NAME = "VSProjectCS";
+        private const string CS_NAME = "DatingDB";
         private const string USER_TABLE_NAME = "UserLogin";
         private string conString;
 

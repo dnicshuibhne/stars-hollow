@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard.master" AutoEventWireup="true" CodeBehind="DashboardPersonal.aspx.cs" Inherits="BD_Web_Group_Project_Webpages_v1.Dashboard" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard.master" AutoEventWireup="true" CodeBehind="DashboardPersonal.aspx.cs" Inherits="BD_Web_Group_Project_Webpages_v1.DashboardPersonal" %>
 <asp:Content ID="cphStarsHollowBody" ContentPlaceHolderID="cphDashboardMain" runat="server">
 
     <!-- This page is for the user to input in the rest of their personal details 

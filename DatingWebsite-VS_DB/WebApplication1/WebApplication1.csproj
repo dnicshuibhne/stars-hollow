@@ -69,6 +69,7 @@
     <Content Include="App_Data\DatingWebsite_log.ldf">
       <DependentUpon>DatingWebsite.mdf</DependentUpon>
     </Content>
+    <Content Include="AttributeForm.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="RegistrationV2.aspx" />
     <Content Include="Web.config">
@@ -77,6 +78,13 @@
     <Content Include="Login.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttributeForm.aspx.cs">
+      <DependentUpon>AttributeForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AttributeForm.aspx.designer.cs">
+      <DependentUpon>AttributeForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

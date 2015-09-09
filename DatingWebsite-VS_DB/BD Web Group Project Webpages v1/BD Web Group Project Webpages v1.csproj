@@ -57,6 +57,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\DatingWebsite.mdf" />
+    <Content Include="App_Data\DatingWebsite_log.ldf">
+      <DependentUpon>DatingWebsite.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Themes\WhiteTheme\Reset.css" />
     <Content Include="App_Themes\WhiteTheme\StyleSheet.css" />
     <Content Include="DashboardAccount.aspx" />
@@ -133,7 +137,20 @@
     </None>
     <Content Include="Web.sitemap" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{047900b1-3237-4eb7-a38d-b1df47bf79de}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UserDataModel\DataModels.csproj">
+      <Project>{1c6d6ab8-ebf2-4d10-aeff-adfe4e7d6f97}</Project>
+      <Name>DataModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebApplication1\WebApplication1.csproj">
+      <Project>{016fb9e2-d6be-4fff-b72e-7c349b436b5d}</Project>
+      <Name>WebApplication1</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
