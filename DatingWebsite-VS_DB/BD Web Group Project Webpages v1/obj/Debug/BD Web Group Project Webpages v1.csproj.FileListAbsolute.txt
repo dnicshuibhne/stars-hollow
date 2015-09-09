@@ -38,3 +38,13 @@ C:\Users\Stephen\Documents\GitHub\stars-hollow\stars-hollow\DatingWebsite-VS_DB\
 C:\Users\Stephen\Documents\GitHub\stars-hollow\stars-hollow\DatingWebsite-VS_DB\BD Web Group Project Webpages v1\obj\Debug\BD Web Group Project Webpages v1.csprojResolveAssemblyReference.cache
 C:\Users\Stephen\Documents\GitHub\stars-hollow\stars-hollow\DatingWebsite-VS_DB\BD Web Group Project Webpages v1\obj\Debug\BD Web Group Project Webpages v1.dll
 C:\Users\Stephen\Documents\GitHub\stars-hollow\stars-hollow\DatingWebsite-VS_DB\BD Web Group Project Webpages v1\obj\Debug\BD Web Group Project Webpages v1.pdb
+C:\Users\10270776\Downloads\stars-hollow-S-branch-dashboard-sidebar\stars-hollow-S-branch-dashboard-sidebar\DatingWebsite-VS_DB\BD Web Group Project Webpages v1\bin\BD Web Group Project Webpages v1.dll
+C:\Users\10270776\Downloads\stars-hollow-S-branch-dashboard-sidebar\stars-hollow-S-branch-dashboard-sidebar\DatingWebsite-VS_DB\BD Web Group Project Webpages v1\bin\BD Web Group Project Webpages v1.pdb
+C:\Users\10270776\Downloads\stars-hollow-S-branch-dashboard-sidebar\stars-hollow-S-branch-dashboard-sidebar\DatingWebsite-VS_DB\BD Web Group Project Webpages v1\obj\Debug\BD Web Group Project Webpages v1.csprojResolveAssemblyReference.cache
+C:\Users\10270776\Downloads\stars-hollow-S-branch-dashboard-sidebar\stars-hollow-S-branch-dashboard-sidebar\DatingWebsite-VS_DB\BD Web Group Project Webpages v1\obj\Debug\BD Web Group Project Webpages v1.dll
+C:\Users\10270776\Downloads\stars-hollow-S-branch-dashboard-sidebar\stars-hollow-S-branch-dashboard-sidebar\DatingWebsite-VS_DB\BD Web Group Project Webpages v1\obj\Debug\BD Web Group Project Webpages v1.pdb
+C:\Users\10270776\Desktop\stars-hollow-S-branch-dashboard-sidebar\stars-hollow-S-branch-dashboard-sidebar\DatingWebsite-VS_DB\BD Web Group Project Webpages v1\bin\BD Web Group Project Webpages v1.dll
+C:\Users\10270776\Desktop\stars-hollow-S-branch-dashboard-sidebar\stars-hollow-S-branch-dashboard-sidebar\DatingWebsite-VS_DB\BD Web Group Project Webpages v1\bin\BD Web Group Project Webpages v1.pdb
+C:\Users\10270776\Desktop\stars-hollow-S-branch-dashboard-sidebar\stars-hollow-S-branch-dashboard-sidebar\DatingWebsite-VS_DB\BD Web Group Project Webpages v1\obj\Debug\BD Web Group Project Webpages v1.csprojResolveAssemblyReference.cache
+C:\Users\10270776\Desktop\stars-hollow-S-branch-dashboard-sidebar\stars-hollow-S-branch-dashboard-sidebar\DatingWebsite-VS_DB\BD Web Group Project Webpages v1\obj\Debug\BD Web Group Project Webpages v1.dll
+C:\Users\10270776\Desktop\stars-hollow-S-branch-dashboard-sidebar\stars-hollow-S-branch-dashboard-sidebar\DatingWebsite-VS_DB\BD Web Group Project Webpages v1\obj\Debug\BD Web Group Project Webpages v1.pdb

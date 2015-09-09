@@ -59,19 +59,29 @@
   <ItemGroup>
     <Content Include="App_Themes\WhiteTheme\Reset.css" />
     <Content Include="App_Themes\WhiteTheme\StyleSheet.css" />
-    <Content Include="Dashboard.aspx" />
+    <Content Include="DashboardAccount.aspx" />
+    <Content Include="DashboardPersonal.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Images\BD Web Sitename Placeholder Large.png" />
     <Content Include="Images\BD Web Sitename Placeholder Small.png" />
+    <Content Include="Images\blank-profile-grey.png" />
+    <Content Include="MyMessages.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dashboard.aspx.cs">
-      <DependentUpon>Dashboard.aspx</DependentUpon>
+    <Compile Include="DashboardAccount.aspx.cs">
+      <DependentUpon>DashboardAccount.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Dashboard.aspx.designer.cs">
-      <DependentUpon>Dashboard.aspx</DependentUpon>
+    <Compile Include="DashboardAccount.aspx.designer.cs">
+      <DependentUpon>DashboardAccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DashboardPersonal.aspx.cs">
+      <DependentUpon>DashboardPersonal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DashboardPersonal.aspx.designer.cs">
+      <DependentUpon>DashboardPersonal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard.master.cs">
       <DependentUpon>Dashboard.master</DependentUpon>
@@ -93,6 +103,13 @@
     </Compile>
     <Compile Include="Default.Master.designer.cs">
       <DependentUpon>Default.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MyMessages.aspx.cs">
+      <DependentUpon>MyMessages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyMessages.aspx.designer.cs">
+      <DependentUpon>MyMessages.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StarsHollow.master.cs">

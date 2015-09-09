@@ -21,6 +21,6 @@ Default skin template. The following skins are provided as examples only.
 
 <%-- TODO 1. Get Menu styles working for border-right of static items 
           2. Add black Border to dynamic menu items --%>
-<asp:Menu runat="server" StaticMenuItemStyle=""/>
+<asp:Menu runat="server"/>
 
 
