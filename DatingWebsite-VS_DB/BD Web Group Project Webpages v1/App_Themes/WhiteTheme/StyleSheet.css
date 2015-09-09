@@ -159,6 +159,11 @@ span.validator[style*="inline"]{
     margin-bottom: 60px;
 }
 
+.standardLabel {
+    display: inline-block; 
+    width: 180px;
+}
+
 /* Default Page styles */
 
 .loginScreen {
@@ -297,19 +302,29 @@ span.validator[style*="inline"]{
     font-style: italic;
 }
 
-#viewMessage {
-   
-    /* .loginScreen styles */
-    width: 100vw;
-    height: 100vh;
-    z-index: 10;
-    position: fixed;
-    padding-top: 30vh;
-    background: green;
-}
-
 #convoMessages {
-    width: 500px;
+    margin-left: 100px;
+    margin-top: 50px;
+    width: 400px;
     height: 500px;
     overflow-y: scroll;
+    vertical-align:bottom;
+    border-top: 1px solid #5C5C5C;
+    border-bottom: 1px solid #5C5C5C;
+    color: #5C5C5C;
+}
+
+.theirMessage, .myMessage {
+    background-color: #dbdbdb;
+    padding: 5px 40px;
+    margin: 10px 10px;
+    border-radius: 5em;
+    display: block;
+    font-size: 15px;
+}
+.theirMessage {
+    float: left;
+}
+.myMessage {
+    float: right;
 }

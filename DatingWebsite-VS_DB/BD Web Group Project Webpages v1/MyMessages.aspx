@@ -14,22 +14,73 @@
 
     
         <div id="myMessage" class="conversationBox theirImage" runat="server" >
-            <asp:Button ID="closeThisMessage" runat="server" Text="X" class="purpleButton" style="float:right;"/>
-            <asp:Image ID="imgTheirProfilePic" runat="server" ImageUrl="~/Images/blank-profile-grey.png" style="vertical-align:bottom;"/>
-
+            <asp:Button ID="closeThisMessage" runat="server" Text="X" class="purpleButton" style="margin: 10px 10px; float:right;"/>
+            <asp:Image ID="imgTheirProfilePic" runat="server" ImageUrl="~/Images/blank-profile-grey.png" style="position: absolute; bottom:0px; margin-left:40px;"/>
             <div id="convoMessages" >
+                <asp:Repeater ID="rptconvoMessages" runat="server">
+                    <ItemTemplate>
+                        <div class=''> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
+                            <asp:Label ID="lblMessage" runat="server" Text='<%#Eval("MessageText") %>'></asp:Label>
 
+                        </div>
+                        
+                    </ItemTemplate>
+                </asp:Repeater>
+                <!-- 
+                    Below is a sample of what the results of the repeater should look like.
+
+                    TODO: delete this when the repeater is functioning.
+
+                     -->
+                <div class='theirMessage'> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
+                    <asp:Label ID="Label1" runat="server" Text="Whatever I said, whatever I did, I didn't mean it"></asp:Label>
+                </div>
+                <div class="myMessage"> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
+                    <asp:Label ID="Label2" runat="server" Text="I just want you back for good"></asp:Label>
+                </div>
+                <div class='theirMessage'> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
+                    <asp:Label ID="Label3" runat="server" Text="Whatever I said, whatever I did, I didn't mean it"></asp:Label>
+                </div>
+                <div class="myMessage"> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
+                    <asp:Label ID="Label4" runat="server" Text="I just want you back for good"></asp:Label>
+                </div>
+                <div class='theirMessage'> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
+                    <asp:Label ID="Label5" runat="server" Text="Whatever I said, whatever I did, I didn't mean it"></asp:Label>
+                </div>
+                <div class="myMessage"> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
+                    <asp:Label ID="Label6" runat="server" Text="I just want you back for good"></asp:Label>
+                </div>
+                <div class='theirMessage'> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
+                    <asp:Label ID="Label7" runat="server" Text="Whatever I said, whatever I did, I didn't mean it"></asp:Label>
+                </div>
+                <div class="myMessage"> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
+                    <asp:Label ID="Label8" runat="server" Text="I just want you back for good"></asp:Label>
+                </div>
+                <div class='theirMessage'> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
+                    <asp:Label ID="Label9" runat="server" Text="Whatever I said, whatever I did, I didn't mean it"></asp:Label>
+                </div>
+                <div class="myMessage"> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
+                    <asp:Label ID="Label10" runat="server" Text="I just want you back for good"></asp:Label>
+                </div>
+                <div class='theirMessage'> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
+                    <asp:Label ID="Label11" runat="server" Text="Whatever I said, whatever I did, I didn't mean it"></asp:Label>
+                </div>
+                <div class="myMessage"> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
+                    <asp:Label ID="Label12" runat="server" Text="I just want you back for good"></asp:Label>
+                </div>
+                <div class='theirMessage'> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
+                    <asp:Label ID="Label13" runat="server" Text="Whatever I said, whatever I did, I didn't mean it"></asp:Label>
+                </div>
+                <div class="myMessage"> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
+                    <asp:Label ID="Label14" runat="server" Text="I just want you back for good"></asp:Label>
+                </div>
             </div>
-            <asp:TextBox ID="txtNewMessage" runat="server" ></asp:TextBox>
-            <asp:ImageButton ID="imgBtnSendMessage" runat="server" ImageUrl="~/Images/rsz_1008006-glossy-black-icon-arrows-arrowhead2-right.png" style="vertical-align:central;"/>
+            <asp:TextBox ID="txtNewMessage" runat="server" TextMode="MultiLine" style="margin-top: 20px; margin-left: 125px; margin-bottom: 20px;" ForeColor="Black" Height="50px" Width="250px"></asp:TextBox>
+            <asp:ImageButton ID="imgBtnSendMessage" runat="server" ImageUrl="~/Images/rsz_1008006-glossy-black-icon-arrows-arrowhead2-right.png" />
                 
                 
                 
             <!-- I STOPPED HERE -->
-
-
-
-
 
         </div>
    

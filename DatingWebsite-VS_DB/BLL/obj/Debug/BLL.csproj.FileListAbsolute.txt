@@ -25,3 +25,12 @@ C:\Users\Stephen\Documents\GitHub\stars-hollow\stars-hollow\DatingWebsite-VS_DB\
 C:\Users\Stephen\Documents\GitHub\stars-hollow\stars-hollow\DatingWebsite-VS_DB\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
 C:\Users\Stephen\Documents\GitHub\stars-hollow\stars-hollow\DatingWebsite-VS_DB\BLL\obj\Debug\BLL.dll
 C:\Users\Stephen\Documents\GitHub\stars-hollow\stars-hollow\DatingWebsite-VS_DB\BLL\obj\Debug\BLL.pdb
+C:\Users\10270776\Desktop\stars-hollow\DatingWebsite-VS_DB\BLL\bin\Debug\BLL.dll
+C:\Users\10270776\Desktop\stars-hollow\DatingWebsite-VS_DB\BLL\bin\Debug\BLL.pdb
+C:\Users\10270776\Desktop\stars-hollow\DatingWebsite-VS_DB\BLL\bin\Debug\DAL.dll
+C:\Users\10270776\Desktop\stars-hollow\DatingWebsite-VS_DB\BLL\bin\Debug\UserDataModel.dll
+C:\Users\10270776\Desktop\stars-hollow\DatingWebsite-VS_DB\BLL\bin\Debug\DAL.pdb
+C:\Users\10270776\Desktop\stars-hollow\DatingWebsite-VS_DB\BLL\bin\Debug\UserDataModel.pdb
+C:\Users\10270776\Desktop\stars-hollow\DatingWebsite-VS_DB\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+C:\Users\10270776\Desktop\stars-hollow\DatingWebsite-VS_DB\BLL\obj\Debug\BLL.dll
+C:\Users\10270776\Desktop\stars-hollow\DatingWebsite-VS_DB\BLL\obj\Debug\BLL.pdb
