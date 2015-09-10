@@ -25,14 +25,17 @@
             <asp:DropDownList ID="ddlOrientation" runat="server"></asp:DropDownList>
             <br />
             <br />
+			<!-- Changed colour to color -->
             <asp:Label ID="lblEyeColor" runat="server" Text="Eye color "></asp:Label>
             <asp:DropDownList ID="ddlEyeColor" runat="server"></asp:DropDownList>
             <br />
             <br />
+			<!-- Changed colour to color -->
             <asp:Label ID="lblHairColor" runat="server" Text="Hair Color "></asp:Label>
             <asp:DropDownList ID="ddlHairColor" runat="server"></asp:DropDownList>
             <br />
             <br />
+			<!-- Changed Age to AgeRange -->
             <asp:Label ID="lblAgeRange" runat="server" Text="Age Range"></asp:Label>
             <asp:DropDownList ID="ddlAgeRange" runat="server"></asp:DropDownList>
             <br />

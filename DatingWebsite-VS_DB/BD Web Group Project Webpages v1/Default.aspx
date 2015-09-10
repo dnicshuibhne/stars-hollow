@@ -3,6 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphDefaultBody" runat="server">
     
+    <!-- added id="loginScreen" -->
     <div id="loginScreen" class="loginScreen" runat="server">
 
         <!-- .loginScreen should set to 'display: none;' on page load, and when btnCancel is clicked.
@@ -15,10 +16,14 @@
                 <br />
                 <br />
                 <asp:Label ID="valLogin" runat="server" Text="Invalid Username/Password" Visible="False" ForeColor="Red"></asp:Label>
-                <asp:Label ID="lblloginUsername" runat="server" Text="Username: "></asp:Label>
+              <!-- lblLoginUsername was Label1 -->
+				<asp:Label ID="lblLoginUsername" runat="server" Text="Username: "></asp:Label>
+              <!-- txtLoginUsername was TextBox1 -->
                 <asp:TextBox ID="txtLoginUsername" runat="server" CssClass="loginTextBox" ></asp:TextBox>
+              <!-- lblLoginPassword was lblPassword -->
                 <asp:Label ID="lblLoginPassword" runat="server" Text="Password: "></asp:Label>
-                <asp:TextBox ID="txtLoginPassword" runat="server" CssClass="loginTextBox" ></asp:TextBox>
+              <!-- txtLoginPassword was txtPassword -->
+				<asp:TextBox ID="txtLoginPassword" runat="server" CssClass="loginTextBox" ></asp:TextBox>
                 <br />
                 <br />
                 <div class="loginButtons">
