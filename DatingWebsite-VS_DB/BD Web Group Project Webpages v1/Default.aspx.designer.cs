@@ -22,40 +22,49 @@ namespace BD_Web_Group_Project_Webpages_v1 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl loginScreen;
         
         /// <summary>
-        /// Label1 control.
+        /// valLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label valLogin;
         
         /// <summary>
-        /// TextBox1 control.
+        /// lblloginUsername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.Label lblloginUsername;
         
         /// <summary>
-        /// lblPassword control.
+        /// txtLoginUsername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPassword;
+        protected global::System.Web.UI.WebControls.TextBox txtLoginUsername;
         
         /// <summary>
-        /// txtPassword control.
+        /// lblLoginPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPassword;
+        protected global::System.Web.UI.WebControls.Label lblLoginPassword;
+        
+        /// <summary>
+        /// txtLoginPassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtLoginPassword;
         
         /// <summary>
         /// btnCancel control.

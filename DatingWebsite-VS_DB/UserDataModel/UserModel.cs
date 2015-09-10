@@ -22,6 +22,8 @@ namespace DataModels
         public string SexualOrientation { get; set; }
         public List<int> Hobbies { get; set; }
         public string Location { get; set; }
+        public string Profession { get; set; }
+        public int Age { get; set; }
 
 
         public UserModel(){

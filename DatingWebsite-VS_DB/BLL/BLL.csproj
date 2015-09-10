@@ -48,6 +48,10 @@
       <Project>{a38df677-0fe1-4134-b5b0-723833dc0dd6}</Project>
       <Name>DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ResourceTier\ResourceTier.csproj">
+      <Project>{6fc5cffe-aa17-4fa3-89e6-3700ce8fc991}</Project>
+      <Name>ResourceTier</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UserDataModel\DataModels.csproj">
       <Project>{1c6d6ab8-ebf2-4d10-aeff-adfe4e7d6f97}</Project>
       <Name>DataModels</Name>

@@ -103,58 +103,58 @@ namespace BD_Web_Group_Project_Webpages_v1 {
         protected global::System.Web.UI.WebControls.DropDownList ddlOrientation;
         
         /// <summary>
-        /// lblEyeColour control.
+        /// lblEyeColor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEyeColour;
+        protected global::System.Web.UI.WebControls.Label lblEyeColor;
         
         /// <summary>
-        /// ddlEyeColour control.
+        /// ddlEyeColor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEyeColour;
+        protected global::System.Web.UI.WebControls.DropDownList ddlEyeColor;
         
         /// <summary>
-        /// lblHairColour control.
+        /// lblHairColor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHairColour;
+        protected global::System.Web.UI.WebControls.Label lblHairColor;
         
         /// <summary>
-        /// ddlHairColour control.
+        /// ddlHairColor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlHairColour;
+        protected global::System.Web.UI.WebControls.DropDownList ddlHairColor;
         
         /// <summary>
-        /// lblAge control.
+        /// lblAgeRange control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAge;
+        protected global::System.Web.UI.WebControls.Label lblAgeRange;
         
         /// <summary>
-        /// ddlAge control.
+        /// ddlAgeRange control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlAge;
+        protected global::System.Web.UI.WebControls.DropDownList ddlAgeRange;
         
         /// <summary>
         /// lblHobbies control.

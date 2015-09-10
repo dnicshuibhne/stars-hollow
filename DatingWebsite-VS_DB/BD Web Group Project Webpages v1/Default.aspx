@@ -14,15 +14,16 @@
                 <h3>Login</h3>
                 <br />
                 <br />
-                <asp:Label ID="Label1" runat="server" Text="Username: "></asp:Label>
-                <asp:TextBox ID="TextBox1" runat="server" CssClass="loginTextBox" ></asp:TextBox>
-                <asp:Label ID="lblPassword" runat="server" Text="Password: "></asp:Label>
-                <asp:TextBox ID="txtPassword" runat="server" CssClass="loginTextBox" ></asp:TextBox>
+                <asp:Label ID="valLogin" runat="server" Text="Invalid Username/Password" Visible="False" ForeColor="Red"></asp:Label>
+                <asp:Label ID="lblloginUsername" runat="server" Text="Username: "></asp:Label>
+                <asp:TextBox ID="txtLoginUsername" runat="server" CssClass="loginTextBox" ></asp:TextBox>
+                <asp:Label ID="lblLoginPassword" runat="server" Text="Password: "></asp:Label>
+                <asp:TextBox ID="txtLoginPassword" runat="server" CssClass="loginTextBox" ></asp:TextBox>
                 <br />
                 <br />
                 <div class="loginButtons">
                     <asp:Button ID="btnCancel" runat="server" CssClass="blueButton" Font-Size="20px" Text="Cancel" style="padding: .3em 2em;" />
-                    <asp:Button ID="btnSubmit" runat="server" CssClass="blueButton" Font-Size="20px" Text="Login" style="padding: .3em 2em;" />
+                    <asp:Button ID="btnSubmit" runat="server" CssClass="blueButton" Font-Size="20px" Text="Login" style="padding: .3em 2em;" OnClick="btnSubmit_Click" />
                 </div>
             </div>
         </section>
