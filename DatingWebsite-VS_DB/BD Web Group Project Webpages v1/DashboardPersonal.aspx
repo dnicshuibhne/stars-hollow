@@ -33,8 +33,8 @@
             <asp:DropDownList ID="ddlHairColor" runat="server"></asp:DropDownList>
             <br />
             <br />
-            <asp:Label ID="lblAge" runat="server" Text="Age "></asp:Label>
-            <asp:DropDownList ID="ddlAge" runat="server"></asp:DropDownList>
+            <asp:Label ID="lblAgeRange" runat="server" Text="Age Range"></asp:Label>
+            <asp:DropDownList ID="ddlAgeRange" runat="server"></asp:DropDownList>
             <br />
             <br />
             <asp:Label ID="lblHobbies" runat="server" Text="Hobbies "></asp:Label>
@@ -43,7 +43,7 @@
             <br />
             <br />
             <br />
-            <asp:Button ID="btnUpdateDetails" runat="server" Text="Update Personal Details" CssClass="blueButton dashboardButton"/>
+            <asp:Button ID="btnUpdateDetails" runat="server" Text="Update Personal Details" CssClass="blueButton dashboardButton" OnClick="btnUpdateDetails_Click"/>
             <br />
             <br />
         </div>

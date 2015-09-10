@@ -27,17 +27,9 @@ namespace BLL //Business Logic Layer
          * Sucessful validation will return a valid user id, and then this method returns a User object.
          * Unsuccessful validation will not return a valid id, and this method will return null.
          */
-        public UserModel Login(string username, string password)
+        public int Login(string username, string password)
         {
-            int userID = DalUserManager.Login(username, password);
-
-            UserModel user = null;
-            if (userID > 0)
-            {
-                user = new UserModel(userID, username, password);
-            }
-
-            return user;
+            return DalUserManager.Login(username, password);
         }
 
         /*
@@ -46,21 +38,38 @@ namespace BLL //Business Logic Layer
          * If User creation is succesful, a valid user id will be be retrieved, and this method returns true
          * Otherwise the id will be in valid and this method will return false;
          */
-        public bool CreateUser(UserModel user)
+        public int CreateUser(UserModel user)
         {
-            int userID = DalUserManager.CreateUser(user);
-
-            if (userID > 0)
-            {
-                user.ID = userID;
-                return true;
-            }
-            return false;
+            return DalUserManager.CreateUser(user);
         }
 
+        /*
+         * Check if username is available
+         */
         public bool userExists(string username)
         {
             return DalUserManager.userExists(username);
         }
+
+        public void addUserInformation(Dictionary<string,string> userAttributes)
+        {
+            //DalUserManager.addUserInformation(userAttributes);
+        }
+
+        public void updateUser(UserModel user)
+        {
+            DalUserManager.updateUser(user);
+        }
+
+        public UserModel getUser(int id)
+        {
+            return DalUserManager.getUser(id);
+        }
+
+        public UserModel getUser(string username)
+        {
+            return DalUserManager.getUser(username);
+        }
+
     }
 }

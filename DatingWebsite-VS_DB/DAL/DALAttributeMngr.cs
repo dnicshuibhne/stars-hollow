@@ -13,7 +13,6 @@ namespace DAL // Data Access Layer
     public class DALAttributeMngr
     {
         private const string CS_NAME = "DatingDB";
-        private const string USER_TABLE_NAME = "UserLogin";
         private string conString;
 
         /* Constructor - loads connection string from config file*/

@@ -6,20 +6,13 @@ using System.Threading.Tasks;
 //
 using System.Data;
 using DAL;
+using ResourceTier;
 
 namespace BLL
 {
     public class BLLAttributeMngr
     {
         /* Attribute Table Names */
-        private const string AGE_RANGE_TABLE = "AgeRange";
-        private const string BUILD_TABLE = "Build";
-        private const string EYE_COLOR_TABLE = "EyeColor";
-        private const string GENDER_TABLE = "Gender";
-        private const string HAIR_COLOR_TABLE = "HairColor";
-        private const string HEIGHT_TABLE = "Height";
-        private const string HOBBIES_TABLE = "Hobbies";
-        private const string SEXUAL_ORIENTATION_TABLE = "SexualOrientation";
 
         private DALAttributeMngr DalAttributeMngr; // Database Access Layer Manager
 
@@ -30,14 +23,14 @@ namespace BLL
         }
 
         /*Methods to individually retrieve specific attributes*/
-        public DataSet BLLGetAgeRange() { return DalAttributeMngr.DALGetAttribute(AGE_RANGE_TABLE); }
-        public DataSet BLLGetBuild() { return DalAttributeMngr.DALGetAttribute(BUILD_TABLE); }
-        public DataSet BLLGetEyeColor() { return DalAttributeMngr.DALGetAttribute(EYE_COLOR_TABLE); }
-        public DataSet BLLGetGenders() { return DalAttributeMngr.DALGetAttribute(GENDER_TABLE); }
-        public DataSet BLLGetHairColor() { return DalAttributeMngr.DALGetAttribute(HAIR_COLOR_TABLE); }
-        public DataSet BLLGetHeight() { return DalAttributeMngr.DALGetAttribute(HEIGHT_TABLE); }
-        public DataSet BLLGetHobbies() { return DalAttributeMngr.DALGetAttribute(HOBBIES_TABLE); }
-        public DataSet BLLGetSexualOrientation() { return DalAttributeMngr.DALGetAttribute(SEXUAL_ORIENTATION_TABLE); }
+        public DataSet BLLGetAgeRange() { return DalAttributeMngr.DALGetAttribute(Resources.AGE_RANGE_TABLE); }
+        public DataSet BLLGetBuild() { return DalAttributeMngr.DALGetAttribute(Resources.BUILD_TABLE); }
+        public DataSet BLLGetEyeColor() { return DalAttributeMngr.DALGetAttribute(Resources.EYE_COLOR_TABLE); }
+        public DataSet BLLGetGenders() { return DalAttributeMngr.DALGetAttribute(Resources.GENDER_TABLE); }
+        public DataSet BLLGetHairColor() { return DalAttributeMngr.DALGetAttribute(Resources.HAIR_COLOR_TABLE); }
+        public DataSet BLLGetHeight() { return DalAttributeMngr.DALGetAttribute(Resources.HEIGHT_TABLE); }
+        public DataSet BLLGetHobbies() { return DalAttributeMngr.DALGetAttribute(Resources.HOBBIES_TABLE); }
+        public DataSet BLLGetSexualOrientation() { return DalAttributeMngr.DALGetAttribute(Resources.SEXUAL_ORIENTATION_TABLE); }
         
         /* 
          * Method to return all attributes and their values

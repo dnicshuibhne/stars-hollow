@@ -9,14 +9,19 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Diagnostics;
 using DataModels;
+using ResourceTier;
+
 
 namespace DAL //Data Access Layer
 {
+    enum UserProfile { User, Email, Location, Profession, EyeColor, HairColor, AgeRange, Gender, SexualOrientation, Build, Height, PicturePath, Age }
+ 
     /* User Manager Contains methods for creating and authenticating (log in) users */
     public class DALUserMngr
     {
         private const string CS_NAME = "DatingDB";
-        private const string USER_TABLE_NAME = "Users";
+        //private const string USER_INFORMATION_TABLE = "UserInformation";
+
         private string conString;
 
         /* Constructor  - loads connection string from config file */
@@ -33,20 +38,18 @@ namespace DAL //Data Access Layer
         public int Login(string username, string password)
         {
             int UserID = 0;
-            String proc = "spUserLogin";
 
             using (SqlConnection con = new SqlConnection(conString))
             {
-                using (SqlDataAdapter adapter = new SqlDataAdapter())
+                using (SqlCommand cmd = new SqlCommand(Resources.USER_LOGIN_PROC, con))
                 {
-                    adapter.SelectCommand = new SqlCommand(proc, con);
-                    adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-                    adapter.SelectCommand.Parameters.AddWithValue("@username", SqlDbType.NVarChar).Value = username;
-                    adapter.SelectCommand.Parameters.AddWithValue("@password", SqlDbType.NVarChar).Value = password;
+                    cmd.Parameters.Add(Resources.USERNAME_PARAM, SqlDbType.NVarChar).Value = username;
+                    cmd.Parameters.Add(Resources.PASSWORD_PARAM, SqlDbType.NVarChar).Value = password;
 
                     con.Open();
-                    using (SqlDataReader reader = adapter.SelectCommand.ExecuteReader())
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         if (reader.Read())
                         {
@@ -69,32 +72,23 @@ namespace DAL //Data Access Layer
         public int CreateUser(UserModel user)
         {
             int userID = 0;
-            string proc = "uspAddNewUser";
             DataSet data = new DataSet();
 
             using (SqlConnection con = new SqlConnection(conString))
             {
-                using (SqlDataAdapter adapter = new SqlDataAdapter())
+                using (SqlCommand cmd = new SqlCommand(Resources.USER_CREATE_PROC, con))
                 {
-                    
-                    adapter.SelectCommand = new SqlCommand(proc, con);
-                    adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandType = CommandType.StoredProcedure;
 
-                    adapter.SelectCommand.Parameters.AddWithValue("@username", SqlDbType.NVarChar).Value = user.Username;
-                    adapter.SelectCommand.Parameters.AddWithValue("@password", SqlDbType.NVarChar).Value = user.Password;
-                    adapter.SelectCommand.Parameters.AddWithValue("@email", SqlDbType.NVarChar).Value = user.Email;
+                    cmd.Parameters.Add(Resources.USERNAME_PARAM, SqlDbType.NVarChar).Value = user.Username;
+                    cmd.Parameters.Add(Resources.PASSWORD_PARAM, SqlDbType.NVarChar).Value = user.Password;
+                    cmd.Parameters.Add(Resources.EMAIL_PARAM, SqlDbType.NVarChar).Value = user.Email;
 
                     con.Open();
-                    SqlDataReader reader;
                     try
                     {
-                        reader = adapter.SelectCommand.ExecuteReader();
+                        userID = (int)cmd.ExecuteScalar();
 
-                        if (reader.Read())
-                        {
-                            userID = reader.GetInt32(0);
-                        }
-                        reader.Close();
                     }
                     catch (SqlException e)
                     {
@@ -112,19 +106,222 @@ namespace DAL //Data Access Layer
             return userID;
         }
 
+        /*
+         * check if a username is available
+         */
         public bool userExists(string username)
         {
-            string sql = "Select * from " + USER_TABLE_NAME + " where UserName=\'" + username + "\'";
+            bool exists = true;
             using (SqlConnection con = new SqlConnection(conString))
             {
-                using (SqlDataAdapter adapter = new SqlDataAdapter())
+                using (SqlCommand cmd = new SqlCommand(Resources.USERNAME_EXISTS_PROC, con))
                 {
-                    adapter.SelectCommand = new SqlCommand(sql, con);
-                    adapter.SelectCommand.CommandType = CommandType.Text;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(Resources.USERNAME_PARAM, SqlDbType.NVarChar).Value = username;
+                    con.Open();
+                    try
+                    {
+                        Object obj = cmd.ExecuteScalar();
+                        string s = obj.ToString();
+                        exists = Convert.ToBoolean(obj);
+                    }
+                    catch (SqlException e)
+                    {
+                        throw;
+                    }
+                    finally
+                    {
+                        con.Close();
+                    }
 
-                    return adapter.Fill(new DataSet()) > 0;
+                    return  exists;
                 }
             }
         }
+
+        public void addUserInformation(int userID, string loc, string prof, string eye, string hair, string ageRange, string gender, string orientation, string build, string height, int age)
+        { 
+            String proc = "uspAddAllUserDetails";
+
+            using (SqlConnection con = new SqlConnection(conString))
+            {
+                using (SqlCommand cmd = new SqlCommand(proc, con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.Add(Resources.USERID_PARAM, SqlDbType.Int).Value = userID;
+                    cmd.Parameters.Add(Resources.PROFESSION_PARAM, SqlDbType.NVarChar).Value = prof;
+                    cmd.Parameters.Add(Resources.LOCATION_PARAM, SqlDbType.NVarChar).Value = loc;
+                    cmd.Parameters.Add(Resources.GENDER_PARAM, SqlDbType.NVarChar).Value = gender;
+                    cmd.Parameters.Add(Resources.SEXUAL_ORIENTATION_PARAM, SqlDbType.NVarChar).Value = orientation;
+                    cmd.Parameters.Add(Resources.AGE_PARAM, SqlDbType.Int).Value = age;
+                    cmd.Parameters.Add(Resources.AGE_RANGE_PARAM, SqlDbType.NVarChar).Value = ageRange;
+                    cmd.Parameters.Add(Resources.HAIR_COLOR_PARAM, SqlDbType.NVarChar).Value = hair;
+                    cmd.Parameters.Add(Resources.EYE_COLOR_PARAM, SqlDbType.NVarChar).Value = eye;
+                    cmd.Parameters.Add(Resources.HEIGHT_PARAM, SqlDbType.NVarChar).Value = height;
+                    cmd.Parameters.Add(Resources.BUILD_PARAM, SqlDbType.NVarChar).Value = build;
+               }
+            }
+        }
+
+
+        public void updateUser(UserModel user)
+        {
+            using (SqlConnection con = new SqlConnection(conString))
+            {
+                using (SqlCommand cmd = new SqlCommand(Resources.USER_UPDATE_PROC, con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    if (user.ID > 0)
+                        cmd.Parameters.Add(Resources.USERID_PARAM, SqlDbType.Int).Value = user.ID;
+                    else
+                        return;
+
+                    if (user.Profession != null)
+                        cmd.Parameters.Add(Resources.PROFESSION_PARAM, SqlDbType.NVarChar).Value = user.Profession;
+                    if (user.Location != null)
+                        cmd.Parameters.Add(Resources.LOCATION_PARAM, SqlDbType.NVarChar).Value = user.Location;
+                    if (user.Gender != null)
+                        cmd.Parameters.Add(Resources.GENDER_PARAM, SqlDbType.NVarChar).Value = user.Gender;
+                    if (user.SexualOrientation != null)
+                        cmd.Parameters.Add(Resources.SEXUAL_ORIENTATION_PARAM, SqlDbType.NVarChar).Value = user.SexualOrientation;
+                    if (user.Age > 0)
+                        cmd.Parameters.Add(Resources.AGE_PARAM, SqlDbType.Int).Value = user.Age;
+                    if (user.AgeRange != null)
+                        cmd.Parameters.Add(Resources.AGE_RANGE_PARAM, SqlDbType.NVarChar).Value = user.AgeRange;
+                    if (user.HairColor != null)
+                        cmd.Parameters.Add(Resources.HAIR_COLOR_PARAM, SqlDbType.NVarChar).Value = user.HairColor;
+                    if (user.EyeColor != null)
+                        cmd.Parameters.Add(Resources.EYE_COLOR_PARAM, SqlDbType.NVarChar).Value = user.EyeColor;
+                    if (user.Height != null)
+                        cmd.Parameters.Add(Resources.HEIGHT_PARAM, SqlDbType.NVarChar).Value = user.Height;
+                    if (user.Build != null)
+                        cmd.Parameters.Add(Resources.BUILD_PARAM, SqlDbType.NVarChar).Value = user.Build;
+
+                    con.Open();
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    con.Close();
+                     
+                }
+            }
+        }
+
+        public UserModel getUser(int id)
+        {
+            UserModel user = null;
+            SqlDataReader reader;
+            using (SqlConnection con = new SqlConnection(conString))
+            {
+                using (SqlCommand cmd = new SqlCommand(Resources.USER_PROFILE_ID_PROC, con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(Resources.USERID_PARAM, SqlDbType.NVarChar).Value = id;
+
+                    try
+                    {
+                        con.Open();
+                        reader = cmd.ExecuteReader();
+                        if(reader.Read())
+                        {
+                            user = new UserModel();
+                            user.ID = id;
+                            int i = (int)UserProfile.User;
+                            user.Username = reader.GetString(i);
+                            user.Email = reader.GetString((int)UserProfile.Email);
+                            user.Location = reader.GetString((int)UserProfile.Location);
+                            user.Profession = reader.GetString((int)UserProfile.Profession);
+                            user.EyeColor = reader.GetString((int)UserProfile.EyeColor);
+                            user.HairColor = reader.GetString((int)UserProfile.HairColor);
+                            user.AgeRange = reader.GetString((int)UserProfile.AgeRange);
+                            user.Gender = reader.GetString((int)UserProfile.Gender);
+                            user.SexualOrientation = reader.GetString((int)UserProfile.SexualOrientation);
+                            user.Build = reader.GetString((int)UserProfile.Build);
+                            user.Height = reader.GetString((int)UserProfile.Height);
+                            //user.PicturePath = reader.GetString((int)UserProfile.PicturePath);
+                            user.Age = reader.GetInt32((int)UserProfile.Age);
+                        }
+                        reader.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        // go to error page
+                        throw;
+                    }
+                    finally
+                    {
+                        con.Close();
+                    }
+
+                }
+            }
+            return user;
+        }
+
+        public UserModel getUser(string username)
+        {
+            UserModel user = null;
+            SqlDataReader reader;
+            using (SqlConnection con = new SqlConnection(conString))
+            {
+                using (SqlCommand cmd = new SqlCommand(Resources.USER_PROFILE_USERNAME_PROC, con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(Resources.USERNAME_PARAM, SqlDbType.NVarChar).Value = username;
+
+                    try
+                    {
+                        con.Open();
+                        reader = cmd.ExecuteReader();
+                        if (reader.Read())
+                        {
+                            user = new UserModel();
+                            user.Username = username;
+                            user.ID = reader.GetInt32((int)UserProfile.User);
+                            user.Email = reader.GetString((int)UserProfile.Email);
+                            user.Location = reader.GetString((int)UserProfile.Location);
+                            user.Profession = reader.GetString((int)UserProfile.Profession);
+                            user.EyeColor = reader.GetString((int)UserProfile.EyeColor);
+                            user.HairColor = reader.GetString((int)UserProfile.HairColor);
+                            user.AgeRange = reader.GetString((int)UserProfile.AgeRange);
+                            user.Gender = reader.GetString((int)UserProfile.Gender);
+                            user.SexualOrientation = reader.GetString((int)UserProfile.SexualOrientation);
+                            user.Build = reader.GetString((int)UserProfile.Build);
+                            user.Height = reader.GetString((int)UserProfile.Height);
+                            //user.PicturePath = reader.GetString((int)UserProfile.PicturePath);
+                            user.Age = reader.GetInt32((int)UserProfile.Age);
+                        }
+                        reader.Close();
+                    }
+                    catch (SqlException e)
+                    {
+                        // go to error page
+                        throw;
+                    }
+                    finally
+                    {
+                        con.Close();
+                    }
+
+                }
+            }
+            return user;
+        }
+
+    //    public void addUserInformation(int userID ,Dictionary<string, string> userAttributes)
+    //    {
+    //        string sqlStart = "UPDATE ";
+    //        string sqlMiddle = " SET ";
+    //        string sqlEnd = " WHERE UserID=";
+    //        string kvString = userAttributes.Keys.ElementAt(0);
+
+    //        for (int i = 1; i < userAttributes.Count;i++)
+    //        {
+    //            kvString += kvp.Key + ",";
+    //        }
+    //        kvString = kvString.Substring(0, kvString.Length - 2);
+
+    //        string query = sqlStart + USER_INFORMATION_TABLE + kvString + sqlMiddle + userID;
+    //    }
     }
 }

@@ -8,14 +8,12 @@ using System.Web.UI.WebControls;
 using BLL;
 using DataModels;
 using System.Data;
+using ResourceTier;
 
 namespace BD_Web_Group_Project_Webpages_v1
 {
     public partial class Default : System.Web.UI.Page
     {
-        private const string GENDER_COLUMN = "Gender";
-        private const string SEXUAL_ORIENTATION_COLUMN = "Orientation";
-
         BLLUserMngr userManager;
         public UserModel user;
         BLLAttributeMngr attManager;
@@ -30,12 +28,12 @@ namespace BD_Web_Group_Project_Webpages_v1
             
             attributes = attManager.BLLGetGenders();
             ddlGender.DataSource = attributes;
-            ddlGender.DataTextField = GENDER_COLUMN;
+            ddlGender.DataTextField = Resources.GENDER_COLUMN;
             ddlGender.DataBind();
 
             attributes = attManager.BLLGetSexualOrientation();
             ddlOrientation.DataSource = attributes;
-            ddlOrientation.DataTextField = SEXUAL_ORIENTATION_COLUMN;
+            ddlOrientation.DataTextField = Resources.SEXUAL_ORIENTATION_COLUMN;
             ddlOrientation.DataBind();
         }
 
@@ -62,9 +60,10 @@ namespace BD_Web_Group_Project_Webpages_v1
             user.Location = txtLocation.Text;
             user.Email = txtEmail.Text; 
 
-            if (userManager.CreateUser(user))
+            int id = userManager.CreateUser(user);
+            if (id > 0)
             {
-                //Redirect to DashboardPersonal
+                setLogin(id, txtUserName.Text);
                 Response.Write("User Created");
                 Response.Redirect("DashboardPersonal.aspx", true);
             }
@@ -84,6 +83,35 @@ namespace BD_Web_Group_Project_Webpages_v1
         {
             loginPage2.Visible = false;
             loginPage1.Visible = true;
+        }
+
+        private void setLogin(int id, string username)
+        {
+            HttpCookie cookie = new HttpCookie(Resources.USER_COOKIE, id.ToString());
+            //cookie.Values.Add("ID", id.ToString());
+            //cookie.Values.Add("username", username);
+            cookie.Expires = DateTime.Now.AddMinutes(30);
+            Response.Cookies.Add(cookie);
+        }
+
+        private void setLogout()
+        {
+            Response.Cookies.Remove(Resources.USER_COOKIE);
+        }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            int id = userManager.Login(txtLoginUsername.Text, txtLoginPassword.Text);
+            if (id > 0)
+            {
+                setLogin(id, txtLoginUsername.Text);
+                Response.Redirect("DashboardPersonal.aspx", true);
+            }
+            else
+            {
+                Response.Write("Login failed");
+                valLogin.Visible = true;
+            }
         }
     }
 }
