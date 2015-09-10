@@ -382,5 +382,37 @@ span.validator[style*="inline"]{
     max-width: 100px;
     height: auto;
     float: left;
+}
+
+#resultsBottom {
+    width: 30vw;
+    margin: auto;
+}
+
+/* View Match pages styles */
+
+#viewMatch {
+    
+    padding: 5vh 5vw;
+    border: 1px solid #824187; /* dark purple */
+    border-radius: 40px;
+    color: black;
+    background-color: white;
+}
+
+#viewMatch h1 {
+    font-size: 30px;
+    color: black;
+}
+
+.profileLeftCol {
+    width: 300px;
+    margin: 40px auto;
+    
+}
+
+.profileRightCol {
+    width: 200px;
+    margin: 40px auto;
     
 }
