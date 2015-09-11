@@ -31,13 +31,13 @@ namespace BD_Web_Group_Project_Webpages_v1 {
         protected global::System.Web.UI.WebControls.Label valLogin;
         
         /// <summary>
-        /// lblloginUsername control.
+        /// lblLoginUsername control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblloginUsername;
+        protected global::System.Web.UI.WebControls.Label lblLoginUsername;
         
         /// <summary>
         /// txtLoginUsername control.

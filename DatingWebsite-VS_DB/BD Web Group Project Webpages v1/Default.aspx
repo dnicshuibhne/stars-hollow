@@ -17,7 +17,7 @@
                 <br />
                 <asp:Label ID="valLogin" runat="server" Text="Invalid Username/Password" Visible="False" ForeColor="Red"></asp:Label>
               <!-- lblLoginUsername was Label1 -->
-				<asp:Label ID="lblLoginUsername" runat="server" Text="Username: "></asp:Label>
+                <asp:Label ID="lblLoginUsername" runat="server" Text="Username: "></asp:Label>
               <!-- txtLoginUsername was TextBox1 -->
                 <asp:TextBox ID="txtLoginUsername" runat="server" CssClass="loginTextBox" ></asp:TextBox>
               <!-- lblLoginPassword was lblPassword -->
