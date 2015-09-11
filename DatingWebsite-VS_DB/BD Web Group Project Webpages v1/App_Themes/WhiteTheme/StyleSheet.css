@@ -213,6 +213,13 @@ span.validator[style*="inline"]{
     background: rgba(0, 0, 0, 0.7);
 }
 
+.defaultSiteImg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+}
+
 
 .defaultPgMainForm {
     height: 100vh;
@@ -230,7 +237,7 @@ span.validator[style*="inline"]{
     margin-left: auto;
     margin-right: auto;
     position:fixed;
-    vertical-align:auto;
+    
     left:0;
     right:0;
     display: inline-block;
@@ -238,6 +245,10 @@ span.validator[style*="inline"]{
 .loginContents {
     width:430px;
     margin: auto;
+}
+
+.loginControls {
+    margin-bottom: 15px;
 }
 .loginTextBox{
     width: 230px;
@@ -260,18 +271,21 @@ span.validator[style*="inline"]{
     z-index: 5;
     position: relative;
 }
-#defaultPgAboutUsContents {
-    padding: 100px 200px;
-    text-align: center;
-}
-#defaultPgMatchContents {
-    padding: 120px 200px;
-    text-align: center;
-}
+
 #defaultPgMatch, #defaultPgAboutUs p {
     color: white;
     font-size: 30px;
     text-align: center;
+}
+
+.defaultCardBuffer {
+    height: 33vh;
+}
+
+.defaultTextBox {
+    height: 34vh;
+    text-align: center;
+    padding: 0px 20vw;
 }
 
 
