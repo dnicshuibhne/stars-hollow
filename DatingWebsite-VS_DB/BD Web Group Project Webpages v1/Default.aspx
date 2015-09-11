@@ -44,13 +44,15 @@
             when the user scrolls down the page, #mainFormBox is obscured by subsequent content.-->
         
         <div id="mainFormBox">
-            <asp:Button ID="btnLogin" runat="server" Text="LOGIN" Font-Size="15px" CssClass="blueButton" style="float: right; padding: 1vh 4vw; margin: 20px 30px; position: relative;" OnClick="btnLogin_Click"/>
-            <br />
-            <br />
-            <br />
-            <img src="Images/BD%20Web%20Sitename%20Placeholder%20Large.png" class="defaultSiteImg" />
-
-            <section class="loginSection">
+            <div class="mainFormBuffer">
+                <asp:Button ID="btnLogin" runat="server" Text="LOGIN" Font-Size="15px" CssClass="blueButton" style="float: right; padding: 1vh 4vw; margin: 20px 30px; position: relative;" OnClick="btnLogin_Click"/>
+                <br />
+                <br />
+                <br />
+                <img src="Images/DreamDate.png" class="defaultSiteImg" />
+            </div>
+            <div class="mainFormMiddle">
+                <section class="loginSection">
         
                 <!-- #loginPage1 is initially visible, 
                     while #loginPage2 is initially invisible -->
@@ -116,6 +118,9 @@
                     </div>
                 </div>
             </section>
+            </div>
+
+            <div class="mainFormBuffer"></div>
         </div>
     </div>
 
