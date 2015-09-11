@@ -3,7 +3,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphStarsHollowBody" runat="server">
 
-
     <aside>
         <h5 id="asideheader">New Search</h5>
         <br />
@@ -46,12 +45,13 @@
         <br />
         <br />
     </aside>
+
     <div id="bodyContents">
         <h2 id="pageHeader">Search Results</h2>
         <br />
         <section>
             <!-- Top panel -->
-            <div class="detailsBox myMessagesWrapper">
+            <div class="contentWrapper">
                 <div id="resultsTop">
                     <asp:Label ID="lblTotalNumResults" runat="server" Text="Found 20 Results"></asp:Label>
                     <br />
@@ -61,7 +61,7 @@
             </div>
 
             <!-- Results repeater -->
-            <div class="detailsBox myMessagesWrapper">
+            <div class="contentWrapper">
                 <asp:Repeater ID="rptResults" runat="server">
                     <ItemTemplate>
                         <a>
@@ -82,7 +82,7 @@
             <!-- Demonstration of appearance and layout -->
             <!-- TODO: delete this when repeater is functioning -->
 
-            <div class="detailsBox myMessagesWrapper">
+            <div class="contentWrapper">
                 <a>
                     <div class="resultBox linkingDiv">
                         <asp:Image ID="imgProfilePic2" runat="server" ImageUrl="~/Images/blank-profile-grey.png" CssClass="resultImage"/>    
@@ -97,17 +97,35 @@
             </div>
 
             <!-- Bottom panel -->
-            <div class="detailsBox myMessagesWrapper">
+            <div class="contentWrapper">
                 <div id="resultsBottom">
                     <asp:Button ID="btnFirst" runat="server" Text="First Page" CssClass="blueButton "/>
                     <asp:Button ID="btnPrev" runat="server" Text="Previous Page" CssClass="blueButton "/>
 
                     <!-- Using a repeater for the page numbers. A link to a tutorial is here: http://www.developer.com/net/asp/article.php/3646011/ASPNET-Tip-Creating-Paging-for-a-Repeater-Control.htm -->
                     <asp:Repeater ID="rptResultsPages" runat="server">
+                        <HeaderTemplate>
+                            <table><tr>
+                        </HeaderTemplate>
+                        
                         <ItemTemplate>
-                            <asp:LinkButton ID="lkbtnPage" runat="server"></asp:LinkButton>
+                            <a>
+                                <span ID="pageNumber" class="resultsPageNumber" runat="server"></span>
+                            </a>
                         </ItemTemplate>
+                        
+                        <FooterTemplate>
+                            </tr></table>
+                        </FooterTemplate>
                     </asp:Repeater>
+
+                    <!-- TODO delete this below -->
+                        <span ID="pageNumber" class="resultsPageNumber" runat="server">1</span>
+                        <span ID="Span1" class="resultsPageNumber" runat="server">2</span>
+                        <span ID="Span2" class="resultsPageNumber" runat="server">3</span>
+                        <span ID="Span3" class="resultsPageNumber" runat="server">4</span>
+                        <span ID="Span4" class="resultsPageNumber" runat="server">5</span>
+                    <!-- TODO delete this above -->
 
                     <asp:Button ID="btnNext" runat="server" Text="Next Page" CssClass="blueButton "/>
                     <asp:Button ID="btnLast" runat="server" Text="Last Page" CssClass="blueButton "/>
