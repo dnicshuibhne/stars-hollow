@@ -54,6 +54,11 @@ footer {
     color: white;
 }
 
+legend {
+    background-color: white;
+    border-radius: 40px;
+    padding: 1px 10px;
+}
 
 h1 {
     color: white;
@@ -176,6 +181,27 @@ span.validator[style*="inline"]{
     width: 180px;
 }
 
+.contentWrapper {
+    padding: 5vh 5vw;
+    border: 1px solid #824187; /* dark purple */
+    border-radius: 40px;
+    color: black;
+    background-color: white;
+    margin: 20px 0px;
+}
+
+.contentWrapper h1 {
+    font-size: 30px;
+    color: black;
+    margin-bottom: 50px;
+}
+
+.contentWrapper h3 {
+    font-size: 18px;
+    color: black;
+    text-align: center;
+}
+
 /* Default Page styles */
 
 .loginScreen {
@@ -255,7 +281,10 @@ span.validator[style*="inline"]{
 }
 
 .detailsBox {
-    
+    color: black;
+    width: 300px;
+    margin: 40px auto;
+    background-color: white;
     padding: 5vh 5vw;
     border: 1px solid #824187; /* dark purple */
     border-radius: 40px;
@@ -266,8 +295,8 @@ span.validator[style*="inline"]{
     font-size: 110%;
     width: 250px;
     height: 30px;
-    margin-right: 50px;
-    margin-left: 100px;
+    margin: 0px auto;
+    display: block;
 }
 
 /* My Message page styles */
@@ -327,7 +356,7 @@ span.validator[style*="inline"]{
 }
 
 .theirMessage, .myMessage {
-    background-color: #dbdbdb;
+    background-color: #dbdbdb; /* pale grey */
     padding: 5px 40px;
     margin: 10px 10px;
     border-radius: 5em;
@@ -391,28 +420,28 @@ span.validator[style*="inline"]{
 
 /* View Match pages styles */
 
-#viewMatch {
-    
-    padding: 5vh 5vw;
+.profilePic {
+    margin-left:auto;
+    margin-right: auto;
+    max-width: 400px;
+    height: auto;
+    display: block;
+}
+
+.userDetails {
+    margin-left: 109px;
+    font-size: 18px;
+}
+
+.profileCategory {
+    color: #5C5C5C; /* dark grey */
+    font-size: 15px;
+}
+
+.detailsWrapper {
+    background-color: #A352AA;
     border: 1px solid #824187; /* dark purple */
     border-radius: 40px;
-    color: black;
-    background-color: white;
-}
-
-#viewMatch h1 {
-    font-size: 30px;
-    color: black;
-}
-
-.profileLeftCol {
-    width: 300px;
-    margin: 40px auto;
-    
-}
-
-.profileRightCol {
-    width: 200px;
-    margin: 40px auto;
-    
+    padding: 10px;
+    margin: 30px 0px;
 }

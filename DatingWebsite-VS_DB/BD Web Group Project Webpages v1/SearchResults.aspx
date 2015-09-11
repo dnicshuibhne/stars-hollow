@@ -3,7 +3,6 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphStarsHollowBody" runat="server">
 
-
     <aside>
         <h5 id="asideheader">New Search</h5>
         <br />
@@ -46,12 +45,13 @@
         <br />
         <br />
     </aside>
+
     <div id="bodyContents">
         <h2 id="pageHeader">Search Results</h2>
         <br />
         <section>
             <!-- Top panel -->
-            <div class="detailsBox myMessagesWrapper">
+            <div class="contentWrapper">
                 <div id="resultsTop">
                     <asp:Label ID="lblTotalNumResults" runat="server" Text="Found 20 Results"></asp:Label>
                     <br />
@@ -61,7 +61,7 @@
             </div>
 
             <!-- Results repeater -->
-            <div class="detailsBox myMessagesWrapper">
+            <div class="contentWrapper">
                 <asp:Repeater ID="rptResults" runat="server">
                     <ItemTemplate>
                         <a>
@@ -82,7 +82,7 @@
             <!-- Demonstration of appearance and layout -->
             <!-- TODO: delete this when repeater is functioning -->
 
-            <div class="detailsBox myMessagesWrapper">
+            <div class="contentWrapper">
                 <a>
                     <div class="resultBox linkingDiv">
                         <asp:Image ID="imgProfilePic2" runat="server" ImageUrl="~/Images/blank-profile-grey.png" CssClass="resultImage"/>    
@@ -97,7 +97,7 @@
             </div>
 
             <!-- Bottom panel -->
-            <div class="detailsBox myMessagesWrapper">
+            <div class="contentWrapper">
                 <div id="resultsBottom">
                     <asp:Button ID="btnFirst" runat="server" Text="First Page" CssClass="blueButton "/>
                     <asp:Button ID="btnPrev" runat="server" Text="Previous Page" CssClass="blueButton "/>
