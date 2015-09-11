@@ -10,9 +10,9 @@
             
         Div 1. is invisible until a Div 2 is clicked.
         --%>
-
+    <div class="contentWrapper">
         <div id="myMessage"  visible="false" class="conversationBox theirImage" runat="server" >
-            <asp:Button ID="closeThisMessage" runat="server" Text="X" class="purpleButton" style="margin: 10px 10px; float:right;"/>
+            <asp:Button ID="closeThisMessage" runat="server" Text="X" CssClass="purpleButton" style="margin: 10px 10px; float:right;"/>
             <asp:Image ID="imgTheirProfilePic" runat="server" ImageUrl="~/Images/blank-profile-grey.png" style="position: absolute; bottom:0px; margin-left:40px;"/>
             <div id="convoMessages" >
                 <asp:Repeater ID="rptconvoMessages" runat="server">
@@ -77,9 +77,9 @@
             <asp:ImageButton ID="imgBtnSendMessage" runat="server" ImageUrl="~/Images/rsz_1008006-glossy-black-icon-arrows-arrowhead2-right.png" />
         </div>
 
-    <!-- Using a repeater to load messages from the database and present as conversation summaries -->
+        <!-- Using a repeater to load messages from the database and present as conversation summaries -->
 
-    <!--
+        <!--
         This uses Example3.aspx from XMLExamples on Moodle as a guide.
             
         The code behind for the repeater Page_Load should look like this:
@@ -96,35 +96,36 @@
                 rptModules.DataBind();
             } 
         -->
-    <div id="myConversations" visible="true" class="detailsBox myMessagesWrapper"  runat="server">
-        <asp:Repeater ID="rptConversations" runat="server">
-            <ItemTemplate>
-                <div class="conversationBox linkingDiv">
-                    <asp:Image ID="imgTheirProfilePic" runat="server" CssClass="theirImage"/>
-                    <asp:Label ID="lblTheirName" runat="server" Text='<%#Eval("Username") %>' CssClass="theirName"></asp:Label>
-                    <asp:Label ID="lblLastMessage" runat="server" Text='<%#Eval("Message") %>' CssClass="lastMessage"></asp:Label>
-                </div>
-            </ItemTemplate>
-        </asp:Repeater>
-            <!-- 
-                Below is a template of a sample message. It was designed with HtmlTextWriter in mind, which we are now not using.
+        <div id="myConversations" visible="true" runat="server">
+            <asp:Repeater ID="rptConversations" runat="server">
+                <ItemTemplate>
+                    <div class="conversationBox linkingDiv">
+                        <asp:Image ID="imgTheirProfilePic" runat="server" CssClass="theirImage"/>
+                        <asp:Label ID="lblTheirName" runat="server" Text='<%#Eval("Username") %>' CssClass="theirName"></asp:Label>
+                        <asp:Label ID="lblLastMessage" runat="server" Text='<%#Eval("Message") %>' CssClass="lastMessage"></asp:Label>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
+                <!-- 
+                    Below is a template of a sample message. It was designed with HtmlTextWriter in mind, which we are now not using.
 
-                I'm keeping it here as a temporary guide for the visual layout of each conversation summary.
-             -->
-        <div class="conversationWrapper">
-            <a>
-                <div class="conversationBox linkingDiv">
-                    <div class="theirImage">
-                        <img src="Images/blank-profile-grey.png" alt="User's profile picture"/>
+                    I'm keeping it here as a temporary guide for the visual layout of each conversation summary.
+                 -->
+            <div class="conversationWrapper">
+                <a>
+                    <div class="conversationBox linkingDiv">
+                        <div class="theirImage">
+                            <img src="Images/blank-profile-grey.png" alt="User's profile picture"/>
+                        </div>
+                        <div class="theirName">
+                            Stars Hollow
+                        </div>
+                        <div class="lastMessage">
+                            Hi, welcome to our site!
+                        </div>
                     </div>
-                    <div class="theirName">
-                        Stars Hollow
-                    </div>
-                    <div class="lastMessage">
-                        Hi, welcome to our site!
-                    </div>
-                </div>
-            </a>
+                </a>
+            </div>
         </div>
     </div>
 </asp:Content>

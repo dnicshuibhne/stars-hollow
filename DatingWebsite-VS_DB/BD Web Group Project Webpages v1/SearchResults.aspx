@@ -104,10 +104,28 @@
 
                     <!-- Using a repeater for the page numbers. A link to a tutorial is here: http://www.developer.com/net/asp/article.php/3646011/ASPNET-Tip-Creating-Paging-for-a-Repeater-Control.htm -->
                     <asp:Repeater ID="rptResultsPages" runat="server">
+                        <HeaderTemplate>
+                            <table><tr>
+                        </HeaderTemplate>
+                        
                         <ItemTemplate>
-                            <asp:LinkButton ID="lkbtnPage" runat="server"></asp:LinkButton>
+                            <a>
+                                <span ID="pageNumber" class="resultsPageNumber" runat="server"></span>
+                            </a>
                         </ItemTemplate>
+                        
+                        <FooterTemplate>
+                            </tr></table>
+                        </FooterTemplate>
                     </asp:Repeater>
+
+                    <!-- TODO delete this below -->
+                        <span ID="pageNumber" class="resultsPageNumber" runat="server">1</span>
+                        <span ID="Span1" class="resultsPageNumber" runat="server">2</span>
+                        <span ID="Span2" class="resultsPageNumber" runat="server">3</span>
+                        <span ID="Span3" class="resultsPageNumber" runat="server">4</span>
+                        <span ID="Span4" class="resultsPageNumber" runat="server">5</span>
+                    <!-- TODO delete this above -->
 
                     <asp:Button ID="btnNext" runat="server" Text="Next Page" CssClass="blueButton "/>
                     <asp:Button ID="btnLast" runat="server" Text="Last Page" CssClass="blueButton "/>

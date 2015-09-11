@@ -49,7 +49,7 @@
             </fieldset>
             <br />
             <br />
-            <asp:Button ID="btnSearch" runat="server" Text="Search Now" class="blueButton dashboardButton"/>
+            <asp:Button ID="btnSearch" runat="server" Text="Search Now" CssClass="blueButton dashboardButton"/>
             <br />
             <br />
         </section>
