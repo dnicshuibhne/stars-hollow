@@ -69,6 +69,8 @@
     <Content Include="Images\BD Web Sitename Placeholder Large.png" />
     <Content Include="Images\BD Web Sitename Placeholder Small.png" />
     <Content Include="Images\blank-profile-grey.png" />
+    <Content Include="Images\DreamDate.png" />
+    <Content Include="Images\DreamDateHeader.png" />
     <Content Include="Images\rsz_1008006-glossy-black-icon-arrows-arrowhead2-right.png" />
     <Content Include="MyMessages.aspx" />
     <Content Include="SearchFor.aspx" />
