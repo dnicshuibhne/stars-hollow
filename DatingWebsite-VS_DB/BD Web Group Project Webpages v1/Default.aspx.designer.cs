@@ -145,7 +145,7 @@ namespace BD_Web_Group_Project_Webpages_v1 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label valUserAvail;
+        protected global::System.Web.UI.WebControls.CustomValidator valUserAvail;
         
         /// <summary>
         /// lblIAmA control.

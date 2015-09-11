@@ -57,21 +57,23 @@
                     <asp:TextBox ID="txtUserName" runat="server" CssClass="loginTextBox" ValidationGroup="vgRegisterPage1" ></asp:TextBox>
                     <asp:RegularExpressionValidator ID="regxvUserName" runat="server" ControlToValidate="txtUserName" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9]+" ValidationGroup="vgRegisterPage1"> Your username may only contain letters and numbers</asp:RegularExpressionValidator>
                     <asp:RequiredFieldValidator ID="rfvUserName" runat="server" ControlToValidate="txtUserName" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage1"> Required</asp:RequiredFieldValidator>
-                    <asp:Label ID="valUserAvail" runat="server" Text="This username is taken, please try another." style="font: 12px arial " CssClass="validator" ForeColor="Red" Visible="False"></asp:Label>
-                    <%--<asp:CustomValidator ID="valUserAvail" runat="server" ErrorMessage="This username is taken, please try another." Display="Dynamic"></asp:CustomValidator>--%>
-                    <br />            
+                    <%--<asp:Label ID="valUserAvail" runat="server" Text="This username is taken, please try another." style="font: 12px arial " CssClass="validator" ForeColor="Red" Visible="False"></asp:Label>--%>
+                    <asp:CustomValidator ID="valUserAvail" runat="server" CssClass="validator" Display="Dynamic" ControlToValidate="txtUserName" ValidationGroup="vgRegisterPage1"> This username is taken, please try another.</asp:CustomValidator>
+                    <br />  
+                              
                     <asp:Label ID="lblIAmA" runat="server" Text="I am a " ></asp:Label>
                     <asp:DropDownList ID="ddlOrientation" runat="server" style="width: 114px;" ValidationGroup="vgRegisterPage1"></asp:DropDownList>
                     <asp:DropDownList ID="ddlGender" runat="server" style="width: 114px;" ValidationGroup="vgRegisterPage1"></asp:DropDownList>        
                     <asp:RequiredFieldValidator ID="rfvOrientation" runat="server" ControlToValidate="ddlOrientation" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage1"> Please select your Orientation</asp:RequiredFieldValidator>
                     <asp:RequiredFieldValidator ID="rfvGender" runat="server" ControlToValidate="ddlGender" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage1"> Please select your Gender</asp:RequiredFieldValidator>
-                    <br />      
+                    <br />  
+                        
                     <asp:Label ID="lblLocation" runat="server" Text="Location " ></asp:Label>
                     <asp:TextBox ID="txtLocation" runat="server" CssClass="loginTextBox" ValidationGroup="vgRegisterPage1" ></asp:TextBox>
                     <asp:RegularExpressionValidator ID="regxvLocation" runat="server" ControlToValidate="txtLocation" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9\s\,\.\-]+" ValidationGroup="vgRegisterPage1"> Your location may only contain the following characters: <br /> [A-Z] [a-z] [0-9] [space] [,] [.] [-]</asp:RegularExpressionValidator>
                         <asp:RequiredFieldValidator ID="rfvLocation" runat="server" ControlToValidate="txtLocation" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage1"> Required</asp:RequiredFieldValidator>
                     <br />        
-                    <br />        
+                    <br />
                     
                     <!-- On pressing the btnContinueReg button, 
                         #loginPage1 div is hidden and #loginPage2 div is shown -->
