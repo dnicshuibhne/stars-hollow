@@ -6,6 +6,7 @@
 
     <aside>
         <h5 id="asideheader">New Search</h5>
+        <br />
         <asp:Label ID="lblLocation" runat="server" Text="Location "></asp:Label>
         <asp:TextBox ID="txtLocation" runat="server"></asp:TextBox>
         <asp:RegularExpressionValidator ID="regxvLocation" runat="server" ControlToValidate="txtLocation" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9\s\,\.\-]+" ValidationGroup="vgRegisterPage1"><br /> Location may only contain the following characters: <br /> [A-Z] [a-z] [0-9] [space] [,] [.] [-]</asp:RegularExpressionValidator>
@@ -49,6 +50,17 @@
         <h2 id="pageHeader">Search Results</h2>
         <br />
         <section>
+            <!-- Top panel -->
+            <div class="detailsBox myMessagesWrapper">
+                <div id="resultsTop">
+                    <asp:Label ID="lblTotalNumResults" runat="server" Text="Found 20 Results"></asp:Label>
+                    <br />
+                    <br />
+                    <asp:Label ID="lblShowingNumResults" runat="server" Text="Showing 1-10 of 20..."></asp:Label>
+                </div>
+            </div>
+
+            <!-- Results repeater -->
             <div class="detailsBox myMessagesWrapper">
                 <asp:Repeater ID="rptResults" runat="server">
                     <ItemTemplate>
@@ -67,6 +79,9 @@
                 </asp:Repeater>
             </div>
 
+            <!-- Demonstration of appearance and layout -->
+            <!-- TODO: delete this when repeater is functioning -->
+
             <div class="detailsBox myMessagesWrapper">
                 <a>
                     <div class="resultBox linkingDiv">
@@ -80,6 +95,25 @@
                     </div>
                 </a>
             </div>
+
+            <!-- Bottom panel -->
+            <div class="detailsBox myMessagesWrapper">
+                <div id="resultsBottom">
+                    <asp:Button ID="btnFirst" runat="server" Text="First Page" CssClass="blueButton "/>
+                    <asp:Button ID="btnPrev" runat="server" Text="Previous Page" CssClass="blueButton "/>
+
+                    <!-- Using a repeater for the page numbers. A link to a tutorial is here: http://www.developer.com/net/asp/article.php/3646011/ASPNET-Tip-Creating-Paging-for-a-Repeater-Control.htm -->
+                    <asp:Repeater ID="rptResultsPages" runat="server">
+                        <ItemTemplate>
+                            <asp:LinkButton ID="lkbtnPage" runat="server"></asp:LinkButton>
+                        </ItemTemplate>
+                    </asp:Repeater>
+
+                    <asp:Button ID="btnNext" runat="server" Text="Next Page" CssClass="blueButton "/>
+                    <asp:Button ID="btnLast" runat="server" Text="Last Page" CssClass="blueButton "/>
+                </div>
+            </div>
+
         </section>
     </div>
 </asp:Content>

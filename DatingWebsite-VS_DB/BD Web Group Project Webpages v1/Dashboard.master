@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="cphStarsHollowBody" ContentPlaceHolderID="cphStarsHollowBody" runat="server">
     <aside>
-           <asp:Menu ID="Menu1" runat="server" Orientation="vertical" ForeColor="Black" >
+           <asp:Menu ID="mnuDashboard" runat="server" Orientation="vertical" ForeColor="Black" >
                 <DynamicMenuItemStyle BackColor="White" BorderColor="Black" HorizontalPadding="20px" ItemSpacing="10px" VerticalPadding="20px" />
                 <Items>
                    <asp:MenuItem NavigateUrl="~/DashboardPersonal.aspx" Text="Edit Personal Details" value="Edit Personal Details"></asp:MenuItem>

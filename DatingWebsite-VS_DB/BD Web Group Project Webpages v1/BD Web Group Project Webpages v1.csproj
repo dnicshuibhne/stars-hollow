@@ -73,6 +73,7 @@
     <Content Include="MyMessages.aspx" />
     <Content Include="SearchFor.aspx" />
     <Content Include="SearchResults.aspx" />
+    <Content Include="ViewMatchProfile.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -140,12 +141,27 @@
     <Compile Include="StarsHollow.master.designer.cs">
       <DependentUpon>StarsHollow.master</DependentUpon>
     </Compile>
+    <Compile Include="ViewMatch.master.cs">
+      <DependentUpon>ViewMatch.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewMatch.master.designer.cs">
+      <DependentUpon>ViewMatch.master</DependentUpon>
+    </Compile>
+    <Compile Include="ViewMatchProfile.aspx.cs">
+      <DependentUpon>ViewMatchProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewMatchProfile.aspx.designer.cs">
+      <DependentUpon>ViewMatchProfile.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.Master" />
     <Content Include="App_Themes\WhiteTheme\DefaultSkin.skin" />
     <Content Include="StarsHollow.master" />
     <Content Include="Dashboard.master" />
+    <Content Include="ViewMatch.master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
