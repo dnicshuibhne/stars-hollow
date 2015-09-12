@@ -57,7 +57,7 @@ namespace BD_Web_Group_Project_Webpages_v1
             user = new UserModel(txtUserName.Text, txtCreatePwd.Text);
             user.SexualOrientation = ddlOrientation.SelectedValue;
             user.Gender = ddlGender.SelectedValue;
-            user.County = txtCounty.Text;
+            user.Location = txtLocation.Text;
             user.Email = txtEmail.Text; 
 
             int id = userManager.CreateUser(user);
