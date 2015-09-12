@@ -7,9 +7,13 @@
     <aside>
         <h5 id="asideheader">New Search</h5>
         <br />
-        <asp:Label ID="lblLocation" runat="server" Text="Location "></asp:Label>
-        <asp:TextBox ID="txtLocation" runat="server"></asp:TextBox>
+        <asp:Label ID="lblTown" runat="server" Text="Town "></asp:Label>
+        <asp:TextBox ID="txtTown" runat="server"></asp:TextBox>
         <asp:RegularExpressionValidator ID="regxvLocation" runat="server" ControlToValidate="txtLocation" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9\s\,\.\-]+" ValidationGroup="vgRegisterPage1"><br /> Location may only contain the following characters: <br /> [A-Z] [a-z] [0-9] [space] [,] [.] [-]</asp:RegularExpressionValidator>
+        <br />
+        <br />
+        <asp:Label ID="County" runat="server" Text="County "></asp:Label>
+        <asp:DropDownList ID="ddlCounty" runat="server"></asp:DropDownList>
         <br />
         <br />
         <asp:Label ID="lblProfesssion" runat="server" Text="Profession "></asp:Label>
@@ -21,6 +25,7 @@
         <asp:DropDownList ID="ddlGender" runat="server"></asp:DropDownList>
         <br />
         <br />
+
         <asp:Label ID="lblOrientation" runat="server" Text="Orientation "></asp:Label>
         <asp:DropDownList ID="ddlOrientation" runat="server"></asp:DropDownList>
         <br />

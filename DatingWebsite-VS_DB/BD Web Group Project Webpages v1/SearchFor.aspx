@@ -8,9 +8,13 @@
         <br />
         <section>
             <div class="detailsBox">
-                <asp:Label ID="lblLocation" runat="server" Text="Location "></asp:Label>
-                <asp:TextBox ID="txtLocation" runat="server"></asp:TextBox>
-                <asp:RegularExpressionValidator ID="regxvLocation" runat="server" ControlToValidate="txtLocation" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9\s\,\.\-]+" ValidationGroup="vgRegisterPage1"><br /> Location may only contain the following characters: <br /> [A-Z] [a-z] [0-9] [space] [,] [.] [-]</asp:RegularExpressionValidator>
+                <asp:Label ID="lblTown" runat="server" Text="Town "></asp:Label>
+                <asp:TextBox ID="txtTown" runat="server"></asp:TextBox>
+                <asp:RegularExpressionValidator ID="regxvTown" runat="server" ControlToValidate="txtTown" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9\s\,\.\-]+" ValidationGroup="vgRegisterPage1"><br /> Location may only contain the following characters: <br /> [A-Z] [a-z] [0-9] [space] [,] [.] [-]</asp:RegularExpressionValidator>
+                <br />
+                <br />
+                <asp:Label ID="lblCounty" runat="server" Text="County "></asp:Label>
+                <asp:DropDownList ID="ddlCounty" runat="server"></asp:DropDownList>
                 <br />
                 <br />
                 <asp:Label ID="lblProfesssion" runat="server" Text="Profession "></asp:Label>
@@ -36,6 +40,14 @@
                 <br />
                 <asp:Label ID="lblAge" runat="server" Text="Age "></asp:Label>
                 <asp:DropDownList ID="ddlAge" runat="server"></asp:DropDownList>
+                <br />
+                <br />
+                <asp:Label ID="lblEthnicity" runat="server" Text="Ethnicity"></asp:Label>
+                <asp:DropDownList ID="ddlEthnicity" runat="server"></asp:DropDownList>
+                <br />
+                <br />
+               <asp:Label ID="lblRelationshipStatus" runat="server" Text="Relationship Status"></asp:Label>
+               <asp:DropDownList ID="ddlRelationshipStatus" runat="server"></asp:DropDownList>
                 <br />
                 <br />
                 <asp:Label ID="lblHobbies" runat="server" Text="Hobbies "></asp:Label>

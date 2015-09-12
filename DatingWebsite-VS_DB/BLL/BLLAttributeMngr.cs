@@ -31,7 +31,9 @@ namespace BLL
         public DataSet BLLGetHeight() { return DalAttributeMngr.DALGetAttribute(Resources.HEIGHT_TABLE); }
         public DataSet BLLGetHobbies() { return DalAttributeMngr.DALGetAttribute(Resources.HOBBIES_TABLE); }
         public DataSet BLLGetSexualOrientation() { return DalAttributeMngr.DALGetAttribute(Resources.SEXUAL_ORIENTATION_TABLE); }
-        
+        public DataSet BLLGetEthnicity() { return DalAttributeMngr.DALGetAttribute(Resources.ETHNICITY_TABLE); }
+        public DataSet BLLGetRelationshipStatus() { return DalAttributeMngr.DALGetAttribute(Resources.RELATIONSHIP_STATUS_TABLE); }
+        public DataSet BLLGetCounty() { return DalAttributeMngr.DALGetAttribute(Resources.COUNTY_TABLE); }
         /* 
          * Method to return all attributes and their values
          */
