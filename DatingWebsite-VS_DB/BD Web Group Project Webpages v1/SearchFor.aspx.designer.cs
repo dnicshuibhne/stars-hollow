@@ -13,31 +13,49 @@ namespace BD_Web_Group_Project_Webpages_v1 {
     public partial class SearchFor {
         
         /// <summary>
-        /// lblLocation control.
+        /// lblTown control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLocation;
+        protected global::System.Web.UI.WebControls.Label lblTown;
         
         /// <summary>
-        /// txtLocation control.
+        /// txtTown control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLocation;
+        protected global::System.Web.UI.WebControls.TextBox txtTown;
         
         /// <summary>
-        /// regxvLocation control.
+        /// regxvTown control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator regxvLocation;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regxvTown;
+        
+        /// <summary>
+        /// lblCounty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCounty;
+        
+        /// <summary>
+        /// ddlCounty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCounty;
         
         /// <summary>
         /// lblProfesssion control.
@@ -155,6 +173,42 @@ namespace BD_Web_Group_Project_Webpages_v1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlAge;
+        
+        /// <summary>
+        /// lblEthnicity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEthnicity;
+        
+        /// <summary>
+        /// ddlEthnicity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlEthnicity;
+        
+        /// <summary>
+        /// lblRelationshipStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRelationshipStatus;
+        
+        /// <summary>
+        /// ddlRelationshipStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlRelationshipStatus;
         
         /// <summary>
         /// lblHobbies control.

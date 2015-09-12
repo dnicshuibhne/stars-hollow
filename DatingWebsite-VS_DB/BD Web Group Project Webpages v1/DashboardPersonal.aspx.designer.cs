@@ -13,31 +13,67 @@ namespace BD_Web_Group_Project_Webpages_v1 {
     public partial class DashboardPersonal {
         
         /// <summary>
-        /// lblLocation control.
+        /// lblTown control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLocation;
+        protected global::System.Web.UI.WebControls.Label lblTown;
         
         /// <summary>
-        /// txtLocation control.
+        /// txtTown control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLocation;
+        protected global::System.Web.UI.WebControls.TextBox txtTown;
         
         /// <summary>
-        /// regxvLocation control.
+        /// regxvTown control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator regxvLocation;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regxvTown;
+        
+        /// <summary>
+        /// lblCounty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCounty;
+        
+        /// <summary>
+        /// ddlCounty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCounty;
+        
+        /// <summary>
+        /// lblAge control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAge;
+        
+        /// <summary>
+        /// txtAge control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtAge;
         
         /// <summary>
         /// lblProfesssion control.
@@ -103,6 +139,42 @@ namespace BD_Web_Group_Project_Webpages_v1 {
         protected global::System.Web.UI.WebControls.DropDownList ddlOrientation;
         
         /// <summary>
+        /// lblEthnicity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblEthnicity;
+        
+        /// <summary>
+        /// ddlEthnicity control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlEthnicity;
+        
+        /// <summary>
+        /// lblRelationshipStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRelationshipStatus;
+        
+        /// <summary>
+        /// ddlRelationshipStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlRelationshipStatus;
+        
+        /// <summary>
         /// lblEyeColor control.
         /// </summary>
         /// <remarks>
@@ -139,22 +211,40 @@ namespace BD_Web_Group_Project_Webpages_v1 {
         protected global::System.Web.UI.WebControls.DropDownList ddlHairColor;
         
         /// <summary>
-        /// lblAgeRange control.
+        /// lblIdealDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAgeRange;
+        protected global::System.Web.UI.WebControls.Label lblIdealDate;
         
         /// <summary>
-        /// ddlAgeRange control.
+        /// txtIdealDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlAgeRange;
+        protected global::System.Web.UI.WebControls.TextBox txtIdealDate;
+        
+        /// <summary>
+        /// lblComment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblComment;
+        
+        /// <summary>
+        /// txtComment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtComment;
         
         /// <summary>
         /// lblHobbies control.

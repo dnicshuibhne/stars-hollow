@@ -14,7 +14,7 @@ AS
 BEGIN
     SET NOCOUNT ON;
 	DECLARE @IdInserted TABLE(IdValue INTEGER);	
-    INSERT dbo.[Users](UserName,Password,Email) 
+    INSERT dbo.[Users](Username,Password,Email) 
 	OUTPUT inserted.UserID INTO @IdInserted
 	VALUES (@username,@Password,@Email)
 	SELECT IdValue FROM @IdInserted
@@ -70,33 +70,74 @@ BEGIN
 END
 GO
 
+--- Procedure to verify username is available input:username, output message:true or false
+
+DROP  PROCEDURE dbo.uspCheckUsernameExists
+GO
+CREATE  PROCEDURE dbo.uspCheckUsernameExists
+@username nvarchar(50)
+AS
+BEGIN
+SET NOCOUNT ON
+	IF EXISTS(SELECT * FROM [Users] WHERE Username = @username)
+		SELECT 'true' AS UsernameAvailable
+	ELSE
+		SELECT 'false' AS UsernameAvailable
+END
+GO
+
 ----- Procedure to view UserProfile- input:username
 
-DROP  PROCEDURE uspUserProfile_UserName
+DROP  PROCEDURE uspUserProfile_Username
 GO
-CREATE  PROCEDURE uspUserProfile_UserName
-@Name NVarChar(50)
+CREATE  PROCEDURE uspUserProfile_Username
+@username NVarChar(50)
 AS  
 SELECT
 	UserInformation.UserId,
-	[Users].UserName,
 	[Users].Email,
 	UserInformation.Location,
 	UserInformation.Profession,
-	UserInformation.Gender,
-	UserInformation.AgeRange,
-	UserInformation.SexualOrientation,
 	UserInformation.EyeColor,
 	UserInformation.HairColor,
-	UserInformation.Height,
+	UserInformation.AgeRange,
+	UserInformation.Gender,
+	UserInformation.SexualOrientation,
 	UserInformation.Build,
-	UserInformation.ProfilePicturePath
-
+	UserInformation.Height,
+	UserInformation.ProfilePicturePath,
+	UserInformation.Age
 FROM [Users]
 Inner Join UserInformation
-
 ON [Users].UserID = UserInformation.UserID
-WHERE UserName=@Name
+WHERE Username=@username
+GO
+
+----- Procedure to view UserProfile- input:id
+
+DROP  PROCEDURE uspUserProfile_UserID
+GO
+CREATE  PROCEDURE uspUserProfile_UserID
+@userID int
+AS  
+SELECT
+	[Users].Username,
+	[Users].Email,
+	UserInformation.Location,
+	UserInformation.Profession,
+	UserInformation.EyeColor,
+	UserInformation.HairColor,
+	UserInformation.AgeRange,
+	UserInformation.Gender,
+	UserInformation.SexualOrientation,
+	UserInformation.Build,
+	UserInformation.Height,
+	UserInformation.ProfilePicturePath,
+	UserInformation.Age
+FROM [Users]
+Inner Join UserInformation
+ON [Users].UserID  = UserInformation.UserID
+WHERE [Users].UserID=@userID
 GO
 
 ------------------------------------------------------------------------------------------------------------------------------------------
@@ -176,7 +217,7 @@ BEGIN
     SET NOCOUNT ON;
    
 	DECLARE @IdInserted TABLE(IdValue INTEGER);	
-    INSERT dbo.[Users](UserName,Password,Email) 
+    INSERT dbo.[Users](Username,Password,Email) 
 	OUTPUT inserted.UserID INTO @IdInserted
 	VALUES (@username,@Password,@Email)
 	SELECT @id = IdValue FROM @IdInserted
@@ -226,7 +267,7 @@ BEGIN
 
 SET NOCOUNT ON
 
-IF EXISTS(SELECT * FROM [Users] WHERE UserName = @username OR
+IF EXISTS(SELECT * FROM [Users] WHERE Username = @username OR
 		Email=@username AND Password = @password)
     SELECT 'true' AS UserExists
 ELSE
@@ -327,7 +368,7 @@ GO
 --SELECT * FROM ViewAllAttributeValues
 --GO
 
---exec uspUserProfile_UserName 'Sarah6'
+--exec uspUserProfile_Username 'Sarah6'
 --GO
 
 --EXEC uspUserLogin 'Ro3ger' ,'3password3'
