@@ -43,15 +43,18 @@ namespace BD_Web_Group_Project_Webpages_v1
             //    user = userManager.getUser(int.Parse(cookie["ID"]));
                 user = userManager.getUser(userid);
 
-                txtLocation.Text = user.Location;
+                txtTown.Text = user.Town;
                 txtProfession.Text = user.Profession;
+                txtComment.Text = user.Comment;
+                txtIdealDate.Text = user.IdealDate;
+                txtAge.Text = user.Age.ToString();
 
 
-                attributes = attManager.BLLGetAgeRange();
-                ddlAgeRange.DataSource = attributes;
-                ddlAgeRange.DataTextField = Resources.AGE_RANGE_COLUMN;
-                ddlAgeRange.DataBind();
-                ddlAgeRange.Items.FindByValue(user.AgeRange).Selected = true;
+                attributes = attManager.BLLGetCounty();
+                ddlCounty.DataSource = attributes;
+                ddlCounty.DataTextField = Resources.COUNTY_COLUMN;
+                ddlCounty.DataBind();
+                ddlCounty.Items.FindByValue(user.County).Selected = true;
 
                 attributes = attManager.BLLGetEyeColor();
                 ddlEyeColor.DataSource = attributes;
@@ -77,6 +80,21 @@ namespace BD_Web_Group_Project_Webpages_v1
                 ddlOrientation.DataBind();
                 ddlOrientation.Items.FindByValue(user.SexualOrientation).Selected = true;
 
+
+                attributes = attManager.BLLGetRelationshipStatus();
+                ddlRelationshipStatus.DataSource = attributes;
+                ddlRelationshipStatus.DataTextField = Resources.RELATIONSHIP_STATUS_COLUMN;
+                ddlRelationshipStatus.DataBind();
+                ddlRelationshipStatus.Items.FindByValue(user.RelationshipStatus).Selected = true;
+
+
+                attributes = attManager.BLLGetEthnicity();
+                ddlEthnicity.DataSource = attributes;
+                ddlEthnicity.DataTextField = Resources.ETHNICITY_COLUMN;
+                ddlEthnicity.DataBind();
+                ddlEthnicity.Items.FindByValue(user.Ethnicity).Selected = true;
+
+
                 attributes = attManager.BLLGetHobbies();
                 cblHobbies.DataSource = attributes;
                 cblHobbies.DataValueField = Resources.HOBBIES_ID_COLUMN;
@@ -92,13 +110,16 @@ namespace BD_Web_Group_Project_Webpages_v1
         protected void btnUpdateDetails_Click(object sender, EventArgs e)
         {
             UserModel user = new UserModel();
-            user.Location = txtLocation.Text;
+            user.Town = txtTown.Text;
+            user.County = ddlCounty.Text;
             user.Profession = txtProfession.Text;
             user.Gender = ddlGender.SelectedValue;
             user.SexualOrientation = ddlOrientation.Text;
+            user.Ethnicity = ddlEthnicity.Text;
+            user.RelationshipStatus = ddlRelationshipStatus.Text;
             user.EyeColor = ddlEyeColor.Text;
             user.HairColor = ddlHairColor.Text;
-            user.AgeRange = ddlAgeRange.Text;
+            user.Age = int.Parse(txtAge.Text);
 
             //get hobbies
             foreach (ListItem hobby in cblHobbies.Items)

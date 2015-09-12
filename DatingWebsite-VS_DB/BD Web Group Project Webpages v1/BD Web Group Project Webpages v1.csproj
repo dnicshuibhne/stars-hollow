@@ -69,14 +69,13 @@
     <Content Include="Images\BD Web Sitename Placeholder Large.png" />
     <Content Include="Images\BD Web Sitename Placeholder Small.png" />
     <Content Include="Images\blank-profile-grey.png" />
-    <Content Include="Images\DreamDate.png" />
-    <Content Include="Images\DreamDateHeader.png" />
     <Content Include="Images\rsz_1008006-glossy-black-icon-arrows-arrowhead2-right.png" />
     <Content Include="MyMessages.aspx" />
     <Content Include="SearchFor.aspx" />
     <Content Include="SearchResults.aspx" />
     <Content Include="ViewMatchProfile.aspx" />
     <Content Include="Web.config" />
+    <Content Include="UploadImages.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DashboardAccount.aspx.cs">
@@ -156,6 +155,13 @@
     </Compile>
     <Compile Include="ViewMatchProfile.aspx.designer.cs">
       <DependentUpon>ViewMatchProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UploadImages.aspx.cs">
+      <DependentUpon>UploadImages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UploadImages.aspx.designer.cs">
+      <DependentUpon>UploadImages.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

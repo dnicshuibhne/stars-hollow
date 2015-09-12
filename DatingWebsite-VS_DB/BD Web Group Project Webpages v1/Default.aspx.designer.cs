@@ -145,7 +145,7 @@ namespace BD_Web_Group_Project_Webpages_v1 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator valUserAvail;
+        protected global::System.Web.UI.WebControls.Label valUserAvail;
         
         /// <summary>
         /// lblIAmA control.
@@ -193,22 +193,22 @@ namespace BD_Web_Group_Project_Webpages_v1 {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvGender;
         
         /// <summary>
-        /// lblLocation control.
+        /// lbCounty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLocation;
+        protected global::System.Web.UI.WebControls.Label lbCounty;
         
         /// <summary>
-        /// txtLocation control.
+        /// txtCounty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLocation;
+        protected global::System.Web.UI.WebControls.TextBox txtCounty;
         
         /// <summary>
         /// regxvLocation control.

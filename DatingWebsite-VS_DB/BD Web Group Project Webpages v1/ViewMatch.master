@@ -7,11 +7,8 @@
     <!-- This Master page is for viewing a user's profile and for viewing their image gallery -->
 
      <aside>
-           <asp:Menu ID="mnuViewMatch" runat="server" Orientation="vertical" StaticMenuStyle-BorderColor="#CCCCCC" StaticMenuStyle-BorderStyle="Solid" StaticMenuStyle-BorderWidth="1px">
+           <asp:Menu ID="mnuViewMatch" runat="server" Orientation="vertical" ForeColor="Black" >
                 <DynamicMenuItemStyle BackColor="White" BorderColor="Black" HorizontalPadding="20px" ItemSpacing="10px" VerticalPadding="20px" />
-                <StaticMenuItemStyle  BorderColor="#CCCCCC" BorderStyle="Solid" BorderWidth="1px" HorizontalPadding="20px" VerticalPadding="35px" />
-                <StaticSelectedStyle BackColor="#333333" ForeColor="White" /> 
-                
                 <Items>
                     <asp:MenuItem NavigateUrl="~/ViewMatchProfile.aspx" Text="View Profile" value="View Profile"></asp:MenuItem>
                     <asp:MenuItem NavigateUrl="~/ViewMatchGallery.aspx" Text="View Gallery" value="View Details"></asp:MenuItem>

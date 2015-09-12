@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AGE_COLUMN" xml:space="preserve">
+    <value>Age</value>
+    <comment>COLUMN</comment>
+  </data>
   <data name="AGE_PARAM" xml:space="preserve">
     <value>@age</value>
     <comment>PARAM</comment>
@@ -145,9 +149,41 @@
     <value>Build</value>
     <comment>TABLE</comment>
   </data>
+  <data name="COMMENT_PARAM" xml:space="preserve">
+    <value>@comment</value>
+    <comment>PARAM</comment>
+  </data>
+  <data name="COUNTY_COLUMN" xml:space="preserve">
+    <value>County</value>
+    <comment>COLUMN</comment>
+  </data>
+  <data name="COUNTY_PARAM" xml:space="preserve">
+    <value>@county</value>
+    <comment>PARAM</comment>
+  </data>
+  <data name="COUNTY_TABLE" xml:space="preserve">
+    <value>County</value>
+    <comment>TABLE</comment>
+  </data>
   <data name="EMAIL_PARAM" xml:space="preserve">
     <value>@email</value>
     <comment>PARAM</comment>
+  </data>
+  <data name="ETHNICITY_COLUMN" xml:space="preserve">
+    <value>Ethnicity</value>
+    <comment>COLUMN</comment>
+  </data>
+  <data name="ETHNICITY_PARAM" xml:space="preserve">
+    <value>@ethnicity</value>
+    <comment>PARARM</comment>
+  </data>
+  <data name="ETHNICITY_TABLE" xml:space="preserve">
+    <value>Ethnicity</value>
+    <comment>TABLE</comment>
+  </data>
+  <data name="ETHNICTY_COLUMN" xml:space="preserve">
+    <value>Ethnicity</value>
+    <comment>COLUMN</comment>
   </data>
   <data name="EYE_COLOR_COLUMN" xml:space="preserve">
     <value>EyeColor</value>
@@ -209,6 +245,14 @@
     <value>Hobbies</value>
     <comment>TABLE</comment>
   </data>
+  <data name="IDEAL_DATE_COLUMN" xml:space="preserve">
+    <value>IdealDate</value>
+    <comment>COLUMN</comment>
+  </data>
+  <data name="IDEAL_DATE_PARAM" xml:space="preserve">
+    <value>@idealdate</value>
+    <comment>PARAM</comment>
+  </data>
   <data name="LOCATION_COLUMN" xml:space="preserve">
     <value>Location</value>
     <comment>COLUMN</comment>
@@ -229,6 +273,18 @@
     <value>@profession</value>
     <comment>PARAM</comment>
   </data>
+  <data name="RELATIONSHIP_STATUS_COLUMN" xml:space="preserve">
+    <value>RelationshipStatus</value>
+    <comment>COLUMN</comment>
+  </data>
+  <data name="RELATIONSHIP_STATUS_PARAM" xml:space="preserve">
+    <value>@relationshipstatus</value>
+    <comment>PARAM</comment>
+  </data>
+  <data name="RELATIONSHIP_STATUS_TABLE" xml:space="preserve">
+    <value>RelationshipStatus</value>
+    <comment>TABLE</comment>
+  </data>
   <data name="SEXUAL_ORIENTATION_COLUMN" xml:space="preserve">
     <value>Orientation</value>
     <comment>COLUMN</comment>
@@ -240,6 +296,10 @@
   <data name="SEXUAL_ORIENTATION_TABLE" xml:space="preserve">
     <value>SexualOrientation</value>
     <comment>TABLE</comment>
+  </data>
+  <data name="TOWN_PARAM" xml:space="preserve">
+    <value>@town</value>
+    <comment>PARAM</comment>
   </data>
   <data name="USERID_PARAM" xml:space="preserve">
     <value>@userid</value>

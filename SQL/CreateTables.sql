@@ -57,7 +57,7 @@ CREATE TABLE [dbo].[SexualOrientation] (
 -----------------------------------------------------------------------------
 CREATE TABLE [dbo].[Users] (
     [UserID]   INT IDENTITY (1, 1) NOT NULL,
-	[UserName] NVARCHAR (50)	UNIQUE	not NULL,   
+	[Username] NVARCHAR (50)	UNIQUE	not NULL,   
     [Password] NVARCHAR (50) NOT NULL,
     [Email]    NVARCHAR (50) NOT NULL,
 	PRIMARY KEY CLUSTERED ([UserID] ASC)
@@ -101,50 +101,50 @@ CREATE TABLE [dbo].[UserInformation] (
 -----Insert data into tables
 
 INSERT INTO [dbo].[AgeRange] ([AgeRange]) VALUES 
-(N'18-25     '),
-(N'26-32     '),
-(N'33-39     '),
+(N'18-25'),
+(N'26-32'),
+(N'33-39'),
 (N'40+')
 
 INSERT INTO [dbo].[Build] ([Build]) VALUES
-(N'Athletic  '),
-(N'Average   '),
+(N'Athletic'),
+(N'Average'),
 (N'Large'),
-(N'Muscular  '),
-(N'Slim      ')
+(N'Muscular'),
+(N'Slim')
 
 INSERT INTO [dbo].[EyeColor] ([EyeColor]) VALUES
-(N'Blue      '),
-(N'Brown     '),
-(N'Green     '),
-(N'Grey      '),
+(N'Blue'),
+(N'Brown'),
+(N'Green'),
+(N'Grey'),
 (N'Hazel')
 
 INSERT INTO [dbo].[Gender] ([Gender]) VALUES 
-(N'Bigender  '),
-(N'Female    '),
-(N'Genderfluid '),
-(N'Male      '),
+(N'Bigender'),
+(N'Female'),
+(N'Genderfluid'),
+(N'Male'),
 (N'Transgender')
 
 INSERT INTO [dbo].[HairColor] ([HairColor]) VALUES 
-(N'Bald      '),
-(N'Black     '),
-(N'Blonde    '),
-(N'Brown     '),
-(N'Grey      '),
-(N'Red       ')
+(N'Bald'),
+(N'Black'),
+(N'Blonde'),
+(N'Brown'),
+(N'Grey'),
+(N'Red')
 
 
 INSERT INTO [dbo].[Height] ([Height]) VALUES 
-(N'Average   '),
-(N'Small     '),
-(N'Tall      ')
+(N'Average'),
+(N'Small'),
+(N'Tall')
 
 INSERT INTO [dbo].[SexualOrientation] ([Orientation]) VALUES 
 (N'Bisexual'),
-(N'Gay       '),
-(N'Straight  ')
+(N'Gay'),
+(N'Straight')
 
 SET IDENTITY_INSERT [dbo].[Hobbies] ON
 INSERT INTO [dbo].[Hobbies] ([HobbyID], [HobbyName]) VALUES
@@ -167,7 +167,7 @@ INSERT INTO [dbo].[Hobbies] ([HobbyID], [HobbyName]) VALUES
 SET IDENTITY_INSERT [dbo].[Hobbies] OFF
 
 --------------------------------------------------------------------------------
-INSERT INTO [dbo].[Users] ([UserName], [Password], [Email]) VALUES 
+INSERT INTO [dbo].[Users] ([Username], [Password], [Email]) VALUES 
 (N'jsmith', N'qwerty', N'jsmith@gmail.com'),
 (N'mbloggs', N'rex17', N'mbloggs@gmail.com'),
 (N'jmurphy', N'bloggs', N'jmurphy@gmail.com'),

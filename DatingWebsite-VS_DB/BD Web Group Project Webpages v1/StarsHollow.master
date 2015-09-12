@@ -9,15 +9,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cphDefaultBody" runat="server">
     <div id="topNavBar">
         <header>
-            <img src="Images/DreamDateHeader.png" alt="Site Name" style="margin-top: 5px;"/>
+            <img src="Images/BD Web Sitename Placeholder Small.png" alt="Site Name" />
         </header>
         <nav>
-            
-            <asp:Menu runat="server" Orientation="Horizontal" StaticEnableDefaultPopOutImage="false" DynamicMenuItemStyle-BorderStyle="Solid" DynamicMenuItemStyle-BorderWidth="1px" DynamicMenuItemStyle-BorderColor="Black">
-                <DynamicMenuItemStyle CssClass="topMenu" HorizontalPadding="20px" ItemSpacing="10px" VerticalPadding="25px" />
-                <StaticMenuItemStyle CssClass="topMenu" HorizontalPadding="20px" VerticalPadding="45px" Width="100px" />
+            <asp:Menu runat="server" Orientation="Horizontal" DynamicMenuItemStyle-BorderStyle="Solid">
+                <DynamicMenuItemStyle CssClass="topMenu" HorizontalPadding="20px" ItemSpacing="10px" VerticalPadding="20px" />
+                <StaticMenuItemStyle CssClass="topMenu" HorizontalPadding="20px" VerticalPadding="35px" Width="100px" />
                 <StaticSelectedStyle BackColor="#333333" ForeColor="White" />
-                <DynamicMenuStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                 <Items>
                     <asp:MenuItem NavigateUrl="~/Dashboard.aspx" Text="Dashboard" Value="Dashboard">
                         <asp:MenuItem NavigateUrl="~/DashboardPersonal.aspx" Text="Edit Personal Details" value="Edit Personal Details"></asp:MenuItem>
@@ -38,29 +36,8 @@
 
     </asp:ContentPlaceHolder>
     <footer>
-        
-        <div id="footerLeft">
-            <asp:Menu ID="Menu1" runat="server" Orientation="Vertical" ForeColor="White" Font-Size="13">  
-                <StaticMenuItemStyle VerticalPadding="10px"/>  
-                <Items>
-                    
-                    <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" Value="Home"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/DashboardPersonal.aspx" Text="Edit Personal Details" value="Edit Personal Details"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/DashboardAccount.aspx" Text="Edit Account Details" value="Edit Account Details"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/MyGallery.aspx" Text="My Gallery" value="My Gallery"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/MyMessages.aspx" Text="My Messages" value="My Messages"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/MyProfile.aspx" Text="View My Profile" value="View My Profile"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/SearchFor.aspx" Text="Search" Value="Search"></asp:MenuItem>
-                </Items>
-        
-            </asp:Menu> 
-        </div>
-        <div id="footerRight">
-            <h3>Website created by</h3>
-            <p>Doireann Nic Shuibhne</p>
-            <p>Claire Delaney</p>
-            <p>Stephen Beirne</p>
-        </div>
-
+            kljhklj
+            jkl;hjk
+            khklj
     </footer>
 </asp:Content>
