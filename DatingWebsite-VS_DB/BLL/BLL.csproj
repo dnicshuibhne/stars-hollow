@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLLAttributeMngr.cs" />
+    <Compile Include="BLLMessageMngr.cs" />
     <Compile Include="BLLUserMngr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

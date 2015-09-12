@@ -42,7 +42,7 @@ namespace DAL // Data Access Layer
 
                     if (rowsAffected < 1)
                     {
-                        throw new Exception("No Results Returned.");
+                        throw new Exception("No Results Returned from "+attributeTable);
                     }
                     con.Close();
                 }

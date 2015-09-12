@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DALAttributeMngr.cs" />
+    <Compile Include="DALMessageMngr.cs" />
     <Compile Include="DALUserMngr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
