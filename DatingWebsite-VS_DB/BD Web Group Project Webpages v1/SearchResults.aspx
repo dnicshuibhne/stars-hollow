@@ -3,12 +3,17 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphStarsHollowBody" runat="server">
 
+
     <aside>
         <h5 id="asideheader">New Search</h5>
         <br />
-        <asp:Label ID="lblLocation" runat="server" Text="Location "></asp:Label>
-        <asp:TextBox ID="txtLocation" runat="server"></asp:TextBox>
+        <asp:Label ID="lblTown" runat="server" Text="Town "></asp:Label>
+        <asp:TextBox ID="txtTown" runat="server"></asp:TextBox>
         <asp:RegularExpressionValidator ID="regxvLocation" runat="server" ControlToValidate="txtLocation" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9\s\,\.\-]+" ValidationGroup="vgRegisterPage1"><br /> Location may only contain the following characters: <br /> [A-Z] [a-z] [0-9] [space] [,] [.] [-]</asp:RegularExpressionValidator>
+        <br />
+        <br />
+        <asp:Label ID="County" runat="server" Text="County "></asp:Label>
+        <asp:DropDownList ID="ddlCounty" runat="server"></asp:DropDownList>
         <br />
         <br />
         <asp:Label ID="lblProfesssion" runat="server" Text="Profession "></asp:Label>
@@ -20,6 +25,7 @@
         <asp:DropDownList ID="ddlGender" runat="server"></asp:DropDownList>
         <br />
         <br />
+
         <asp:Label ID="lblOrientation" runat="server" Text="Orientation "></asp:Label>
         <asp:DropDownList ID="ddlOrientation" runat="server"></asp:DropDownList>
         <br />
@@ -45,13 +51,12 @@
         <br />
         <br />
     </aside>
-
     <div id="bodyContents">
         <h2 id="pageHeader">Search Results</h2>
         <br />
         <section>
             <!-- Top panel -->
-            <div class="contentWrapper">
+            <div class="detailsBox myMessagesWrapper">
                 <div id="resultsTop">
                     <asp:Label ID="lblTotalNumResults" runat="server" Text="Found 20 Results"></asp:Label>
                     <br />
@@ -61,7 +66,7 @@
             </div>
 
             <!-- Results repeater -->
-            <div class="contentWrapper">
+            <div class="detailsBox myMessagesWrapper">
                 <asp:Repeater ID="rptResults" runat="server">
                     <ItemTemplate>
                         <a>
@@ -82,7 +87,7 @@
             <!-- Demonstration of appearance and layout -->
             <!-- TODO: delete this when repeater is functioning -->
 
-            <div class="contentWrapper">
+            <div class="detailsBox myMessagesWrapper">
                 <a>
                     <div class="resultBox linkingDiv">
                         <asp:Image ID="imgProfilePic2" runat="server" ImageUrl="~/Images/blank-profile-grey.png" CssClass="resultImage"/>    
@@ -97,35 +102,17 @@
             </div>
 
             <!-- Bottom panel -->
-            <div class="contentWrapper">
+            <div class="detailsBox myMessagesWrapper">
                 <div id="resultsBottom">
                     <asp:Button ID="btnFirst" runat="server" Text="First Page" CssClass="blueButton "/>
                     <asp:Button ID="btnPrev" runat="server" Text="Previous Page" CssClass="blueButton "/>
 
                     <!-- Using a repeater for the page numbers. A link to a tutorial is here: http://www.developer.com/net/asp/article.php/3646011/ASPNET-Tip-Creating-Paging-for-a-Repeater-Control.htm -->
                     <asp:Repeater ID="rptResultsPages" runat="server">
-                        <HeaderTemplate>
-                            <table><tr>
-                        </HeaderTemplate>
-                        
                         <ItemTemplate>
-                            <a>
-                                <span ID="pageNumber" class="resultsPageNumber" runat="server"></span>
-                            </a>
+                            <asp:LinkButton ID="lkbtnPage" runat="server"></asp:LinkButton>
                         </ItemTemplate>
-                        
-                        <FooterTemplate>
-                            </tr></table>
-                        </FooterTemplate>
                     </asp:Repeater>
-
-                    <!-- TODO delete this below -->
-                        <span ID="pageNumber" class="resultsPageNumber" runat="server">1</span>
-                        <span ID="Span1" class="resultsPageNumber" runat="server">2</span>
-                        <span ID="Span2" class="resultsPageNumber" runat="server">3</span>
-                        <span ID="Span3" class="resultsPageNumber" runat="server">4</span>
-                        <span ID="Span4" class="resultsPageNumber" runat="server">5</span>
-                    <!-- TODO delete this above -->
 
                     <asp:Button ID="btnNext" runat="server" Text="Next Page" CssClass="blueButton "/>
                     <asp:Button ID="btnLast" runat="server" Text="Last Page" CssClass="blueButton "/>
