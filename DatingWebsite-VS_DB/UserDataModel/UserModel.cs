@@ -21,13 +21,8 @@ namespace DataModels
         public string Height { get; set; }
         public string SexualOrientation { get; set; }
         public List<int> Hobbies { get; set; }
-        public string RelationshipStatus { get; set; }
-        public string Ethnicity { get; set; }
-        public string Town{ get; set; }
-        public string County { get; set; }
+        public string Location { get; set; }
         public string Profession { get; set; }
-        public string IdealDate { get; set; }
-        public string Comment {get;set;}
         public int Age { get; set; }
 
 
