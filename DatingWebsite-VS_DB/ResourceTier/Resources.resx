@@ -209,6 +209,10 @@
     <value>Gender</value>
     <comment>TABLE</comment>
   </data>
+  <data name="GET_MESSAGES_PROC" xml:space="preserve">
+    <value>uspAllMessages</value>
+    <comment>PROCEDURE</comment>
+  </data>
   <data name="HAIR_COLOR_COLUMN" xml:space="preserve">
     <value>HairColor</value>
     <comment>COLUMN</comment>
