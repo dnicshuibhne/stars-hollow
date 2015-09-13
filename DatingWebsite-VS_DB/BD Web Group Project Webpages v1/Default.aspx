@@ -45,7 +45,13 @@
         
         <div id="mainFormBox">
             <div class="mainFormBuffer">
-                <asp:Button ID="btnLogin" runat="server" Text="LOGIN" Font-Size="15px" CssClass="blueButton" style="float: right; padding: 1vh 4vw; margin: 20px 30px; position: relative;" OnClick="btnLogin_Click"/>
+                <asp:ScriptManager ID="ScriptManager1" runat="server">
+                    <asp:UpdatePanel runat="server"  UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <asp:Button ID="btnLogin" runat="server" Text="LOGIN" Font-Size="15px" CssClass="blueButton" style="float: right; padding: 1vh 4vw; margin: 20px 30px; position: relative;" OnClick="btnLogin_Click"/>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </asp:ScriptManager>
                 <br />
                 <br />
                 <br />
