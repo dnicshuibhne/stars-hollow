@@ -61,6 +61,8 @@
             <p>Claire Delaney</p>
             <p>Stephen Beirne</p>
         </div>
-
+        <div id="footerbottom">
+            Copyright &copy 2015
+        </div>
     </footer>
 </asp:Content>

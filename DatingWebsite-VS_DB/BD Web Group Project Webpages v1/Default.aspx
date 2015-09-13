@@ -124,7 +124,7 @@
         </div>
     </div>
 
-    <div id="defaultFadeINBG"></div>
+    <div id="defaultFadeInBG"></div>
 
     <!-- Additional 'information cards' can be inserted as required -->
     
@@ -156,6 +156,8 @@
         </div>
         <div class="defaultCardBuffer"></div>
     </div>
+
+    <div id="defaultFadeOutBG"></div>
     
     <!-- A final 'empty' div is required to present the registry form once 
         the user has scrolled to the bottom of the page -->

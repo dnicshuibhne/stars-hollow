@@ -286,22 +286,39 @@ span.validator[style*="inline"]{
     text-align: center; 
 }
 
-#defaultFadeINBG{
-    background-color: red;
-    height: 100vh;
+#defaultFadeInBG{
+    height: 60vh;
     z-index: 5;
     /* IE 10 onwards */ 
-    background-image: -ms-linear-gradient(top, #0BFF03, #FFFFFF);
+    background-image: -ms-linear-gradient(top, rgba(255,0,0,0), #FFFFFF 70%);
     /* Firefox */ 
-    background-image: -moz-linear-gradient(top, #0BFF03, #FFFFFF);
+    background-image: -moz-linear-gradient(top, rgba(255,0,0,0), #FFFFFF 70%);
     /* Opera */ 
-    background-image: -o-linear-gradient(top, #0BFF03 #FFFFFF);
+    background-image: -o-linear-gradient(top, rgba(255,0,0,0) #FFFFFF 70%);
     /* Safari/Chrome 10 */ 
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(#0BFF03), color-stop(#FFFFFF));
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(rgba(255,0,0,0)), color-stop(70, #FFFFFF));
     /* Chrome 11 onwards */ 
-    background-image: -webkit-linear-gradient(top, #0BFF03, #FFFFFF);
+    background-image: -webkit-linear-gradient(top, rgba(255,0,0,0), #FFFFFF 70%);
     /* W3C Markup */ 
-    background-image: linear-gradient(to bottom, #0BFF03, #FFFFFF);
+    background-image: linear-gradient(to bottom, rgba(255,0,0,0), #FFFFFF 70%);
+    position: relative;
+}
+#defaultFadeOutBG{
+    height: 60vh;
+    z-index: 5;
+    /* IE 10 onwards */ 
+    background-image: -ms-linear-gradient(top, #FFFFFF 30%, rgba(255,0,0,0));
+    /* Firefox */ 
+    background-image: -moz-linear-gradient(top, #FFFFFF 30%, rgba(255,0,0,0));
+    /* Opera */ 
+    background-image: -o-linear-gradient(top, #FFFFFF 30%, rgba(255,0,0,0));
+    /* Safari/Chrome 10 */ 
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(30, #FFFFFF), color-stop(rgba(255,0,0,0)));
+    /* Chrome 11 onwards */ 
+    background-image: -webkit-linear-gradient(top, #FFFFFF 30%, rgba(255,0,0,0));
+    /* W3C Markup */ 
+    background-image: linear-gradient(to bottom, #FFFFFF 30%, rgba(255,0,0,0));
+    position: relative;
 }
 
 #defaultPgAboutUs{
