@@ -7,7 +7,7 @@
         <h2 id="pageHeader">Search For...</h2>
         <br />
         <section>
-            <fieldset class="detailsBox">
+            <fieldset class="detailsBox searchBox">
                 <legend>Search by lifestyle</legend>
                 <asp:Label ID="lblTown" runat="server" Text="Town "></asp:Label>
                 <asp:TextBox ID="txtTown" runat="server"></asp:TextBox>
@@ -32,7 +32,7 @@
                 <br />
                 <br />
             </fieldset>
-            <fieldset class="detailsBox">
+            <fieldset class="detailsBox searchBox">
                 <legend>Search by personal details</legend>
                 <asp:Label ID="lblGender" runat="server" Text="Gender "></asp:Label>
                 <asp:DropDownList ID="ddlGender" runat="server"></asp:DropDownList>

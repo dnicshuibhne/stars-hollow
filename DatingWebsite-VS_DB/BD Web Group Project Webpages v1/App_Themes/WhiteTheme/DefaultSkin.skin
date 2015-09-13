@@ -4,8 +4,4 @@
 <asp:RequiredFieldValidator runat="server" ForeColor="red" style="font-size: 65%;  display:inline-block; "/>
 <asp:CompareValidator runat="server" ForeColor="red" style="font-size: 65%;  display:inline-block; "/>
 
-<%-- TODO 1. Get Menu styles working for border-right of static items 
-          2. Add black Border to dynamic menu items --%>
-<asp:Menu runat="server"/>
-
 
