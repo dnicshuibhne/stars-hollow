@@ -11,10 +11,10 @@ body {
     display: block;
 }
 
-
 header {
     float: left;
     display:inline;
+    margin: 5px 5px;
 }
 
 nav {
@@ -42,18 +42,42 @@ aside {
     margin-top: 100px;
     margin-left: 2vw;
     margin-right: 40px;
+    
 }
 
 footer {
     clear: both;
     position: relative;
     z-index: 10;
-    height: 3em;
+    min-height: 350px;
     margin-top: -3em;
     background: #414141; /* grey */
     color: white;
 }
+#footerLeft {
+    float: left;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    margin-left: 15vw;
+}
+#footerRight {
+    float: right;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    margin-right: 15vw;
+    line-height: 30px;
+    text-align: right;
+}
 
+#footerRight h3 {
+    font-size: 19px;
+}
+
+legend {
+    background-color: white;
+    border-radius: 40px;
+    padding: 1px 10px;
+}
 
 h1 {
     color: white;
@@ -68,10 +92,6 @@ h2 {
 
 #pageHeader {
     margin: 50px 60px;
-}
-
-#asideheader {
-
 }
 
 h3 {
@@ -132,13 +152,13 @@ html * {
 }
 
 .topMenu {
-    /* Experimental class for getting the top nav bar's menu item's working */
-    color: black;
     background-color: white;
-    border-right-color: red;
-    border-right-width: 60px;
 }
 
+.topMenu:hover {
+    background-color: black;
+    color: white;
+}
 
 .blueButton {
     background: #72B4FF;
@@ -153,6 +173,7 @@ html * {
     padding-left: 10px;
     padding-right: 10px;
 }
+
 
 /* The following style is used to display Validator controls in block format */
 /* I'm commenting it out for now until I can test the page's visual layout.
@@ -176,7 +197,30 @@ span.validator[style*="inline"]{
     width: 180px;
 }
 
+.contentWrapper {
+    padding: 5vh 5vw;
+    border: 1px solid #824187; /* dark purple */
+    border-radius: 40px;
+    color: black;
+    background-color: white;
+    margin: 20px 0px;
+}
+
+.contentWrapper h1 {
+    font-size: 30px;
+    color: black;
+    margin-bottom: 50px;
+}
+
+.contentWrapper h3 {
+    font-size: 18px;
+    color: black;
+    text-align: center;
+}
+
+
 /* Default Page styles */
+
 
 .loginScreen {
     width: 100vw;
@@ -185,6 +229,13 @@ span.validator[style*="inline"]{
     position: fixed;
     padding-top: 30vh;
     background: rgba(0, 0, 0, 0.7);
+}
+
+.defaultSiteImg {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 90px;
 }
 
 
@@ -197,6 +248,15 @@ span.validator[style*="inline"]{
     width: 100vw;
     position: fixed;
 }
+
+.mainFormBuffer {
+    height: 33vh;
+}
+.mainFormMiddle {
+    height: 34vh;
+    vertical-align: middle;
+}
+
 .loginSection {
     width:600px;
     padding: 30px;
@@ -204,7 +264,6 @@ span.validator[style*="inline"]{
     margin-left: auto;
     margin-right: auto;
     position:fixed;
-    vertical-align:auto;
     left:0;
     right:0;
     display: inline-block;
@@ -212,6 +271,10 @@ span.validator[style*="inline"]{
 .loginContents {
     width:430px;
     margin: auto;
+}
+
+.loginControls {
+    margin-bottom: 15px;
 }
 .loginTextBox{
     width: 230px;
@@ -234,19 +297,23 @@ span.validator[style*="inline"]{
     z-index: 5;
     position: relative;
 }
-#defaultPgAboutUsContents {
-    padding: 100px 200px;
-    text-align: center;
-}
-#defaultPgMatchContents {
-    padding: 120px 200px;
-    text-align: center;
-}
+
 #defaultPgMatch, #defaultPgAboutUs p {
     color: white;
     font-size: 30px;
     text-align: center;
 }
+
+.defaultCardBuffer {
+    height: 33vh;
+}
+
+.defaultTextBox {
+    height: 34vh;
+    text-align: center;
+    padding: 0px 20vw;
+}
+
 
 /* DashBoard styles */
 
@@ -255,7 +322,16 @@ span.validator[style*="inline"]{
 }
 
 .detailsBox {
-    
+    color: black;
+    width: 300px;
+    margin: 40px auto;
+    background-color: white;
+    padding: 5vh 5vw;
+    border: 1px solid #824187; /* dark purple */
+    border-radius: 40px;
+}
+
+.detailsBoxOutline {
     padding: 5vh 5vw;
     border: 1px solid #824187; /* dark purple */
     border-radius: 40px;
@@ -266,16 +342,13 @@ span.validator[style*="inline"]{
     font-size: 110%;
     width: 250px;
     height: 30px;
-    margin-right: 50px;
-    margin-left: 100px;
+    margin: 0px auto;
+    display: block;
 }
+
 
 /* My Message page styles */
 
-.myMessagesWrapper {
-    color: black;
-    background-color: white;
-}
 
 .conversationBox {
     border: 3px solid #824187; /* dark purple */
@@ -327,7 +400,7 @@ span.validator[style*="inline"]{
 }
 
 .theirMessage, .myMessage {
-    background-color: #dbdbdb;
+    background-color: #dbdbdb; /* pale grey */
     padding: 5px 40px;
     margin: 10px 10px;
     border-radius: 5em;
@@ -341,7 +414,10 @@ span.validator[style*="inline"]{
     float: right;
 }
 
+
 /* Search For page styles */
+
+
 .searchForWrapper {
     margin-left: 15vw;
     margin-right: auto;
@@ -350,7 +426,7 @@ span.validator[style*="inline"]{
 .resultBox {
     border: 3px solid #824187; /* dark purple */
     border-radius: 40px;
-    background-color: white; /* light blue */
+    background-color: #A8D1FF; /* light blue */
     padding: 20px 20px;
     min-height: 120px;
     margin-top: 40px;
@@ -389,30 +465,40 @@ span.validator[style*="inline"]{
     margin: auto;
 }
 
+.resultsPageNumber {
+    margin: 0px 3px;
+    font-family: 'Times New Roman';
+}
+.resultsPageNumber:hover {
+    color: #FF7029; /* orange */
+    font-weight: 900;
+}
+
 /* View Match pages styles */
 
-#viewMatch {
-    
-    padding: 5vh 5vw;
+
+.profilePic {
+    margin-left:auto;
+    margin-right: auto;
+    max-width: 400px;
+    height: auto;
+    display: block;
+}
+
+.userDetails {
+    margin-left: 109px;
+    font-size: 18px;
+}
+
+.profileCategory {
+    color: #5C5C5C; /* dark grey */
+    font-size: 15px;
+}
+
+.detailsWrapper {
+    background-color: #A352AA;
     border: 1px solid #824187; /* dark purple */
     border-radius: 40px;
-    color: black;
-    background-color: white;
-}
-
-#viewMatch h1 {
-    font-size: 30px;
-    color: black;
-}
-
-.profileLeftCol {
-    width: 300px;
-    margin: 40px auto;
-    
-}
-
-.profileRightCol {
-    width: 200px;
-    margin: 40px auto;
-    
+    padding: 10px;
+    margin: 30px 0px;
 }
