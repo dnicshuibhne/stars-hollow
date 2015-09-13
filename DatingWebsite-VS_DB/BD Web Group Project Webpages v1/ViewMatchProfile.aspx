@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ViewMatch.master" AutoEventWireup="true" CodeBehind="ViewMatchProfile.aspx.cs" Inherits="BD_Web_Group_Project_Webpages_v1.ViewMatchProfile" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="cphViewMatch" runat="server">
 
+    <!-- TODO: update this page with all columns in personal info stored in database. -->
+
     <h4>View Profile</h4>
     <br />
     <div class="contentWrapper">

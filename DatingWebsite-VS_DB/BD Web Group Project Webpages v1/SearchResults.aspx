@@ -9,7 +9,7 @@
         <br />
         <asp:Label ID="lblTown" runat="server" Text="Town "></asp:Label>
         <asp:TextBox ID="txtTown" runat="server"></asp:TextBox>
-        <asp:RegularExpressionValidator ID="regxvLocation" runat="server" ControlToValidate="txtLocation" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9\s\,\.\-]+" ValidationGroup="vgRegisterPage1"><br /> Location may only contain the following characters: <br /> [A-Z] [a-z] [0-9] [space] [,] [.] [-]</asp:RegularExpressionValidator>
+        <asp:RegularExpressionValidator ID="regxvLocation" runat="server" ControlToValidate="txtTown" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9\s\,\.\-]+" ValidationGroup="vgRegisterPage1"><br /> Location may only contain the following characters: <br /> [A-Z] [a-z] [0-9] [space] [,] [.] [-]</asp:RegularExpressionValidator>
         <br />
         <br />
         <asp:Label ID="County" runat="server" Text="County "></asp:Label>
@@ -66,7 +66,7 @@
             </div>
 
             <!-- Results repeater -->
-            <div class="detailsBox myMessagesWrapper">
+            <div class="contentWrapper">
                 <asp:Repeater ID="rptResults" runat="server">
                     <ItemTemplate>
                         <a>
@@ -87,7 +87,7 @@
             <!-- Demonstration of appearance and layout -->
             <!-- TODO: delete this when repeater is functioning -->
 
-            <div class="detailsBox myMessagesWrapper">
+            <div class="contentWrapper">
                 <a>
                     <div class="resultBox linkingDiv">
                         <asp:Image ID="imgProfilePic2" runat="server" ImageUrl="~/Images/blank-profile-grey.png" CssClass="resultImage"/>    
@@ -102,7 +102,7 @@
             </div>
 
             <!-- Bottom panel -->
-            <div class="detailsBox myMessagesWrapper">
+            <div class="contentWrapper">
                 <div id="resultsBottom">
                     <asp:Button ID="btnFirst" runat="server" Text="First Page" CssClass="blueButton "/>
                     <asp:Button ID="btnPrev" runat="server" Text="Previous Page" CssClass="blueButton "/>
@@ -110,6 +110,9 @@
                     <!-- Using a repeater for the page numbers. A link to a tutorial is here: http://www.developer.com/net/asp/article.php/3646011/ASPNET-Tip-Creating-Paging-for-a-Repeater-Control.htm -->
                     <asp:Repeater ID="rptResultsPages" runat="server">
                         <ItemTemplate>
+
+                            <!-- TODO: ensure this LinkButton is styled á la .resultsPageNumber -->
+
                             <asp:LinkButton ID="lkbtnPage" runat="server"></asp:LinkButton>
                         </ItemTemplate>
                     </asp:Repeater>
