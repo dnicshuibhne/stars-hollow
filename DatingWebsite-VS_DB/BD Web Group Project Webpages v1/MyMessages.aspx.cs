@@ -7,49 +7,55 @@ using System.Web.UI.WebControls;
 //
 using BLL;
 using System.Data;
-using System.Linq;
+using DataModels;
 
 namespace BD_Web_Group_Project_Webpages_v1
 {
     public partial class MyMessages : System.Web.UI.Page
     {
         BLLMessageMngr messageManager;
-        int userID = 1;
+        UserModel user;
+        string sentCss = "myMessage";
+        string receivedCss = "theirMessage";
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            messageManager = new BLLMessageMngr();
-            getConversations();
+            int userID = 1; //get from session
+            user = new UserModel(userID, "username", "password");// get from seesion or DB
+            //messageManager = new BLLMessageMngr(user.ID);
+            //getMessages();
         }
         
-        private void getConversations()
+        private void getMessages()
         {
-            rptConversations.DataSource = messageManager.getMessages(userID);
-            rptConversations.DataBind();
+            //rptConversations.DataSource = messageManager.getAllMessages();
+           // rptConversations.DataBind();
         }
 
-        private void getConversation(int senderID)
+        private void getConversation(int user2ID)
         {
-            //rptconvoMessages.DataSource = messageManager.getConversation(userID, senderID);
+            rptconvoMessages.DataSource = messageManager.getConversation(user2ID);
             rptconvoMessages.DataBind();
         }
 
-        //private void Test()
-        //{
-        //    DataSet data = messageManager.getMessages(userID);
-        //    DataTable messages = data.Tables[0];
+        public void getCssClass(int senderID, int receiverID)
+        {
+            if (user.ID.Equals(senderID))
+                Response.Write(sentCss);
+            else if (user.ID.Equals(receiverID))
+                Response.Write(receivedCss);
+        }
+
+        public string getUsername2(string senderName, string receiverName)
+        {
+            if (user.Username.Equals(senderName))
+                return receiverName;
+            else if (user.ID.Equals(receiverName))
+                return senderName;
+            else
+                return "Unidentified Sender";
+
             
-
-        //    var expensiveInStockProducts =
-        //        from p in messages
-        //        where p.UnitsInStock > 0 && p.UnitPrice > 3.00M
-        //        select p;
-
-        //    Console.WriteLine("In-stock products that cost more than 3.00:");
-        //    foreach (var product in expensiveInStockProducts)
-        //    {
-        //        Console.WriteLine("{0} is in stock and costs more than 3.00.", product.ProductName);
-        //    } 
-        //}
+        }
     }
 }

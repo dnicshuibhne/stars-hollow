@@ -10,21 +10,49 @@ using DataModels;
 
 namespace BLL
 {
+    /*
+     * This class contains methods for storing and retrieving messages sent and received by the user
+     */
     public class BLLMessageMngr
     {
-        DALMessageMngr messageManager;
+        private DALMessageMngr messageManager;
+        private int userID;
+        private DataTable allMessages;
+        private string orderNewToOld = "Timestamp DESC"; // newest to oldest
+        private string orderOldToNew = "Timestamp ASC"; // oldest to newest
 
-        public BLLMessageMngr()
+        public BLLMessageMngr(int userID)
         {
             messageManager = new DALMessageMngr();
+            allMessages = messageManager.getSentAndReceivedMessages(userID);
         }
-        public DataSet getMessages(int userId)
+
+        public DataRow[] getAllMessages()
         {
-            return messageManager.getMessages(userId);
+            string filter = "true";//ReceiverID = '" + userID + "' OR SenderID = '" + userID + "'";
+            return allMessages.Select(filter, orderNewToOld); //filters and sorts results
         }
-        public DataSet getMessages(UserModel user)
+
+        public DataRow[] getConversation(int user2ID)
         {
-            return messageManager.getMessages(user.ID);
+            string filter = "SenderID = '" + user2ID + "' OR ReceiverID = '" + user2ID + "'";
+            return allMessages.Select(filter, orderOldToNew);//filters and sorts results
         }
+
+        /* Unused functionality
+         * 
+        public DataRow[] getReceivedMessages()
+        {
+            string filter = "ReceiverID = '" + userID + "'";
+            return allMessages.Select(filter, orderNewToOld);//filters and sorts results
+        }
+
+        public DataRow[] getSentMessages()
+        {
+            string filter = "SenderID = '" + userID + "'";
+            return allMessages.Select(filter, orderNewToOld);//filters and sorts results
+        }
+         * 
+         */
     }
 }

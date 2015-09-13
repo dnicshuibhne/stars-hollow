@@ -17,7 +17,7 @@
             <div id="convoMessages" >
                 <asp:Repeater ID="rptconvoMessages" runat="server">
                     <ItemTemplate>
-                        <div class=''> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
+                        <div class='<%getCssClass((int)Eval("SenderID"), (int)Eval("ReceiverID")); %>'> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
                             <asp:Label ID="lblMessage" runat="server" Text='<%#Eval("MessageText") %>'></asp:Label>
 
                         </div>
@@ -30,22 +30,22 @@
                     TODO: delete this when the repeater is functioning.
 
                      -->
-                <div class='theirMessage'> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
+                <div class='<%getCssClass(2, 1); %>'> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
                     <asp:Label ID="Label1" runat="server" Text="Whatever I said, whatever I did, I didn't mean it"></asp:Label>
                 </div>
-                <div class="myMessage"> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
+                <div class='<%getCssClass(1, 2); %>'> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
                     <asp:Label ID="Label2" runat="server" Text="I just want you back for good"></asp:Label>
                 </div>
-                <div class='theirMessage'> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
+                <div class='<%getCssClass(2, 1); %>'> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
                     <asp:Label ID="Label3" runat="server" Text="Whatever I said, whatever I did, I didn't mean it"></asp:Label>
                 </div>
-                <div class="myMessage"> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
+                <div class='<%getCssClass(1, 2); %>'> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
                     <asp:Label ID="Label4" runat="server" Text="I just want you back for good"></asp:Label>
                 </div>
-                <div class='theirMessage'> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
+                <div class='<%getCssClass(2, 1); %>'> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
                     <asp:Label ID="Label5" runat="server" Text="Whatever I said, whatever I did, I didn't mean it"></asp:Label>
                 </div>
-                <div class="myMessage"> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
+                <div class='<%getCssClass(1, 2); %>'> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
                     <asp:Label ID="Label6" runat="server" Text="I just want you back for good"></asp:Label>
                 </div>
                 <div class='theirMessage'> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
@@ -101,8 +101,8 @@
                 <ItemTemplate>
                     <div class="conversationBox linkingDiv">
                         <asp:Image ID="imgTheirProfilePic" runat="server" CssClass="theirImage"/>
-                        <asp:Label ID="lblTheirName" runat="server" Text='<%#Eval("Username") %>' CssClass="theirName"></asp:Label>
-                        <asp:Label ID="lblLastMessage" runat="server" Text='<%#Eval("Message") %>' CssClass="lastMessage"></asp:Label>
+                        <asp:Label ID="lblTheirName" runat="server" Text='<%#getUsername2((Eval("SenderName")).ToString(),(Eval("ReceiverName")).ToString());%>' CssClass="theirName"></asp:Label>
+                        <asp:Label ID="lblLastMessage" runat="server" Text='<%#Eval("Content") %>' CssClass="lastMessage"></asp:Label>
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
@@ -111,7 +111,8 @@
 
                     I'm keeping it here as a temporary guide for the visual layout of each conversation summary.
                  -->
-            <div class="conversationWrapper">
+            
+                <div class="conversationWrapper">
                 <a>
                     <div class="conversationBox linkingDiv">
                         <div class="theirImage">
@@ -120,12 +121,14 @@
                         <div class="theirName">
                             Stars Hollow
                         </div>
+                        <asp:Label ID="lblTheirName" runat="server" Text='Respose.Write("");' CssClass="theirName"></asp:Label>
                         <div class="lastMessage">
                             Hi, welcome to our site!
                         </div>
                     </div>
                 </a>
             </div>
+                
         </div>
     </div>
 </asp:Content>
