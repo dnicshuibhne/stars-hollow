@@ -9,6 +9,7 @@ $bgd: white;
 body {
     background-color: white;
     display: block;
+    min-width: 650px;
 }
 
 header {
@@ -37,15 +38,10 @@ section {
 
 aside {
     float: left;
-    width: 200px;
+    width: 250px;
     margin-top: 100px;
     margin-left: 2vw;
     margin-right: 40px;
-}
-#asideBar {
-    background-color: green;
-    padding: 60px 20px;
-    border-radius: 40px;
 }
 
 footer {
@@ -243,7 +239,6 @@ span.validator[style*="inline"]{
     margin-top: 90px;
 }
 
-
 .defaultPgMainForm {
     height: 100vh;
     overflow: hidden;
@@ -255,7 +250,7 @@ span.validator[style*="inline"]{
 }
 
 .mainFormBuffer {
-    height: 33vh;
+    min-height: 33vh;
 }
 .mainFormMiddle {
     height: 34vh;
@@ -290,6 +285,25 @@ span.validator[style*="inline"]{
     margin-right: auto;
     text-align: center; 
 }
+
+#defaultFadeINBG{
+    background-color: red;
+    height: 100vh;
+    z-index: 5;
+    /* IE 10 onwards */ 
+    background-image: -ms-linear-gradient(top, #0BFF03, #FFFFFF);
+    /* Firefox */ 
+    background-image: -moz-linear-gradient(top, #0BFF03, #FFFFFF);
+    /* Opera */ 
+    background-image: -o-linear-gradient(top, #0BFF03 #FFFFFF);
+    /* Safari/Chrome 10 */ 
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(#0BFF03), color-stop(#FFFFFF));
+    /* Chrome 11 onwards */ 
+    background-image: -webkit-linear-gradient(top, #0BFF03, #FFFFFF);
+    /* W3C Markup */ 
+    background-image: linear-gradient(to bottom, #0BFF03, #FFFFFF);
+}
+
 #defaultPgAboutUs{
     background-color: #72B4FF;
     height: 100vh;
@@ -307,10 +321,11 @@ span.validator[style*="inline"]{
     color: white;
     font-size: 30px;
     text-align: center;
+    min-width: 650px;
 }
 
 .defaultCardBuffer {
-    height: 33vh;
+    height:25vh;
 }
 
 .defaultTextBox {
@@ -385,7 +400,7 @@ span.validator[style*="inline"]{
 }
 
 .lastMessage {
-    color: #5C5C5C; /* pale grey */
+    color: #5C5C5C; /* dark grey */
     margin-top: 20px;
     margin-left: 120px;
     font-size: 15px;
@@ -432,6 +447,28 @@ span.validator[style*="inline"]{
     width: 400px;
 }
 
+#resultsAsideWrapper {
+    background-color: #dbdbdb; /* pale grey */
+    padding: 60px 20px;
+    border-top-left-radius: 50px 40px;
+    border-top-right-radius: 50px 40px;
+    border-bottom-left-radius: 50px 40px;
+    border-bottom-right-radius: 50px 40px;
+}
+#resultsAsideInnards{
+    padding: 10px;
+    background-color: white;
+    border-top-left-radius: 5px 4px;
+    border-top-right-radius: 5px 4px;
+    border-bottom-left-radius: 5px 4px;
+    border-bottom-right-radius: 5px 4px;
+}
+
+.resultsAsideBookend {
+    padding: 20px 0px;
+    border-bottom: 1px solid #dbdbdb; /* pale grey */
+}
+
 .resultBox {
     border: 3px solid #824187; /* dark purple */
     border-radius: 40px;
@@ -445,13 +482,10 @@ span.validator[style*="inline"]{
 .resultText {
     margin-left: 120px;
     margin-right: 80px;
-    
-
 }
 
 .resultName {
     font-size: 25px;
-    
 }
 
 .resultLocation {
@@ -473,6 +507,7 @@ span.validator[style*="inline"]{
     width: 30vw;
     margin: auto;
 }
+
 
 .resultsPageNumber {
     margin: 0px 3px;

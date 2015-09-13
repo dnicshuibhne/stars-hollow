@@ -73,10 +73,10 @@
                     <asp:RequiredFieldValidator ID="rfvGender" runat="server" ControlToValidate="ddlGender" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage1"> Please select your Gender</asp:RequiredFieldValidator>
                     <br />  
                         
-                    <asp:Label ID="lblLocation" runat="server" Text="Location "  CssClass="loginControls"></asp:Label>
-                    <asp:TextBox ID="txtLocation" runat="server" CssClass="loginTextBox" ValidationGroup="vgRegisterPage1" ></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="regxvLocation" runat="server" ControlToValidate="txtLocation" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9\s\,\.\-]+" ValidationGroup="vgRegisterPage1"> Your location may only contain the following characters: <br /> [A-Z] [a-z] [0-9] [space] [,] [.] [-]</asp:RegularExpressionValidator>
-                        <asp:RequiredFieldValidator ID="rfvLocation" runat="server" ControlToValidate="txtLocation" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage1"> Required</asp:RequiredFieldValidator>
+                    <asp:Label ID="lblCounty" runat="server" Text="County "></asp:Label>
+                    <asp:TextBox ID="txtCounty" runat="server" CssClass="loginTextBox" ValidationGroup="vgRegisterPage1" ></asp:TextBox>
+                    <asp:RegularExpressionValidator ID="regxvCounty" runat="server" ControlToValidate="txtCounty" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9\s\,\.\-]+" ValidationGroup="vgRegisterPage1"> Your location may only contain the following characters: <br /> [A-Z] [a-z] [0-9] [space] [,] [.] [-]</asp:RegularExpressionValidator>
+                        <asp:RequiredFieldValidator ID="rfvCounty" runat="server" ControlToValidate="txtCounty" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage1"> Required</asp:RequiredFieldValidator>
                     <br />        
                     <br />
                     
@@ -123,6 +123,8 @@
             <div class="mainFormBuffer"></div>
         </div>
     </div>
+
+    <div id="defaultFadeINBG"></div>
 
     <!-- Additional 'information cards' can be inserted as required -->
     

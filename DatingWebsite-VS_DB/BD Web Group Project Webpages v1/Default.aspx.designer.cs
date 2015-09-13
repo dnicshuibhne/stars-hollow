@@ -145,7 +145,7 @@ namespace BD_Web_Group_Project_Webpages_v1 {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label valUserAvail;
+        protected global::System.Web.UI.WebControls.CustomValidator valUserAvail;
         
         /// <summary>
         /// lblIAmA control.
@@ -193,13 +193,13 @@ namespace BD_Web_Group_Project_Webpages_v1 {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvGender;
         
         /// <summary>
-        /// lbCounty control.
+        /// lblCounty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbCounty;
+        protected global::System.Web.UI.WebControls.Label lblCounty;
         
         /// <summary>
         /// txtCounty control.
@@ -211,22 +211,22 @@ namespace BD_Web_Group_Project_Webpages_v1 {
         protected global::System.Web.UI.WebControls.TextBox txtCounty;
         
         /// <summary>
-        /// regxvLocation control.
+        /// regxvCounty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator regxvLocation;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regxvCounty;
         
         /// <summary>
-        /// rfvLocation control.
+        /// rfvCounty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvLocation;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCounty;
         
         /// <summary>
         /// btnContinueReg control.
