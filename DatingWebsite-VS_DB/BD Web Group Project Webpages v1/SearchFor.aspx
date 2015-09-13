@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="cphStarsHollowHead" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphStarsHollowBody" runat="server">
-
+    
     <div class="searchForWrapper">
         <h2 id="pageHeader">Search For...</h2>
         <br />
@@ -30,12 +30,12 @@
                 <asp:DropDownList ID="ddlOrientation" runat="server"></asp:DropDownList>
                 <br />
                 <br />
-                <asp:Label ID="lblEyeColour" runat="server" Text="Eye colour "></asp:Label>
-                <asp:DropDownList ID="ddlEyeColour" runat="server"></asp:DropDownList>
+                <asp:Label ID="lblEyeColor" runat="server" Text="Eye Color "></asp:Label>
+                <asp:DropDownList ID="ddlEyeColor" runat="server"></asp:DropDownList>
                 <br />
                 <br />
-                <asp:Label ID="lblHairColour" runat="server" Text="Hair Colour "></asp:Label>
-                <asp:DropDownList ID="ddlHairColour" runat="server"></asp:DropDownList>
+                <asp:Label ID="lblHairColor" runat="server" Text="Hair Color "></asp:Label>
+                <asp:DropDownList ID="ddlHairColor" runat="server"></asp:DropDownList>
                 <br />
                 <br />
                 <asp:Label ID="lblAge" runat="server" Text="Age "></asp:Label>
@@ -56,7 +56,7 @@
                 <br />
                 <br />
                 <br />
-                <asp:Button ID="btnSearch" runat="server" Text="Search Now" class="blueButton dashboardButton"/>
+                <asp:Button ID="btnSearch" runat="server" Text="Search Now" CssClass="blueButton dashboardButton" OnClick="btnSearch_Click"/>
                 <br />
                 <br />
             </div>

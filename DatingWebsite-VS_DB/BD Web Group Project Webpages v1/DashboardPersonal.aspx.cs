@@ -18,7 +18,7 @@ namespace BD_Web_Group_Project_Webpages_v1
 
         BLLAttributeMngr attManager;
         BLLUserMngr userManager;
-        DataSet attributes;
+        DataTable attributes;
         int userid = 1;//TEST
 
         protected void Page_Load(object sender, EventArgs e)
