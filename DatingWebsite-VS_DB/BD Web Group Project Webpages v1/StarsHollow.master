@@ -40,8 +40,9 @@
     <footer>
         
         <div id="footerLeft">
-            <asp:Menu ID="Menu1" runat="server" Orientation="Vertical" ForeColor="White" Font-Size="13">  
-                <StaticMenuItemStyle VerticalPadding="10px"/>  
+            <h3>Site navigation</h3>
+            <asp:Menu ID="Menu1" runat="server" Orientation="Vertical" ForeColor="White" Font-Size="10">  
+                <StaticMenuItemStyle VerticalPadding="6px"/>  
                 <Items>
                     
                     <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" Value="Home"></asp:MenuItem>
@@ -55,12 +56,18 @@
         
             </asp:Menu> 
         </div>
+        <div id="footerMiddle">
+            <h3>RSS Feeds</h3>
+            <p><a href="RSSHoroscope.aspx" title="RSS Horoscope">Horoscopes</a></p>
+        </div>
         <div id="footerRight">
             <h3>Website created by</h3>
             <p>Doireann Nic Shuibhne</p>
             <p>Claire Delaney</p>
             <p>Stephen Beirne</p>
         </div>
-
+        <div id="footerbottom">
+            Copyright &copy 2015
+        </div>
     </footer>
 </asp:Content>

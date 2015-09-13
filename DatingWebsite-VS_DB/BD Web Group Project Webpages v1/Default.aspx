@@ -45,7 +45,13 @@
         
         <div id="mainFormBox">
             <div class="mainFormBuffer">
-                <asp:Button ID="btnLogin" runat="server" Text="LOGIN" Font-Size="15px" CssClass="blueButton" style="float: right; padding: 1vh 4vw; margin: 20px 30px; position: relative;" OnClick="btnLogin_Click"/>
+                <asp:ScriptManager ID="ScriptManager1" runat="server">
+                    <asp:UpdatePanel runat="server"  UpdateMode="Conditional">
+                        <ContentTemplate>
+                            <asp:Button ID="btnLogin" runat="server" Text="LOGIN" Font-Size="15px" CssClass="blueButton" style="float: right; padding: 1vh 4vw; margin: 20px 30px; position: relative;" OnClick="btnLogin_Click"/>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </asp:ScriptManager>
                 <br />
                 <br />
                 <br />
@@ -73,10 +79,10 @@
                     <asp:RequiredFieldValidator ID="rfvGender" runat="server" ControlToValidate="ddlGender" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage1"> Please select your Gender</asp:RequiredFieldValidator>
                     <br />  
                         
-                    <asp:Label ID="lblLocation" runat="server" Text="Location "  CssClass="loginControls"></asp:Label>
-                    <asp:TextBox ID="txtLocation" runat="server" CssClass="loginTextBox" ValidationGroup="vgRegisterPage1" ></asp:TextBox>
-                    <asp:RegularExpressionValidator ID="regxvLocation" runat="server" ControlToValidate="txtLocation" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9\s\,\.\-]+" ValidationGroup="vgRegisterPage1"> Your location may only contain the following characters: <br /> [A-Z] [a-z] [0-9] [space] [,] [.] [-]</asp:RegularExpressionValidator>
-                        <asp:RequiredFieldValidator ID="rfvLocation" runat="server" ControlToValidate="txtLocation" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage1"> Required</asp:RequiredFieldValidator>
+                    <asp:Label ID="lblCounty" runat="server" Text="County "></asp:Label>
+                    <asp:TextBox ID="txtCounty" runat="server" CssClass="loginTextBox" ValidationGroup="vgRegisterPage1" ></asp:TextBox>
+                    <asp:RegularExpressionValidator ID="regxvCounty" runat="server" ControlToValidate="txtCounty" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9\s\,\.\-]+" ValidationGroup="vgRegisterPage1"> Your location may only contain the following characters: <br /> [A-Z] [a-z] [0-9] [space] [,] [.] [-]</asp:RegularExpressionValidator>
+                        <asp:RequiredFieldValidator ID="rfvCounty" runat="server" ControlToValidate="txtCounty" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage1"> Required</asp:RequiredFieldValidator>
                     <br />        
                     <br />
                     
@@ -124,6 +130,8 @@
         </div>
     </div>
 
+    <div id="defaultFadeInBG"></div>
+
     <!-- Additional 'information cards' can be inserted as required -->
     
     <div id="defaultPgAboutUs">
@@ -154,6 +162,8 @@
         </div>
         <div class="defaultCardBuffer"></div>
     </div>
+
+    <div id="defaultFadeOutBG"></div>
     
     <!-- A final 'empty' div is required to present the registry form once 
         the user has scrolled to the bottom of the page -->
