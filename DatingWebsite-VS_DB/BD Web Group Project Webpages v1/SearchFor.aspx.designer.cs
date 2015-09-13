@@ -121,13 +121,13 @@ namespace BD_Web_Group_Project_Webpages_v1 {
         protected global::System.Web.UI.WebControls.CheckBoxList cblHobbies;
         
         /// <summary>
-        /// lblGender control.
+        /// lblEyeColor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblGender;
+        protected global::System.Web.UI.WebControls.Label lblEyeColor;
         
         /// <summary>
         /// ddlGender control.
@@ -139,13 +139,13 @@ namespace BD_Web_Group_Project_Webpages_v1 {
         protected global::System.Web.UI.WebControls.DropDownList ddlGender;
         
         /// <summary>
-        /// lblOrientation control.
+        /// lblHairColor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblOrientation;
+        protected global::System.Web.UI.WebControls.Label lblHairColor;
         
         /// <summary>
         /// ddlOrientation control.

@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="cphStarsHollowHead" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphStarsHollowBody" runat="server">
-
+    
     <div class="searchForWrapper">
         <h2 id="pageHeader">Search For...</h2>
         <br />
@@ -42,12 +42,12 @@
                 <asp:DropDownList ID="ddlOrientation" runat="server"></asp:DropDownList>
                 <br />
                 <br />
-                <asp:Label ID="lblEyeColour" runat="server" Text="Eye colour "></asp:Label>
-                <asp:DropDownList ID="ddlEyeColour" runat="server"></asp:DropDownList>
+                <asp:Label ID="lblEyeColor" runat="server" Text="Eye Color "></asp:Label>
+                <asp:DropDownList ID="ddlEyeColor" runat="server"></asp:DropDownList>
                 <br />
                 <br />
-                <asp:Label ID="lblHairColour" runat="server" Text="Hair Colour "></asp:Label>
-                <asp:DropDownList ID="ddlHairColour" runat="server"></asp:DropDownList>
+                <asp:Label ID="lblHairColor" runat="server" Text="Hair Color "></asp:Label>
+                <asp:DropDownList ID="ddlHairColor" runat="server"></asp:DropDownList>
                 <br />
                 <br />
                 <asp:Label ID="lblAge" runat="server" Text="Age "></asp:Label>
@@ -58,12 +58,20 @@
                 <asp:DropDownList ID="ddlEthnicity" runat="server"></asp:DropDownList>
                 <br />
                 <br />
-            </fieldset>
-            <br />
-            <br />
-            <asp:Button ID="btnSearch" runat="server" Text="Search Now" class="blueButton dashboardButton"/>
-            <br />
-            <br />
+               <asp:Label ID="lblRelationshipStatus" runat="server" Text="Relationship Status"></asp:Label>
+               <asp:DropDownList ID="ddlRelationshipStatus" runat="server"></asp:DropDownList>
+                <br />
+                <br />
+                <asp:Label ID="lblHobbies" runat="server" Text="Hobbies "></asp:Label>
+                <asp:CheckBoxList ID="cblHobbies" runat="server"></asp:CheckBoxList>
+                <br />
+                <br />
+                <br />
+                <br />
+                <asp:Button ID="btnSearch" runat="server" Text="Search Now" CssClass="blueButton dashboardButton" OnClick="btnSearch_Click"/>
+                <br />
+                <br />
+            </div>
         </section>
     </div>
 </asp:Content>

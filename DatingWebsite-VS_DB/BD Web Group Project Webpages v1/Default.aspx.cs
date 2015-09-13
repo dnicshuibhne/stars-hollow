@@ -17,7 +17,7 @@ namespace BD_Web_Group_Project_Webpages_v1
         BLLUserMngr userManager;
         public UserModel user;
         BLLAttributeMngr attManager;
-        DataSet attributes;
+        DataTable attributes;
 
         protected void Page_Load(object sender, EventArgs e)
         {

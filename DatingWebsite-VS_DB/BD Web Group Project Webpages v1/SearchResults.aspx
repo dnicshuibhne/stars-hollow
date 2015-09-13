@@ -5,51 +5,51 @@
 
 
     <aside>
-        <div id="resultsAsideWrapper">
-            <div id="resultsAsideInnards">
-                <h5 class="resultsAsideBookend">New Search</h5>
-                <br />
-                <asp:Label ID="lblTown" runat="server" Text="Town "></asp:Label>
-                <asp:TextBox ID="txtTown" runat="server"></asp:TextBox>
-                <asp:RegularExpressionValidator ID="regxvLocation" runat="server" ControlToValidate="txtTown" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9\s\,\.\-]+" ValidationGroup="vgRegisterPage1"><br /> Location may only contain the following characters: <br /> [A-Z] [a-z] [0-9] [space] [,] [.] [-]</asp:RegularExpressionValidator>
-                <br />
-                <br />
-                <asp:Label ID="County" runat="server" Text="County "></asp:Label>
-                <asp:DropDownList ID="ddlCounty" runat="server"></asp:DropDownList>
-                <br />
-                <br />
-                <asp:Label ID="lblProfesssion" runat="server" Text="Profession "></asp:Label>
-                <asp:TextBox ID="txtProfession" runat="server"></asp:TextBox>
-                <asp:RegularExpressionValidator ID="regxvProfession" runat="server" ControlToValidate="txtProfession" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z\s\-]+" ValidationGroup="vgRegisterPage1"><br /> Profession may only contain the following characters: <br /> [A-Z] [a-z] [space] [-]</asp:RegularExpressionValidator>
-                <br />
-                <br />
-                <asp:Label ID="lblGender" runat="server" Text="Gender "></asp:Label>
-                <asp:DropDownList ID="ddlGender" runat="server"></asp:DropDownList>
-                <br />
-                <br />
+        <h5 id="asideheader">New Search</h5>
+        <br />
+        <asp:Label ID="lblTown" runat="server" Text="Town "></asp:Label>
+        <asp:TextBox ID="txtTown" runat="server"></asp:TextBox>
+        <asp:RegularExpressionValidator ID="regxvLocation" runat="server" ControlToValidate="txtTown" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9\s\,\.\-]+" ValidationGroup="vgRegisterPage1"><br /> Location may only contain the following characters: <br /> [A-Z] [a-z] [0-9] [space] [,] [.] [-]</asp:RegularExpressionValidator>
+        <br />
+        <br />
+        <asp:Label ID="County" runat="server" Text="County "></asp:Label>
+        <asp:DropDownList ID="ddlCounty" runat="server"></asp:DropDownList>
+        <br />
+        <br />
+        <asp:Label ID="lblProfesssion" runat="server" Text="Profession "></asp:Label>
+        <asp:TextBox ID="txtProfession" runat="server"></asp:TextBox>
+        <asp:RegularExpressionValidator ID="regxvProfession" runat="server" ControlToValidate="txtProfession" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z\s\-]+" ValidationGroup="vgRegisterPage1"><br /> Profession may only contain the following characters: <br /> [A-Z] [a-z] [space] [-]</asp:RegularExpressionValidator>
+        <br />
+        <br />
+        <asp:Label ID="lblGender" runat="server" Text="Gender "></asp:Label>
+        <asp:DropDownList ID="ddlGender" runat="server"></asp:DropDownList>
+        <br />
+        <br />
 
-                <asp:Label ID="lblOrientation" runat="server" Text="Orientation "></asp:Label>
-                <asp:DropDownList ID="ddlOrientation" runat="server"></asp:DropDownList>
-                <br />
-                <br />
-                <asp:Label ID="lblEyeColour" runat="server" Text="Eye colour "></asp:Label>
-                <asp:DropDownList ID="ddlEyeColour" runat="server"></asp:DropDownList>
-                <br />
-                <br />
-                <asp:Label ID="lblHairColour" runat="server" Text="Hair Colour "></asp:Label>
-                <asp:DropDownList ID="ddlHairColour" runat="server"></asp:DropDownList>
-                <br />
-                <br />
-                <asp:Label ID="lblAge" runat="server" Text="Age "></asp:Label>
-                <asp:DropDownList ID="ddlAge" runat="server"></asp:DropDownList>
-                <br />
-                <br />
-                <br />
-                <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="blueButton"/>
-                <br />
-                <br />
-            </div>
-        </div>
+        <asp:Label ID="lblOrientation" runat="server" Text="Orientation "></asp:Label>
+        <asp:DropDownList ID="ddlOrientation" runat="server"></asp:DropDownList>
+        <br />
+        <br />
+        <asp:Label ID="lblEyeColour" runat="server" Text="Eye colour "></asp:Label>
+        <asp:DropDownList ID="ddlEyeColour" runat="server"></asp:DropDownList>
+        <br />
+        <br />
+        <asp:Label ID="lblHairColour" runat="server" Text="Hair Colour "></asp:Label>
+        <asp:DropDownList ID="ddlHairColour" runat="server"></asp:DropDownList>
+        <br />
+        <br />
+        <asp:Label ID="lblAge" runat="server" Text="Age "></asp:Label>
+        <asp:DropDownList ID="ddlAge" runat="server"></asp:DropDownList>
+        <br />
+        <br />
+        <asp:Label ID="lblHobbies" runat="server" Text="Hobbies "></asp:Label>
+        <asp:CheckBoxList ID="cblHobbies" runat="server"></asp:CheckBoxList>
+        <br />
+        <br />
+        <br />
+        <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="blueButton"/>
+        <br />
+        <br />
     </aside>
     <div id="bodyContents">
         <h2 id="pageHeader">Search Results</h2>
@@ -69,9 +69,9 @@
             <div class="contentWrapper">
                 <asp:Repeater ID="rptResults" runat="server">
                     <ItemTemplate>
-                        <a>
+                        <a href='ViewMatchProfile.aspx?<%#Eval("Username") %>'>
                             <div class="resultsBox linkingDiv">
-                                <asp:Image ID="imgProfilePic" runat="server" CssClass="resultImage"/>
+                                <asp:Image ID="imgProfilePic" runat="server" CssClass="resultImage" />
                                 <div class="resultText">
                                     <asp:Label ID="lblName" runat="server" Text='<%#Eval("Username") %>' CssClass="resultName"></asp:Label>
                                     <asp:Label ID="lblLocation" runat="server" Text='<%#Eval("Location") %>' CssClass="resultLocation"></asp:Label>
@@ -85,7 +85,7 @@
             </div>
 
             <!-- Demonstration of appearance and layout -->
-            <!-- TODO: delete this when repeater is functioning -->
+            <!-- TODO: delete this when repeater is functioning
 
             <div class="contentWrapper">
                 <a>
@@ -99,7 +99,7 @@
                         </div>
                     </div>
                 </a>
-            </div>
+            </div> -->
 
             <!-- Bottom panel -->
             <div class="contentWrapper">

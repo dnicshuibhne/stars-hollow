@@ -39,6 +39,36 @@ namespace DAL
                 {
                     adapter.SelectCommand = new SqlCommand(procname, con);
                     adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    adapter.SelectCommand.Parameters.Add("@userID", SqlDbType.Int).Value = userID;
+
+                    con.Open();
+
+                    int rowsAffected = adapter.Fill(data);
+
+                    if (rowsAffected < 1)
+                    {
+                        throw new Exception("Error Retrieving Messages");
+                    }
+
+                    con.Close();
+                }
+            }
+
+            return data.Tables[0];
+        }
+
+
+        public DataTable getMessagesTest(int userID)
+        {
+            DataSet data = new DataSet();
+            string sql = "Select * from Messages Where SenderID=\'"+userID+"\'";
+
+            using (SqlConnection con = new SqlConnection(conString))
+            {
+                using (SqlDataAdapter adapter = new SqlDataAdapter())
+                {
+                    adapter.SelectCommand = new SqlCommand(sql, con);
+                    adapter.SelectCommand.CommandType = CommandType.Text;
 
                     con.Open();
 

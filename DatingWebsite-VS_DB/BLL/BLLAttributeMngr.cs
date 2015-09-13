@@ -14,32 +14,40 @@ namespace BLL
     {
         /* Attribute Table Names */
 
-        private DALAttributeMngr DalAttributeMngr; // Database Access Layer Manager
+        private DALAttributeMngr attributeManager; // Database Access Layer Manager
+        private DataTable attributes;
+        public DataTable Attributes { get { return attributes; } }
 
         /* Constructor - Intialise Database Access Layer*/
         public BLLAttributeMngr()
         {
-            DalAttributeMngr = new DALAttributeMngr();
+            attributeManager = new DALAttributeMngr();
+            attributes = attributeManager.Attributes;
+        }
+
+        private DataTable GetAttributeSubTable(String TableName)
+        {
+            return attributes.Select(Resources.ATTRIBUTE_VIEW_ATTRIBUTE_COLUMN + "=" + TableName)[0].Table; 
         }
 
         /*Methods to individually retrieve specific attributes*/
-        public DataSet BLLGetAgeRange() { return DalAttributeMngr.DALGetAttribute(Resources.AGE_RANGE_TABLE); }
-        public DataSet BLLGetBuild() { return DalAttributeMngr.DALGetAttribute(Resources.BUILD_TABLE); }
-        public DataSet BLLGetEyeColor() { return DalAttributeMngr.DALGetAttribute(Resources.EYE_COLOR_TABLE); }
-        public DataSet BLLGetGenders() { return DalAttributeMngr.DALGetAttribute(Resources.GENDER_TABLE); }
-        public DataSet BLLGetHairColor() { return DalAttributeMngr.DALGetAttribute(Resources.HAIR_COLOR_TABLE); }
-        public DataSet BLLGetHeight() { return DalAttributeMngr.DALGetAttribute(Resources.HEIGHT_TABLE); }
-        public DataSet BLLGetHobbies() { return DalAttributeMngr.DALGetAttribute(Resources.HOBBIES_TABLE); }
-        public DataSet BLLGetSexualOrientation() { return DalAttributeMngr.DALGetAttribute(Resources.SEXUAL_ORIENTATION_TABLE); }
-        public DataSet BLLGetEthnicity() { return DalAttributeMngr.DALGetAttribute(Resources.ETHNICITY_TABLE); }
-        public DataSet BLLGetRelationshipStatus() { return DalAttributeMngr.DALGetAttribute(Resources.RELATIONSHIP_STATUS_TABLE); }
-        public DataSet BLLGetCounty() { return DalAttributeMngr.DALGetAttribute(Resources.COUNTY_TABLE); }
+        public DataTable BLLGetAgeRange() { return GetAttributeSubTable(Resources.AGE_RANGE_TABLE); }
+        public DataTable BLLGetBuild() { return GetAttributeSubTable(Resources.AGE_RANGE_TABLE); }
+        public DataTable BLLGetEyeColor() { return GetAttributeSubTable(Resources.EYE_COLOR_TABLE); }
+        public DataTable BLLGetGenders() { return GetAttributeSubTable(Resources.GENDER_TABLE); }
+        public DataTable BLLGetHairColor() { return GetAttributeSubTable(Resources.HAIR_COLOR_TABLE); }
+        public DataTable BLLGetHeight() { return GetAttributeSubTable(Resources.HEIGHT_TABLE); }
+        public DataTable BLLGetHobbies() { return GetAttributeSubTable(Resources.HOBBIES_TABLE); }
+        public DataTable BLLGetSexualOrientation() { return GetAttributeSubTable(Resources.SEXUAL_ORIENTATION_TABLE); }
+        public DataTable BLLGetEthnicity() { return GetAttributeSubTable(Resources.ETHNICITY_TABLE); }
+        public DataTable BLLGetRelationshipStatus() { return GetAttributeSubTable(Resources.RELATIONSHIP_STATUS_TABLE); }
+        public DataTable BLLGetCounty() { return GetAttributeSubTable(Resources.COUNTY_TABLE); }
         /* 
          * Method to return all attributes and their values
          */
         //public Dictionary<string, List<string>> BLLGetAllAttributes()
         //{
-        //    DataTable dt = DalAttributeMngr.DALGetAllAttributes();
+        //    DataTable dt = attributeManager.DALGetAllAttributes();
 
         //    Dictionary<string,List<string>> attributes;
         //    attributes = new Dictionary<string, List<string>>();

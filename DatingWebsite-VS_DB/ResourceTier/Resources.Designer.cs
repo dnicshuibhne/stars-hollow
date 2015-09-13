@@ -106,6 +106,15 @@ namespace ResourceTier {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attribute.
+        /// </summary>
+        public static string ATTRIBUTE_VIEW_ATTRIBUTE_COLUMN {
+            get {
+                return ResourceManager.GetString("ATTRIBUTE_VIEW_ATTRIBUTE_COLUMN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Build.
         /// </summary>
         public static string BUILD_COLUMN {
@@ -165,6 +174,15 @@ namespace ResourceTier {
         public static string COUNTY_TABLE {
             get {
                 return ResourceManager.GetString("COUNTY_TABLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DatingDB.
+        /// </summary>
+        public static string CS_NAME {
+            get {
+                return ResourceManager.GetString("CS_NAME", resourceCulture);
             }
         }
         
@@ -471,6 +489,15 @@ namespace ResourceTier {
         public static string SEXUAL_ORIENTATION_TABLE {
             get {
                 return ResourceManager.GetString("SEXUAL_ORIENTATION_TABLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Town.
+        /// </summary>
+        public static string TOWN_COLUMN {
+            get {
+                return ResourceManager.GetString("TOWN_COLUMN", resourceCulture);
             }
         }
         

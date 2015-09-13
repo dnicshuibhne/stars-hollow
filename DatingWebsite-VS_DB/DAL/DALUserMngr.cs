@@ -14,20 +14,18 @@ using ResourceTier;
 
 namespace DAL //Data Access Layer
 {
+    /* DO NOT CHANGE UNLESS YOU MATCH POSITION TO STORED PROCEDURE FIRST!!! */
     enum UserProfile { User, Email, Town,County, Profession, EyeColor, HairColor, Age, Gender,RelationshipStatus,Ethnicity, SexualOrientation, Build, Height, PicturePath, IdealDate,Comment }
  
     /* User Manager Contains methods for creating and authenticating (log in) users */
     public class DALUserMngr
     {
-        private const string CS_NAME = "DatingDB";
-        //private const string USER_INFORMATION_TABLE = "UserInformation";
-
         private string conString;
 
         /* Constructor  - loads connection string from config file */
         public DALUserMngr()
         {
-            conString = ConfigurationManager.ConnectionStrings[CS_NAME].ConnectionString;
+            conString = ConfigurationManager.ConnectionStrings[Resources.CS_NAME].ConnectionString;
         }
 
         /* 
@@ -139,35 +137,6 @@ namespace DAL //Data Access Layer
             }
         }
 
-        public void addUserInformation(int userID, string town, string county, string prof, string eye, string hair, string status,string ethnicity, string gender, string orientation, string build, string height, int age,string idealdate, string comment)
-        { 
-            String proc = "uspAddAllUserDetails";
-
-            using (SqlConnection con = new SqlConnection(conString))
-            {
-                using (SqlCommand cmd = new SqlCommand(proc, con))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    cmd.Parameters.Add(Resources.USERID_PARAM, SqlDbType.Int).Value = userID;
-                    cmd.Parameters.Add(Resources.PROFESSION_PARAM, SqlDbType.NVarChar).Value = prof;
-                    cmd.Parameters.Add(Resources.TOWN_PARAM, SqlDbType.NVarChar).Value = town;
-                    cmd.Parameters.Add(Resources.COUNTY_PARAM, SqlDbType.NVarChar).Value = county;
-                    cmd.Parameters.Add(Resources.GENDER_PARAM, SqlDbType.NVarChar).Value = gender;
-                    cmd.Parameters.Add(Resources.SEXUAL_ORIENTATION_PARAM, SqlDbType.NVarChar).Value = orientation;
-                    cmd.Parameters.Add(Resources.AGE_PARAM, SqlDbType.Int).Value = age;
-                    cmd.Parameters.Add(Resources.ETHNICITY_PARAM, SqlDbType.NVarChar).Value =ethnicity;
-                    cmd.Parameters.Add(Resources.RELATIONSHIP_STATUS_PARAM, SqlDbType.NVarChar).Value = status;
-                    cmd.Parameters.Add(Resources.HAIR_COLOR_PARAM, SqlDbType.NVarChar).Value = hair;
-                    cmd.Parameters.Add(Resources.EYE_COLOR_PARAM, SqlDbType.NVarChar).Value = eye;
-                    cmd.Parameters.Add(Resources.HEIGHT_PARAM, SqlDbType.NVarChar).Value = height;
-                    cmd.Parameters.Add(Resources.BUILD_PARAM, SqlDbType.NVarChar).Value = build;
-                    cmd.Parameters.Add(Resources.IDEAL_DATE_PARAM, SqlDbType.NVarChar).Value = idealdate;
-                    cmd.Parameters.Add(Resources.COMMENT_PARAM, SqlDbType.NVarChar).Value = comment;
-               }
-            }
-        }
-
 
         public void updateUser(UserModel user)
         {
@@ -208,12 +177,21 @@ namespace DAL //Data Access Layer
                         cmd.Parameters.Add(Resources.RELATIONSHIP_STATUS_PARAM, SqlDbType.NVarChar).Value = user.RelationshipStatus;
                     if (user.IdealDate != null)
                         cmd.Parameters.Add(Resources.IDEAL_DATE_PARAM, SqlDbType.NVarChar).Value = user.IdealDate;
-                       if (user.Comment != null)
+                    if (user.Comment != null)
                         cmd.Parameters.Add(Resources.COMMENT_PARAM, SqlDbType.NVarChar).Value = user.Comment;
-                    con.Open();
-                    int rowsAffected = cmd.ExecuteNonQuery();
-                    con.Close();
-                     
+                    try
+                    {
+                        con.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw;
+                    }
+                    finally
+                    {
+                        con.Close();
+                    }
                 }
             }
         }
@@ -235,8 +213,6 @@ namespace DAL //Data Access Layer
                         reader = cmd.ExecuteReader();
                         if(reader.Read())
                         {
-                          
-
                             user = new UserModel();
                             user.ID = id;
                             int i = (int)UserProfile.User;

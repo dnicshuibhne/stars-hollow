@@ -137,6 +137,10 @@
     <value>AgeRange</value>
     <comment>TABLE</comment>
   </data>
+  <data name="ATTRIBUTE_VIEW_ATTRIBUTE_COLUMN" xml:space="preserve">
+    <value>Attribute</value>
+    <comment>VIEW_COLUMN</comment>
+  </data>
   <data name="BUILD_COLUMN" xml:space="preserve">
     <value>Build</value>
     <comment>COLUMN</comment>
@@ -164,6 +168,10 @@
   <data name="COUNTY_TABLE" xml:space="preserve">
     <value>County</value>
     <comment>TABLE</comment>
+  </data>
+  <data name="CS_NAME" xml:space="preserve">
+    <value>DatingDB</value>
+    <comment>CONNECTION STRING</comment>
   </data>
   <data name="EMAIL_PARAM" xml:space="preserve">
     <value>@email</value>
@@ -300,6 +308,10 @@
   <data name="SEXUAL_ORIENTATION_TABLE" xml:space="preserve">
     <value>SexualOrientation</value>
     <comment>TABLE</comment>
+  </data>
+  <data name="TOWN_COLUMN" xml:space="preserve">
+    <value>Town</value>
+    <comment>COLUMN</comment>
   </data>
   <data name="TOWN_PARAM" xml:space="preserve">
     <value>@town</value>
