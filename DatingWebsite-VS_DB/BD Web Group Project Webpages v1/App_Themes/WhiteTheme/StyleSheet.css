@@ -48,21 +48,25 @@ footer {
     clear: both;
     position: relative;
     z-index: 10;
-    min-height: 350px;
-    margin-top: -3em;
+    min-height: 260px;
+    margin-top: -1em;
     background: #414141; /* grey */
     color: white;
 }
 #footerLeft {
     float: left;
-    margin-top: 30px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 5px;
     margin-left: 15vw;
+}
+
+#footerLeft h3 {
+    font-size: 19px;
 }
 #footerRight {
     float: right;
-    margin-top: 30px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 5px;
     margin-right: 15vw;
     line-height: 30px;
     text-align: right;
@@ -70,6 +74,29 @@ footer {
 
 #footerRight h3 {
     font-size: 19px;
+}
+
+#footerMiddle{
+    float: left;
+    margin-left: 15vw;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-right: 15vw;
+    line-height: 30px;
+}
+#footerMiddle a {
+    color: white;
+}
+#footerMiddle h3{
+    font-size: 19px;
+}
+
+#footerbottom{
+    clear: both;
+    display:block;
+    font-size: 12px;
+    text-align: center;
+    padding: 20px;
 }
 
 legend {
@@ -562,4 +589,14 @@ span.validator[style*="inline"]{
     border-radius: 40px;
     padding: 10px;
     margin: 30px 0px;
+}
+
+/* RSS styles */
+#rss{
+    margin: auto;
+    padding: 40px;
+    width: 450px;
+    display: block;
+    background-color: white;
+    border-radius: 20px;
 }
