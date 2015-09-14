@@ -42,7 +42,6 @@
   <ItemGroup>
     <Compile Include="DALAttributeMngr.cs" />
     <Compile Include="DALMessageMngr.cs" />
-    <Compile Include="DALSearchMngr.cs" />
     <Compile Include="DALUserMngr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

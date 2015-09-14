@@ -125,22 +125,6 @@
     <value>@age</value>
     <comment>PARAM</comment>
   </data>
-  <data name="AGE_RANGE_1" xml:space="preserve">
-    <value>18-25</value>
-    <comment>AGE_RANGE</comment>
-  </data>
-  <data name="AGE_RANGE_2" xml:space="preserve">
-    <value>26-32</value>
-    <comment>AGE_RANGE</comment>
-  </data>
-  <data name="AGE_RANGE_3" xml:space="preserve">
-    <value>33-39</value>
-    <comment>AGE_RANGE</comment>
-  </data>
-  <data name="AGE_RANGE_4" xml:space="preserve">
-    <value>40+</value>
-    <comment>AGE_RANGE</comment>
-  </data>
   <data name="AGE_RANGE_COLUMN" xml:space="preserve">
     <value>AgeRange</value>
     <comment>COLUMN</comment>
@@ -152,14 +136,6 @@
   <data name="AGE_RANGE_TABLE" xml:space="preserve">
     <value>AgeRange</value>
     <comment>TABLE</comment>
-  </data>
-  <data name="ATTRIBUTE_VIEW_ATTRIBUTE_COLUMN" xml:space="preserve">
-    <value>Attribute</value>
-    <comment>VIEW_COLUMN</comment>
-  </data>
-  <data name="ATTRIBUTE_VIEW_VALUE_COLUMN1" xml:space="preserve">
-    <value>Attribute_Value</value>
-    <comment>VIEW_COLUMN</comment>
   </data>
   <data name="BUILD_COLUMN" xml:space="preserve">
     <value>Build</value>
@@ -188,10 +164,6 @@
   <data name="COUNTY_TABLE" xml:space="preserve">
     <value>County</value>
     <comment>TABLE</comment>
-  </data>
-  <data name="CS_NAME" xml:space="preserve">
-    <value>DatingDB</value>
-    <comment>CONNECTION STRING</comment>
   </data>
   <data name="EMAIL_PARAM" xml:space="preserve">
     <value>@email</value>
@@ -328,10 +300,6 @@
   <data name="SEXUAL_ORIENTATION_TABLE" xml:space="preserve">
     <value>SexualOrientation</value>
     <comment>TABLE</comment>
-  </data>
-  <data name="TOWN_COLUMN" xml:space="preserve">
-    <value>Town</value>
-    <comment>COLUMN</comment>
   </data>
   <data name="TOWN_PARAM" xml:space="preserve">
     <value>@town</value>
