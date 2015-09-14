@@ -20,8 +20,13 @@ namespace BD_Web_Group_Project_Webpages_v1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            int userID = 1; //get from session
-            user = new UserModel(userID, "username", "password");// get from seesion or DB
+            /* check if logged in*/
+            user = (UserModel)Session[Resources.USER_SESSION_STATE];
+            if (user == null || user.ID < 1)
+            {
+                Response.Redirect("Default.aspx", true);
+            }
+
             //messageManager = new BLLMessageMngr(user.ID);
             //getMessages();
         }

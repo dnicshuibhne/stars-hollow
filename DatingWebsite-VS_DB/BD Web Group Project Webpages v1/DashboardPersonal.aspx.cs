@@ -18,98 +18,100 @@ namespace BD_Web_Group_Project_Webpages_v1
 
         BLLAttributeMngr attManager;
         BLLUserMngr userManager;
-        DataSet attributes;
-        int userid = 1;//TEST
+        List<string> attributes;
+        UserModel user;
+        DataTable hobbies;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //HttpCookie cookie = Response.Cookies.Get(Resources.USER_COOKIE);
-            UserModel user;
-            //if (cookie == null)
-            //{
-            //    Response.Redirect("Default.aspx", true);
-            //}
-            //string c = cookie.Value;
-            //int i = int.Parse(c);
-            //if (i > 0)
-            //{
-            //    Response.Redirect("Default.aspx", true);
-            //}
-            //else
-            //{
-                 /*Retrieve and load the values of each attribute*/
+            /* check if logged in*/
+            user = (UserModel)Session[Resources.USER_SESSION_STATE];
+            if (user == null || user.ID < 1)
+            {
+                Response.Redirect("Default.aspx", true);
+            }
+            else
+            {
+                /*Retrieve and load the values of each attribute*/
                 attManager = new BLLAttributeMngr();
                 userManager = new BLLUserMngr();
-            //    user = userManager.getUser(int.Parse(cookie["ID"]));
+                //    user = userManager.getUser(int.Parse(cookie["ID"]));
+                hobbies = attManager.BLLGetHobbies();
+
                 user = userManager.getUser(userid);
 
-                txtTown.Text = user.Town;
-                txtProfession.Text = user.Profession;
-                txtComment.Text = user.Comment;
-                txtIdealDate.Text = user.IdealDate;
                 txtAge.Text = user.Age.ToString();
+                txtIdealDate.Text = user.IdealDate;
+                txtProfession.Text = user.Profession;
+                txtTown.Text = user.Town;
+                //txtComment.Text = user.Comment;
 
+
+                attributes = attManager.BLLGetBuild();
+                ddlBuild.DataSource = attributes;
+                ddlBuild.DataBind();
+                ddlBuild.Items.FindByValue(user.Build).Selected = true;
 
                 attributes = attManager.BLLGetCounty();
                 ddlCounty.DataSource = attributes;
-                ddlCounty.DataTextField = Resources.COUNTY_COLUMN;
+                //ddlCounty.DataTextField = Resources.COUNTY_TABLE;
                 ddlCounty.DataBind();
                 ddlCounty.Items.FindByValue(user.County).Selected = true;
 
+                attributes = attManager.BLLGetEthnicity();
+                ddlEthnicity.DataSource = attributes;
+                //ddlEthnicity.DataTextField = Resources.ETHNICITY_TABLE;
+                ddlEthnicity.DataBind();
+                ddlEthnicity.Items.FindByValue(user.Ethnicity).Selected = true;
+
                 attributes = attManager.BLLGetEyeColor();
                 ddlEyeColor.DataSource = attributes;
-                ddlEyeColor.DataTextField = Resources.EYE_COLOR_COLUMN;
+                //ddlEyeColor.DataTextField = Resources.EYE_COLOR_TABLE;
                 ddlEyeColor.DataBind();
                 ddlEyeColor.Items.FindByValue(user.EyeColor).Selected = true;
 
                 attributes = attManager.BLLGetGenders();
                 ddlGender.DataSource = attributes;
-                ddlGender.DataTextField = Resources.GENDER_COLUMN;
+                //ddlGender.DataTextField = Resources.GENDER_TABLE;
                 ddlGender.DataBind();
                 ddlGender.Items.FindByValue(user.Gender).Selected = true;
 
                 attributes = attManager.BLLGetHairColor();
                 ddlHairColor.DataSource = attributes;
-                ddlHairColor.DataTextField = Resources.HAIR_COLOR_COLUMN;
+                //ddlHairColor.DataTextField = Resources.HAIR_COLOR_TABLE;
                 ddlHairColor.DataBind();
                 ddlHairColor.Items.FindByValue(user.HairColor).Selected = true;
 
-                attributes = attManager.BLLGetSexualOrientation();
-                ddlOrientation.DataSource = attributes;
-                ddlOrientation.DataTextField = Resources.SEXUAL_ORIENTATION_COLUMN;
-                ddlOrientation.DataBind();
-                ddlOrientation.Items.FindByValue(user.SexualOrientation).Selected = true;
-
+                attributes = attManager.BLLGetHeight();
+                ddlHeight.DataSource = attributes;
+                ddlHeight.DataBind();
+                ddlHeight.Items.FindByValue(user.Height).Selected = true;
 
                 attributes = attManager.BLLGetRelationshipStatus();
                 ddlRelationshipStatus.DataSource = attributes;
-                ddlRelationshipStatus.DataTextField = Resources.RELATIONSHIP_STATUS_COLUMN;
+                //ddlRelationshipStatus.DataTextField = Resources.RELATIONSHIP_STATUS_TABLE;
                 ddlRelationshipStatus.DataBind();
                 ddlRelationshipStatus.Items.FindByValue(user.RelationshipStatus).Selected = true;
 
+                attributes = attManager.BLLGetSexualOrientation();
+                ddlOrientation.DataSource = attributes;
+                //ddlOrientation.DataTextField = Resources.SEXUAL_ORIENTATION_TABLE;
+                ddlOrientation.DataBind();
+                ddlOrientation.Items.FindByValue(user.SexualOrientation).Selected = true;
 
-                attributes = attManager.BLLGetEthnicity();
-                ddlEthnicity.DataSource = attributes;
-                ddlEthnicity.DataTextField = Resources.ETHNICITY_COLUMN;
-                ddlEthnicity.DataBind();
-                ddlEthnicity.Items.FindByValue(user.Ethnicity).Selected = true;
-
-
-                attributes = attManager.BLLGetHobbies();
-                cblHobbies.DataSource = attributes;
+                cblHobbies.DataSource = hobbies;
                 cblHobbies.DataValueField = Resources.HOBBIES_ID_COLUMN;
                 cblHobbies.DataTextField = Resources.HOBBIES_NAME_COLUMN;
                 cblHobbies.DataBind();
-                //foreach(int i in user.Hobbies)
-                //{
-                //    cblHobbies.Items[i].Selected = true;
-                //}
-            //}
+                foreach (int i in user.Hobbies)
+                {
+                    cblHobbies.Items[i].Selected = true;
+                }
+            }
         }
 
         protected void btnUpdateDetails_Click(object sender, EventArgs e)
         {
-            UserModel user = new UserModel();
             user.Town = txtTown.Text;
             user.County = ddlCounty.Text;
             user.Profession = txtProfession.Text;

@@ -85,18 +85,15 @@ namespace BD_Web_Group_Project_Webpages_v1
             loginPage1.Visible = true;
         }
 
-        private void setLogin(int id, string username)
+        public void setLogin(int id, string username)
         {
-            HttpCookie cookie = new HttpCookie(Resources.USER_COOKIE, id.ToString());
-            //cookie.Values.Add("ID", id.ToString());
-            //cookie.Values.Add("username", username);
-            cookie.Expires = DateTime.Now.AddMinutes(30);
-            Response.Cookies.Add(cookie);
+            UserModel user = userManager.getUser(id);
+            Session.Add(Resources.USER_SESSION_STATE, user);
         }
 
         private void setLogout()
         {
-            Response.Cookies.Remove(Resources.USER_COOKIE);
+            Session.Remove(Resources.USER_SESSION_STATE);
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
