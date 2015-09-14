@@ -14,20 +14,38 @@ using ResourceTier;
 
 namespace DAL //Data Access Layer
 {
-    enum UserProfile { User, Email, Town,County, Profession, EyeColor, HairColor, Age, Gender,RelationshipStatus,Ethnicity, SexualOrientation, Build, Height, PicturePath, IdealDate,Comment }
- 
+    /* DO NOT CHANGE UNLESS YOU MATCH POSITION TO STORED PROCEDURE FIRST!!! */
+    enum UserProfile
+    {
+        User,
+        Email,
+        Age,
+        AgeRange,
+        Build,
+        County,
+        Ethnicity,
+        EyeColor,
+        Gender,
+        HairColor,
+        Height,
+        Hobbies,
+        IdealDate,
+        RelationshipStatus,
+        Profession,
+        SexualOrientation,
+        Town,
+        ProfilePicturePath,
+        Comments
+    }
     /* User Manager Contains methods for creating and authenticating (log in) users */
     public class DALUserMngr
     {
-        private const string CS_NAME = "DatingDB";
-        //private const string USER_INFORMATION_TABLE = "UserInformation";
-
         private string conString;
 
         /* Constructor  - loads connection string from config file */
         public DALUserMngr()
         {
-            conString = ConfigurationManager.ConnectionStrings[CS_NAME].ConnectionString;
+            conString = ConfigurationManager.ConnectionStrings[Resources.CS_NAME].ConnectionString;
         }
 
         /* 
@@ -208,12 +226,21 @@ namespace DAL //Data Access Layer
                         cmd.Parameters.Add(Resources.RELATIONSHIP_STATUS_PARAM, SqlDbType.NVarChar).Value = user.RelationshipStatus;
                     if (user.IdealDate != null)
                         cmd.Parameters.Add(Resources.IDEAL_DATE_PARAM, SqlDbType.NVarChar).Value = user.IdealDate;
-                       if (user.Comment != null)
+                    if (user.Comment != null)
                         cmd.Parameters.Add(Resources.COMMENT_PARAM, SqlDbType.NVarChar).Value = user.Comment;
-                    con.Open();
-                    int rowsAffected = cmd.ExecuteNonQuery();
-                    con.Close();
-                     
+                    try
+                    {
+                        con.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                    }
+                    catch (SqlException e)
+                    {
+                        throw;
+                    }
+                    finally
+                    {
+                        con.Close();
+                    }
                 }
             }
         }

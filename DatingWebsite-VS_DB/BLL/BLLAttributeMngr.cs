@@ -14,55 +14,48 @@ namespace BLL
     {
         /* Attribute Table Names */
 
-        private DALAttributeMngr DalAttributeMngr; // Database Access Layer Manager
+        private DALAttributeMngr attributeManager; // Database Access Layer Manager
+        private DataTable attributes;
+        public DataTable Attributes { get { return attributes; } }
 
         /* Constructor - Intialise Database Access Layer*/
         public BLLAttributeMngr()
         {
-            DalAttributeMngr = new DALAttributeMngr();
+            attributeManager = new DALAttributeMngr();
+            attributes = attributeManager.Attributes;
         }
 
-        /*Methods to individually retrieve specific attributes*/
-        public DataSet BLLGetAgeRange() { return DalAttributeMngr.DALGetAttribute(Resources.AGE_RANGE_TABLE); }
-        public DataSet BLLGetBuild() { return DalAttributeMngr.DALGetAttribute(Resources.BUILD_TABLE); }
-        public DataSet BLLGetEyeColor() { return DalAttributeMngr.DALGetAttribute(Resources.EYE_COLOR_TABLE); }
-        public DataSet BLLGetGenders() { return DalAttributeMngr.DALGetAttribute(Resources.GENDER_TABLE); }
-        public DataSet BLLGetHairColor() { return DalAttributeMngr.DALGetAttribute(Resources.HAIR_COLOR_TABLE); }
-        public DataSet BLLGetHeight() { return DalAttributeMngr.DALGetAttribute(Resources.HEIGHT_TABLE); }
-        public DataSet BLLGetHobbies() { return DalAttributeMngr.DALGetAttribute(Resources.HOBBIES_TABLE); }
-        public DataSet BLLGetSexualOrientation() { return DalAttributeMngr.DALGetAttribute(Resources.SEXUAL_ORIENTATION_TABLE); }
-        public DataSet BLLGetEthnicity() { return DalAttributeMngr.DALGetAttribute(Resources.ETHNICITY_TABLE); }
-        public DataSet BLLGetRelationshipStatus() { return DalAttributeMngr.DALGetAttribute(Resources.RELATIONSHIP_STATUS_TABLE); }
-        public DataSet BLLGetCounty() { return DalAttributeMngr.DALGetAttribute(Resources.COUNTY_TABLE); }
-        /* 
-         * Method to return all attributes and their values
-         */
-        //public Dictionary<string, List<string>> BLLGetAllAttributes()
+        private List<string> GetAttributeValues(string attName)
+        {
+            DataRow[] rows = attributes.Select("Attribute" + " = '" + attName + "'");
+            List<string> attValues = new List<string>();
+            foreach (DataRow row in rows)
+                attValues.Add(row[1].ToString());
+            return attValues;
+        }
+
+        //private DataTable GetAttributeSubTable(string TableName)
         //{
-        //    DataTable dt = DalAttributeMngr.DALGetAllAttributes();
-
-        //    Dictionary<string,List<string>> attributes;
-        //    attributes = new Dictionary<string, List<string>>();
-
-        //    for (int i = 0; i < dt.Rows.Count; i++)
-        //    {
-        //        Object[] objArray = dt.Rows[i].ItemArray;
-        //        string key = objArray[0].ToString();
-        //        string value = objArray[1].ToString();
-
-        //        if (attributes.ContainsKey(key))
-        //        {
-        //            attributes[key].Add(value);
-        //        }
-        //        else
-        //        {
-        //            List<string> vals = new List<string>();
-        //            vals.Add(value);
-        //            attributes.Add(key, vals);
-        //        }
-        //    }
-
-        //    return attributes;
+        //    DataRow[] rows = attributes.Select("Attribute" + " = '" + TableName + "'");
+        //    DataTable table = new DataTable(TableName);
+        //    foreach(DataRow row in rows)
+        //        table.Rows.Add(row[1].ToString());
+        //    return table;
         //}
+
+        /*Methods to individually retrieve specific attributes*/
+        public List<string> BLLGetEyeColor() { return GetAttributeValues(Resources.EYE_COLOR_TABLE); }
+        public List<string> BLLGetGenders() { return GetAttributeValues(Resources.GENDER_TABLE); }
+        public List<string> BLLGetHairColor() { return GetAttributeValues(Resources.HAIR_COLOR_TABLE); }
+        public List<string> BLLGetSexualOrientation() { return GetAttributeValues(Resources.SEXUAL_ORIENTATION_TABLE); }
+        public List<string> BLLGetEthnicity() { return GetAttributeValues(Resources.ETHNICITY_TABLE); }
+        public List<string> BLLGetRelationshipStatus() { return GetAttributeValues(Resources.RELATIONSHIP_STATUS_TABLE); }
+        public List<string> BLLGetCounty() { return GetAttributeValues(Resources.COUNTY_TABLE); }
+        public List<string> BLLGetHeight() { return GetAttributeValues(Resources.HEIGHT_TABLE); }
+        public List<string> BLLGetBuild() { return GetAttributeValues(Resources.BUILD_TABLE); }
+        public List<string> BLLGetAgeRange() { return GetAttributeValues(Resources.AGE_RANGE_TABLE); }
+
+        public DataTable BLLGetHobbies() { return attributeManager.DALGetHobbies(); }
+
     }
 }
