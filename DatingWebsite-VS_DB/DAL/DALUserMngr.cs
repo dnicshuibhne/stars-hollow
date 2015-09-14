@@ -15,8 +15,8 @@ using ResourceTier;
 namespace DAL //Data Access Layer
 {
     /* DO NOT CHANGE UNLESS YOU MATCH POSITION TO STORED PROCEDURE FIRST!!! */
-    enum UserProfile { User, Email, Town,County, Profession, EyeColor, HairColor, Age, Gender,RelationshipStatus,Ethnicity, SexualOrientation, Build, Height, PicturePath, IdealDate,Comment }
- 
+    enum UserProfile { User, Email, Town, County, Profession, Ethnicity, RelationshipStatus, EyeColor, HairColor, Age, Gender, SexualOrientation, Build, Height, /*PicturePath,*/ IdealDate, Comment }
+
     /* User Manager Contains methods for creating and authenticating (log in) users */
     public class DALUserMngr
     {

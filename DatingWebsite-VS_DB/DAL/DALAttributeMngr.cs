@@ -92,5 +92,39 @@ namespace DAL // Data Access Layer
             }
             return table;
         }
+        public DataTable DALGetHobbies()
+        {
+            string sql = "SELECT * FROM " + Resources.HOBBIES_TABLE;
+            DataTable table = null;
+
+            using (SqlConnection con = new SqlConnection(conString))
+            {
+                using (SqlDataAdapter adapter = new SqlDataAdapter())
+                {
+                    adapter.SelectCommand = new SqlCommand(sql, con);
+                    adapter.SelectCommand.CommandType = CommandType.Text;
+                    try
+                    {
+                        con.Open();
+                        table = new DataTable();
+                        int rowsAffected = adapter.Fill(table);
+                        if (rowsAffected < 1 || table == null)
+                        {
+                            throw new Exception("No Results Returned.");
+                        }
+                    }
+                    catch (SqlException e)
+                    {
+                        throw;
+                    }
+                    finally
+                    {
+                        con.Close();
+                    }
+                }
+            }
+            return table;
+        }
+
     }
 }

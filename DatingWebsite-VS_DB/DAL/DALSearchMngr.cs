@@ -10,6 +10,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using ResourceTier;
+using System.Net;
 
 namespace DAL
 {
@@ -29,7 +30,11 @@ namespace DAL
 
             foreach (string key in searchParams.AllKeys)
             {
-                sql += key + "='" + searchParams[key] + "' AND ";
+                if (key == null)
+                    break;
+                else if (searchParams[key].Length > 1)
+                    sql += key + "='" + searchParams[key] + "' AND ";
+                    //sql += key + "='" + WebUtility.UrlDecode(searchParams[key]) + "' AND ";
             }
             sql = sql.Substring(0, sql.Length - 5);
 
