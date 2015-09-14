@@ -11,9 +11,10 @@
         Div 1. is invisible until a Div 2 is clicked.
         --%>
     <div class="contentWrapper">
-        <div id="myMessage"  visible="false" class="conversationBox theirImage" runat="server" >
+        <div id="myMessage"  visible="true" class="conversationBox theirImage" runat="server" >
             <asp:Button ID="closeThisMessage" runat="server" Text="X" CssClass="purpleButton" style="margin: 10px 10px; float:right;"/>
-            <asp:Image ID="imgTheirProfilePic" runat="server" ImageUrl="~/Images/blank-profile-grey.png" style="position: absolute; bottom:0px; margin-left:40px;"/>
+            <br />
+            <asp:Image ID="imgTheirProfilePic" runat="server" ImageUrl="~/Images/blank-profile-grey.png" style="position: absolute; bottom:0px; margin-left:40px; margin-top: 900px"/>
             <div id="convoMessages" >
                 <asp:Repeater ID="rptconvoMessages" runat="server">
                     <ItemTemplate>
@@ -73,8 +74,14 @@
                     <asp:Label ID="Label14" runat="server" Text="I just want you back for good"></asp:Label>
                 </div>
             </div>
-            <asp:TextBox ID="txtNewMessage" runat="server" TextMode="MultiLine" style="margin-top: 20px; margin-left: 125px; margin-bottom: 20px;" ForeColor="Black" Height="50px" Width="250px"></asp:TextBox>
-            <asp:ImageButton ID="imgBtnSendMessage" runat="server" ImageUrl="~/Images/rsz_1008006-glossy-black-icon-arrows-arrowhead2-right.png" />
+            <div id="myMessageInputWrapper">
+                <div id="myMessageTxt">
+                    <asp:TextBox ID="txtNewMessage" runat="server" TextMode="MultiLine" ForeColor="Black" Height="50px" Width="250px"></asp:TextBox>
+                </div>
+                <div id="myMessageSendBtn">
+                    <asp:ImageButton ID="imgBtnSendMessage" runat="server" ImageUrl="~/Images/rsz_1008006-glossy-black-icon-arrows-arrowhead2-right.png"/>
+                </div>
+            </div>
         </div>
 
         <!-- Using a repeater to load messages from the database and present as conversation summaries -->
@@ -96,12 +103,12 @@
                 rptModules.DataBind();
             } 
         -->
-        <div id="myConversations" visible="true" runat="server">
+        <div id="myConversations" visible="false" runat="server">
             <asp:Repeater ID="rptConversations" runat="server">
                 <ItemTemplate>
                     <div class="conversationBox linkingDiv">
                         <asp:Image ID="imgTheirProfilePic" runat="server" CssClass="theirImage"/>
-                        <asp:Label ID="lblTheirName" runat="server" Text='<%#getUsername2((Eval("SenderName")).ToString(),(Eval("ReceiverName")).ToString());%>' CssClass="theirName"></asp:Label>
+                        <asp:Label ID="lblTheirName" runat="server" Text='<%#getUsername2((Eval("SenderName")).ToString(),(Eval("ReceiverName")).ToString())%>' CssClass="theirName"></asp:Label>
                         <asp:Label ID="lblLastMessage" runat="server" Text='<%#Eval("Content") %>' CssClass="lastMessage"></asp:Label>
                     </div>
                 </ItemTemplate>
