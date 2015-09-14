@@ -13,21 +13,21 @@ namespace BD_Web_Group_Project_Webpages_v1 {
     public partial class RSSHoroscope {
         
         /// <summary>
-        /// xmldsHoroscope control.
+        /// xmldsNews control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.XmlDataSource xmldsHoroscope;
+        protected global::System.Web.UI.WebControls.XmlDataSource xmldsNews;
         
         /// <summary>
-        /// dlHoroscope control.
+        /// dlNews control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList dlHoroscope;
+        protected global::System.Web.UI.WebControls.DataList dlNews;
     }
 }
