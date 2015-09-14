@@ -1,5 +1,5 @@
 ------------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------- STORED PROCEDURES ----------------------------------------------------------- 
+------------------------------------------------------------ USER PROCEDURES ----------------------------------------------------------- 
 ------------------------------------------------------------------------------------------------------------------------------------------
 
 --- Stored procedure to add new user - returns new identity parameter- UserID
@@ -25,31 +25,45 @@ GO
 DROP  PROCEDURE uspUpdateUserDetails
 GO
 CREATE  PROCEDURE uspUpdateUserDetails
-@userid int,
-@profession varchar(50) = NULL,
-@location varchar (50) = NULL,
-@gender varchar(50) = NULL,
-@orientation varchar (50) = NULL,
+@userid int
 @age int = NULL,
 @ageRange varchar(50) = NULL,
-@haircolor varchar(50) = NULL,
+@build varchar(50) = NULL,
+@county varchar(50) = NULL,
+@ethnicity varchar(50) = NULL,
 @eyecolor varchar(50) = NULL,
+@gender varchar(50) = NULL,
+@haircolor varchar(50) = NULL,
 @height varchar (50) = NULL,
-@build varchar(50) = NULL
+@hobbies XML = NULL,
+@idealdate varchar (50) = NULL,
+@profession varchar(50) = NULL,
+@relationshipstatus varchar (50) = NULL,
+@sexualorientation varchar (50) = NULL,
+@town varchar (50) = NULL,
+@comments varchar (max),
+@profilepic varchar(max)
 
 AS
 BEGIN
     SET NOCOUNT ON;
-	IF(@profession IS NOT NULL) Begin UPDATE dbo.UserInformation SET Profession = @profession WHERE dbo.UserInformation.UserID = @userid END
-	IF(@location IS NOT NULL) Begin UPDATE dbo.UserInformation SET Location = @location WHERE dbo.UserInformation.UserID = @userid END
-	IF(@gender IS NOT NULL) Begin UPDATE dbo.UserInformation SET Gender = @gender WHERE dbo.UserInformation.UserID = @userid END
-	IF(@orientation IS NOT NULL) Begin UPDATE dbo.UserInformation SET SexualOrientation = @orientation WHERE dbo.UserInformation.UserID = @userid END
 	IF(@age IS NOT NULL) Begin UPDATE dbo.UserInformation SET Age = @age WHERE dbo.UserInformation.UserID = @userid END
 	IF(@ageRange IS NOT NULL) Begin UPDATE dbo.UserInformation SET AgeRange = @ageRange WHERE dbo.UserInformation.UserID = @userid END
-	IF(@haircolor IS NOT NULL) Begin UPDATE dbo.UserInformation SET HairColor = @haircolor WHERE dbo.UserInformation.UserID = @userid END
-	IF(@eyecolor IS NOT NULL) Begin UPDATE dbo.UserInformation SET EyeColor = @eyecolor WHERE dbo.UserInformation.UserID = @userid END
-	IF(@height IS NOT NULL) Begin UPDATE dbo.UserInformation SET Height = @height WHERE dbo.UserInformation.UserID = @userid END
 	IF(@build IS NOT NULL) Begin UPDATE dbo.UserInformation SET Build = @build WHERE dbo.UserInformation.UserID = @userid END
+	IF(@county IS NOT NULL) Begin UPDATE dbo.UserInformation SET County = @county WHERE dbo.UserInformation.UserID = @userid END
+	IF(@ethnicity IS NOT NULL) Begin UPDATE dbo.UserInformation SET Ethnicity = @ethnicity WHERE dbo.UserInformation.UserID = @userid END
+	IF(@eyecolor IS NOT NULL) Begin UPDATE dbo.UserInformation SET EyeColor = @eyecolor WHERE dbo.UserInformation.UserID = @userid END	
+	IF(@gender IS NOT NULL) Begin UPDATE dbo.UserInformation SET Gender = @gender WHERE dbo.UserInformation.UserID = @userid END
+	IF(@haircolor IS NOT NULL) Begin UPDATE dbo.UserInformation SET HairColor = @haircolor WHERE dbo.UserInformation.UserID = @userid END
+	IF(@height IS NOT NULL) Begin UPDATE dbo.UserInformation SET Height = @height WHERE dbo.UserInformation.UserID = @userid END
+	IF(@hobbies IS NOT NULL) Begin UPDATE dbo.UserInformation SET Hobbies = @hobbies WHERE dbo.UserInformation.UserID = @userid END
+	IF(@idealdate IS NOT NULL) Begin UPDATE dbo.UserInformation SET IdealDate = @idealdate WHERE dbo.UserInformation.UserID = @userid END	
+	IF(@profession IS NOT NULL) Begin UPDATE dbo.UserInformation SET Profession = @profession WHERE dbo.UserInformation.UserID = @userid END
+	IF(@relationshipstatus IS NOT NULL) Begin UPDATE dbo.UserInformation SET RelationshipStatus = @relationshipstatus WHERE dbo.UserInformation.UserID = @userid END
+	IF(@sexualorientation IS NOT NULL) Begin UPDATE dbo.UserInformation SET SexualOrientation = @sexualorientation WHERE dbo.UserInformation.UserID = @userid END
+	IF(@town IS NOT NULL) Begin UPDATE dbo.UserInformation SET Town = @town WHERE dbo.UserInformation.UserID = @userid END
+	IF(@comments IS NOT NULL) Begin UPDATE dbo.UserInformation SET Comments = @comments WHERE dbo.UserInformation.UserID = @userid END
+	IF(@profilepic IS NOT NULL) Begin UPDATE dbo.UserInformation SET ProfilePicturePath = @profilepic WHERE dbo.UserInformation.UserID = @userid END
 END
 GO
 
@@ -95,18 +109,24 @@ CREATE  PROCEDURE uspUserProfile_Username
 AS  
 SELECT
 	UserInformation.UserId,
-	[Users].Email,
-	UserInformation.Location,
-	UserInformation.Profession,
-	UserInformation.EyeColor,
-	UserInformation.HairColor,
+	UserInformation.Email,
+	UserInformation.Age,
 	UserInformation.AgeRange,
-	UserInformation.Gender,
-	UserInformation.SexualOrientation,
 	UserInformation.Build,
+	UserInformation.County,
+	UserInformation.Ethnicity,
+	UserInformation.EyeColor,
+	UserInformation.Gender,
+	UserInformation.HairColor,
 	UserInformation.Height,
+	UserInformation.Hobbies,
+	UserInformation.IdealDate,
+	UserInformation.RelationshipStatus,
+	UserInformation.Profession,
+	UserInformation.SexualOrientation,
+	UserInformation.Town,
 	UserInformation.ProfilePicturePath,
-	UserInformation.Age
+	UserInformation.Comments
 FROM [Users]
 Inner Join UserInformation
 ON [Users].UserID = UserInformation.UserID
@@ -122,18 +142,24 @@ CREATE  PROCEDURE uspUserProfile_UserID
 AS  
 SELECT
 	[Users].Username,
-	[Users].Email,
-	UserInformation.Location,
-	UserInformation.Profession,
-	UserInformation.EyeColor,
-	UserInformation.HairColor,
+	UserInformation.Email,
+	UserInformation.Age,
 	UserInformation.AgeRange,
-	UserInformation.Gender,
-	UserInformation.SexualOrientation,
 	UserInformation.Build,
+	UserInformation.County,
+	UserInformation.Ethnicity,
+	UserInformation.EyeColor,
+	UserInformation.Gender,
+	UserInformation.HairColor,
 	UserInformation.Height,
+	UserInformation.Hobbies,
+	UserInformation.IdealDate,
+	UserInformation.RelationshipStatus,
+	UserInformation.Profession,
+	UserInformation.SexualOrientation,
+	UserInformation.Town,
 	UserInformation.ProfilePicturePath,
-	UserInformation.Age
+	UserInformation.Comments
 FROM [Users]
 Inner Join UserInformation
 ON [Users].UserID  = UserInformation.UserID
@@ -141,219 +167,58 @@ WHERE [Users].UserID=@userID
 GO
 
 ------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------ ATTRIBUTE PROCEDURES ----------------------------------------------------------- 
 ------------------------------------------------------------------------------------------------------------------------------------------
 
----- procedure to add user details - input:userid, profession, location etc...
 
-DROP  PROCEDURE uspAddAllUserDetails
-GO
-CREATE  PROCEDURE uspAddAllUserDetails
-@userid int,
-@profession varchar(50),
-@location varchar (50),
-@gender varchar(50),
-@orientation varchar (50),
-@age int,
-@ageRange varchar(50),
-@haircolor varchar(50),
-@eyecolor varchar(50),
-@height varchar (50),
-@build varchar(50)
+------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------ MESSAGE PROCEDURES ----------------------------------------------------------- 
+------------------------------------------------------------------------------------------------------------------------------------------
 
-AS
-BEGIN
-    SET NOCOUNT ON;
-
-	 Insert dbo.UserInformation(
-							UserID,
-						   Location,
-						   Profession,
-						   Gender,
-						   SexualOrientation,
-						   Age,
-						   AgeRange,
-						   HairColor,
-						   EyeColor,
-						   Height,
-						   Build)
-				Values
-				
-						  (@userid,
-						@location,
-						@profession,
-						   @gender,
-						   @orientation,
-						   @age,
-						   @ageRange,
-						   @haircolor,
-						   @eyecolor,
-						   @height,
-						   @build)
-
-	END			
-	GO
-	
----- Stored Procedure to enter all User Details at once
-DROP PROCEDURE uspAddNewUserAndDetails
-GO
-CREATE  PROCEDURE uspAddNewUserAndDetails
-@username varchar(50),
-@Password varchar (50),
-@Email varchar(50),
-@profession varchar(50),
-@location varchar (50),
-@gender varchar(50),
-@orientation varchar (50),
-@age varchar(50),
-@haircolor varchar(50),
-@eyecolor varchar(50),
-@height varchar (50),
-@build varchar(50),
-@profilepic varchar(max),
-@id int output
-
-AS
-BEGIN
-    SET NOCOUNT ON;
-   
-	DECLARE @IdInserted TABLE(IdValue INTEGER);	
-    INSERT dbo.[Users](Username,Password,Email) 
-	OUTPUT inserted.UserID INTO @IdInserted
-	VALUES (@username,@Password,@Email)
-	SELECT @id = IdValue FROM @IdInserted
-
-    INSERT INTO UserInformation(UserID,
-						   Location,
-						   Profession,
-						   Gender,
-						   SexualOrientation,
-						   AgeRange,
-						   HairColor,
-						   EyeColor,
-						   Height,
-						   Build,
-						   ProfilePicturePath)
-				Values
-				
-						  (@id,
-						@location,
-						@profession,
-						   @gender,
-						   @orientation,
-						   @age,
-						   @haircolor,
-						   @eyecolor,
-						   @height,
-						   @build,
-						   @profilepic)
-						     		 
-			
-
-       RETURN @id
-
-END
+DROP PROCEDURE uspAllMessages
 GO
 
---- Procedure to verify user login details- input:username and password, output message:true or false
-
-DROP  PROCEDURE dbo.uspBooleanUserLogin
+CREATE PROCEDURE uspAllMessages
+@userID INT
+AS  
+SELECT
+	Messages.MessageID,
+	Messages.SenderID,
+	Messages.ReceiverID,
+	Sender.Username AS SenderName,
+	Receiver.Username AS ReceiverName,
+	Messages.[DateTime] AS TimeStamp, --Timestamp
+	Messages.Contents AS Content --Content
+FROM [Messages]
+	Inner Join [User] AS Receiver
+	ON 
+		(
+			Messages.ReceiverID = Receiver.UserID 
+		)
+	Inner Join [User] AS Sender
+	ON 
+		(
+			Messages.SenderID = Sender.UserID 
+		)
+WHERE 
+	Messages.SenderID = @userID
+	OR
+	Messages.ReceiverID = @userID
 GO
-CREATE  PROCEDURE dbo.uspBooleanUserLogin
-@username nvarchar(50),
-@password nvarchar(50)
 
-AS
-BEGIN
+EXEC uspAllMessages '1'
 
-SET NOCOUNT ON
-
-IF EXISTS(SELECT * FROM [Users] WHERE Username = @username OR
-		Email=@username AND Password = @password)
-    SELECT 'true' AS UserExists
-ELSE
-    SELECT 'false' AS UserExists
-
-END
 GO
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------
----------------------------------------------------------------- VIEWS -------------------------------------------------------------------
+------------------------------------------------------------ TESTING PROCEDURES ----------------------------------------------------------- 
 ------------------------------------------------------------------------------------------------------------------------------------------
 
------ VIEWS -----
+--exec dbo.uspAddNewUser 'nics','1234','dee@aol.com'
+--exec dbo.uspAddNewUser 'jbloggs','1234','joe@gmail.com'
+--exec dbo.uspAddNewUser 'msmith','1234','marry@mail.ie'
 
------- View to view all attribute and values 
-
-DROP VIEW [ViewAllAttributeValues]
-GO
-CREATE VIEW [ViewAllAttributeValues]
-AS 
-Select
-	'Eye Color' as Attribute,
-	EyeColor as  Attribute_Value
-	FROM 
-	EyeColor
-
-UNION
-
-SELECT
-  'Sexual Orientation',
-   Orientation
-FROM
-    SexualOrientation 
-
-UNION
-
-SELECT
-  'Age Range',
-   AgeRange
-FROM
-   AgeRange 
-
-UNION
-
-SELECT
-  'Build',
-   Build
-FROM
-    Build
-
-UNION
-
-SELECT
-  'Gender',
-	Gender
-FROM
-    Gender
-
-UNION
-
-SELECT
-  'Hair Color',
-	HairColor
-FROM
-    HairColor
-
-UNION
-
-SELECT
-  'Height',
-	Height
-FROM
-    Height
-
-UNION
-
-SELECT
-  'Hobby Name',
-	HobbyName
-FROM
-    Hobbies
-GO
-
-
-------------------------------------------------------------------------------------------------------------------------------------------
 --EXEC dbo.uspAddNewUser @username = 'GoHomeRoger', @Password = 'Password',@Email='ghroger@hotmail.com' 
 --GO
 
@@ -363,9 +228,6 @@ GO
 --DECLARE @id INT;
 --EXEC uspAddNewUserAndDetails 'Sarah6','password','maryb@gmail.com','Nurse','Dublin','Female','Straight','18-25','Brown','Blue','Small','Slim','/images/mary.jpg',@id = @id OUTPUT;
 --PRINT @id;
---GO
-
---SELECT * FROM ViewAllAttributeValues
 --GO
 
 --exec uspUserProfile_Username 'Sarah6'
