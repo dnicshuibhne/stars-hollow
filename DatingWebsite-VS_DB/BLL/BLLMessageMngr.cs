@@ -23,8 +23,20 @@ namespace BLL
 
         public BLLMessageMngr(int userID)
         {
+            this.userID = userID;
             messageManager = new DALMessageMngr();
             allMessages = messageManager.getSentAndReceivedMessages(userID);
+        }
+        public DataTable getMessagesTest(int id)
+        {
+            string filter = "true";//ReceiverID = '" + userID + "' OR SenderID = '" + userID + "'";
+            DataTable table = new DataTable(); //filters and sorts results
+            DataRow[] rows = allMessages.Select(filter, orderNewToOld);
+            //foreach (DataRow row in rows)
+            //{
+            //    table.Rows.Add(null);
+            //}
+            return rows[0].Table;
         }
 
         public DataRow[] getAllMessages()

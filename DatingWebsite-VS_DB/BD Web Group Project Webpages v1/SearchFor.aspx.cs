@@ -35,13 +35,13 @@ namespace BD_Web_Group_Project_Webpages_v1
 
         private void getAttributes()
         {
-            //attributes = attributeManager.BLLGetAgeRange();
-            //ddlAgeRange.DataSource = attributes;
-            //ddlAgeRange.DataBind();
+            attributes = attributeManager.BLLGetAgeRange();
+            ddlAgeRange.DataSource = attributes;
+            ddlAgeRange.DataBind();
 
-            //attributes = attributeManager.BLLGetBuild();
-            //ddlBuild.DataSource = attributes;
-            //ddlBuild.DataBind();
+            attributes = attributeManager.BLLGetBuild();
+            ddlBuild.DataSource = attributes;
+            ddlBuild.DataBind();
 
             attributes = attributeManager.BLLGetCounty();
             ddlCounty.DataSource = attributes;
@@ -51,21 +51,21 @@ namespace BD_Web_Group_Project_Webpages_v1
             ddlEthnicity.DataSource = attributes;
             ddlEthnicity.DataBind();
 
-            //attributes = attributeManager.BLLGetEyeColor();
-            //ddlEyeColor.DataSource = attributes;
-            //ddlEyeColor.DataBind();
+            attributes = attributeManager.BLLGetEyeColor();
+            ddlEyeColor.DataSource = attributes;
+            ddlEyeColor.DataBind();
 
             attributes = attributeManager.BLLGetGenders();
             ddlGender.DataSource = attributes;
             ddlGender.DataBind();
 
-            //attributes = attributeManager.BLLGetHairColor();
-            //ddlHairColor.DataSource = attributes;
-            //ddlHairColor.DataBind();
+            attributes = attributeManager.BLLGetHairColor();
+            ddlHairColor.DataSource = attributes;
+            ddlHairColor.DataBind();
 
-            //attributes = attributeManager.BLLGetHeight();
-            //ddlHeight.DataSource = attributes;
-            //ddlHeight.DataBind();
+            attributes = attributeManager.BLLGetHeight();
+            ddlHeight.DataSource = attributes;
+            ddlHeight.DataBind();
 
             attributes = attributeManager.BLLGetRelationshipStatus();
             ddlRelationshipStatus.DataSource = attributes;
@@ -83,7 +83,42 @@ namespace BD_Web_Group_Project_Webpages_v1
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            
+            string queryString = "";
+            queryString += Resources.AGE_RANGE_COLUMN + "=" + ddlAgeRange.SelectedValue + "&";
+            queryString += Resources.BUILD_COLUMN + "=" + ddlBuild.SelectedValue + "&";
+            queryString += Resources.COUNTY_COLUMN + "=" + ddlCounty.SelectedValue + "&";
+            queryString += Resources.ETHNICITY_COLUMN + "=" + ddlEthnicity.SelectedValue + "&";
+            queryString += Resources.EYE_COLOR_COLUMN + "=" + ddlEyeColor.SelectedValue + "&";
+            queryString += Resources.GENDER_COLUMN + "=" + ddlGender.SelectedValue + "&";
+            queryString += Resources.HAIR_COLOR_COLUMN + "=" + ddlHairColor.SelectedValue + "&";
+            queryString += Resources.HEIGHT_COLUMN + "=" + ddlHeight.SelectedValue + "&";
+            queryString += Resources.PROFESSION_COLUMN + "=" + txtProfession.Text + "&";
+            queryString += Resources.RELATIONSHIP_STATUS_COLUMN + "=" + ddlRelationshipStatus.SelectedValue + "&";
+            queryString += Resources.SEXUAL_ORIENTATION_COLUMN + "=" + ddlOrientation.SelectedValue + "&";
+            queryString += Resources.TOWN_COLUMN + "=" + txtTown.Text + "&";
+
+            //queryString += Resources.AGE_RANGE_COLUMN + "=" + Server.UrlEncode(ddlAgeRange.SelectedValue) + "&";
+            //queryString += Resources.BUILD_COLUMN + "=" + Server.UrlEncode(ddlBuild.SelectedValue) + "&";
+            //queryString += Resources.COUNTY_COLUMN + "=" + Server.UrlEncode(ddlCounty.SelectedValue) + "&";
+            //queryString += Resources.ETHNICITY_COLUMN + "=" + Server.UrlEncode(ddlEthnicity.SelectedValue) + "&";
+            //queryString += Resources.EYE_COLOR_COLUMN + "=" + Server.UrlEncode(ddlEyeColor.SelectedValue) + "&";
+            //queryString += Resources.GENDER_COLUMN + "=" + Server.UrlEncode(ddlGender.SelectedValue) + "&";
+            //queryString += Resources.HAIR_COLOR_COLUMN + "=" + Server.UrlEncode(ddlHairColor.SelectedValue) + "&";
+            //queryString += Resources.HEIGHT_COLUMN + "=" + Server.UrlEncode(ddlHeight.SelectedValue) + "&";
+            //queryString += Resources.PROFESSION_COLUMN + "=" + Server.UrlEncode(txtProfession.Text) + "&";
+            //queryString += Resources.RELATIONSHIP_STATUS_COLUMN + "=" + Server.UrlEncode(ddlRelationshipStatus.SelectedValue) + "&";
+            //queryString += Resources.SEXUAL_ORIENTATION_COLUMN + "=" + Server.UrlEncode(ddlOrientation.SelectedValue) + "&";
+            //queryString += Resources.TOWN_COLUMN + "=" + Server.UrlEncode(txtTown.Text) + "&";
+
+            //foreach (ListItem hobby in cblHobbies.Items)
+            //{
+            //    if (hobby.Selected)
+            //    {
+            //        searchParams.Add(Resources.HOBBIES_ID_COLUMN,hobby.Text);
+            //    }
+            //}
+            queryString = queryString.Substring(0, queryString.Length - 2);
+            Response.Redirect("SearchResults.aspx?" + queryString);
         }
     }
 }

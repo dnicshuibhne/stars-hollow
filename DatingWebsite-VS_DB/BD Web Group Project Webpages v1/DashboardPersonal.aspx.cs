@@ -112,17 +112,21 @@ namespace BD_Web_Group_Project_Webpages_v1
 
         protected void btnUpdateDetails_Click(object sender, EventArgs e)
         {
-            user.Town = txtTown.Text;
-            user.County = ddlCounty.Text;
-            user.Profession = txtProfession.Text;
-            user.Gender = ddlGender.SelectedValue;
-            user.SexualOrientation = ddlOrientation.Text;
-            user.Ethnicity = ddlEthnicity.Text;
-            user.RelationshipStatus = ddlRelationshipStatus.Text;
-            user.EyeColor = ddlEyeColor.Text;
-            user.HairColor = ddlHairColor.Text;
+            UserModel user = new UserModel();
             user.Age = int.Parse(txtAge.Text);
-
+            user.Build = ddlBuild.SelectedValue;
+            user.County = ddlCounty.SelectedValue;
+            user.Ethnicity = ddlEthnicity.SelectedValue;
+            user.EyeColor = ddlEyeColor.SelectedValue;
+            user.Gender = ddlGender.SelectedValue;
+            user.HairColor = ddlHairColor.SelectedValue;
+            user.Height = ddlBuild.SelectedValue;
+            user.IdealDate = txtIdealDate.Text;
+            user.Profession = txtProfession.Text;
+            user.RelationshipStatus = ddlRelationshipStatus.SelectedValue;
+            user.SexualOrientation = ddlOrientation.SelectedValue;
+            user.Town = txtTown.Text;
+            
             //get hobbies
             foreach (ListItem hobby in cblHobbies.Items)
             {

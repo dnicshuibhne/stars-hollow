@@ -41,6 +41,14 @@
                 <asp:Label ID="lblOrientation" runat="server" Text="Orientation "></asp:Label>
                 <asp:DropDownList ID="ddlOrientation" runat="server"></asp:DropDownList>
                 <br />
+				<br />
+                <asp:Label ID="lblBuild" runat="server" Text="Build"></asp:Label>
+                <asp:DropDownList ID="ddlBuild" runat="server"></asp:DropDownList>
+                <br />
+                <br />
+                <asp:Label ID="lblHeight" runat="server" Text="Height"></asp:Label>
+                <asp:DropDownList ID="ddlHeight" runat="server"></asp:DropDownList>
+                <br />
                 <br />
                 <asp:Label ID="lblEyeColour" runat="server" Text="Eye colour "></asp:Label>
                 <asp:DropDownList ID="ddlEyeColour" runat="server"></asp:DropDownList>
@@ -50,8 +58,8 @@
                 <asp:DropDownList ID="ddlHairColour" runat="server"></asp:DropDownList>
                 <br />
                 <br />
-                <asp:Label ID="lblAge" runat="server" Text="Age "></asp:Label>
-                <asp:DropDownList ID="ddlAge" runat="server"></asp:DropDownList>
+                <asp:Label ID="lblAgeRange" runat="server" Text="Age Range"></asp:Label>
+                <asp:DropDownList ID="ddlAgeRange" runat="server"></asp:DropDownList>
                 <br />
                 <br />
                 <asp:Label ID="lblEthnicity" runat="server" Text="Ethnicity"></asp:Label>
