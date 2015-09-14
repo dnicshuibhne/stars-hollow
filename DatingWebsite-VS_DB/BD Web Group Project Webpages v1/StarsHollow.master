@@ -58,7 +58,7 @@
         </div>
         <div id="footerMiddle">
             <h3>RSS Feeds</h3>
-            <p><a href="RSSHoroscope.aspx" title="RSS Horoscope">Horoscopes</a></p>
+            <p><a href="RSSNews.aspx" title="RTE News">RTE News</a></p>
         </div>
         <div id="footerRight">
             <h3>Website created by</h3>
