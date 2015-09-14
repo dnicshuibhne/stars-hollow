@@ -146,6 +146,11 @@ namespace BD_Web_Group_Project_Webpages_v1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblBuild;
+<<<<<<< HEAD
+        
+        /// <summary>
+        /// ddlBuild control.
+=======
         
         /// <summary>
         /// ddlBuild control.
@@ -158,48 +163,97 @@ namespace BD_Web_Group_Project_Webpages_v1 {
         
         /// <summary>
         /// lblHeight control.
+>>>>>>> 734600a532d080f46aab8d3fbea961e617839d56
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+<<<<<<< HEAD
+        protected global::System.Web.UI.WebControls.DropDownList ddlBuild;
+        
+        /// <summary>
+        /// lblHeight control.
+=======
         protected global::System.Web.UI.WebControls.Label lblHeight;
         
         /// <summary>
         /// ddlHeight control.
+>>>>>>> 734600a532d080f46aab8d3fbea961e617839d56
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+<<<<<<< HEAD
+        protected global::System.Web.UI.WebControls.Label lblHeight;
+        
+        /// <summary>
+        /// ddlHeight control.
+=======
         protected global::System.Web.UI.WebControls.DropDownList ddlHeight;
         
         /// <summary>
         /// lblEyeColor control.
+>>>>>>> 734600a532d080f46aab8d3fbea961e617839d56
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+<<<<<<< HEAD
+        protected global::System.Web.UI.WebControls.DropDownList ddlHeight;
+        
+        /// <summary>
+        /// lblEyeColor control.
+=======
         protected global::System.Web.UI.WebControls.Label lblEyeColor;
         
         /// <summary>
         /// ddlEyeColor control.
+>>>>>>> 734600a532d080f46aab8d3fbea961e617839d56
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+<<<<<<< HEAD
+        protected global::System.Web.UI.WebControls.Label lblEyeColor;
+        
+        /// <summary>
+        /// ddlEyeColor control.
+=======
         protected global::System.Web.UI.WebControls.DropDownList ddlEyeColor;
         
         /// <summary>
         /// lblHairColor control.
+>>>>>>> 734600a532d080f46aab8d3fbea961e617839d56
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+<<<<<<< HEAD
+        protected global::System.Web.UI.WebControls.DropDownList ddlEyeColor;
+        
+        /// <summary>
+        /// lblHairColor control.
+=======
         protected global::System.Web.UI.WebControls.Label lblHairColor;
+        
+        /// <summary>
+        /// ddlHairColor control.
+>>>>>>> 734600a532d080f46aab8d3fbea961e617839d56
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+<<<<<<< HEAD
+        protected global::System.Web.UI.WebControls.Label lblHairColor;
+=======
+        protected global::System.Web.UI.WebControls.DropDownList ddlHairColor;
+>>>>>>> 734600a532d080f46aab8d3fbea961e617839d56
         
         /// <summary>
         /// ddlHairColor control.
