@@ -1,6 +1,11 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/StarsHollow.master" AutoEventWireup="true" CodeBehind="ViewMatch.master.cs" Inherits="BD_Web_Group_Project_Webpages_v1.ViewMatch" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="cphStarsHollowHead" runat="server">
+
+    <asp:ContentPlaceHolder ID="cphViewMatchHead" runat="server"></asp:ContentPlaceHolder>
+
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="cphStarsHollowBody" runat="server">
 
 
@@ -23,7 +28,7 @@
     <div id="bodyContents">
         <h2 id="pageHeader">View Match</h2>
         <section>
-            <asp:ContentPlaceHolder ID="cphViewMatch" runat="server"></asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="cphViewMatchBody" runat="server"></asp:ContentPlaceHolder>
         </section>
     </div>
 

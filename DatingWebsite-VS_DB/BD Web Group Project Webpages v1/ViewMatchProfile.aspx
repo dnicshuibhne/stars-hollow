@@ -1,5 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/ViewMatch.master" AutoEventWireup="true" CodeBehind="ViewMatchProfile.aspx.cs" Inherits="BD_Web_Group_Project_Webpages_v1.ViewMatchProfile" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="cphViewMatch" runat="server">
+
+<asp:Content ID="Content1" ContentPlaceHolderID="cphViewMatchHead" runat="server">
+
+        <title>Dream Date - View Match</title>
+		<meta charset="utf-8" />
+		<meta name="View Match" content="Dream Date - View Match" />
+
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="cphViewMatchBody" runat="server">
 
     <!-- TODO: update this page with all columns in personal info stored in database. -->
 
