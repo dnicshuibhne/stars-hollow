@@ -25,52 +25,37 @@ namespace BLL
             attributes = attributeManager.Attributes;
         }
 
-        private DataTable GetAttributeSubTable(String TableName)
+        private List<string> GetAttributeValues(string attName)
         {
-            return attributes.Select(Resources.ATTRIBUTE_VIEW_ATTRIBUTE_COLUMN + "=" + TableName)[0].Table; 
+            DataRow[] rows = attributes.Select("Attribute" + " = '" + attName + "'");
+            List<string> attValues = new List<string>();
+            foreach (DataRow row in rows)
+                attValues.Add(row[1].ToString());
+            return attValues;
         }
 
-        /*Methods to individually retrieve specific attributes*/
-        public DataTable BLLGetAgeRange() { return GetAttributeSubTable(Resources.AGE_RANGE_TABLE); }
-        public DataTable BLLGetBuild() { return GetAttributeSubTable(Resources.AGE_RANGE_TABLE); }
-        public DataTable BLLGetEyeColor() { return GetAttributeSubTable(Resources.EYE_COLOR_TABLE); }
-        public DataTable BLLGetGenders() { return GetAttributeSubTable(Resources.GENDER_TABLE); }
-        public DataTable BLLGetHairColor() { return GetAttributeSubTable(Resources.HAIR_COLOR_TABLE); }
-        public DataTable BLLGetHeight() { return GetAttributeSubTable(Resources.HEIGHT_TABLE); }
-        public DataTable BLLGetHobbies() { return GetAttributeSubTable(Resources.HOBBIES_TABLE); }
-        public DataTable BLLGetSexualOrientation() { return GetAttributeSubTable(Resources.SEXUAL_ORIENTATION_TABLE); }
-        public DataTable BLLGetEthnicity() { return GetAttributeSubTable(Resources.ETHNICITY_TABLE); }
-        public DataTable BLLGetRelationshipStatus() { return GetAttributeSubTable(Resources.RELATIONSHIP_STATUS_TABLE); }
-        public DataTable BLLGetCounty() { return GetAttributeSubTable(Resources.COUNTY_TABLE); }
-        /* 
-         * Method to return all attributes and their values
-         */
-        //public Dictionary<string, List<string>> BLLGetAllAttributes()
+        //private DataTable GetAttributeSubTable(string TableName)
         //{
-        //    DataTable dt = attributeManager.DALGetAllAttributes();
-
-        //    Dictionary<string,List<string>> attributes;
-        //    attributes = new Dictionary<string, List<string>>();
-
-        //    for (int i = 0; i < dt.Rows.Count; i++)
-        //    {
-        //        Object[] objArray = dt.Rows[i].ItemArray;
-        //        string key = objArray[0].ToString();
-        //        string value = objArray[1].ToString();
-
-        //        if (attributes.ContainsKey(key))
-        //        {
-        //            attributes[key].Add(value);
-        //        }
-        //        else
-        //        {
-        //            List<string> vals = new List<string>();
-        //            vals.Add(value);
-        //            attributes.Add(key, vals);
-        //        }
-        //    }
-
-        //    return attributes;
+        //    DataRow[] rows = attributes.Select("Attribute" + " = '" + TableName + "'");
+        //    DataTable table = new DataTable(TableName);
+        //    foreach(DataRow row in rows)
+        //        table.Rows.Add(row[1].ToString());
+        //    return table;
         //}
+
+        /*Methods to individually retrieve specific attributes*/
+        public List<string> BLLGetEyeColor() { return GetAttributeValues(Resources.EYE_COLOR_TABLE); }
+        public List<string> BLLGetGenders() { return GetAttributeValues(Resources.GENDER_TABLE); }
+        public List<string> BLLGetHairColor() { return GetAttributeValues(Resources.HAIR_COLOR_TABLE); }
+        public List<string> BLLGetSexualOrientation() { return GetAttributeValues(Resources.SEXUAL_ORIENTATION_TABLE); }
+        public List<string> BLLGetEthnicity() { return GetAttributeValues(Resources.ETHNICITY_TABLE); }
+        public List<string> BLLGetRelationshipStatus() { return GetAttributeValues(Resources.RELATIONSHIP_STATUS_TABLE); }
+        public List<string> BLLGetCounty() { return GetAttributeValues(Resources.COUNTY_TABLE); }
+        public List<string> BLLGetHeight() { return GetAttributeValues(Resources.HEIGHT_TABLE); }
+        public List<string> BLLGetBuild() { return GetAttributeValues(Resources.BUILD_TABLE); }
+        public List<string> BLLGetAgeRange() { return GetAttributeValues(Resources.AGE_RANGE_TABLE); }
+
+        public DataTable BLLGetHobbies() { return attributeManager.DALGetHobbies(); }
+    
     }
 }

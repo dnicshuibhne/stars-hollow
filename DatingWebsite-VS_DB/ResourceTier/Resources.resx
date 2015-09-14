@@ -125,6 +125,22 @@
     <value>@age</value>
     <comment>PARAM</comment>
   </data>
+  <data name="AGE_RANGE_1" xml:space="preserve">
+    <value>18-25</value>
+    <comment>AGE_RANGE</comment>
+  </data>
+  <data name="AGE_RANGE_2" xml:space="preserve">
+    <value>26-32</value>
+    <comment>AGE_RANGE</comment>
+  </data>
+  <data name="AGE_RANGE_3" xml:space="preserve">
+    <value>33-39</value>
+    <comment>AGE_RANGE</comment>
+  </data>
+  <data name="AGE_RANGE_4" xml:space="preserve">
+    <value>40+</value>
+    <comment>AGE_RANGE</comment>
+  </data>
   <data name="AGE_RANGE_COLUMN" xml:space="preserve">
     <value>AgeRange</value>
     <comment>COLUMN</comment>
@@ -139,6 +155,10 @@
   </data>
   <data name="ATTRIBUTE_VIEW_ATTRIBUTE_COLUMN" xml:space="preserve">
     <value>Attribute</value>
+    <comment>VIEW_COLUMN</comment>
+  </data>
+  <data name="ATTRIBUTE_VIEW_VALUE_COLUMN1" xml:space="preserve">
+    <value>Attribute_Value</value>
     <comment>VIEW_COLUMN</comment>
   </data>
   <data name="BUILD_COLUMN" xml:space="preserve">

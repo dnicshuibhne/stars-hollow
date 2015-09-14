@@ -26,15 +26,15 @@ namespace BD_Web_Group_Project_Webpages_v1
             userManager = new BLLUserMngr();
             attManager = new BLLAttributeMngr();
             
-            attributes = attManager.BLLGetGenders();
-            ddlGender.DataSource = attributes;
-            ddlGender.DataTextField = Resources.GENDER_COLUMN;
-            ddlGender.DataBind();
+            //attributes = attManager.BLLGetGenders();
+            //ddlGender.DataSource = attributes;
+            //ddlGender.DataTextField = Resources.GENDER_COLUMN;
+            //ddlGender.DataBind();
 
-            attributes = attManager.BLLGetSexualOrientation();
-            ddlOrientation.DataSource = attributes;
-            ddlOrientation.DataTextField = Resources.SEXUAL_ORIENTATION_COLUMN;
-            ddlOrientation.DataBind();
+            //attributes = attManager.BLLGetSexualOrientation();
+            //ddlOrientation.DataSource = attributes;
+            //ddlOrientation.DataTextField = Resources.SEXUAL_ORIENTATION_COLUMN;
+            //ddlOrientation.DataBind();
         }
 
         protected void btnContinueReg_Click(object sender, EventArgs e)
