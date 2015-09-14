@@ -19,29 +19,21 @@ namespace BD_Web_Group_Project_Webpages_v1
         BLLAttributeMngr attManager;
         BLLUserMngr userManager;
         DataSet attributes;
-        int userid = 1;//TEST
+        UserModel user;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //HttpCookie cookie = Response.Cookies.Get(Resources.USER_COOKIE);
-            UserModel user;
-            //if (cookie == null)
-            //{
-            //    Response.Redirect("Default.aspx", true);
-            //}
-            //string c = cookie.Value;
-            //int i = int.Parse(c);
-            //if (i > 0)
-            //{
-            //    Response.Redirect("Default.aspx", true);
-            //}
-            //else
-            //{
-                 /*Retrieve and load the values of each attribute*/
+            /* check if logged in*/
+            user = (UserModel)Session[Resources.USER_SESSION_STATE];
+            if (user == null || user.ID < 1)
+            {
+                Response.Redirect("Default.aspx", true);
+            }
+            else
+            {
+                /*Retrieve and load the values of each attribute*/
                 attManager = new BLLAttributeMngr();
                 userManager = new BLLUserMngr();
-            //    user = userManager.getUser(int.Parse(cookie["ID"]));
-                user = userManager.getUser(userid);
 
                 txtTown.Text = user.Town;
                 txtProfession.Text = user.Profession;
@@ -104,12 +96,12 @@ namespace BD_Web_Group_Project_Webpages_v1
                 //{
                 //    cblHobbies.Items[i].Selected = true;
                 //}
-            //}
+                //}
+            }
         }
 
         protected void btnUpdateDetails_Click(object sender, EventArgs e)
         {
-            UserModel user = new UserModel();
             user.Town = txtTown.Text;
             user.County = ddlCounty.Text;
             user.Profession = txtProfession.Text;

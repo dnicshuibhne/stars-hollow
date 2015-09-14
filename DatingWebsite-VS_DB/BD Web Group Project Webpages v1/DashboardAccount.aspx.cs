@@ -11,6 +11,12 @@ namespace BD_Web_Group_Project_Webpages_v1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            /* check if logged in*/
+            user = (UserModel)Session[Resources.USER_SESSION_STATE];
+            if (user == null || user.ID < 1)
+            {
+                Response.Redirect("Default.aspx", true);
+            }
 
         }
     }

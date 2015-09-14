@@ -79,6 +79,42 @@ namespace ResourceTier {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 18-25.
+        /// </summary>
+        public static string AGE_RANGE_1 {
+            get {
+                return ResourceManager.GetString("AGE_RANGE_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 26-32.
+        /// </summary>
+        public static string AGE_RANGE_2 {
+            get {
+                return ResourceManager.GetString("AGE_RANGE_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 33-39.
+        /// </summary>
+        public static string AGE_RANGE_3 {
+            get {
+                return ResourceManager.GetString("AGE_RANGE_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 40+.
+        /// </summary>
+        public static string AGE_RANGE_4 {
+            get {
+                return ResourceManager.GetString("AGE_RANGE_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to AgeRange.
         /// </summary>
         public static string AGE_RANGE_COLUMN {
@@ -102,6 +138,24 @@ namespace ResourceTier {
         public static string AGE_RANGE_TABLE {
             get {
                 return ResourceManager.GetString("AGE_RANGE_TABLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attribute.
+        /// </summary>
+        public static string ATTRIBUTE_VIEW_ATTRIBUTE_COLUMN {
+            get {
+                return ResourceManager.GetString("ATTRIBUTE_VIEW_ATTRIBUTE_COLUMN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attribute_Value.
+        /// </summary>
+        public static string ATTRIBUTE_VIEW_VALUE_COLUMN1 {
+            get {
+                return ResourceManager.GetString("ATTRIBUTE_VIEW_VALUE_COLUMN1", resourceCulture);
             }
         }
         
@@ -165,6 +219,15 @@ namespace ResourceTier {
         public static string COUNTY_TABLE {
             get {
                 return ResourceManager.GetString("COUNTY_TABLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DatingDB.
+        /// </summary>
+        public static string CS_NAME {
+            get {
+                return ResourceManager.GetString("CS_NAME", resourceCulture);
             }
         }
         
@@ -475,6 +538,15 @@ namespace ResourceTier {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Town.
+        /// </summary>
+        public static string TOWN_COLUMN {
+            get {
+                return ResourceManager.GetString("TOWN_COLUMN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to @town.
         /// </summary>
         public static string TOWN_PARAM {
@@ -534,6 +606,15 @@ namespace ResourceTier {
         public static string USER_PROFILE_USERNAME_PROC {
             get {
                 return ResourceManager.GetString("USER_PROFILE_USERNAME_PROC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to USER.
+        /// </summary>
+        public static string USER_SESSION_STATE {
+            get {
+                return ResourceManager.GetString("USER_SESSION_STATE", resourceCulture);
             }
         }
         
