@@ -1,6 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="BD_Web_Group_Project_Webpages_v1.Default" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="cphDefaultHead" runat="server">
+
+    <title>Dream Date - Find Your Match Today</title>
+		<meta charset="utf-8" />
+		<meta name="Default" content="Dream Date - Find Your Match Today" />
+
 </asp:Content>
+
+
 <asp:Content ID="Content2" ContentPlaceHolderID="cphDefaultBody" runat="server">
     
     <!-- added id="loginScreen" -->
@@ -54,7 +63,7 @@
                 <br />
                 <br />
                 <br />
-                <img src="Images/DreamDate.png" class="defaultSiteImg" />
+                <img src="Images/DreamDate.png" class="defaultSiteImg" alt="Dream Date"/>
             </div>
             <div class="mainFormMiddle">
                 <section class="loginSection">

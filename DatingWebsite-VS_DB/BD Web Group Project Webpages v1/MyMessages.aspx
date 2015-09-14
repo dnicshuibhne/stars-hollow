@@ -1,5 +1,14 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard.master" AutoEventWireup="true" CodeBehind="MyMessages.aspx.cs" Inherits="BD_Web_Group_Project_Webpages_v1.MyMessages" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="cphDashboardMain" runat="server">
+
+<asp:Content ID="Content1" ContentPlaceHolderID="cphDashboardHead" runat="server">
+
+    <title>Dream Date - My Messages</title>
+		<meta charset="utf-8" />
+		<meta name="My Messages" content="Dream Date - My Messages" />
+
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="cphDashboardMain" runat="server">
 
     <h4>My Messages</h4>
     <br />
@@ -14,7 +23,7 @@
         <div id="myMessage"  visible="true" class="conversationBox theirImage" runat="server" >
             <asp:Button ID="closeThisMessage" runat="server" Text="X" CssClass="purpleButton" style="margin: 10px 10px; float:right;"/>
             <br />
-            <asp:Image ID="imgTheirProfilePic" runat="server" ImageUrl="~/Images/blank-profile-grey.png" style="position: absolute; bottom:0px; margin-left:40px; margin-top: 900px"/>
+            <asp:Image ID="imgTheirProfilePic" runat="server" ImageUrl="~/Images/blank-profile-grey.png" style="position: absolute; bottom:0px; margin-left:40px; margin-top: 900px" AlternateText="Profile Picture"/>
             <div id="convoMessages" >
                 <asp:Repeater ID="rptconvoMessages" runat="server">
                     <ItemTemplate>
@@ -107,7 +116,7 @@
             <asp:Repeater ID="rptConversations" runat="server">
                 <ItemTemplate>
                     <div class="conversationBox linkingDiv">
-                        <asp:Image ID="imgTheirProfilePic" runat="server" CssClass="theirImage"/>
+                        <asp:Image ID="imgTheirProfilePic" runat="server" CssClass="theirImage" AlternateText="Profile Picture" />
                         <asp:Label ID="lblTheirName" runat="server" Text='<%#getUsername2((Eval("SenderName")).ToString(),(Eval("ReceiverName")).ToString())%>' CssClass="theirName"></asp:Label>
                         <asp:Label ID="lblLastMessage" runat="server" Text='<%#Eval("Content") %>' CssClass="lastMessage"></asp:Label>
                     </div>
@@ -123,7 +132,7 @@
                 <a>
                     <div class="conversationBox linkingDiv">
                         <div class="theirImage">
-                            <img src="Images/blank-profile-grey.png" alt="User's profile picture"/>
+                            <img src="Images/blank-profile-grey.png" alt="Profile Picture"/>
                         </div>
                         <div class="theirName">
                             Stars Hollow

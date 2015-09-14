@@ -1,5 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Dashboard.master" AutoEventWireup="true" CodeBehind="DashboardAccount.aspx.cs" Inherits="BD_Web_Group_Project_Webpages_v1.DashboardAccount" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="cphDashboardMain" runat="server">
+
+<asp:Content ID="Content1" ContentPlaceHolderID="cphDashboardHead" runat="server">
+
+    <title>Dream Date - Edit Account Details</title>
+		<meta charset="utf-8" />
+		<meta name="Account Details" content="Dream Date - Account Details" />
+
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="cphDashboardMain" runat="server">
 
     <!-- This page is for the user to update their Account Details 
         following initial registration. -->

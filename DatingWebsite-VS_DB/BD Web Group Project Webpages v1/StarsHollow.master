@@ -9,7 +9,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cphDefaultBody" runat="server">
     <div id="topNavBar">
         <header>
-            <img src="Images/DreamDateHeader.png" alt="Site Name" style="margin-top: 5px;"/>
+            <img src="Images/DreamDateHeader.png" style="margin-top: 5px;" alt="Dream Date"/>
         </header>
         <nav>
             

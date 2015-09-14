@@ -3,7 +3,11 @@
 
     <!-- This Master page is for all pages under the dashboard umbrella -->
 
+    <asp:ContentPlaceHolder ID="cphDashboardHead" runat="server"></asp:ContentPlaceHolder>
+
 </asp:Content>
+
+
 <asp:Content ID="cphStarsHollowBody" ContentPlaceHolderID="cphStarsHollowBody" runat="server">
         <aside>
             <a>
@@ -24,7 +28,9 @@
     <div id="bodyContents">
         <h2 id="pageHeader">Dashboard</h2>
         <section>
+
             <asp:ContentPlaceHolder ID="cphDashboardMain" runat="server"></asp:ContentPlaceHolder>
+
         </section>
     </div>
 </asp:Content>

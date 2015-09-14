@@ -1,6 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/StarsHollow.master" AutoEventWireup="true" CodeBehind="SearchFor.aspx.cs" Inherits="BD_Web_Group_Project_Webpages_v1.SearchFor" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="cphStarsHollowHead" runat="server">
+
+    <title>Dream Date - Search for a Match</title>
+		<meta charset="utf-8" />
+		<meta name="Search For" content="Dream Date - Search for a Match" />
+
 </asp:Content>
+
+
 <asp:Content ID="Content2" ContentPlaceHolderID="cphStarsHollowBody" runat="server">
 
     <div class="searchForWrapper">

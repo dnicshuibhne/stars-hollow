@@ -1,6 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/StarsHollow.master" AutoEventWireup="true" CodeBehind="SearchResults.aspx.cs" Inherits="BD_Web_Group_Project_Webpages_v1.SearchResults" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="cphStarsHollowHead" runat="server">
+
+    <title>Dream Date - Search Results</title>
+		<meta charset="utf-8" />
+		<meta name="Search Results" content="Dream Date - Search Results" />
+
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="cphStarsHollowBody" runat="server">
 
 
@@ -71,7 +78,7 @@
                     <ItemTemplate>
                         <a>
                             <div class="resultsBox linkingDiv">
-                                <asp:Image ID="imgProfilePic" runat="server" CssClass="resultImage"/>
+                                <asp:Image ID="imgProfilePic" runat="server" CssClass="resultImage" AlternateText="Profile Picture"/>
                                 <div class="resultText">
                                     <asp:Label ID="lblName" runat="server" Text='<%#Eval("Username") %>' CssClass="resultName"></asp:Label>
                                     <asp:Label ID="lblLocation" runat="server" Text='<%#Eval("Location") %>' CssClass="resultLocation"></asp:Label>
@@ -90,7 +97,7 @@
             <div class="contentWrapper">
                 <a>
                     <div class="resultBox linkingDiv">
-                        <asp:Image ID="imgProfilePic2" runat="server" ImageUrl="~/Images/blank-profile-grey.png" CssClass="resultImage"/>    
+                        <asp:Image ID="imgProfilePic2" runat="server" ImageUrl="~/Images/blank-profile-grey.png" CssClass="resultImage" AlternateText="Profile Picture"/>    
                         <div class="resultText">
                             <asp:Label ID="lblName2" runat="server" Text="Test Name" CssClass="resultName"></asp:Label>
                             <asp:Label ID="lblLocation2" runat="server" Text="Dublin" CssClass="resultLocation"></asp:Label>

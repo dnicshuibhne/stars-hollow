@@ -8,7 +8,7 @@
     <div class="contentWrapper">
         <h1><asp:Label ID="lblUsername" runat="server" Text="Username"></asp:Label></h1>
         <br />
-        <asp:Image ID="imgProfilePicture" runat="server" ImageUrl="~/Images/blank-profile-grey.png" CssClass="profilePic"/>
+        <asp:Image ID="imgProfilePicture" runat="server" ImageUrl="~/Images/blank-profile-grey.png" CssClass="profilePic" AlternateText="Profile Picture"/>
         <br />
         
         <div class="detailsWrapper">
