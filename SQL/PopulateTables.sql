@@ -84,7 +84,6 @@ INSERT INTO [dbo].[HairColor] ([HairColor]) VALUES
 ('Red')
 
 INSERT INTO [dbo].[Height] ([Height]) VALUES
-('4.7'),
 ('4''10"'),
 ('4''11"'),
 ('4''7"'),

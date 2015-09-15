@@ -28,9 +28,9 @@ namespace BLL //Business Logic Layer
          * Sucessful validation will return a valid user id, and then this method returns a User object.
          * Unsuccessful validation will not return a valid id, and this method will return null.
          */
-        public int Login(string username, string password)
+        public int BLLLogin(string username, string password)
         {
-            return DalUserManager.Login(username, password);
+            return DalUserManager.DALLogin(username, password);
         }
 
         /*
@@ -39,37 +39,47 @@ namespace BLL //Business Logic Layer
          * If User creation is succesful, a valid user id will be be retrieved, and this method returns true
          * Otherwise the id will be in valid and this method will return false;
          */
-        public int CreateUser(UserModel user)
+        public int BLLCreateUser(string username, string email, string password)
         {
-            return DalUserManager.CreateUser(user);
+            return DalUserManager.DALCreateUser(username, email, password);
         }
 
         /*
          * Check if username is available
          */
-        public bool userExists(string username)
+        public bool BLLUserExists(string username)
         {
-            return DalUserManager.userExists(username);
+            return DalUserManager.DALUserExists(username);
         }
 
-        public void addUserInformation(Dictionary<string,string> userAttributes)
+        //public void BLLAddUserInformation(Dictionary<string, string> userAttributes)
+        //{
+        //    DalUserManager.addUserInformation(userAttributes);
+        //}
+
+        public void BLLUpdateUser(UserModel user)
         {
-            //DalUserManager.addUserInformation(userAttributes);
+            DalUserManager.DALUpdateUser(user);
         }
 
-        public void updateUser(UserModel user)
+        public UserModel BLLGetUser(int id)
         {
-            DalUserManager.updateUser(user);
+            return DalUserManager.DALGetUser(id);
         }
 
-        public UserModel getUser(int id)
+        public UserModel BLLGetUser(string username)
         {
-            return DalUserManager.getUser(id);
+            return DalUserManager.DALGetUser(username);
         }
 
-        public UserModel getUser(string username)
+        public void BLLSetHobbies(UserModel user)
         {
-            return DalUserManager.getUser(username);
+            DalUserManager.DALSetHobbies(user);
+        }
+
+        public List<int> BLLGetHobbies(int id)
+        {
+            return DalUserManager.DALGetHobbies(id);
         }
 
     }

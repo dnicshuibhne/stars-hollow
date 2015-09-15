@@ -220,22 +220,13 @@ namespace BD_Web_Group_Project_Webpages_v1 {
         protected global::System.Web.UI.WebControls.Label lblCounty;
         
         /// <summary>
-        /// txtCounty control.
+        /// ddlCounty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCounty;
-        
-        /// <summary>
-        /// regxvCounty control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator regxvCounty;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCounty;
         
         /// <summary>
         /// rfvCounty control.

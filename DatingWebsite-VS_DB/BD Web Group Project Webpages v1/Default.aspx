@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cphDefaultBody" runat="server">
 
     <!-- added id="loginScreen" -->
-    <div id="loginScreen" class="loginScreen" runat="server" Visible="False" >
+    <div id="loginScreen" class="loginScreen" runat="server"  >
 
         <!-- .loginScreen should set to 'display: none;' on page load, and when btnCancel is clicked.
             Its display should set to 'inline' when btnLogin is clicked.
@@ -24,12 +24,12 @@
                 <!-- lblLoginPassword was lblPassword -->
                 <asp:Label ID="lblLoginPassword" runat="server" Text="Password: "></asp:Label>
                 <!-- txtLoginPassword was txtPassword -->
-                <asp:TextBox ID="txtLoginPassword" runat="server" CssClass="loginTextBox"></asp:TextBox>
+                <asp:TextBox ID="txtLoginPassword" runat="server" CssClass="loginTextBox" TextMode="Password"></asp:TextBox>
                 <br />
                 <br />
                 <div class="loginButtons">
-                    <asp:Button ID="btnCancel" runat="server" CssClass="blueButton" Font-Size="20px" Text="Cancel" Style="padding: .3em 2em;" OnClick="btnCancel_Click" />
-                    <asp:Button ID="btnSubmit" runat="server" CssClass="blueButton" Font-Size="20px" Text="Login" Style="padding: .3em 2em;" OnClick="btnSubmit_Click" />
+                    <asp:Button ID="btnCancel" runat="server" CssClass="blueButton" Font-Size="20px" Text="Cancel" Style="padding: .3em 2em;" OnClick="btnCancelLogin_Click" />
+                    <asp:Button ID="btnSubmit" runat="server" CssClass="blueButton" Font-Size="20px" Text="Login" Style="padding: .3em 2em;" OnClick="btnSubmitLogin_Click" />
                 </div>
             </div>
         </section>
@@ -49,7 +49,7 @@
               <!--  <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
                 <asp:UpdatePanel ID="updatepanel1" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>-->
-                        <asp:Button ID="btnLogin" runat="server" Text="LOGIN" Font-Size="15px" CssClass="blueButton" Style='float: right; padding: 1vh 4vw; margin: 20px 30px; position: relative;' OnClick="btnLogin_Click" />
+                        <asp:Button ID="btnLogin" runat="server" Text="LOGIN" Font-Size="15px" CssClass="blueButton" Style='float: right; padding: 1vh 4vw; margin: 20px 30px; position: relative;' OnClick="btnOpenLogin_Click" />
                     <!--</ContentTemplate>
                 </asp:UpdatePanel>-->
                 <br />
@@ -80,9 +80,8 @@
                         <br />
 
                         <asp:Label ID="lblCounty" runat="server" Text="County "></asp:Label>
-                        <asp:TextBox ID="txtCounty" runat="server" CssClass="loginTextBox" ValidationGroup="vgRegisterPage1"></asp:TextBox>
-                        <asp:RegularExpressionValidator ID="regxvCounty" runat="server" ControlToValidate="txtCounty" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9\s\,\.\-]+" ValidationGroup="vgRegisterPage1"> Your location may only contain the following characters: <br /> [A-Z] [a-z] [0-9] [space] [,] [.] [-]</asp:RegularExpressionValidator>
-                        <asp:RequiredFieldValidator ID="rfvCounty" runat="server" ControlToValidate="txtCounty" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage1"> Required</asp:RequiredFieldValidator>
+                        <asp:DropDownList ID="ddlCounty" runat="server" Style="width: 114px;" ValidationGroup="vgRegisterPage1"></asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="rfvCounty" runat="server" ControlToValidate="ddlCounty" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage1"> Please select your County</asp:RequiredFieldValidator>
                         <br />
                         <br />
 
@@ -100,12 +99,12 @@
                         <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ControlToValidate="txtEmail" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage2"> Required</asp:RequiredFieldValidator>
                         <br />
                         <asp:Label ID="lblCreatePwd" runat="server" Text="Password" CssClass="loginControls"></asp:Label>
-                        <asp:TextBox ID="txtCreatePwd" runat="server" CssClass="loginTextBox" ValidationGroup="vgRegisterPage2"></asp:TextBox>
+                        <asp:TextBox ID="txtCreatePwd" runat="server" CssClass="loginTextBox" ValidationGroup="vgRegisterPage2" TextMode="Password"></asp:TextBox>
                         <asp:RegularExpressionValidator ID="regxvCreatePwd" runat="server" ControlToValidate="txtCreatePwd" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9_\s\!\@]{6,12}" ValidationGroup="vgRegisterPage2"> Your password must be 6-12 characters long and may only contain the following characters: [A-Z] [a-z] [0-9] [_] [!] [@]</asp:RegularExpressionValidator>
                         <asp:RequiredFieldValidator ID="rfvCreatePwd" runat="server" ControlToValidate="txtCreatePwd" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage2"> Required</asp:RequiredFieldValidator>
                         <br />
                         <asp:Label ID="lblConfirmPwd" runat="server" Text="Confirm Password" CssClass="loginControls"></asp:Label>
-                        <asp:TextBox ID="txtConfirmPwd" runat="server" CssClass="loginTextBox" ValidationGroup="vgRegisterPage2"></asp:TextBox>
+                        <asp:TextBox ID="txtConfirmPwd" runat="server" CssClass="loginTextBox" ValidationGroup="vgRegisterPage2" TextMode="Password" ></asp:TextBox>
                         <asp:RegularExpressionValidator ID="regxvConfirmPwd" runat="server" ControlToValidate="txtConfirmPwd" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9_\s\!\@]{6,12}" ValidationGroup="vgRegisterPage2"> Your password must be 6-12 characters long and may only contain the following characters: [A-Z] [a-z] [0-9] [_] [!] [@]</asp:RegularExpressionValidator>
                         <asp:CompareValidator ID="cvConfirmPwd" runat="server" ControlToCompare="txtCreatePwd" ControlToValidate="txtConfirmPwd" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage2"> Your passwords don&#39;t match</asp:CompareValidator>
                         <asp:RequiredFieldValidator ID="rfvConfirmPwd" runat="server" ControlToValidate="txtConfirmPwd" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage2"> Required</asp:RequiredFieldValidator>

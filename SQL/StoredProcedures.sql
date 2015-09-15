@@ -2,8 +2,7 @@
 ------------------------------------------------------------ USER PROCEDURES ----------------------------------------------------------- 
 ------------------------------------------------------------------------------------------------------------------------------------------
 
---- Stored procedure to add new user - returns new identity parameter- UserID
-
+---- ADD NEW USER TO USERS AND USERINFORMATION - returns new identity parameter- UserID
 DROP PROCEDURE uspAddNewUser
 GO
 CREATE PROCEDURE uspAddNewUser
@@ -13,13 +12,22 @@ CREATE PROCEDURE uspAddNewUser
 AS
 BEGIN
     SET NOCOUNT ON;
-	DECLARE @IdInserted TABLE(IdValue INTEGER);	
+	DECLARE @ID int;
+	DECLARE @IDInserted TABLE(IDValue INTEGER);	
+	
     INSERT dbo.[Users](Username,Password,Email) 
-	OUTPUT inserted.UserID INTO @IdInserted
+	OUTPUT inserted.UserID INTO @IDInserted
 	VALUES (@username,@Password,@Email)
-	SELECT IdValue FROM @IdInserted
+	
+	SELECT @ID = IDValue FROM @IDInserted 
+	
+	INSERT dbo.UserInformation(UserID) VALUES (@ID)
+	
+	SELECT @ID AS UserID
 END
 GO
+
+
 
 --- Update User attributes - all params are optional except user id
 DROP  PROCEDURE uspUpdateUserDetails
@@ -41,7 +49,7 @@ CREATE  PROCEDURE uspUpdateUserDetails
 @relationshipstatus varchar (50) = NULL,
 @sexualorientation varchar (50) = NULL,
 @town varchar (50) = NULL,
-@profilepic varchar(max)
+@profilepic varchar(max) = NULL
 
 AS
 BEGIN
@@ -64,6 +72,7 @@ BEGIN
 	IF(@profilepic IS NOT NULL) Begin UPDATE dbo.UserInformation SET ProfilePicturePath = @profilepic WHERE dbo.UserInformation.UserID = @userid END
 END
 GO
+
 
 --------- Login Proc returns UserId if successful
 DROP  PROCEDURE dbo.uspUserLogin
@@ -123,7 +132,8 @@ SELECT
 	UserInformation.Profession,
 	UserInformation.SexualOrientation,
 	UserInformation.Town,
-	UserInformation.ProfilePicturePath
+	UserInformation.ProfilePicturePath,
+	UserInformation.Comments
 FROM [Users]
 Inner Join UserInformation
 ON [Users].UserID = UserInformation.UserID
@@ -155,7 +165,8 @@ SELECT
 	UserInformation.Profession,
 	UserInformation.SexualOrientation,
 	UserInformation.Town,
-	UserInformation.ProfilePicturePath
+	UserInformation.ProfilePicturePath,
+	UserInformation.Comments
 FROM [Users]
 Inner Join UserInformation
 ON [Users].UserID  = UserInformation.UserID
@@ -202,18 +213,16 @@ WHERE
 	Messages.ReceiverID = @userID
 GO
 
-EXEC uspAllMessages '1'
-
-GO
-
 
 ------------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------ TESTING PROCEDURES ----------------------------------------------------------- 
 ------------------------------------------------------------------------------------------------------------------------------------------
 
---exec dbo.uspAddNewUser 'nics','1234','dee@aol.com'
---exec dbo.uspAddNewUser 'jbloggs','1234','joe@gmail.com'
---exec dbo.uspAddNewUser 'msmith','1234','marry@mail.ie'
+--exec dbo.uspAddNewUser 'dnics','12345678','dee@aol.com'
+--select * from UserInformation where UserID = 29
+
+--exec dbo.uspAddNewUser 'jbloggs','12345678','joe@gmail.com'
+--exec dbo.uspAddNewUser 'msmith','12345678','marry@mail.ie'
 
 --EXEC dbo.uspAddNewUser @username = 'GoHomeRoger', @Password = 'Password',@Email='ghroger@hotmail.com' 
 --GO
@@ -232,4 +241,8 @@ GO
 --EXEC uspUserLogin 'Ro3ger' ,'3password3'
 --GO
 --EXEC uspUserLogin 'Sarah6' ,'3password3'
+--GO
+
+
+--EXEC uspAllMessages '1'
 --GO

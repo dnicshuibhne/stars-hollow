@@ -50,26 +50,14 @@
                 <asp:DropDownList ID="ddlHeight" runat="server"></asp:DropDownList>
                 <br />
                 <br />
-                <asp:Label ID="lblEyeColour" runat="server" Text="Eye colour "></asp:Label>
-                <asp:DropDownList ID="ddlEyeColour" runat="server"></asp:DropDownList>
-                <br />
-                <br />
-                <asp:Label ID="lblHairColour" runat="server" Text="Hair Colour "></asp:Label>
-                <asp:DropDownList ID="ddlHairColour" runat="server"></asp:DropDownList>
-                <br />
-                <br />
                 <asp:Label ID="lblAgeRange" runat="server" Text="Age Range"></asp:Label>
                 <asp:DropDownList ID="ddlAgeRange" runat="server"></asp:DropDownList>
-                <br />
-                <br />
-                <asp:Label ID="lblEthnicity" runat="server" Text="Ethnicity"></asp:Label>
-                <asp:DropDownList ID="ddlEthnicity" runat="server"></asp:DropDownList>
                 <br />
                 <br />
             </fieldset>
             <br />
             <br />
-            <asp:Button ID="btnSearch" runat="server" Text="Search Now" class="blueButton dashboardButton"/>
+            <asp:Button ID="btnSearch" runat="server" Text="Search Now" CssClass="blueButton dashboardButton"/>
             <br />
             <br />
         </section>

@@ -4,6 +4,23 @@
 ------------------------------------------------------------ USER PROCEDURES ----------------------------------------------------------- 
 ------------------------------------------------------------------------------------------------------------------------------------------
 
+--- Stored procedure to add new user - returns new identity parameter- UserID
+DROP PROCEDURE uspAddNewUser
+GO
+CREATE PROCEDURE uspAddNewUser
+@username varchar(50),
+@Password varchar (50),
+@Email varchar(50)
+AS
+BEGIN
+    SET NOCOUNT ON;
+	DECLARE @IdInserted TABLE(IdValue INTEGER);	
+    INSERT dbo.[Users](Username,Password,Email) 
+	OUTPUT inserted.UserID INTO @IdInserted
+	VALUES (@username,@Password,@Email)
+	SELECT IdValue FROM @IdInserted
+END
+GO
 
 -- Add details for an existing user
 CREATE PROCEDURE uspAddUserDetails

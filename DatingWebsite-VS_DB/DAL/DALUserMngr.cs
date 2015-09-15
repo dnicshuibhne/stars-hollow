@@ -19,14 +19,16 @@ namespace DAL //Data Access Layer
     {
         User,
         Email,
-        Age, AgeRange,
+        Age, 
+        AgeRange,
         Build,
         County,
         Ethnicity,
         EyeColor,
         Gender,
         HairColor,
-        Height, Hobbies,
+        Height, 
+        Hobbies,
         IdealDate,
         RelationshipStatus,
         Profession,
@@ -52,7 +54,7 @@ namespace DAL //Data Access Layer
          * Uses stored proc in DB to verify username & password
          * If successful, the user's ID is returned
          */
-        public int Login(string username, string password)
+        public int DALLogin(string username, string password)
         {
             int UserID = 0;
 
@@ -86,7 +88,7 @@ namespace DAL //Data Access Layer
          * Uses stored proc in DB to create new user
          * If successful, the user's ID is returned
          */
-        public int CreateUser(UserModel user)
+        public int DALCreateUser(string username, string email, string password)
         {
             int userID = 0;
             DataSet data = new DataSet();
@@ -97,9 +99,9 @@ namespace DAL //Data Access Layer
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.Add(Resources.USERNAME_PARAM, SqlDbType.NVarChar).Value = user.Username;
-                    cmd.Parameters.Add(Resources.PASSWORD_PARAM, SqlDbType.NVarChar).Value = user.Password;
-                    cmd.Parameters.Add(Resources.EMAIL_PARAM, SqlDbType.NVarChar).Value = user.Email;
+                    cmd.Parameters.Add(Resources.USERNAME_PARAM, SqlDbType.NVarChar).Value = username;
+                    cmd.Parameters.Add(Resources.PASSWORD_PARAM, SqlDbType.NVarChar).Value = password;
+                    cmd.Parameters.Add(Resources.EMAIL_PARAM, SqlDbType.NVarChar).Value = email;
 
                     con.Open();
                     try
@@ -126,7 +128,7 @@ namespace DAL //Data Access Layer
         /*
          * check if a username is available
          */
-        public bool userExists(string username)
+        public bool DALUserExists(string username)
         {
             bool exists = true;
             using (SqlConnection con = new SqlConnection(conString))
@@ -155,38 +157,38 @@ namespace DAL //Data Access Layer
                 }
             }
         }
+        /* OUT OF DATE - MISSING PARAMS*/
+        //public void DALAddUserInformation(int userID, string town, string county, string prof, string eye, string hair, string status, string ethnicity, string gender, string orientation, string build, string height, int age, string idealdate, string comment)
+        //{
+        //    String proc = "uspAddAllUserDetails";
 
-        public void addUserInformation(int userID, string town, string county, string prof, string eye, string hair, string status, string ethnicity, string gender, string orientation, string build, string height, int age, string idealdate, string comment)
-        {
-            String proc = "uspAddAllUserDetails";
+        //    using (SqlConnection con = new SqlConnection(conString))
+        //    {
+        //        using (SqlCommand cmd = new SqlCommand(proc, con))
+        //        {
+        //            cmd.CommandType = CommandType.StoredProcedure;
 
-            using (SqlConnection con = new SqlConnection(conString))
-            {
-                using (SqlCommand cmd = new SqlCommand(proc, con))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-
-                    cmd.Parameters.Add(Resources.USERID_PARAM, SqlDbType.Int).Value = userID;
-                    cmd.Parameters.Add(Resources.PROFESSION_PARAM, SqlDbType.NVarChar).Value = prof;
-                    cmd.Parameters.Add(Resources.TOWN_PARAM, SqlDbType.NVarChar).Value = town;
-                    cmd.Parameters.Add(Resources.COUNTY_PARAM, SqlDbType.NVarChar).Value = county;
-                    cmd.Parameters.Add(Resources.GENDER_PARAM, SqlDbType.NVarChar).Value = gender;
-                    cmd.Parameters.Add(Resources.SEXUAL_ORIENTATION_PARAM, SqlDbType.NVarChar).Value = orientation;
-                    cmd.Parameters.Add(Resources.AGE_PARAM, SqlDbType.Int).Value = age;
-                    cmd.Parameters.Add(Resources.ETHNICITY_PARAM, SqlDbType.NVarChar).Value = ethnicity;
-                    cmd.Parameters.Add(Resources.RELATIONSHIP_STATUS_PARAM, SqlDbType.NVarChar).Value = status;
-                    cmd.Parameters.Add(Resources.HAIR_COLOR_PARAM, SqlDbType.NVarChar).Value = hair;
-                    cmd.Parameters.Add(Resources.EYE_COLOR_PARAM, SqlDbType.NVarChar).Value = eye;
-                    cmd.Parameters.Add(Resources.HEIGHT_PARAM, SqlDbType.NVarChar).Value = height;
-                    cmd.Parameters.Add(Resources.BUILD_PARAM, SqlDbType.NVarChar).Value = build;
-                    cmd.Parameters.Add(Resources.IDEAL_DATE_PARAM, SqlDbType.NVarChar).Value = idealdate;
-                    cmd.Parameters.Add(Resources.COMMENT_PARAM, SqlDbType.NVarChar).Value = comment;
-                }
-            }
-        }
+        //            cmd.Parameters.Add(Resources.USERID_PARAM, SqlDbType.Int).Value = userID;
+        //            cmd.Parameters.Add(Resources.PROFESSION_PARAM, SqlDbType.NVarChar).Value = prof;
+        //            cmd.Parameters.Add(Resources.TOWN_PARAM, SqlDbType.NVarChar).Value = town;
+        //            cmd.Parameters.Add(Resources.COUNTY_PARAM, SqlDbType.NVarChar).Value = county;
+        //            cmd.Parameters.Add(Resources.GENDER_PARAM, SqlDbType.NVarChar).Value = gender;
+        //            cmd.Parameters.Add(Resources.SEXUAL_ORIENTATION_PARAM, SqlDbType.NVarChar).Value = orientation;
+        //            cmd.Parameters.Add(Resources.AGE_PARAM, SqlDbType.Int).Value = age;
+        //            cmd.Parameters.Add(Resources.ETHNICITY_PARAM, SqlDbType.NVarChar).Value = ethnicity;
+        //            cmd.Parameters.Add(Resources.RELATIONSHIP_STATUS_PARAM, SqlDbType.NVarChar).Value = status;
+        //            cmd.Parameters.Add(Resources.HAIR_COLOR_PARAM, SqlDbType.NVarChar).Value = hair;
+        //            cmd.Parameters.Add(Resources.EYE_COLOR_PARAM, SqlDbType.NVarChar).Value = eye;
+        //            cmd.Parameters.Add(Resources.HEIGHT_PARAM, SqlDbType.NVarChar).Value = height;
+        //            cmd.Parameters.Add(Resources.BUILD_PARAM, SqlDbType.NVarChar).Value = build;
+        //            cmd.Parameters.Add(Resources.IDEAL_DATE_PARAM, SqlDbType.NVarChar).Value = idealdate;
+        //            cmd.Parameters.Add(Resources.COMMENT_PARAM, SqlDbType.NVarChar).Value = comment;
+        //        }
+        //    }
+        //}
 
 
-        public void updateUser(UserModel user)
+        public void DALUpdateUser(UserModel user)
         {
             using (SqlConnection con = new SqlConnection(conString))
             {
@@ -225,8 +227,8 @@ namespace DAL //Data Access Layer
                         cmd.Parameters.Add(Resources.RELATIONSHIP_STATUS_PARAM, SqlDbType.NVarChar).Value = user.RelationshipStatus;
                     if (user.IdealDate != null)
                         cmd.Parameters.Add(Resources.IDEAL_DATE_PARAM, SqlDbType.NVarChar).Value = user.IdealDate;
-                    if (user.Comment != null)
-                        cmd.Parameters.Add(Resources.COMMENT_PARAM, SqlDbType.NVarChar).Value = user.Comment;
+                    if (user.Comments != null)
+                        cmd.Parameters.Add(Resources.COMMENT_PARAM, SqlDbType.NVarChar).Value = user.Comments;
                     try
                     {
                         con.Open();
@@ -234,7 +236,7 @@ namespace DAL //Data Access Layer
                     }
                     catch (SqlException e)
                     {
-                        throw;
+                        throw new Exception("Error Adding Attributes to User: "+e.Message);
                     }
                     finally
                     {
@@ -244,10 +246,11 @@ namespace DAL //Data Access Layer
             }
         }
 
-        public UserModel getUser(int id)
+        public UserModel DALGetUser(int id)
         {
             UserModel user = null;
             SqlDataReader reader;
+
             using (SqlConnection con = new SqlConnection(conString))
             {
                 using (SqlCommand cmd = new SqlCommand(Resources.USER_PROFILE_ID_PROC, con))
@@ -263,25 +266,29 @@ namespace DAL //Data Access Layer
                         {
                             user = new UserModel();
                             user.ID = id;
-                            int i = (int)UserProfile.User;
-                            user.Username = reader.GetString(i);
-                            user.Email = reader.GetString((int)UserProfile.Email);
-                            user.Town = reader.GetString((int)UserProfile.Town);
-                            user.County = reader.GetString((int)UserProfile.County);
-                            user.Profession = reader.GetString((int)UserProfile.Profession);
-                            user.Ethnicity = reader.GetString((int)UserProfile.Ethnicity);
-                            user.Age = reader.GetInt32((int)UserProfile.Age);
-                            user.RelationshipStatus = reader.GetString((int)UserProfile.RelationshipStatus);
-                            user.EyeColor = reader.GetString((int)UserProfile.EyeColor);
-                            user.HairColor = reader.GetString((int)UserProfile.HairColor);
-                            user.Age = reader.GetInt32((int)UserProfile.Age);
-                            user.Gender = reader.GetString((int)UserProfile.Gender);
-                            user.SexualOrientation = reader.GetString((int)UserProfile.SexualOrientation);
-                            user.Build = reader.GetString((int)UserProfile.Build);
-                            user.Height = reader.GetString((int)UserProfile.Height);
-                            user.IdealDate = reader.GetString((int)UserProfile.IdealDate);
-                            //user.PicturePath = reader.GetString((int)UserProfile.PicturePath);
 
+                            int position = (int)UserProfile.User;
+
+                            if (!reader.IsDBNull(position) )
+                                user.Username = reader.GetString(position);
+
+                            if (!reader.IsDBNull((int)UserProfile.Age)) user.Age = reader.GetInt32((int)UserProfile.Age);
+                            if (!reader.IsDBNull((int)UserProfile.Build)) user.Build = reader.GetString((int)UserProfile.Build);
+                            if (!reader.IsDBNull((int)UserProfile.County)) user.County = reader.GetString((int)UserProfile.County);
+                            if (!reader.IsDBNull((int)UserProfile.Email)) user.Email = reader.GetString((int)UserProfile.Email);
+                            if (!reader.IsDBNull((int)UserProfile.Ethnicity)) user.Ethnicity = reader.GetString((int)UserProfile.Ethnicity);
+                            if (!reader.IsDBNull((int)UserProfile.EyeColor)) user.EyeColor = reader.GetString((int)UserProfile.EyeColor);
+                            if (!reader.IsDBNull((int)UserProfile.Gender)) user.Gender = reader.GetString((int)UserProfile.Gender);
+                            if (!reader.IsDBNull((int)UserProfile.HairColor)) user.HairColor = reader.GetString((int)UserProfile.HairColor);
+                            if (!reader.IsDBNull((int)UserProfile.Height)) user.Height = reader.GetString((int)UserProfile.Height);
+                            //hobbies - parse xml
+                            if (!reader.IsDBNull((int)UserProfile.IdealDate)) user.IdealDate = reader.GetString((int)UserProfile.IdealDate);
+                            if (!reader.IsDBNull((int)UserProfile.Profession)) user.Profession = reader.GetString((int)UserProfile.Profession);
+                            if (!reader.IsDBNull((int)UserProfile.RelationshipStatus)) user.RelationshipStatus = reader.GetString((int)UserProfile.RelationshipStatus);
+                            if (!reader.IsDBNull((int)UserProfile.SexualOrientation)) user.SexualOrientation = reader.GetString((int)UserProfile.SexualOrientation);
+                            if (!reader.IsDBNull((int)UserProfile.Town)) user.Town = reader.GetString((int)UserProfile.Town);
+                            if (!reader.IsDBNull((int)UserProfile.ProfilePicturePath)) user.ProfilePicturePath = reader.GetString((int)UserProfile.ProfilePicturePath);
+                            if (!reader.IsDBNull((int)UserProfile.Comments)) user.Comments = reader.GetString((int)UserProfile.Comments);
                         }
                         reader.Close();
                     }
@@ -300,7 +307,7 @@ namespace DAL //Data Access Layer
             return user;
         }
 
-        public UserModel getUser(string username)
+        public UserModel DALGetUser(string username)
         {
             UserModel user = null;
             SqlDataReader reader;
@@ -317,26 +324,26 @@ namespace DAL //Data Access Layer
                         reader = cmd.ExecuteReader();
                         if (reader.Read())
                         {
-
-
                             user = new UserModel();
                             user.Username = username;
-                            user.ID = reader.GetInt32((int)UserProfile.User);
-                            user.Email = reader.GetString((int)UserProfile.Email);
-                            user.Town = reader.GetString((int)UserProfile.Town);
-                            user.County = reader.GetString((int)UserProfile.County);
-                            user.Profession = reader.GetString((int)UserProfile.Profession);
-                            user.Ethnicity = reader.GetString((int)UserProfile.Ethnicity);
-                            user.RelationshipStatus = reader.GetString((int)UserProfile.RelationshipStatus);
-                            user.EyeColor = reader.GetString((int)UserProfile.EyeColor);
-                            user.HairColor = reader.GetString((int)UserProfile.HairColor);
-                            user.Age = reader.GetInt32((int)UserProfile.Age);
-                            user.Gender = reader.GetString((int)UserProfile.Gender);
-                            user.SexualOrientation = reader.GetString((int)UserProfile.SexualOrientation);
-                            user.Build = reader.GetString((int)UserProfile.Build);
-                            user.Height = reader.GetString((int)UserProfile.Height);
-                            //user.PicturePath = reader.GetString((int)UserProfile.PicturePath);
-                            user.IdealDate = reader.GetString((int)UserProfile.IdealDate);
+                            if (!reader.IsDBNull((int)UserProfile.User)) user.ID = reader.GetInt32((int)UserProfile.User);
+                            if (!reader.IsDBNull((int)UserProfile.Age)) user.Age = reader.GetInt32((int)UserProfile.Age);
+                            if (!reader.IsDBNull((int)UserProfile.Build)) user.Build = reader.GetString((int)UserProfile.Build);
+                            if (!reader.IsDBNull((int)UserProfile.County)) user.County = reader.GetString((int)UserProfile.County);
+                            if (!reader.IsDBNull((int)UserProfile.Email)) user.Email = reader.GetString((int)UserProfile.Email);
+                            if (!reader.IsDBNull((int)UserProfile.Ethnicity)) user.Ethnicity = reader.GetString((int)UserProfile.Ethnicity);
+                            if (!reader.IsDBNull((int)UserProfile.EyeColor)) user.EyeColor = reader.GetString((int)UserProfile.EyeColor);
+                            if (!reader.IsDBNull((int)UserProfile.Gender)) user.Gender = reader.GetString((int)UserProfile.Gender);
+                            if (!reader.IsDBNull((int)UserProfile.HairColor)) user.HairColor = reader.GetString((int)UserProfile.HairColor);
+                            if (!reader.IsDBNull((int)UserProfile.Height)) user.Height = reader.GetString((int)UserProfile.Height);
+                            //hobbies - parse xml
+                            if (!reader.IsDBNull((int)UserProfile.IdealDate)) user.IdealDate = reader.GetString((int)UserProfile.IdealDate);
+                            if (!reader.IsDBNull((int)UserProfile.Profession)) user.Profession = reader.GetString((int)UserProfile.Profession);
+                            if (!reader.IsDBNull((int)UserProfile.RelationshipStatus)) user.RelationshipStatus = reader.GetString((int)UserProfile.RelationshipStatus);
+                            if (!reader.IsDBNull((int)UserProfile.SexualOrientation)) user.SexualOrientation = reader.GetString((int)UserProfile.SexualOrientation);
+                            if (!reader.IsDBNull((int)UserProfile.Town)) user.Town = reader.GetString((int)UserProfile.Town);
+                            if (!reader.IsDBNull((int)UserProfile.ProfilePicturePath)) user.ProfilePicturePath = reader.GetString((int)UserProfile.ProfilePicturePath);
+                            if (!reader.IsDBNull((int)UserProfile.Comments)) user.Comments = reader.GetString((int)UserProfile.Comments);
                         }
                         reader.Close();
                     }
@@ -351,8 +358,83 @@ namespace DAL //Data Access Layer
                     }
 
                 }
+
             }
             return user;
+        }
+
+
+
+        public List<int> DALGetHobbies(int id)
+        {
+            string sql = "SELECT "+Resources.HOBBIES_ID_COLUMN+" FROM " + Resources.USER_HOBBIES_TABLE + " WHERE UserID =" + id;
+            List<int> hobbies = null;
+            SqlDataReader reader;
+
+            using (SqlConnection con = new SqlConnection(conString))
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    try
+                    {
+                        con.Open();
+                        hobbies = new List<int>();
+                        reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            hobbies.Add(reader.GetInt32(0));
+                        }
+                    }
+                    catch (SqlException e)
+                    {
+                        throw;
+                    }
+                    finally
+                    {
+                        con.Close();
+                    }
+                }
+            }
+            return hobbies;
+        }
+
+        public void DALSetHobbies(UserModel user)
+        {
+            int rowsAffected;
+
+            if(user == null)
+                return;
+            if(user.Hobbies.Count <= 0)
+                return;
+            
+            string sql = "INSERT INTO "+Resources.USER_HOBBIES_TABLE + " VALUES ";
+            foreach (int hobbyID in user.Hobbies)
+            {
+                sql += "(" + user.ID + ",'" + hobbyID + "')";
+            }
+
+            using (SqlConnection con = new SqlConnection(conString))
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, con))
+                {
+                    cmd.CommandType = CommandType.Text;
+
+                    con.Open();
+                    try
+                    {
+                        rowsAffected = cmd.ExecuteNonQuery();
+
+                    }
+                    catch (SqlException e)
+                    {
+                        throw;
+                    }
+                    finally
+                    {
+                        con.Close();
+                    }
+                }
+            }
         }
 
         //    public void addUserInformation(int userID ,Dictionary<string, string> userAttributes)

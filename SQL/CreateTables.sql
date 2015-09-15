@@ -115,6 +115,7 @@ CREATE TABLE [dbo].[UserInformation] (
     [SexualOrientation]  NVARCHAR (50)  NULL,
     [Town]  NVARCHAR (50)  NULL,
     [ProfilePicturePath] NVARCHAR (MAX) NULL,
+    [Comments] NVARCHAR (50) NULL,
 	PRIMARY KEY CLUSTERED ([UserID] ASC),
 	FOREIGN KEY ([UserID]) REFERENCES [dbo].[Users]([UserID]),
     FOREIGN KEY ([Build]) REFERENCES [dbo].[Build] ([Build]),

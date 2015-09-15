@@ -15,17 +15,70 @@ namespace BD_Web_Group_Project_Webpages_v1
     public partial class Default : System.Web.UI.Page
     {
         BLLUserMngr userManager;
-        public UserModel user;
         BLLAttributeMngr attManager;
-        List<string> attributes;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            loginScreen.Style.Add(HtmlTextWriterStyle.Display, "none");
-            loginPage2.Visible = false;
-            userManager = new BLLUserMngr();
+            if (!IsPostBack)
+            {
+                loginPage2.Visible = false;
+            }
+
+            UserModel user = getCurrentUser();
+            if (user != null)
+            {
+                //user.Hobbies = userManager.BLLGetHobbies(user.ID); // write stroed proc to 
+                setCurrentUser(user);
+                Response.Redirect("DashboardPersonal.aspx");
+            }
+            else
+            {
+                userManager = new BLLUserMngr();
+                //if registration
+                fillRegistrationData();
+            }
+        }
+
+        #region Page Load Methods
+        /*
+         * Add User to Session
+         */
+        public void setCurrentUser(UserModel user)
+        {
+            if (user == null)
+                throw new ArgumentNullException("The user object is invalid");
+            else
+            {
+                Session.Add(Resources.USER_SESSION_STATE, user);
+            }
+        }
+
+
+        /*
+         * Obtains User from Session
+         */
+        public UserModel getCurrentUser()
+        {
+            return (UserModel)Session.Contents[Resources.USER_SESSION_STATE];
+        }
+
+        /*
+         * Remove User from Session
+         */
+        private void setLogout()
+        {
+            Session.Remove(Resources.USER_SESSION_STATE);
+        }
+
+        /*
+         * Populate Dropdown Lists
+         */
+        private void fillRegistrationData()
+        {
             attManager = new BLLAttributeMngr();
-            
+
+            List<string> attributes;
+
             attributes = attManager.BLLGetGenders();
             ddlGender.DataSource = attributes;
             ddlGender.DataBind();
@@ -33,15 +86,69 @@ namespace BD_Web_Group_Project_Webpages_v1
             attributes = attManager.BLLGetSexualOrientation();
             ddlOrientation.DataSource = attributes;
             ddlOrientation.DataBind();
+
+            attributes = attManager.BLLGetCounty();
+            ddlCounty.DataSource = attributes;
+            ddlCounty.DataBind();
+        }
+        #endregion
+
+        #region Login Methods
+        /*
+         * Display Login div
+         */
+        protected void btnOpenLogin_Click(object sender, EventArgs e)
+        {
+            loginScreen.Visible = true;
+            loginPage1.Visible = false;
         }
 
+        /*
+         * Hide Login Div
+         */
+        protected void btnCancelLogin_Click(object sender, EventArgs e)
+        {
+            loginPage1.Visible = true;
+            loginScreen.Visible = false;
+            valLogin.Visible = false;
+        }
+
+        /*
+         * Perform Login
+         */
+        protected void btnSubmitLogin_Click(object sender, EventArgs e)
+        {
+            string username = txtLoginUsername.Text;
+            string password = txtLoginPassword.Text;
+
+            int id = userManager.BLLLogin(username, password);
+            if (id > 0)
+            {
+                UserModel user = new UserModel(id, username);
+                user.Hobbies = userManager.BLLGetHobbies(user.ID);
+                setCurrentUser(user);
+                Response.Redirect("DashboardPersonal.aspx", true);
+            }
+            else
+            {
+                Response.Write("Login failed");
+                valLogin.Visible = true;
+                loginPage1.Visible = true;
+            }
+        }
+        #endregion
+
+        #region Registration Methods
+        /*
+         * Go from first half of registration form to second
+         */
         protected void btnContinueReg_Click(object sender, EventArgs e)
         {
             //check if username is available
-            if (userManager.userExists(txtUserName.Text))
+            if (userManager.BLLUserExists(txtUserName.Text))
             {
                 //prompt to use different username
-                valUserAvail.Visible = true;
+                valUserAvail.IsValid = false;
             }
             else
             {
@@ -50,70 +157,37 @@ namespace BD_Web_Group_Project_Webpages_v1
             }
         }
 
-        protected void btnRegister_Click(object sender, EventArgs e)
-        {
-            user = new UserModel(txtUserName.Text, txtCreatePwd.Text);
-            user.SexualOrientation = ddlOrientation.SelectedValue;
-            user.Gender = ddlGender.SelectedValue;
-            user.County = txtCounty.Text;
-            user.Email = txtEmail.Text; 
-
-            int id = userManager.CreateUser(user);
-            if (id > 0)
-            {
-                setLogin(id, txtUserName.Text);
-                Response.Write("User Created");
-                Response.Redirect("DashboardPersonal.aspx", true);
-            }
-            else
-            {
-                Response.Write("Failed to create user");
-            }
-        }
-
-        protected void btnLogin_Click(object sender, EventArgs e)
-        {
-            loginScreen.Visible = true;
-            loginScreen.Style.Add(HtmlTextWriterStyle.Display, "inline");
-            loginPage1.Visible = false;
-        }
-
+        /*
+         * Return from second half of registration form to first
+         */
         protected void btnBack_Click(object sender, EventArgs e)
         {
             loginPage2.Visible = false;
             loginPage1.Visible = true;
         }
 
-        public void setLogin(int id, string username)
+        /*
+         * Perform Registration
+         */
+        protected void btnRegister_Click(object sender, EventArgs e)
         {
-            UserModel user = userManager.getUser(id);
-            Session.Add(Resources.USER_SESSION_STATE, user);
-        }
-
-        private void setLogout()
-        {
-            Session.Remove(Resources.USER_SESSION_STATE);
-        }
-
-        protected void btnSubmit_Click(object sender, EventArgs e)
-        {
-            int id = userManager.Login(txtLoginUsername.Text, txtLoginPassword.Text);
+            int id = userManager.BLLCreateUser(txtUserName.Text, txtEmail.Text, txtCreatePwd.Text);
             if (id > 0)
             {
-                setLogin(id, txtLoginUsername.Text);
-                Response.Redirect("DashboardPersonal.aspx", true);
+                UserModel user = new UserModel(id,txtUserName.Text);
+                user.SexualOrientation = ddlOrientation.SelectedValue;
+                user.Gender = ddlGender.SelectedValue;
+                user.County = ddlCounty.SelectedValue;
+
+                setCurrentUser(user);
+                Response.Write("User Created");
+                Response.Redirect("DashboardPersonal.aspx");
             }
             else
             {
-                Response.Write("Login failed");
-                valLogin.Visible = true;
+                Response.Write("Failed to create user");
             }
         }
-
-        protected void btnCancel_Click(object sender, EventArgs e)
-        {
-            loginPage1.Visible = true;
-            loginScreen.Visible = false;
-        }
+        #endregion
     }
 }

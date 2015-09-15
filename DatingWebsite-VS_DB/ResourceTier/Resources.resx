@@ -353,6 +353,10 @@
     <value>uspAddNewUser</value>
     <comment>PROCEDURE</comment>
   </data>
+  <data name="USER_HOBBIES_TABLE" xml:space="preserve">
+    <value>UserHobbies</value>
+    <comment>TABLE</comment>
+  </data>
   <data name="USER_INFORMATION_TABLE" xml:space="preserve">
     <value>UserInformation</value>
     <comment>TABLE</comment>

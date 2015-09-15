@@ -565,6 +565,15 @@ namespace ResourceTier {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to UserHobbies.
+        /// </summary>
+        public static string USER_HOBBIES_TABLE {
+            get {
+                return ResourceManager.GetString("USER_HOBBIES_TABLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to UserInformation.
         /// </summary>
         public static string USER_INFORMATION_TABLE {
