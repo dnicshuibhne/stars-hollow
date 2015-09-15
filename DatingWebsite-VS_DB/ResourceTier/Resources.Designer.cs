@@ -268,15 +268,6 @@ namespace ResourceTier {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ethnicity.
-        /// </summary>
-        public static string ETHNICTY_COLUMN {
-            get {
-                return ResourceManager.GetString("ETHNICTY_COLUMN", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to EyeColor.
         /// </summary>
         public static string EYE_COLOR_COLUMN {
@@ -511,7 +502,7 @@ namespace ResourceTier {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Orientation.
+        ///   Looks up a localized string similar to SexualOrientation.
         /// </summary>
         public static string SEXUAL_ORIENTATION_COLUMN {
             get {
@@ -520,7 +511,7 @@ namespace ResourceTier {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to @orientation.
+        ///   Looks up a localized string similar to @sexualorientation.
         /// </summary>
         public static string SEXUAL_ORIENTATION_PARAM {
             get {

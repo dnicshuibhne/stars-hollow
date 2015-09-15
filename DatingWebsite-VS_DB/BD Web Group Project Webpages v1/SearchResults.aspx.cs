@@ -18,6 +18,7 @@ namespace BD_Web_Group_Project_Webpages_v1
         BLLSearchMngr searchManager;
         protected void Page_Load(object sender, EventArgs e)
         {
+            UserModel user;
             searchManager = new BLLSearchMngr();
             /* check if logged in*/
             user = (UserModel)Session[Resources.USER_SESSION_STATE];

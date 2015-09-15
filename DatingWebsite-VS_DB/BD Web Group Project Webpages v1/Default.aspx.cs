@@ -17,7 +17,7 @@ namespace BD_Web_Group_Project_Webpages_v1
         BLLUserMngr userManager;
         public UserModel user;
         BLLAttributeMngr attManager;
-        DataTable attributes;
+        List<string> attributes;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,12 +28,10 @@ namespace BD_Web_Group_Project_Webpages_v1
             
             attributes = attManager.BLLGetGenders();
             ddlGender.DataSource = attributes;
-            ddlGender.DataTextField = Resources.GENDER_COLUMN;
             ddlGender.DataBind();
 
             attributes = attManager.BLLGetSexualOrientation();
             ddlOrientation.DataSource = attributes;
-            ddlOrientation.DataTextField = Resources.SEXUAL_ORIENTATION_COLUMN;
             ddlOrientation.DataBind();
         }
 
@@ -77,6 +75,7 @@ namespace BD_Web_Group_Project_Webpages_v1
         {
             loginScreen.Visible = true;
             loginScreen.Style.Add(HtmlTextWriterStyle.Display, "inline");
+            loginPage1.Visible = false;
         }
 
         protected void btnBack_Click(object sender, EventArgs e)
@@ -109,6 +108,12 @@ namespace BD_Web_Group_Project_Webpages_v1
                 Response.Write("Login failed");
                 valLogin.Visible = true;
             }
+        }
+
+        protected void btnCancel_Click(object sender, EventArgs e)
+        {
+            loginPage1.Visible = true;
+            loginScreen.Visible = false;
         }
     }
 }
