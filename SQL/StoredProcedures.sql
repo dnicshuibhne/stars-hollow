@@ -25,7 +25,7 @@ GO
 DROP  PROCEDURE uspUpdateUserDetails
 GO
 CREATE  PROCEDURE uspUpdateUserDetails
-@userid int
+@userid int,
 @age int = NULL,
 @ageRange varchar(50) = NULL,
 @build varchar(50) = NULL,
@@ -106,8 +106,8 @@ CREATE  PROCEDURE uspUserProfile_Username
 @username NVarChar(50)
 AS  
 SELECT
-	UserInformation.UserId,
-	UserInformation.Email,
+	Users.UserId,
+	Users.Email,
 	UserInformation.Age,
 	UserInformation.AgeRange,
 	UserInformation.Build,
@@ -138,8 +138,8 @@ CREATE  PROCEDURE uspUserProfile_UserID
 @userID int
 AS  
 SELECT
-	[Users].Username,
-	UserInformation.Email,
+	Users.Username,
+	Users.Email,
 	UserInformation.Age,
 	UserInformation.AgeRange,
 	UserInformation.Build,
@@ -183,15 +183,15 @@ SELECT
 	Messages.ReceiverID,
 	Sender.Username AS SenderName,
 	Receiver.Username AS ReceiverName,
-	Messages.[DateTime] AS TimeStamp, --Timestamp
-	Messages.Contents AS Content --Content
+	Messages.Timestamp,
+	Messages.Content
 FROM [Messages]
-	Inner Join [User] AS Receiver
+	Inner Join Users AS Receiver
 	ON 
 		(
 			Messages.ReceiverID = Receiver.UserID 
 		)
-	Inner Join [User] AS Sender
+	Inner Join Users AS Sender
 	ON 
 		(
 			Messages.SenderID = Sender.UserID 
