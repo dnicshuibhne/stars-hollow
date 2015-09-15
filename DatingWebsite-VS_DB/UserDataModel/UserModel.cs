@@ -8,6 +8,14 @@ namespace DataModels
 {
     public class UserModel
     {
+        private const string AGE_RANGE_1 = "18-25";
+        private const string AGE_RANGE_2 = "26-32";
+        private const string AGE_RANGE_3 = "33-39";
+        private const string AGE_RANGE_4 = "40+";
+
+        private int _age;
+        private string _ageRange;
+
         public int ID { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
@@ -27,7 +35,19 @@ namespace DataModels
         public string IdealDate { get; set; }
         public string Comment { get; set; }
         public string Profession { get; set; }
-        public int Age { get; set; }
+        public string AgeRange { get { return _ageRange; } }
+        public int Age 
+        {
+            get 
+            { 
+                return _age; 
+            } 
+            set 
+            { 
+                _age = value;
+                _ageRange = calculateAgeRange(value);
+            }
+        }
 
 
         public UserModel(){
@@ -47,6 +67,20 @@ namespace DataModels
             this.Username = Username;
             this.Password = Password;
             Hobbies = new List<int>();
+        }
+
+        private string calculateAgeRange(int age)
+        {
+            string range = "";
+            if (age <= 25)
+                range = AGE_RANGE_1;
+            else if (age <= 32)
+                range = AGE_RANGE_2;
+            else if (age <= 39)
+                range = AGE_RANGE_3;
+            else 
+                range = AGE_RANGE_3;
+            return range;          
         }
     }
 }

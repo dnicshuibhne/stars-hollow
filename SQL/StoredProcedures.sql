@@ -41,7 +41,6 @@ CREATE  PROCEDURE uspUpdateUserDetails
 @relationshipstatus varchar (50) = NULL,
 @sexualorientation varchar (50) = NULL,
 @town varchar (50) = NULL,
-@comments varchar (max),
 @profilepic varchar(max)
 
 AS
@@ -62,7 +61,6 @@ BEGIN
 	IF(@relationshipstatus IS NOT NULL) Begin UPDATE dbo.UserInformation SET RelationshipStatus = @relationshipstatus WHERE dbo.UserInformation.UserID = @userid END
 	IF(@sexualorientation IS NOT NULL) Begin UPDATE dbo.UserInformation SET SexualOrientation = @sexualorientation WHERE dbo.UserInformation.UserID = @userid END
 	IF(@town IS NOT NULL) Begin UPDATE dbo.UserInformation SET Town = @town WHERE dbo.UserInformation.UserID = @userid END
-	IF(@comments IS NOT NULL) Begin UPDATE dbo.UserInformation SET Comments = @comments WHERE dbo.UserInformation.UserID = @userid END
 	IF(@profilepic IS NOT NULL) Begin UPDATE dbo.UserInformation SET ProfilePicturePath = @profilepic WHERE dbo.UserInformation.UserID = @userid END
 END
 GO
@@ -71,7 +69,7 @@ GO
 DROP  PROCEDURE dbo.uspUserLogin
 GO
 CREATE  PROCEDURE dbo.uspUserLogin
-@username nvarchar(20),
+@username nvarchar(50),
 @password nvarchar(50)
 AS
 BEGIN
@@ -125,8 +123,7 @@ SELECT
 	UserInformation.Profession,
 	UserInformation.SexualOrientation,
 	UserInformation.Town,
-	UserInformation.ProfilePicturePath,
-	UserInformation.Comments
+	UserInformation.ProfilePicturePath
 FROM [Users]
 Inner Join UserInformation
 ON [Users].UserID = UserInformation.UserID
@@ -158,8 +155,7 @@ SELECT
 	UserInformation.Profession,
 	UserInformation.SexualOrientation,
 	UserInformation.Town,
-	UserInformation.ProfilePicturePath,
-	UserInformation.Comments
+	UserInformation.ProfilePicturePath
 FROM [Users]
 Inner Join UserInformation
 ON [Users].UserID  = UserInformation.UserID
