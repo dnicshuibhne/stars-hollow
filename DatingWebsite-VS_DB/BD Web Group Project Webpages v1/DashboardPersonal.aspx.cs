@@ -38,8 +38,6 @@ namespace BD_Web_Group_Project_Webpages_v1
                 //    user = userManager.getUser(int.Parse(cookie["ID"]));
                 hobbies = attManager.BLLGetHobbies();
 
-                user = userManager.getUser(userid);
-
                 txtAge.Text = user.Age.ToString();
                 txtIdealDate.Text = user.IdealDate;
                 txtProfession.Text = user.Profession;

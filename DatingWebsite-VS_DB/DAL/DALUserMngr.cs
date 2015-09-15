@@ -19,16 +19,14 @@ namespace DAL //Data Access Layer
     {
         User,
         Email,
-        Age,
-        AgeRange,
+        Age, AgeRange,
         Build,
         County,
         Ethnicity,
         EyeColor,
         Gender,
         HairColor,
-        Height,
-        Hobbies,
+        Height, Hobbies,
         IdealDate,
         RelationshipStatus,
         Profession,
@@ -37,6 +35,7 @@ namespace DAL //Data Access Layer
         ProfilePicturePath,
         Comments
     }
+
     /* User Manager Contains methods for creating and authenticating (log in) users */
     public class DALUserMngr
     {
@@ -116,9 +115,9 @@ namespace DAL //Data Access Layer
                     {
                         con.Close();
                     }
-                    
+
                 }
-                
+
             }
 
             return userID;
@@ -152,13 +151,13 @@ namespace DAL //Data Access Layer
                         con.Close();
                     }
 
-                    return  exists;
+                    return exists;
                 }
             }
         }
 
-        public void addUserInformation(int userID, string town, string county, string prof, string eye, string hair, string status,string ethnicity, string gender, string orientation, string build, string height, int age,string idealdate, string comment)
-        { 
+        public void addUserInformation(int userID, string town, string county, string prof, string eye, string hair, string status, string ethnicity, string gender, string orientation, string build, string height, int age, string idealdate, string comment)
+        {
             String proc = "uspAddAllUserDetails";
 
             using (SqlConnection con = new SqlConnection(conString))
@@ -174,7 +173,7 @@ namespace DAL //Data Access Layer
                     cmd.Parameters.Add(Resources.GENDER_PARAM, SqlDbType.NVarChar).Value = gender;
                     cmd.Parameters.Add(Resources.SEXUAL_ORIENTATION_PARAM, SqlDbType.NVarChar).Value = orientation;
                     cmd.Parameters.Add(Resources.AGE_PARAM, SqlDbType.Int).Value = age;
-                    cmd.Parameters.Add(Resources.ETHNICITY_PARAM, SqlDbType.NVarChar).Value =ethnicity;
+                    cmd.Parameters.Add(Resources.ETHNICITY_PARAM, SqlDbType.NVarChar).Value = ethnicity;
                     cmd.Parameters.Add(Resources.RELATIONSHIP_STATUS_PARAM, SqlDbType.NVarChar).Value = status;
                     cmd.Parameters.Add(Resources.HAIR_COLOR_PARAM, SqlDbType.NVarChar).Value = hair;
                     cmd.Parameters.Add(Resources.EYE_COLOR_PARAM, SqlDbType.NVarChar).Value = eye;
@@ -182,7 +181,7 @@ namespace DAL //Data Access Layer
                     cmd.Parameters.Add(Resources.BUILD_PARAM, SqlDbType.NVarChar).Value = build;
                     cmd.Parameters.Add(Resources.IDEAL_DATE_PARAM, SqlDbType.NVarChar).Value = idealdate;
                     cmd.Parameters.Add(Resources.COMMENT_PARAM, SqlDbType.NVarChar).Value = comment;
-               }
+                }
             }
         }
 
@@ -260,10 +259,8 @@ namespace DAL //Data Access Layer
                     {
                         con.Open();
                         reader = cmd.ExecuteReader();
-                        if(reader.Read())
+                        if (reader.Read())
                         {
-                          
-
                             user = new UserModel();
                             user.ID = id;
                             int i = (int)UserProfile.User;
@@ -283,9 +280,8 @@ namespace DAL //Data Access Layer
                             user.Build = reader.GetString((int)UserProfile.Build);
                             user.Height = reader.GetString((int)UserProfile.Height);
                             user.IdealDate = reader.GetString((int)UserProfile.IdealDate);
-                            user.Comment = reader.GetString((int)UserProfile.Comment);
                             //user.PicturePath = reader.GetString((int)UserProfile.PicturePath);
-                   
+
                         }
                         reader.Close();
                     }
@@ -321,7 +317,7 @@ namespace DAL //Data Access Layer
                         reader = cmd.ExecuteReader();
                         if (reader.Read())
                         {
-                            	
+
 
                             user = new UserModel();
                             user.Username = username;
@@ -334,14 +330,13 @@ namespace DAL //Data Access Layer
                             user.RelationshipStatus = reader.GetString((int)UserProfile.RelationshipStatus);
                             user.EyeColor = reader.GetString((int)UserProfile.EyeColor);
                             user.HairColor = reader.GetString((int)UserProfile.HairColor);
-                            user.Age = reader.GetInt32((int)UserProfile.Age);                           
+                            user.Age = reader.GetInt32((int)UserProfile.Age);
                             user.Gender = reader.GetString((int)UserProfile.Gender);
                             user.SexualOrientation = reader.GetString((int)UserProfile.SexualOrientation);
-                           user.Build = reader.GetString((int)UserProfile.Build);
+                            user.Build = reader.GetString((int)UserProfile.Build);
                             user.Height = reader.GetString((int)UserProfile.Height);
                             //user.PicturePath = reader.GetString((int)UserProfile.PicturePath);
                             user.IdealDate = reader.GetString((int)UserProfile.IdealDate);
-                            user.Comment = reader.GetString((int)UserProfile.Comment);
                         }
                         reader.Close();
                     }
@@ -360,20 +355,20 @@ namespace DAL //Data Access Layer
             return user;
         }
 
-    //    public void addUserInformation(int userID ,Dictionary<string, string> userAttributes)
-    //    {
-    //        string sqlStart = "UPDATE ";
-    //        string sqlMiddle = " SET ";
-    //        string sqlEnd = " WHERE UserID=";
-    //        string kvString = userAttributes.Keys.ElementAt(0);
+        //    public void addUserInformation(int userID ,Dictionary<string, string> userAttributes)
+        //    {
+        //        string sqlStart = "UPDATE ";
+        //        string sqlMiddle = " SET ";
+        //        string sqlEnd = " WHERE UserID=";
+        //        string kvString = userAttributes.Keys.ElementAt(0);
 
-    //        for (int i = 1; i < userAttributes.Count;i++)
-    //        {
-    //            kvString += kvp.Key + ",";
-    //        }
-    //        kvString = kvString.Substring(0, kvString.Length - 2);
+        //        for (int i = 1; i < userAttributes.Count;i++)
+        //        {
+        //            kvString += kvp.Key + ",";
+        //        }
+        //        kvString = kvString.Substring(0, kvString.Length - 2);
 
-    //        string query = sqlStart + USER_INFORMATION_TABLE + kvString + sqlMiddle + userID;
-    //    }
+        //        string query = sqlStart + USER_INFORMATION_TABLE + kvString + sqlMiddle + userID;
+        //    }
     }
 }

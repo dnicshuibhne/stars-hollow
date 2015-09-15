@@ -203,15 +203,11 @@
   </data>
   <data name="ETHNICITY_PARAM" xml:space="preserve">
     <value>@ethnicity</value>
-    <comment>PARARM</comment>
+    <comment>PARAM</comment>
   </data>
   <data name="ETHNICITY_TABLE" xml:space="preserve">
     <value>Ethnicity</value>
     <comment>TABLE</comment>
-  </data>
-  <data name="ETHNICTY_COLUMN" xml:space="preserve">
-    <value>Ethnicity</value>
-    <comment>COLUMN</comment>
   </data>
   <data name="EYE_COLOR_COLUMN" xml:space="preserve">
     <value>EyeColor</value>
@@ -318,11 +314,11 @@
     <comment>TABLE</comment>
   </data>
   <data name="SEXUAL_ORIENTATION_COLUMN" xml:space="preserve">
-    <value>Orientation</value>
+    <value>SexualOrientation</value>
     <comment>COLUMN</comment>
   </data>
   <data name="SEXUAL_ORIENTATION_PARAM" xml:space="preserve">
-    <value>@orientation</value>
+    <value>@sexualorientation</value>
     <comment>PARAM</comment>
   </data>
   <data name="SEXUAL_ORIENTATION_TABLE" xml:space="preserve">
