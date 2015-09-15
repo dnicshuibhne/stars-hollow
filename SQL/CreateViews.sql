@@ -1,3 +1,6 @@
+-------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------- VIEWS -------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------
 
 DROP VIEW ViewAllAttributeValues
 GO
@@ -19,7 +22,7 @@ FROM
 UNION
 SELECT
   'County',
-	CountyName
+	County
 FROM
     County
 
@@ -75,98 +78,18 @@ FROM
 UNION
 SELECT
   'SexualOrientation',
-   Orientation
+   SexualOrientation
 FROM
     SexualOrientation 
-	GO
-
-
 	
-	
-	
-	
-	
-	
-	
-	
-	
-------------------------------------------------------------------------------------------------------------------------------------------
----------------------------------------------------------------- VIEWS -------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------------------------------------------
-
------ VIEWS -----
-
------- View to view all attribute and values 
-
-DROP VIEW [ViewAllAttributeValues]
-GO
-CREATE VIEW [ViewAllAttributeValues]
-AS 
-Select
-	'Eye Color' as Attribute,
-	EyeColor as  Attribute_Value
-	FROM 
-	EyeColor
-
-UNION
-
-SELECT
-  'Sexual Orientation',
-   Orientation
-FROM
-    SexualOrientation 
-
-UNION
-
-SELECT
-  'Age Range',
-   AgeRange
-FROM
-   AgeRange 
-
-UNION
-
-SELECT
-  'Build',
-   Build
-FROM
-    Build
-
-UNION
-
-SELECT
-  'Gender',
-	Gender
-FROM
-    Gender
-
-UNION
-
-SELECT
-  'Hair Color',
-	HairColor
-FROM
-    HairColor
-
-UNION
-
-SELECT
-  'Height',
-	Height
-FROM
-    Height
-
-UNION
-
-SELECT
-  'Hobby Name',
-	HobbyName
-FROM
-    Hobbies
 GO
 
 
-------------------------------------------------------------------------------------------------------------------------------------------
-
---SELECT * FROM ViewAllAttributeValues
---GO
+	
+	
+	
+	
+	
+	
+	
+	

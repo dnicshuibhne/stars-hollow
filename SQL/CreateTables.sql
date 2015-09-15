@@ -15,6 +15,7 @@ Drop Table HairColor
 Drop Table Height
 Drop Table Hobbies
 Drop Table RelationshipStatus
+Drop Table MaritalStatus
 Drop Table SexualOrientation
 
 ------------------------------------------------------------------------------------------------------------------------------------------
@@ -73,6 +74,11 @@ CREATE TABLE [dbo].[RelationshipStatus] (
     PRIMARY KEY CLUSTERED ([RelationshipStatus] ASC)
 );
 
+CREATE TABLE [dbo].[MaritalStatus] (
+    [MaritalStatus] NVARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([MaritalStatus] ASC)
+);
+
 CREATE TABLE [dbo].[SexualOrientation] (
     [SexualOrientation] NVARCHAR (50) NOT NULL,
     PRIMARY KEY CLUSTERED ([SexualOrientation] ASC)
@@ -110,7 +116,7 @@ CREATE TABLE [dbo].[UserInformation] (
     [Town]  NVARCHAR (50)  NULL,
     [ProfilePicturePath] NVARCHAR (MAX) NULL,
 	PRIMARY KEY CLUSTERED ([UserID] ASC),
-	FOREIGN KEY ([UserID]) REFERENCES [dbo].[User]([UserID]),
+	FOREIGN KEY ([UserID]) REFERENCES [dbo].[Users]([UserID]),
     FOREIGN KEY ([Build]) REFERENCES [dbo].[Build] ([Build]),
     FOREIGN KEY ([County]) REFERENCES [dbo].[County] ([County]),
 	FOREIGN KEY ([Ethnicity]) REFERENCES [dbo].[Ethnicity] ([Ethnicity]),
@@ -119,7 +125,7 @@ CREATE TABLE [dbo].[UserInformation] (
     FOREIGN KEY ([HairColor]) REFERENCES [dbo].[HairColor] ([HairColor]),
     FOREIGN KEY ([Height]) REFERENCES [dbo].[Height] ([Height]),	
     FOREIGN KEY ([RelationshipStatus]) REFERENCES [dbo].[RelationshipStatus] ([RelationshipStatus]),
-    FOREIGN KEY ([SexualOrientation]) REFERENCES [dbo].[SexualOrientation] ([Orientation])
+    FOREIGN KEY ([SexualOrientation]) REFERENCES [dbo].[SexualOrientation] ([SexualOrientation])
 	);
 -----------------------------------------------------------------------------
 	CREATE TABLE [dbo].[UserHobbies] (
@@ -127,7 +133,7 @@ CREATE TABLE [dbo].[UserInformation] (
     [HobbyID] INT NOT NULL,
     PRIMARY KEY CLUSTERED ([HobbyID] ASC, [UserId] ASC),
     FOREIGN KEY ([HobbyID]) REFERENCES [dbo].[Hobbies] ([HobbyID]),
-    FOREIGN KEY ([UserID]) REFERENCES [dbo].[UserInformation] ([UserID])
+    FOREIGN KEY ([UserID]) REFERENCES [dbo].[Users] ([UserID])
 	);
 
 --------------------------------------------------------------------------------
@@ -136,7 +142,7 @@ CREATE TABLE [dbo].[UserImages] (
     [UserID]  INT NOT NULL,
     [ImageID] INT NOT NULL,
     PRIMARY KEY CLUSTERED ([ImageID] ASC, [UserId] ASC),
-    FOREIGN KEY ([UserID]) REFERENCES [dbo].[UserInformation] ([UserID])
+    FOREIGN KEY ([UserID]) REFERENCES [dbo].[Users] ([UserID])
 );
 
 ------------------------------------------------------------------------------------------------------------------------------------------
@@ -148,11 +154,11 @@ CREATE TABLE [dbo].[Messages] (
     [MessageID]  INT  IDENTITY (1, 1) NOT NULL,
     [SenderID] INT NOT NULL,
 	[ReceiverID] INT NOT NULL,
-	[DateTime] DATETIME NOT NULL,
-	[Contents] NVarChar (MAX) NULL,
+	[Timestamp] DATETIME NOT NULL,
+	[Content] NVarChar (MAX) NULL,
     PRIMARY KEY CLUSTERED ([MessageID] ASC),
-    FOREIGN KEY ([SenderID]) REFERENCES [dbo].[UserInformation] ([UserID]),
-	 FOREIGN KEY ([ReceiverID]) REFERENCES [dbo].[UserInformation] ([UserID])
+    FOREIGN KEY ([SenderID]) REFERENCES [dbo].[Users] ([UserID]),
+	 FOREIGN KEY ([ReceiverID]) REFERENCES [dbo].[Users] ([UserID])
 );
 --------------------------------------------------------------------------------
 
