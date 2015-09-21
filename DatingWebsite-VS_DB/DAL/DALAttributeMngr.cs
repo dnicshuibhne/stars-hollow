@@ -80,7 +80,7 @@ namespace DAL // Data Access Layer
                             throw new Exception("No Results Returned.");
                         }
                     }
-                    catch (SqlException e)
+                    catch (SqlException)
                     {
                         throw;
                     }
@@ -113,7 +113,7 @@ namespace DAL // Data Access Layer
                             throw new Exception("No Results Returned.");
                         }
                     }
-                    catch (SqlException e)
+                    catch (SqlException)
                     {
                         throw;
                     }

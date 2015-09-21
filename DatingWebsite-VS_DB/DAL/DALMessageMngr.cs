@@ -24,37 +24,55 @@ namespace DAL
             conString = ConfigurationManager.ConnectionStrings[CS_NAME].ConnectionString;
         }
 
-        public DataTable getSentAndReceivedMessages(int userID)
+        public List<Message> getSentAndReceivedMessages(int userID)
         {
             return getMessages(userID, Resources.GET_MESSAGES_PROC);
         }
 
-        public DataTable getMessages(int userID, string procname)
+        public List<Message> getMessages(int userID, string procname)
         {
-            DataSet data = new DataSet();
+            List<Message> messageList = new List<Message>();
+            //DataSet data = new DataSet();
 
             using (SqlConnection con = new SqlConnection(conString))
             {
-                using (SqlDataAdapter adapter = new SqlDataAdapter())
+                using (SqlCommand cmd = new SqlCommand(procname, con))
                 {
-                    adapter.SelectCommand = new SqlCommand(procname, con);
-                    adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                    adapter.SelectCommand.Parameters.Add("@userID", SqlDbType.Int).Value = userID;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@userID", SqlDbType.Int).Value = userID;
 
-                    con.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+	                {
+                        Message msg = new Message();
 
-                    int rowsAffected = adapter.Fill(data);
+                        msg.MessageID = Convert.ToInt32(reader.GetValue(Convert.ToInt32(0)));
+                        
+                        int SenderID = Convert.ToInt32(reader.GetValue(Convert.ToInt32(1)));
+                        UserModel Sender = new UserModel();
+                        Sender.ID = SenderID;
+                        msg.SenderID = Sender;
 
-                    if (rowsAffected < 1)
+                        msg.ReceiverID = Convert.ToInt32(reader.GetValue(Convert.ToInt32(2)));
+                        msg.Timestamp = Convert.ToDateTime(reader.GetValue(Convert.ToInt32(3)));
+                        msg.Content = reader.GetValue(Convert.ToInt32(4)).ToString();
+
+                        msg.SenderName = reader.GetValue(Convert.ToInt32(5)).ToString();
+                        msg.ReceiverName = reader.GetValue(Convert.ToInt32(6)).ToString();
+
+                        messageList.Add(msg);
+	                }
+                    //int rowsAffected = adapter.Fill(data);
+
+                    if (messageList.Count < 1)
                     {
                         throw new Exception("Error Retrieving Messages");
                     }
 
-                    con.Close();
                 }
             }
 
-            return data.Tables[0];
+            return messageList;
         }
 
 

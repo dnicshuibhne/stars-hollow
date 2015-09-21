@@ -18,6 +18,7 @@ namespace BLL
         private DALMessageMngr messageManager;
         private int userID;
         private DataTable allMessages;
+        List<Message> messageList;
         private string orderNewToOld = "Timestamp DESC"; // newest to oldest
         private string orderOldToNew = "Timestamp ASC"; // oldest to newest
 
@@ -25,9 +26,10 @@ namespace BLL
         {
             this.userID = userID;
             messageManager = new DALMessageMngr();
-            allMessages = messageManager.getSentAndReceivedMessages(userID);
+            messageList = messageManager.getSentAndReceivedMessages(userID);
+            //allMessages = 
         }
-        public DataTable getMessagesTest(int id)
+        public List<Message> getMessagesTest(int id)
         {
             string filter = "true";//ReceiverID = '" + userID + "' OR SenderID = '" + userID + "'";
             DataTable table = new DataTable(); //filters and sorts results
@@ -36,7 +38,9 @@ namespace BLL
             //{
             //    table.Rows.Add(null);
             //}
-            return rows[0].Table;
+
+            messageList = messageManager.getSentAndReceivedMessages(id);
+            return messageList;
         }
 
         public DataRow[] getAllMessages()

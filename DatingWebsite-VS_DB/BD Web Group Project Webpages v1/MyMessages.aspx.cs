@@ -19,27 +19,63 @@ namespace BD_Web_Group_Project_Webpages_v1
         string sentCss = "myMessage";
         string receivedCss = "theirMessage";
 
+        List<Message> messageList = new List<Message>();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             /* check if logged in*/
             user = (UserModel)Session[Resources.USER_SESSION_STATE];
             if (user == null || user.ID < 1)
             {
-                Response.Redirect("Default.aspx", true);
+                //Response.Redirect("Default.aspx", true);
             }
 
-            //messageManager = new BLLMessageMngr(user.ID);
-            //getMessages();
+            user = new UserModel();
+            user.ID = 1;
+            user.Username = "Sarah";
+            user.Password = "password";
+            user.Email = "maryb@gmail.com";
+
+            messageManager = new BLLMessageMngr(user.ID);
+            getMessages();
         }
+
+       ///
+        public void getCssClass(int senderID, int receiverID)
+        {
+            if (user.ID.Equals(senderID))
+                Response.Write(sentCss);
+            else if (user.ID.Equals(receiverID))
+                Response.Write(receivedCss);
+        }
+
+        public string getUsername2(string senderName, string receiverName)
+        {
+            if (user.Username.Equals(senderName))
+                return receiverName;
+            else if (user.ID.Equals(receiverName))
+                return senderName;
+            else
+                return "Unidentified Sender";
+        }
+
         
         private void getMessages()
         {
-            rptConversations.DataSource = messageManager.getMessagesTest(1);
-            rptConversations.DataBind();
-            //GridView1.DataSource = messageManager.getMessagesTest(1);
-            //GridView1.DataBind();
-        }
+            /*
+             * 
+             * To do: link up the repeater with the messages by conversation - one per convoBox.
+             * 
+             * 
+             * 
+             * */
 
+
+            messageList = messageManager.getMessagesTest(1);
+            rptAllConversations.DataSource = messageList;
+            rptAllConversations.DataBind();
+        }
+        /*
         private void getConversation(int user2ID)
         {
             //rptconvoMessages.DataSource = messageManager.getConversation(user2ID);
@@ -48,6 +84,9 @@ namespace BD_Web_Group_Project_Webpages_v1
             myConversations.Visible = false;
         }
 
+
+        /////////////////
+        
         public void getCssClass(int senderID, int receiverID)
         {
             if (user.ID.Equals(senderID))
@@ -109,5 +148,6 @@ namespace BD_Web_Group_Project_Webpages_v1
             Label l = (Label)sender;
             l.Text = getUsername2(senderName, "StarsHollow");
         }
+         * */
     }
 }

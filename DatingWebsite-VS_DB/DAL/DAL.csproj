@@ -56,6 +56,12 @@
       <Name>DataModels</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\DatingWebsite.mdf" />
+    <Content Include="App_Data\DatingWebsite_log.ldf">
+      <DependentUpon>DatingWebsite.mdf</DependentUpon>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

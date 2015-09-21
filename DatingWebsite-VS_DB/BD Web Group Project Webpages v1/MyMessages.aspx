@@ -11,7 +11,7 @@
         Div 1. is invisible until a Div 2 is clicked.
         --%>
     <div class="contentWrapper">
-        <div id="myMessage"  visible="true" class="conversationBox theirImage" runat="server" >
+        <div id="myMessage"  visible="false" class="conversationBox theirImage" runat="server" >
             <asp:Button ID="closeThisMessage" runat="server" Text="X" CssClass="purpleButton" style="margin: 10px 10px; float:right;"/>
             <br />
             <asp:Image ID="imgTheirProfilePic" runat="server" ImageUrl="~/Images/blank-profile-grey.png" style="position: absolute; bottom:0px; margin-left:40px; margin-top: 900px"/>
@@ -103,8 +103,8 @@
                 rptModules.DataBind();
             } 
         -->
-        <div id="myConversations" visible="false" runat="server">
-            <asp:Repeater ID="rptConversations" runat="server">
+        <div id="myConversations" visible="true" runat="server">
+            <asp:Repeater ID="rptAllConversations" runat="server">
                 <ItemTemplate>
                     <div class="conversationBox linkingDiv">
                         <asp:Image ID="imgTheirProfilePic" runat="server" CssClass="theirImage"/>
