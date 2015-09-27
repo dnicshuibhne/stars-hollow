@@ -322,6 +322,15 @@ namespace ResourceTier {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to uspGetAllUsers.
+        /// </summary>
+        public static string GET_ALL_USERS_PROC {
+            get {
+                return ResourceManager.GetString("GET_ALL_USERS_PROC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to uspAllMessages.
         /// </summary>
         public static string GET_MESSAGES_PROC {
@@ -502,6 +511,15 @@ namespace ResourceTier {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to uspSearchForUserAny.
+        /// </summary>
+        public static string SEARCH_FOR_ANY_PROC {
+            get {
+                return ResourceManager.GetString("SEARCH_FOR_ANY_PROC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SexualOrientation.
         /// </summary>
         public static string SEXUAL_ORIENTATION_COLUMN {
@@ -561,6 +579,15 @@ namespace ResourceTier {
         public static string USER_CREATE_PROC {
             get {
                 return ResourceManager.GetString("USER_CREATE_PROC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UserHobbies.
+        /// </summary>
+        public static string USER_HOBBIES_TABLE {
+            get {
+                return ResourceManager.GetString("USER_HOBBIES_TABLE", resourceCulture);
             }
         }
         

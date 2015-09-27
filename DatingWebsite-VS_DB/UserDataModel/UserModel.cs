@@ -31,7 +31,7 @@ namespace DataModels
         }
         public string AgeRange { get { return _ageRange; } }
         public string Username { get; set; }
-        public string Password { get; set; }
+        //public string Password { get; set; }
         public string Email { get; set; }
         public string Town { get; set; }
         public string County { get; set; }
@@ -45,25 +45,26 @@ namespace DataModels
         public string SexualOrientation { get; set; }
         public List<int> Hobbies { get; set; }
         public string IdealDate { get; set; }
-        public string Comment { get; set; }
         public string Profession { get; set; }
+        public string ProfilePicturePath { get; set; }
+        public string Comments { get; set; }
 
         public UserModel(){
             Hobbies = new List<int>();
         }
 
-        public UserModel(string Username, string Password)
+        //public UserModel(string Username, string Password)
+        public UserModel(string Username)
         {
             this.Username = Username;
-            this.Password = Password;
             Hobbies = new List<int>();
         }
-
-        public UserModel(int ID, string Username, string Password)
+        
+        //public UserModel(int ID, string Username, string Password)
+        public UserModel(int ID, string Username)
         {
             this.ID = ID;
             this.Username = Username;
-            this.Password = Password;
             Hobbies = new List<int>();
         }
 

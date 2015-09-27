@@ -24,18 +24,10 @@ namespace BD_Web_Group_Project_Webpages_v1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            /* check if logged in*/
-            user = (UserModel)Session[Resources.USER_SESSION_STATE];
-            if (user == null || user.ID < 1)
-            {
-                Response.Redirect("Default.aspx", true);
-            }
-            else
-            {
                 /*Retrieve and load the values of each attribute*/
                 attManager = new BLLAttributeMngr();
                 userManager = new BLLUserMngr();
-                //    user = userManager.getUser(int.Parse(cookie["ID"]));
+                user = userManager.BLLGetUser(1);
                 hobbies = attManager.BLLGetHobbies();
 
                 txtAge.Text = user.Age.ToString();
@@ -48,37 +40,26 @@ namespace BD_Web_Group_Project_Webpages_v1
                 attributes = attManager.BLLGetBuild();
                 ddlBuild.DataSource = attributes;
                 ddlBuild.DataBind();
-                ddlBuild.Items.FindByValue(user.Build).Selected = true;
 
                 attributes = attManager.BLLGetCounty();
                 ddlCounty.DataSource = attributes;
-                //ddlCounty.DataTextField = Resources.COUNTY_TABLE;
                 ddlCounty.DataBind();
-                ddlCounty.Items.FindByValue(user.County).Selected = true;
 
                 attributes = attManager.BLLGetEthnicity();
                 ddlEthnicity.DataSource = attributes;
-                //ddlEthnicity.DataTextField = Resources.ETHNICITY_TABLE;
                 ddlEthnicity.DataBind();
-                ddlEthnicity.Items.FindByValue(user.Ethnicity).Selected = true;
 
                 attributes = attManager.BLLGetEyeColor();
                 ddlEyeColor.DataSource = attributes;
-                //ddlEyeColor.DataTextField = Resources.EYE_COLOR_TABLE;
                 ddlEyeColor.DataBind();
-                ddlEyeColor.Items.FindByValue(user.EyeColor).Selected = true;
 
                 attributes = attManager.BLLGetGenders();
                 ddlGender.DataSource = attributes;
-                //ddlGender.DataTextField = Resources.GENDER_TABLE;
                 ddlGender.DataBind();
-                ddlGender.Items.FindByValue(user.Gender).Selected = true;
 
                 attributes = attManager.BLLGetHairColor();
                 ddlHairColor.DataSource = attributes;
-                //ddlHairColor.DataTextField = Resources.HAIR_COLOR_TABLE;
                 ddlHairColor.DataBind();
-                ddlHairColor.Items.FindByValue(user.HairColor).Selected = true;
 
                 attributes = attManager.BLLGetHeight();
                 ddlHeight.DataSource = attributes;
@@ -87,31 +68,42 @@ namespace BD_Web_Group_Project_Webpages_v1
 
                 attributes = attManager.BLLGetRelationshipStatus();
                 ddlRelationshipStatus.DataSource = attributes;
-                //ddlRelationshipStatus.DataTextField = Resources.RELATIONSHIP_STATUS_TABLE;
                 ddlRelationshipStatus.DataBind();
-                ddlRelationshipStatus.Items.FindByValue(user.RelationshipStatus).Selected = true;
 
                 attributes = attManager.BLLGetSexualOrientation();
                 ddlOrientation.DataSource = attributes;
-                //ddlOrientation.DataTextField = Resources.SEXUAL_ORIENTATION_TABLE;
                 ddlOrientation.DataBind();
+
+                ddlBuild.Items.FindByValue(user.Build).Selected = true;
+                ddlCounty.Items.FindByValue(user.County).Selected = true;
+                ddlEthnicity.Items.FindByValue(user.Ethnicity).Selected = true;
+                ddlEyeColor.Items.FindByValue(user.EyeColor).Selected = true;
+                ddlGender.Items.FindByValue(user.Gender).Selected = true;
+                ddlHairColor.Items.FindByValue(user.HairColor).Selected = true;
+                ddlRelationshipStatus.Items.FindByValue(user.RelationshipStatus).Selected = true;
                 ddlOrientation.Items.FindByValue(user.SexualOrientation).Selected = true;
+
+                if (!IsPostBack)
+                {
 
                 cblHobbies.DataSource = hobbies;
                 cblHobbies.DataValueField = Resources.HOBBIES_ID_COLUMN;
                 cblHobbies.DataTextField = Resources.HOBBIES_NAME_COLUMN;
                 cblHobbies.DataBind();
-                foreach (int i in user.Hobbies)
-                {
-                    cblHobbies.Items[i].Selected = true;
+
+
+                    // Populate the CheckBoxList items only when it's not a postback.
+                    foreach (int i in user.Hobbies)
+                    {
+                        cblHobbies.Items[i].Selected = true;
+                    }
                 }
             }
-        }
 
         protected void btnUpdateDetails_Click(object sender, EventArgs e)
         {
             UserModel user = new UserModel();
-            user.Age = int.Parse(txtAge.Text);
+            if (txtAge.Text.Length > 0) user.Age = int.Parse(txtAge.Text);
             user.Build = ddlBuild.SelectedValue;
             user.County = ddlCounty.SelectedValue;
             user.Ethnicity = ddlEthnicity.SelectedValue;
@@ -119,21 +111,28 @@ namespace BD_Web_Group_Project_Webpages_v1
             user.Gender = ddlGender.SelectedValue;
             user.HairColor = ddlHairColor.SelectedValue;
             user.Height = ddlBuild.SelectedValue;
-            user.IdealDate = txtIdealDate.Text;
-            user.Profession = txtProfession.Text;
+            if (txtIdealDate.Text.Length > 0) user.IdealDate = txtIdealDate.Text;
+            if (txtProfession.Text.Length > 0) user.Profession = txtProfession.Text;
             user.RelationshipStatus = ddlRelationshipStatus.SelectedValue;
             user.SexualOrientation = ddlOrientation.SelectedValue;
-            user.Town = txtTown.Text;
+            if (txtTown.Text.Length > 0) user.Town = txtTown.Text;
             
+        }
+
+        protected void cblHobbies_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string hobbyString;
+            int hobbyID;
             //get hobbies
             foreach (ListItem hobby in cblHobbies.Items)
             {
                 if (hobby.Selected)
                 {
-                    user.Hobbies.Add(int.Parse(hobby.Text));
+                    hobbyString = hobby.Text;
+                    hobbyID = int.Parse(hobby.Value);
+                    user.Hobbies.Add(hobbyID);
                 }
             }
-            userManager.updateUser(user);
         }
     }
 }

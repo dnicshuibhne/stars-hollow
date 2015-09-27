@@ -13,7 +13,7 @@
         </header>
         <nav>
             
-            <asp:Menu runat="server" Orientation="Horizontal" StaticEnableDefaultPopOutImage="false" DynamicMenuItemStyle-BorderStyle="Solid" DynamicMenuItemStyle-BorderWidth="1px" DynamicMenuItemStyle-BorderColor="Black">
+            <asp:Menu runat="server" Orientation="Horizontal" StaticEnableDefaultPopOutImage="false" DynamicMenuItemStyle-BorderStyle="Solid" DynamicMenuItemStyle-BorderWidth="1px" DynamicMenuItemStyle-BorderColor="Black" OnMenuItemClick="StarsHollow_MenuItemClick">
                 <DynamicMenuItemStyle CssClass="topMenu" HorizontalPadding="20px" ItemSpacing="10px" VerticalPadding="25px" />
                 <StaticMenuItemStyle CssClass="topMenu" HorizontalPadding="20px" VerticalPadding="45px" Width="100px" />
                 <StaticSelectedStyle BackColor="#333333" ForeColor="White" />
@@ -27,7 +27,7 @@
                         <asp:MenuItem NavigateUrl="~/MyProfile.aspx" Text="View My Profile" value="View My Profile"></asp:MenuItem>
                     </asp:MenuItem>
                     <asp:MenuItem NavigateUrl="~/SearchFor.aspx" Text="Search" Value="Search"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Logout" Value="Logout"></asp:MenuItem>
+                    <asp:MenuItem Text="Logout" Value="Logout"></asp:MenuItem>
                 </Items>
  
             </asp:Menu> 

@@ -233,6 +233,10 @@
     <value>Gender</value>
     <comment>TABLE</comment>
   </data>
+  <data name="GET_ALL_USERS_PROC" xml:space="preserve">
+    <value>uspGetAllUsers</value>
+    <comment>PROCEDURE</comment>
+  </data>
   <data name="GET_MESSAGES_PROC" xml:space="preserve">
     <value>uspAllMessages</value>
     <comment>PROCEDURE</comment>
@@ -313,6 +317,10 @@
     <value>RelationshipStatus</value>
     <comment>TABLE</comment>
   </data>
+  <data name="SEARCH_FOR_ANY_PROC" xml:space="preserve">
+    <value>uspSearchForUserAny</value>
+    <comment>PROCEDURE</comment>
+  </data>
   <data name="SEXUAL_ORIENTATION_COLUMN" xml:space="preserve">
     <value>SexualOrientation</value>
     <comment>COLUMN</comment>
@@ -352,6 +360,10 @@
   <data name="USER_CREATE_PROC" xml:space="preserve">
     <value>uspAddNewUser</value>
     <comment>PROCEDURE</comment>
+  </data>
+  <data name="USER_HOBBIES_TABLE" xml:space="preserve">
+    <value>UserHobbies</value>
+    <comment>TABLE</comment>
   </data>
   <data name="USER_INFORMATION_TABLE" xml:space="preserve">
     <value>UserInformation</value>

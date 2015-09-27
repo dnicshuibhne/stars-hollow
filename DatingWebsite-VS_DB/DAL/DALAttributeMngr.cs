@@ -92,6 +92,7 @@ namespace DAL // Data Access Layer
             }
             return table;
         }
+
         public DataTable DALGetHobbies()
         {
             string sql = "SELECT * FROM " + Resources.HOBBIES_TABLE;

@@ -28,6 +28,9 @@ namespace BLL
         private List<string> GetAttributeValues(string attName)
         {
             DataRow[] rows = attributes.Select("Attribute" + " = '" + attName + "'");
+
+
+
             List<string> attValues = new List<string>();
             foreach (DataRow row in rows)
                 attValues.Add(row[1].ToString());

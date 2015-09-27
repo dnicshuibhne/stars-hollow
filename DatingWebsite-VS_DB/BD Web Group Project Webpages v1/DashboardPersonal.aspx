@@ -67,7 +67,7 @@
                 <br />
                 <br />
                 <asp:Label ID="lblHobbies" runat="server" Text="Hobbies"></asp:Label>
-                <asp:CheckBoxList ID="cblHobbies" runat="server" ViewStateMode="Disabled"></asp:CheckBoxList>
+                <asp:CheckBoxList ID="cblHobbies" runat="server" OnSelectedIndexChanged="cblHobbies_SelectedIndexChanged"></asp:CheckBoxList>
                 <br />
                 <br />
                 <asp:Button ID="btnUpdateDetails" runat="server" Text="Update Personal Details" CssClass="blueButton dashboardButton" OnClick="btnUpdateDetails_Click"/>

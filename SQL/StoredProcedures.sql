@@ -2,8 +2,7 @@
 ------------------------------------------------------------ USER PROCEDURES ----------------------------------------------------------- 
 ------------------------------------------------------------------------------------------------------------------------------------------
 
---- Stored procedure to add new user - returns new identity parameter- UserID
-
+---- ADD NEW USER TO USERS AND USERINFORMATION - returns new identity parameter- UserID
 DROP PROCEDURE uspAddNewUser
 GO
 CREATE PROCEDURE uspAddNewUser
@@ -13,13 +12,22 @@ CREATE PROCEDURE uspAddNewUser
 AS
 BEGIN
     SET NOCOUNT ON;
-	DECLARE @IdInserted TABLE(IdValue INTEGER);	
+	DECLARE @ID int;
+	DECLARE @IDInserted TABLE(IDValue INTEGER);	
+	
     INSERT dbo.[Users](Username,Password,Email) 
-	OUTPUT inserted.UserID INTO @IdInserted
+	OUTPUT inserted.UserID INTO @IDInserted
 	VALUES (@username,@Password,@Email)
-	SELECT IdValue FROM @IdInserted
+	
+	SELECT @ID = IDValue FROM @IDInserted 
+	
+	INSERT dbo.UserInformation(UserID) VALUES (@ID)
+	
+	SELECT @ID AS UserID
 END
 GO
+
+
 
 --- Update User attributes - all params are optional except user id
 DROP  PROCEDURE uspUpdateUserDetails
@@ -35,13 +43,13 @@ CREATE  PROCEDURE uspUpdateUserDetails
 @gender varchar(50) = NULL,
 @haircolor varchar(50) = NULL,
 @height varchar (50) = NULL,
-@hobbies XML = NULL,
+--@hobbies XML = NULL,
 @idealdate varchar (50) = NULL,
 @profession varchar(50) = NULL,
 @relationshipstatus varchar (50) = NULL,
 @sexualorientation varchar (50) = NULL,
 @town varchar (50) = NULL,
-@profilepic varchar(max)
+@profilepic varchar(max) = NULL
 
 AS
 BEGIN
@@ -55,7 +63,7 @@ BEGIN
 	IF(@gender IS NOT NULL) Begin UPDATE dbo.UserInformation SET Gender = @gender WHERE dbo.UserInformation.UserID = @userid END
 	IF(@haircolor IS NOT NULL) Begin UPDATE dbo.UserInformation SET HairColor = @haircolor WHERE dbo.UserInformation.UserID = @userid END
 	IF(@height IS NOT NULL) Begin UPDATE dbo.UserInformation SET Height = @height WHERE dbo.UserInformation.UserID = @userid END
-	IF(@hobbies IS NOT NULL) Begin UPDATE dbo.UserInformation SET Hobbies = @hobbies WHERE dbo.UserInformation.UserID = @userid END
+	--IF(@hobbies IS NOT NULL) Begin UPDATE dbo.UserInformation SET Hobbies = @hobbies WHERE dbo.UserInformation.UserID = @userid END
 	IF(@idealdate IS NOT NULL) Begin UPDATE dbo.UserInformation SET IdealDate = @idealdate WHERE dbo.UserInformation.UserID = @userid END	
 	IF(@profession IS NOT NULL) Begin UPDATE dbo.UserInformation SET Profession = @profession WHERE dbo.UserInformation.UserID = @userid END
 	IF(@relationshipstatus IS NOT NULL) Begin UPDATE dbo.UserInformation SET RelationshipStatus = @relationshipstatus WHERE dbo.UserInformation.UserID = @userid END
@@ -64,6 +72,7 @@ BEGIN
 	IF(@profilepic IS NOT NULL) Begin UPDATE dbo.UserInformation SET ProfilePicturePath = @profilepic WHERE dbo.UserInformation.UserID = @userid END
 END
 GO
+
 
 --------- Login Proc returns UserId if successful
 DROP  PROCEDURE dbo.uspUserLogin
@@ -117,13 +126,14 @@ SELECT
 	UserInformation.Gender,
 	UserInformation.HairColor,
 	UserInformation.Height,
-	UserInformation.Hobbies,
+	--UserInformation.Hobbies,
 	UserInformation.IdealDate,
 	UserInformation.RelationshipStatus,
 	UserInformation.Profession,
 	UserInformation.SexualOrientation,
 	UserInformation.Town,
-	UserInformation.ProfilePicturePath
+	UserInformation.ProfilePicturePath,
+	UserInformation.Comments
 FROM [Users]
 Inner Join UserInformation
 ON [Users].UserID = UserInformation.UserID
@@ -149,19 +159,78 @@ SELECT
 	UserInformation.Gender,
 	UserInformation.HairColor,
 	UserInformation.Height,
-	UserInformation.Hobbies,
+	--UserInformation.Hobbies,
 	UserInformation.IdealDate,
 	UserInformation.RelationshipStatus,
 	UserInformation.Profession,
 	UserInformation.SexualOrientation,
 	UserInformation.Town,
-	UserInformation.ProfilePicturePath
+	UserInformation.ProfilePicturePath,
+	UserInformation.Comments
 FROM [Users]
 Inner Join UserInformation
 ON [Users].UserID  = UserInformation.UserID
 WHERE [Users].UserID=@userID
 GO
 
+--- Search by User attributes, returns users that match any of the criteria - all params are optional 
+DROP  PROCEDURE uspSearchForUserAny
+GO
+CREATE  PROCEDURE uspSearchForUserAny
+@ageRange varchar(50) = NULL,
+@build varchar(50) = NULL,
+@county varchar(50) = NULL,
+@gender varchar(50) = NULL,
+@height varchar (50) = NULL,
+--@hobbies XML = NULL,
+@profession varchar(50) = NULL,
+@relationshipstatus varchar (50) = NULL,
+@sexualorientation varchar (50) = NULL,
+@town varchar (50) = NULL
+
+AS
+BEGIN 
+	SELECT DISTINCT(a.UserID), Users.Username, Age, AgeRange, Build, County, Ethnicity, EyeColor, Gender, HairColor, Height, IdealDate, RelationshipStatus, Profession, SexualOrientation, Town, ProfilePicturePath, Comments FROM
+	(
+	SELECT * FROM dbo.UserInformation WHERE dbo.UserInformation.AgeRange = @ageRange 
+	UNION
+	SELECT * FROM dbo.UserInformation WHERE Build = @build 
+	UNION
+	SELECT * FROM dbo.UserInformation WHERE County = @county 
+	UNION
+	SELECT * FROM dbo.UserInformation WHERE Gender = @gender 
+	UNION
+	SELECT * FROM dbo.UserInformation WHERE Height = @height 
+	--UNION
+	--SELECT * FROM dbo.UserInformation WHERE Hobbies = @hobbies 
+	UNION
+	SELECT * FROM dbo.UserInformation WHERE Profession = @profession 
+	UNION
+	SELECT * FROM dbo.UserInformation WHERE RelationshipStatus = @relationshipstatus 
+	UNION
+	SELECT * FROM dbo.UserInformation WHERE SexualOrientation = @sexualorientation 
+	UNION
+	SELECT * FROM dbo.UserInformation WHERE Town = @town 
+	)
+	a
+	INNER JOIN dbo.Users
+	ON a.UserID = Users.UserID
+END
+GO
+
+-- Get All Users
+DROP PROCEDURE uspGetAllUsers
+GO
+CREATE PROCEDURE uspGetAllUsers
+AS
+BEGIN
+    SELECT Users.UserID, Users.Username, Age, AgeRange, Build, County, Ethnicity, EyeColor, Gender, HairColor, Height, IdealDate, RelationshipStatus, Profession, SexualOrientation, Town, ProfilePicturePath, Comments 
+	FROM UserInformation
+	INNER JOIN dbo.Users
+	ON UserInformation.UserID = Users.UserID
+	
+END
+GO
 ------------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------ ATTRIBUTE PROCEDURES ----------------------------------------------------------- 
 ------------------------------------------------------------------------------------------------------------------------------------------
@@ -202,18 +271,16 @@ WHERE
 	Messages.ReceiverID = @userID
 GO
 
-EXEC uspAllMessages '1'
-
-GO
-
 
 ------------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------ TESTING PROCEDURES ----------------------------------------------------------- 
 ------------------------------------------------------------------------------------------------------------------------------------------
 
---exec dbo.uspAddNewUser 'nics','1234','dee@aol.com'
---exec dbo.uspAddNewUser 'jbloggs','1234','joe@gmail.com'
---exec dbo.uspAddNewUser 'msmith','1234','marry@mail.ie'
+--exec dbo.uspAddNewUser 'dnics','12345678','dee@aol.com'
+--select * from UserInformation where UserID = 29
+
+--exec dbo.uspAddNewUser 'jbloggs','12345678','joe@gmail.com'
+--exec dbo.uspAddNewUser 'msmith','12345678','marry@mail.ie'
 
 --EXEC dbo.uspAddNewUser @username = 'GoHomeRoger', @Password = 'Password',@Email='ghroger@hotmail.com' 
 --GO
@@ -232,4 +299,12 @@ GO
 --EXEC uspUserLogin 'Ro3ger' ,'3password3'
 --GO
 --EXEC uspUserLogin 'Sarah6' ,'3password3'
+--GO
+
+
+--EXEC uspAllMessages '1'
+--GO
+
+
+--exec uspSearchForUserAny @county='Dublin', @sexualorientation='straight'
 --GO
