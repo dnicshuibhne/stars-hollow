@@ -22,70 +22,6 @@ namespace DAL
             conString = ConfigurationManager.ConnectionStrings[Resources.CS_NAME].ConnectionString;
         }
 
-        
-        /*Returns users that match any of the specified criteria*/
-        public List<UserModel> SearchForUsersAny(string ageRange, string build, string county, string gender, string height, string profession, string relationshipStatus, string sexualOrientation, string town, List<string> hobbies)
-        {
-            List<UserModel> users = null;
-
-            using (SqlConnection con = new SqlConnection(conString))
-            {
-                using(SqlCommand cmd = new SqlCommand(Resources.SEARCH_FOR_ANY_PROC,con))
-                {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.Add(Resources.AGE_RANGE_PARAM, SqlDbType.NVarChar).Value = ageRange;
-                        cmd.Parameters.Add(Resources.BUILD_PARAM, SqlDbType.NVarChar).Value = build;
-                        cmd.Parameters.Add(Resources.COUNTY_PARAM, SqlDbType.NVarChar).Value = county;
-                        cmd.Parameters.Add(Resources.GENDER_PARAM, SqlDbType.NVarChar).Value = gender;
-                        cmd.Parameters.Add(Resources.HEIGHT_PARAM, SqlDbType.NVarChar).Value = height;
-                        cmd.Parameters.Add(Resources.PROFESSION_PARAM, SqlDbType.NVarChar).Value = profession;
-                        cmd.Parameters.Add(Resources.RELATIONSHIP_STATUS_PARAM, SqlDbType.NVarChar).Value = relationshipStatus;
-                        cmd.Parameters.Add(Resources.SEXUAL_ORIENTATION_PARAM, SqlDbType.NVarChar).Value = sexualOrientation;
-                        cmd.Parameters.Add(Resources.TOWN_PARAM, SqlDbType.NVarChar).Value = town;
-
-                    try
-                    {
-                        con.Open();
-                        using(SqlDataReader dr = cmd.ExecuteReader())
-                        {
-                            users = new List<UserModel>();
-                            while(dr.Read())
-                            {
-                                UserModel user = new UserModel(dr.GetInt32((int)UserProfile.User), dr.GetString(1));
-                                user.Age = dr.GetInt32((int)UserProfile.Age);
-                                user.Build = dr.GetString((int)UserProfile.Build);
-                                user.County = dr.GetString((int)UserProfile.County);
-                                user.Ethnicity = dr.GetString((int)UserProfile.Ethnicity);
-                                user.EyeColor = dr.GetString((int)UserProfile.EyeColor);
-                                user.Gender = dr.GetString((int)UserProfile.Gender);
-                                user.HairColor = dr.GetString((int)UserProfile.HairColor);
-                                user.Height = dr.GetString((int)UserProfile.Height);
-                                user.IdealDate = dr.GetString((int)UserProfile.IdealDate);
-                                user.RelationshipStatus = dr.GetString((int)UserProfile.RelationshipStatus);
-                                user.Profession = dr.GetString((int)UserProfile.Profession);
-                                user.SexualOrientation = dr.GetString((int)UserProfile.SexualOrientation);
-                                user.Town = dr.GetString((int)UserProfile.Town);
-                                user.ProfilePicturePath = dr.GetString((int)UserProfile.ProfilePicturePath);
-                                user.Comments = dr.GetString((int)UserProfile.Comments);
-	
-                                users.Add(user);
-                            }
-                        }
-
-                    }
-                    catch (SqlException)
-                    {
-                        throw;
-                    }
-                    finally
-                    {
-                        con.Close();
-                    }
-                }
-            }
-            return users;
-        }
-
         /*Returns users that match the specified criteria exactly*/
         public List<UserModel> DALSearchForUsersExact(string ageRange, string build, string county, string gender, string height, string profession, string relationshipStatus, string sexualOrientation, string town, List<string> hobbies)
         {
@@ -201,49 +137,68 @@ namespace DAL
             return users;
         }
 
-        //public DataTable SearchForUsers(NameValueCollection searchParams)
-        //{
-        //    List<UserModel> users = new List<UserModel>();
+        /*Returns users that match any of the specified criteria*/
+        public List<UserModel> SearchForUsersAny(string ageRange, string build, string county, string gender, string height, string profession, string relationshipStatus, string sexualOrientation, string town, List<string> hobbies)
+        {
+            List<UserModel> users = null;
 
-        //    string sql = "SELECT * FROM " + Resources.USER_INFORMATION_TABLE + " WHERE ";
+            using (SqlConnection con = new SqlConnection(conString))
+            {
+                using (SqlCommand cmd = new SqlCommand(Resources.SEARCH_FOR_ANY_PROC, con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(Resources.AGE_RANGE_PARAM, SqlDbType.NVarChar).Value = ageRange;
+                    cmd.Parameters.Add(Resources.BUILD_PARAM, SqlDbType.NVarChar).Value = build;
+                    cmd.Parameters.Add(Resources.COUNTY_PARAM, SqlDbType.NVarChar).Value = county;
+                    cmd.Parameters.Add(Resources.GENDER_PARAM, SqlDbType.NVarChar).Value = gender;
+                    cmd.Parameters.Add(Resources.HEIGHT_PARAM, SqlDbType.NVarChar).Value = height;
+                    cmd.Parameters.Add(Resources.PROFESSION_PARAM, SqlDbType.NVarChar).Value = profession;
+                    cmd.Parameters.Add(Resources.RELATIONSHIP_STATUS_PARAM, SqlDbType.NVarChar).Value = relationshipStatus;
+                    cmd.Parameters.Add(Resources.SEXUAL_ORIENTATION_PARAM, SqlDbType.NVarChar).Value = sexualOrientation;
+                    cmd.Parameters.Add(Resources.TOWN_PARAM, SqlDbType.NVarChar).Value = town;
 
-        //    foreach (string key in searchParams.AllKeys)
-        //    {
-        //        if (key == null)
-        //            break;
-        //        else if (searchParams[key].Length > 1)
-        //            sql += key + "='" + searchParams[key] + "' AND ";
-        //        //sql += key + "='" + WebUtility.UrlDecode(searchParams[key]) + "' AND ";
-        //    }
-        //    sql = sql.Substring(0, sql.Length - 5);
+                    try
+                    {
+                        con.Open();
+                        using (SqlDataReader dr = cmd.ExecuteReader())
+                        {
+                            users = new List<UserModel>();
+                            while (dr.Read())
+                            {
+                                UserModel user = new UserModel(dr.GetInt32((int)UserProfile.User), dr.GetString(1));
+                                user.Age = dr.GetInt32((int)UserProfile.Age);
+                                user.Build = dr.GetString((int)UserProfile.Build);
+                                user.County = dr.GetString((int)UserProfile.County);
+                                user.Ethnicity = dr.GetString((int)UserProfile.Ethnicity);
+                                user.EyeColor = dr.GetString((int)UserProfile.EyeColor);
+                                user.Gender = dr.GetString((int)UserProfile.Gender);
+                                user.HairColor = dr.GetString((int)UserProfile.HairColor);
+                                user.Height = dr.GetString((int)UserProfile.Height);
+                                user.IdealDate = dr.GetString((int)UserProfile.IdealDate);
+                                user.RelationshipStatus = dr.GetString((int)UserProfile.RelationshipStatus);
+                                user.Profession = dr.GetString((int)UserProfile.Profession);
+                                user.SexualOrientation = dr.GetString((int)UserProfile.SexualOrientation);
+                                user.Town = dr.GetString((int)UserProfile.Town);
+                                user.ProfilePicturePath = dr.GetString((int)UserProfile.ProfilePicturePath);
+                                user.Comments = dr.GetString((int)UserProfile.Comments);
 
-        //    DataTable data = new DataTable();
+                                users.Add(user);
+                            }
+                        }
 
-        //    using (SqlConnection con = new SqlConnection(conString))
-        //    {
-        //        using (SqlDataAdapter adapter = new SqlDataAdapter())
-        //        {
-        //            adapter.SelectCommand = new SqlCommand(sql, con);
-        //            adapter.SelectCommand.CommandType = CommandType.Text;
-
-        //            con.Open();
-        //            int rowsAffected = adapter.Fill(data);
-
-        //            if (rowsAffected < 1)
-        //            {
-        //                throw new Exception("No Results Returned from table: " + Resources.USER_INFORMATION_TABLE);
-        //            }
-        //            con.Close();
-        //        }
-        //    }
-        //    return data;
-        //}
-
-        //public List<UserModel> SearchForUsers(NameValueCollection searchParams, List<int> hobbies)
-        //{
-        //    return new List<UserModel>();
-        //}
-
+                    }
+                    catch (SqlException)
+                    {
+                        throw;
+                    }
+                    finally
+                    {
+                        con.Close();
+                    }
+                }
+            }
+            return users;
+        }
     }
 
 }
