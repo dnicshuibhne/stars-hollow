@@ -10,6 +10,7 @@ using BLL;
 using ResourceTier;
 using System.Collections.Specialized;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace BD_Web_Group_Project_Webpages_v1
 {
@@ -18,19 +19,21 @@ namespace BD_Web_Group_Project_Webpages_v1
         BLLSearchMngr searchManager;
         protected void Page_Load(object sender, EventArgs e)
         {
-            UserModel user;
             searchManager = new BLLSearchMngr();
-            /* check if logged in*/
-            user = (UserModel)Session[Resources.USER_SESSION_STATE];
-            if (user == null || user.ID < 1)
+
+            SearchFor searchForPage = (SearchFor)this.PreviousPage;
+
+            List<UserModel> foundUsers;
+            try
             {
-                Response.Redirect("Default.aspx", true);
+                foundUsers = searchManager.BLLSearchForUsersExact(searchForPage.AgeRange, searchForPage.Build,searchForPage.County,searchForPage.Gender,
+                    searchForPage.Height,searchForPage.Profession,searchForPage.RelationshipStatus,searchForPage.SexualOrientation,searchForPage.Town,null);
             }
-
-            NameValueCollection searchParams = Request.Params;
-
-            //List<UserModel> foundUsers = searchManager.SearchForUsers(searchParams, hobbies);
-            DataTable foundUsers = searchManager.SearchForUsers(searchParams);
+            catch(SqlException e2)
+            {
+                throw;//???
+            }
+            
             rptResults.DataSource = foundUsers;
             rptResults.DataBind();
         }

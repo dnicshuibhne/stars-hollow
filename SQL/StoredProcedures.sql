@@ -43,7 +43,7 @@ CREATE  PROCEDURE uspUpdateUserDetails
 @gender varchar(50) = NULL,
 @haircolor varchar(50) = NULL,
 @height varchar (50) = NULL,
-@hobbies XML = NULL,
+--@hobbies XML = NULL,
 @idealdate varchar (50) = NULL,
 @profession varchar(50) = NULL,
 @relationshipstatus varchar (50) = NULL,
@@ -63,7 +63,7 @@ BEGIN
 	IF(@gender IS NOT NULL) Begin UPDATE dbo.UserInformation SET Gender = @gender WHERE dbo.UserInformation.UserID = @userid END
 	IF(@haircolor IS NOT NULL) Begin UPDATE dbo.UserInformation SET HairColor = @haircolor WHERE dbo.UserInformation.UserID = @userid END
 	IF(@height IS NOT NULL) Begin UPDATE dbo.UserInformation SET Height = @height WHERE dbo.UserInformation.UserID = @userid END
-	IF(@hobbies IS NOT NULL) Begin UPDATE dbo.UserInformation SET Hobbies = @hobbies WHERE dbo.UserInformation.UserID = @userid END
+	--IF(@hobbies IS NOT NULL) Begin UPDATE dbo.UserInformation SET Hobbies = @hobbies WHERE dbo.UserInformation.UserID = @userid END
 	IF(@idealdate IS NOT NULL) Begin UPDATE dbo.UserInformation SET IdealDate = @idealdate WHERE dbo.UserInformation.UserID = @userid END	
 	IF(@profession IS NOT NULL) Begin UPDATE dbo.UserInformation SET Profession = @profession WHERE dbo.UserInformation.UserID = @userid END
 	IF(@relationshipstatus IS NOT NULL) Begin UPDATE dbo.UserInformation SET RelationshipStatus = @relationshipstatus WHERE dbo.UserInformation.UserID = @userid END
@@ -126,7 +126,7 @@ SELECT
 	UserInformation.Gender,
 	UserInformation.HairColor,
 	UserInformation.Height,
-	UserInformation.Hobbies,
+	--UserInformation.Hobbies,
 	UserInformation.IdealDate,
 	UserInformation.RelationshipStatus,
 	UserInformation.Profession,
@@ -159,7 +159,7 @@ SELECT
 	UserInformation.Gender,
 	UserInformation.HairColor,
 	UserInformation.Height,
-	UserInformation.Hobbies,
+	--UserInformation.Hobbies,
 	UserInformation.IdealDate,
 	UserInformation.RelationshipStatus,
 	UserInformation.Profession,
@@ -173,6 +173,64 @@ ON [Users].UserID  = UserInformation.UserID
 WHERE [Users].UserID=@userID
 GO
 
+--- Search by User attributes, returns users that match any of the criteria - all params are optional 
+DROP  PROCEDURE uspSearchForUserAny
+GO
+CREATE  PROCEDURE uspSearchForUserAny
+@ageRange varchar(50) = NULL,
+@build varchar(50) = NULL,
+@county varchar(50) = NULL,
+@gender varchar(50) = NULL,
+@height varchar (50) = NULL,
+--@hobbies XML = NULL,
+@profession varchar(50) = NULL,
+@relationshipstatus varchar (50) = NULL,
+@sexualorientation varchar (50) = NULL,
+@town varchar (50) = NULL
+
+AS
+BEGIN 
+	SELECT DISTINCT(a.UserID), Users.Username, Age, AgeRange, Build, County, Ethnicity, EyeColor, Gender, HairColor, Height, IdealDate, RelationshipStatus, Profession, SexualOrientation, Town, ProfilePicturePath, Comments FROM
+	(
+	SELECT * FROM dbo.UserInformation WHERE dbo.UserInformation.AgeRange = @ageRange 
+	UNION
+	SELECT * FROM dbo.UserInformation WHERE Build = @build 
+	UNION
+	SELECT * FROM dbo.UserInformation WHERE County = @county 
+	UNION
+	SELECT * FROM dbo.UserInformation WHERE Gender = @gender 
+	UNION
+	SELECT * FROM dbo.UserInformation WHERE Height = @height 
+	--UNION
+	--SELECT * FROM dbo.UserInformation WHERE Hobbies = @hobbies 
+	UNION
+	SELECT * FROM dbo.UserInformation WHERE Profession = @profession 
+	UNION
+	SELECT * FROM dbo.UserInformation WHERE RelationshipStatus = @relationshipstatus 
+	UNION
+	SELECT * FROM dbo.UserInformation WHERE SexualOrientation = @sexualorientation 
+	UNION
+	SELECT * FROM dbo.UserInformation WHERE Town = @town 
+	)
+	a
+	INNER JOIN dbo.Users
+	ON a.UserID = Users.UserID
+END
+GO
+
+-- Get All Users
+DROP PROCEDURE uspGetAllUsers
+GO
+CREATE PROCEDURE uspGetAllUsers
+AS
+BEGIN
+    SELECT Users.UserID, Users.Username, Age, AgeRange, Build, County, Ethnicity, EyeColor, Gender, HairColor, Height, IdealDate, RelationshipStatus, Profession, SexualOrientation, Town, ProfilePicturePath, Comments 
+	FROM UserInformation
+	INNER JOIN dbo.Users
+	ON UserInformation.UserID = Users.UserID
+	
+END
+GO
 ------------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------ ATTRIBUTE PROCEDURES ----------------------------------------------------------- 
 ------------------------------------------------------------------------------------------------------------------------------------------
@@ -245,4 +303,8 @@ GO
 
 
 --EXEC uspAllMessages '1'
+--GO
+
+
+--exec uspSearchForUserAny @county='Dublin', @sexualorientation='straight'
 --GO

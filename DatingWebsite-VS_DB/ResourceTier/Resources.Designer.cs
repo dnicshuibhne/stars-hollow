@@ -322,6 +322,15 @@ namespace ResourceTier {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to uspGetAllUsers.
+        /// </summary>
+        public static string GET_ALL_USERS_PROC {
+            get {
+                return ResourceManager.GetString("GET_ALL_USERS_PROC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to uspAllMessages.
         /// </summary>
         public static string GET_MESSAGES_PROC {
@@ -498,6 +507,15 @@ namespace ResourceTier {
         public static string RELATIONSHIP_STATUS_TABLE {
             get {
                 return ResourceManager.GetString("RELATIONSHIP_STATUS_TABLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to uspSearchForUserAny.
+        /// </summary>
+        public static string SEARCH_FOR_ANY_PROC {
+            get {
+                return ResourceManager.GetString("SEARCH_FOR_ANY_PROC", resourceCulture);
             }
         }
         

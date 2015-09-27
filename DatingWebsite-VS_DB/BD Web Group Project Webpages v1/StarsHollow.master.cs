@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 //
 using ResourceTier;
+using DataModels;
 
 namespace BD_Web_Group_Project_Webpages_v1
 {
@@ -13,10 +14,15 @@ namespace BD_Web_Group_Project_Webpages_v1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if(Request.Url
-            /*
-             * if not default page and if user not logged in - redirect to default
-             */
+            /* check if logged in*/
+            //if (!Request.ServerVariables["URL"].Contains("Default.aspx"))
+            //{
+            //    UserModel user = (UserModel)Session[Resources.USER_SESSION_STATE];
+            //    if (user == null || user.ID < 1)
+            //    {
+            //        Response.Redirect("Default.aspx", true);
+            //    }
+            //}
         }
 
 

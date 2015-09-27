@@ -108,7 +108,7 @@ CREATE TABLE [dbo].[UserInformation] (
     [Gender]             NVARCHAR (50)  NULL,
     [HairColor]         NVARCHAR (50)  NULL,
 	[Height]             NVARCHAR (50)  NULL,
-	[Hobbies]             XML  NULL,
+	--[Hobbies]             XML  NULL,
 	[IdealDate] NVARCHAR (MAX) NULL,
     [Profession]         NVARCHAR (50)  NULL,
 	[RelationshipStatus]            NVARCHAR  (50) NULL,

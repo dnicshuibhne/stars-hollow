@@ -17,20 +17,26 @@ namespace BD_Web_Group_Project_Webpages_v1
         BLLSearchMngr searchManager;
         BLLAttributeMngr attributeManager;
         List<string> attributes;
-        UserModel user;
+
+        public string AgeRange { get { return ddlAgeRange.SelectedValue; } }
+        public string Build { get { return ddlBuild.SelectedValue; } }
+        public string County { get { return ddlCounty.SelectedValue; } }
+        public string Gender { get { return ddlGender.SelectedValue; } }
+        public string Height { get { return ddlHeight.SelectedValue; } }
+        public string Profession { get { return txtProfession.Text; } }
+        public string RelationshipStatus { get { return ddlRelationshipStatus.SelectedValue; } }
+        public string SexualOrientation { get { return ddlOrientation.SelectedValue; } }
+        public string Town { get { return txtTown.Text; } }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            /* check if logged in*/
-            user = (UserModel)Session[Resources.USER_SESSION_STATE];
-            if (user == null || user.ID < 1)
-            {
-                Response.Redirect("Default.aspx", true);
-            }
-
             searchManager = new BLLSearchMngr();
             attributeManager = new BLLAttributeMngr();
-            getAttributes();
+
+            if (!IsPostBack)
+            {
+                getAttributes();
+            }
         }
 
         private void getAttributes()
@@ -71,39 +77,41 @@ namespace BD_Web_Group_Project_Webpages_v1
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            string queryString = "";
-            queryString += Resources.AGE_RANGE_COLUMN + "=" + ddlAgeRange.SelectedValue + "&";
-            queryString += Resources.BUILD_COLUMN + "=" + ddlBuild.SelectedValue + "&";
-            queryString += Resources.COUNTY_COLUMN + "=" + ddlCounty.SelectedValue + "&";
-            queryString += Resources.GENDER_COLUMN + "=" + ddlGender.SelectedValue + "&";
-            queryString += Resources.HEIGHT_COLUMN + "=" + ddlHeight.SelectedValue + "&";
-            queryString += Resources.PROFESSION_COLUMN + "=" + txtProfession.Text + "&";
-            queryString += Resources.RELATIONSHIP_STATUS_COLUMN + "=" + ddlRelationshipStatus.SelectedValue + "&";
-            queryString += Resources.SEXUAL_ORIENTATION_COLUMN + "=" + ddlOrientation.SelectedValue + "&";
-            queryString += Resources.TOWN_COLUMN + "=" + txtTown.Text + "&";
+            //string queryString = "";
+            //queryString += Resources.AGE_RANGE_COLUMN + "=" + ddlAgeRange.SelectedValue + "&";
+            //queryString += Resources.BUILD_COLUMN + "=" + ddlBuild.SelectedValue + "&";
+            //queryString += Resources.COUNTY_COLUMN + "=" + ddlCounty.SelectedValue + "&";
+            //queryString += Resources.GENDER_COLUMN + "=" + ddlGender.SelectedValue + "&";
+            //queryString += Resources.HEIGHT_COLUMN + "=" + ddlHeight.SelectedValue + "&";
+            //queryString += Resources.PROFESSION_COLUMN + "=" + txtProfession.Text + "&";
+            //queryString += Resources.RELATIONSHIP_STATUS_COLUMN + "=" + ddlRelationshipStatus.SelectedValue + "&";
+            //queryString += Resources.SEXUAL_ORIENTATION_COLUMN + "=" + ddlOrientation.SelectedValue + "&";
+            //queryString += Resources.TOWN_COLUMN + "=" + txtTown.Text + "&";
 
-            //queryString += Resources.AGE_RANGE_COLUMN + "=" + Server.UrlEncode(ddlAgeRange.SelectedValue) + "&";
-            //queryString += Resources.BUILD_COLUMN + "=" + Server.UrlEncode(ddlBuild.SelectedValue) + "&";
-            //queryString += Resources.COUNTY_COLUMN + "=" + Server.UrlEncode(ddlCounty.SelectedValue) + "&";
-            //queryString += Resources.ETHNICITY_COLUMN + "=" + Server.UrlEncode(ddlEthnicity.SelectedValue) + "&";
-            //queryString += Resources.EYE_COLOR_COLUMN + "=" + Server.UrlEncode(ddlEyeColor.SelectedValue) + "&";
-            //queryString += Resources.GENDER_COLUMN + "=" + Server.UrlEncode(ddlGender.SelectedValue) + "&";
-            //queryString += Resources.HAIR_COLOR_COLUMN + "=" + Server.UrlEncode(ddlHairColor.SelectedValue) + "&";
-            //queryString += Resources.HEIGHT_COLUMN + "=" + Server.UrlEncode(ddlHeight.SelectedValue) + "&";
-            //queryString += Resources.PROFESSION_COLUMN + "=" + Server.UrlEncode(txtProfession.Text) + "&";
-            //queryString += Resources.RELATIONSHIP_STATUS_COLUMN + "=" + Server.UrlEncode(ddlRelationshipStatus.SelectedValue) + "&";
-            //queryString += Resources.SEXUAL_ORIENTATION_COLUMN + "=" + Server.UrlEncode(ddlOrientation.SelectedValue) + "&";
-            //queryString += Resources.TOWN_COLUMN + "=" + Server.UrlEncode(txtTown.Text) + "&";
+            ////queryString += Resources.AGE_RANGE_COLUMN + "=" + Server.UrlEncode(ddlAgeRange.SelectedValue) + "&";
+            ////queryString += Resources.BUILD_COLUMN + "=" + Server.UrlEncode(ddlBuild.SelectedValue) + "&";
+            ////queryString += Resources.COUNTY_COLUMN + "=" + Server.UrlEncode(ddlCounty.SelectedValue) + "&";
+            ////queryString += Resources.ETHNICITY_COLUMN + "=" + Server.UrlEncode(ddlEthnicity.SelectedValue) + "&";
+            ////queryString += Resources.EYE_COLOR_COLUMN + "=" + Server.UrlEncode(ddlEyeColor.SelectedValue) + "&";
+            ////queryString += Resources.GENDER_COLUMN + "=" + Server.UrlEncode(ddlGender.SelectedValue) + "&";
+            ////queryString += Resources.HAIR_COLOR_COLUMN + "=" + Server.UrlEncode(ddlHairColor.SelectedValue) + "&";
+            ////queryString += Resources.HEIGHT_COLUMN + "=" + Server.UrlEncode(ddlHeight.SelectedValue) + "&";
+            ////queryString += Resources.PROFESSION_COLUMN + "=" + Server.UrlEncode(txtProfession.Text) + "&";
+            ////queryString += Resources.RELATIONSHIP_STATUS_COLUMN + "=" + Server.UrlEncode(ddlRelationshipStatus.SelectedValue) + "&";
+            ////queryString += Resources.SEXUAL_ORIENTATION_COLUMN + "=" + Server.UrlEncode(ddlOrientation.SelectedValue) + "&";
+            ////queryString += Resources.TOWN_COLUMN + "=" + Server.UrlEncode(txtTown.Text) + "&";
 
-            //foreach (ListItem hobby in cblHobbies.Items)
-            //{
-            //    if (hobby.Selected)
-            //    {
-            //        searchParams.Add(Resources.HOBBIES_ID_COLUMN,hobby.Text);
-            //    }
-            //}
-            queryString = queryString.Substring(0, queryString.Length - 2);
-            Response.Redirect("SearchResults.aspx?" + queryString);
+            ////foreach (ListItem hobby in cblHobbies.Items)
+            ////{
+            ////    if (hobby.Selected)
+            ////    {
+            ////        searchParams.Add(Resources.HOBBIES_ID_COLUMN,hobby.Text);
+            ////    }
+            ////}
+            //queryString = queryString.Substring(0, queryString.Length - 2);
+            //Response.Redirect("SearchResults.aspx?" + queryString);
+
+            Server.Transfer("SearchResults.aspx");
         }
     }
 }

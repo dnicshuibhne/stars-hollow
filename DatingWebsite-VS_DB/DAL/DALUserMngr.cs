@@ -28,7 +28,7 @@ namespace DAL //Data Access Layer
         Gender,
         HairColor,
         Height, 
-        Hobbies,
+        //Hobbies,
         IdealDate,
         RelationshipStatus,
         Profession,

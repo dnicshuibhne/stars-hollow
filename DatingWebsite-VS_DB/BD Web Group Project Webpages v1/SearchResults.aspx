@@ -11,7 +11,7 @@
                 <br />
                 <asp:Label ID="lblTown" runat="server" Text="Town "></asp:Label>
                 <asp:TextBox ID="txtTown" runat="server"></asp:TextBox>
-                <asp:RegularExpressionValidator ID="regxvLocation" runat="server" ControlToValidate="txtTown" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9\s\,\.\-]+" ValidationGroup="vgRegisterPage1"><br /> Location may only contain the following characters: <br /> [A-Z] [a-z] [0-9] [space] [,] [.] [-]</asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator ID="regxvLocation" runat="server" ControlToValidate="txtTown" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9\s\,\.\-]+" ValidationGroup="vgRegisterPage1"><br /> Town may only contain the following characters: <br /> [A-Z] [a-z] [0-9] [space] [,] [.] [-]</asp:RegularExpressionValidator>
                 <br />
                 <br />
                 <asp:Label ID="County" runat="server" Text="County "></asp:Label>
@@ -74,7 +74,7 @@
                                 <asp:Image ID="imgProfilePic" runat="server" CssClass="resultImage"/>
                                 <div class="resultText">
                                     <asp:Label ID="lblName" runat="server" Text='<%#Eval("Username") %>' CssClass="resultName"></asp:Label>
-                                    <asp:Label ID="lblLocation" runat="server" Text='<%#Eval("Location") %>' CssClass="resultLocation"></asp:Label>
+                                    <asp:Label ID="lblLocation" runat="server" Text='<%#Eval("County") %>' CssClass="resultLocation"></asp:Label>
                                     <br />
                                     <asp:Label ID="lblProfession" runat="server" Text='<%#Eval("Profession") %>' CssClass="resultProfession"></asp:Label>
                                 </div>
