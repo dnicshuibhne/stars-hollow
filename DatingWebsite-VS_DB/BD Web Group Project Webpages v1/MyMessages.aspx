@@ -21,10 +21,10 @@
             <div id="convoMessages" >
                 <asp:Repeater ID="rptconvoMessages" runat="server">
                     <ItemTemplate>
-                        <div class='<%getCssClass((int)Eval("SenderID"), (int)Eval("ReceiverID")); %>'> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
+                        <%--<div class='<%getCssClass((int)Eval("SenderID"), (int)Eval("ReceiverID")); %>'> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
                             <asp:Label ID="lblMessage" runat="server" Text='<%#Eval("MessageText") %>'></asp:Label>
 
-                        </div>
+                        </div>--%>
                         
                     </ItemTemplate>
                 </asp:Repeater>

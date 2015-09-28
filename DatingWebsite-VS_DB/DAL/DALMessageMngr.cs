@@ -49,7 +49,18 @@ namespace DAL
                         {
                             Conversation convo = new Conversation();
 
-                            convo.ConversationID = reader.GetValue(Convert.ToInt32(0)).ToString()
+                            convo.ConversationID = Convert.ToInt32(reader.GetValue(Convert.ToInt32(0)).ToString());
+                            convo.ParticipantA_ID = Convert.ToInt32(reader.GetValue(Convert.ToInt32(1)).ToString());
+                            convo.ParticipantB_ID = Convert.ToInt32(reader.GetValue(Convert.ToInt32(2)).ToString());
+                            convo.ParticipantA_Name = reader.GetValue(Convert.ToInt32(3)).ToString();
+                            convo.ParticipantB_Name = reader.GetValue(Convert.ToInt32(4)).ToString();
+
+                            // Gets XML data from database and stores it in convo as List<Msssage>.
+                            XmlDocument xDoc = new XmlDocument();
+                            xDoc.LoadXml(reader.GetValue(Convert.ToInt32(5)).ToString());
+                            convo.ConvertXMLToList(xDoc);
+
+                            convoList.Add(convo);
                         }
                     }
                     
@@ -89,46 +100,53 @@ namespace DAL
             return data.Tables[0];
         }
 
-        public void InsertIntoConvoTable()
+        public void InsertIntoConvoTable(Conversation newConvo)
         {
             string query = @"INSERT INTO Conversation
+                            (
+                                ParticipantA_ID,
+                                ParticipantB_ID,
+                                MessageContent
+                            )
                             VALUES
                             (
-                                ParticipantA_ID = 9,
-                                ParticipantA_ID = 1,
-                                MessageContent = 
-                                <conversation>
-	                                <message>
-		                                <senderID>9</senderID>
-		                                <senderName>aoconnor</senderName>
-		                                <timestamp>01/01/2015 00:00:00</timestamp>
-		                                <content>Hi, how are you?</content>
-	                                </message>
-	                                <message>
-		                                <senderID>1</senderID>
-		                                <senderName>Sarah</senderName>
-		                                <timestamp>01/01/2015 00:05:00</timestamp>
-		                                <content>I'm good. Yourself?</content>
-	                                </message>
-	                                <message>
-		                                <senderID>9</senderID>
-		                                <senderName>aoconnor</senderName>
-		                                <timestamp>01/01/2015 00:14:00</timestamp>
-		                                <content>Happy enouhg</content>
-	                                </message>
-	                                <message>
-		                                <senderID>9</senderID>
-		                                <senderName>aoconnor</senderName>
-		                                <timestamp>01/01/2015 00:22:00</timestamp>
-		                                <content>*enough</content>
-	                                </message>
-                                </conversation>,
+                                @partAID,
+                                @partBID,
+                                @msgContent
                             )";
 
             using (SqlConnection con = new SqlConnection(conString))
             {
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
+                    cmd.Parameters.AddWithValue("@partAID", SqlDbType.Int).Value = newConvo.ParticipantA_ID;
+                    cmd.Parameters.AddWithValue("@partBID", SqlDbType.Int).Value = newConvo.ParticipantB_ID;
+
+                    #region Convert List<Message> to XML
+
+                    DataSet ds = new DataSet("Conversation");
+                    DataTable dt = new DataTable("Message");
+                    dt.Columns.Add("SenderID");
+                    dt.Columns.Add("TimeStamp");
+                    dt.Columns.Add("Content");
+
+                    ds.Tables.Add(dt);
+
+                    foreach (Message msg in newConvo.MessagesList)
+	                {
+		                DataRow row = dt.NewRow();
+                        row["SenderID"] = msg.SenderID;
+                        row["TimeSTamp"] = msg.Timestamp;
+                        row["Content"] = msg.Content;
+
+                        dt.Rows.Add(row);
+	                }
+                    ds.AcceptChanges();
+
+                    cmd.Parameters.AddWithValue("msgContent", SqlDbType.Xml).Value = ds.GetXml();
+
+                    #endregion
+
                     con.Open();
 
                     int rowsAffected = cmd.ExecuteNonQuery();

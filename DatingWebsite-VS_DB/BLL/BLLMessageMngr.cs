@@ -18,7 +18,7 @@ namespace BLL
     {
         private DALMessageMngr messageManager;
         private int userID;
-        private DataTable allMessages;
+        private List<Conversation> allMessages;
         private string orderNewToOld = "Timestamp DESC"; // newest to oldest
         private string orderOldToNew = "Timestamp ASC"; // oldest to newest
 
@@ -26,18 +26,19 @@ namespace BLL
         {
             this.userID = userID;
             messageManager = new DALMessageMngr();
-            allMessages = messageManager.getSentAndReceivedMessages(userID);
+            
         }
         public List<Conversation> getMessagesTest(int id)
         {
-            string filter = "true";//ReceiverID = '" + userID + "' OR SenderID = '" + userID + "'";
-            DataRow[] rows = allMessages.Select(filter, orderNewToOld);
+            //string filter = "true";//ReceiverID = '" + userID + "' OR SenderID = '" + userID + "'";
+            //List<Conversation> convoList = DataTableToList<Conversation>(rows[0].Table);
 
-            List<Conversation> convoList = DataTableToList<Conversation>(rows[0].Table);
+            allMessages = messageManager.getSentAndReceivedMessages(userID);
 
-            return convoList;
+            return allMessages;
         }
 
+        /*
         public DataRow[] getAllMessages()
         {
             string filter = "true";//ReceiverID = '" + userID + "' OR SenderID = '" + userID + "'";
@@ -50,47 +51,12 @@ namespace BLL
             return allMessages.Select(filter, orderOldToNew);//filters and sorts results
         }
 
+        */
+        
 
-        // Helper method to convert DataTable to List<T>
-        // Method written by Gaui http://codereview.stackexchange.com/a/56857
-
-        public static List<T> DataTableToList<T>(DataTable table) where T : class, new()
+        public void InsertIntoConvoTable(Conversation newConvo)
         {
-            try
-            {
-                List<T> list = new List<T>();
-
-                foreach (var row in table.AsEnumerable())
-                {
-                    T obj = new T();
-
-                    foreach (var prop in obj.GetType().GetProperties())
-                    {
-                        try
-                        {
-                            PropertyInfo propertyInfo = obj.GetType().GetProperty(prop.Name);
-                            propertyInfo.SetValue(obj, Convert.ChangeType(row[prop.Name], propertyInfo.PropertyType), null);
-                        }
-                        catch
-                        {
-                            continue;
-                        }
-                    }
-
-                    list.Add(obj);
-                }
-
-                return list;
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        public void InsertIntoConvoTable()
-        {
-            messageManager.InsertIntoConvoTable();
+            messageManager.InsertIntoConvoTable(newConvo);
         }
 
         /* Unused functionality

@@ -36,7 +36,8 @@ namespace BD_Web_Group_Project_Webpages_v1
         
         private void getMessages()
         {
-            rptConversations.DataSource = messageManager.getMessagesTest(1);
+            List<Conversation> conversationList = messageManager.getMessagesTest(1);
+            //tConversations.DataSource = messageManager.getMessagesTest(1);
             rptConversations.DataBind();
             //GridView1.DataSource = messageManager.getMessagesTest(1);
             //GridView1.DataBind();
@@ -114,7 +115,31 @@ namespace BD_Web_Group_Project_Webpages_v1
 
         protected void btnInsertCommand_Click(object sender, EventArgs e)
         {
-            messageManager.InsertIntoConvoTable();
+            Conversation newConvo = new Conversation();
+
+            newConvo.ParticipantA_ID = 9;
+            newConvo.ParticipantB_ID = 1;
+
+            Message msg1 = new Message();
+            msg1.SenderID = 9;
+            msg1.Timestamp = DateTime.Now;
+            msg1.Content = "Hi, welcome to our site";
+
+            Message msg2 = new Message();
+            msg2.SenderID = 1;
+            msg2.Timestamp = DateTime.Now;
+            msg2.Content = "Thanks very much!";
+            
+            Message msg3 = new Message();
+            msg3.SenderID = 9;
+            msg3.Timestamp = DateTime.Now;
+            msg3.Content = "if you need any help getting around, let me know.";
+
+            newConvo.MessagesList.Add(msg1);
+            newConvo.MessagesList.Add(msg2);
+            newConvo.MessagesList.Add(msg3);
+
+            messageManager.InsertIntoConvoTable(newConvo);
         }
     }
 }

@@ -12,9 +12,9 @@ namespace DataModels
     {
         public int ConversationID { get; set; }
         public int ParticipantA_ID { get; set; }
-        public int ParticipantA_Name { get; set; }
+        public string  ParticipantA_Name { get; set; }
         public int ParticipantB_ID { get; set; }
-        public int ParticipantB_Name { get; set; }
+        public string ParticipantB_Name { get; set; }
         public List<Message> MessagesList { get; set; }
 
         public Conversation()
