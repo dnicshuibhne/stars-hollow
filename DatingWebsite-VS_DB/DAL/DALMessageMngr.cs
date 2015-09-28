@@ -24,37 +24,40 @@ namespace DAL
             conString = ConfigurationManager.ConnectionStrings[CS_NAME].ConnectionString;
         }
 
-        public DataTable getSentAndReceivedMessages(int userID)
+        public List<Conversation> getSentAndReceivedMessages(int userID)
         {
             return getMessages(userID, Resources.GET_MESSAGES_PROC);
         }
 
-        public DataTable getMessages(int userID, string procname)
+        public List<Conversation> getMessages(int userID, string procname)
         {
             DataSet data = new DataSet();
-
+            List<Conversation> convoList = new List<Conversation>();
+            
             using (SqlConnection con = new SqlConnection(conString))
             {
-                using (SqlDataAdapter adapter = new SqlDataAdapter())
+                using (SqlCommand cmd= new SqlCommand(procname, con))
                 {
-                    adapter.SelectCommand = new SqlCommand(procname, con);
-                    adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-                    adapter.SelectCommand.Parameters.Add("@userID", SqlDbType.Int).Value = userID;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@userID", SqlDbType.Int).Value = userID;
 
                     con.Open();
 
-                    int rowsAffected = adapter.Fill(data);
-
-                    if (rowsAffected < 1)
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        throw new Exception("Error Retrieving Messages");
-                    }
+                        while (reader.Read())
+                        {
+                            Conversation convo = new Conversation();
 
+                            convo.ConversationID = reader.GetValue(Convert.ToInt32(0)).ToString()
+                        }
+                    }
+                    
                     con.Close();
                 }
             }
 
-            return data.Tables[0];
+            return convoList;
         }
 
 
@@ -84,6 +87,60 @@ namespace DAL
             }
 
             return data.Tables[0];
+        }
+
+        public void InsertIntoConvoTable()
+        {
+            string query = @"INSERT INTO Conversation
+                            VALUES
+                            (
+                                ParticipantA_ID = 9,
+                                ParticipantA_ID = 1,
+                                MessageContent = 
+                                <conversation>
+	                                <message>
+		                                <senderID>9</senderID>
+		                                <senderName>aoconnor</senderName>
+		                                <timestamp>01/01/2015 00:00:00</timestamp>
+		                                <content>Hi, how are you?</content>
+	                                </message>
+	                                <message>
+		                                <senderID>1</senderID>
+		                                <senderName>Sarah</senderName>
+		                                <timestamp>01/01/2015 00:05:00</timestamp>
+		                                <content>I'm good. Yourself?</content>
+	                                </message>
+	                                <message>
+		                                <senderID>9</senderID>
+		                                <senderName>aoconnor</senderName>
+		                                <timestamp>01/01/2015 00:14:00</timestamp>
+		                                <content>Happy enouhg</content>
+	                                </message>
+	                                <message>
+		                                <senderID>9</senderID>
+		                                <senderName>aoconnor</senderName>
+		                                <timestamp>01/01/2015 00:22:00</timestamp>
+		                                <content>*enough</content>
+	                                </message>
+                                </conversation>,
+                            )";
+
+            using (SqlConnection con = new SqlConnection(conString))
+            {
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    con.Open();
+
+                    int rowsAffected = cmd.ExecuteNonQuery();
+
+                    if (rowsAffected < 1)
+                    {
+                        throw new Exception("Error Inserting Data");
+                    }
+
+                    con.Close();
+                }
+            }
         }
 
         //public DataTable getReceivedMessages(int receiverID)

@@ -25,11 +25,13 @@ namespace BD_Web_Group_Project_Webpages_v1
             user = (UserModel)Session[Resources.USER_SESSION_STATE];
             if (user == null || user.ID < 1)
             {
-                Response.Redirect("Default.aspx", true);
+                //Response.Redirect("Default.aspx", true);
             }
 
-            //messageManager = new BLLMessageMngr(user.ID);
-            //getMessages();
+            user = new UserModel();
+            user.ID = 1;
+            messageManager = new BLLMessageMngr(user.ID);
+            getMessages();
         }
         
         private void getMessages()
@@ -108,6 +110,11 @@ namespace BD_Web_Group_Project_Webpages_v1
         {
             Label l = (Label)sender;
             l.Text = getUsername2(senderName, "StarsHollow");
+        }
+
+        protected void btnInsertCommand_Click(object sender, EventArgs e)
+        {
+            messageManager.InsertIntoConvoTable();
         }
     }
 }

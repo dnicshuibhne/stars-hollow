@@ -5,13 +5,16 @@
     <br />
     
     <%-- This page is composed of two overlapping things:
-        1. a div which displays the messages of the conversation selected byt the user.
+        1. a div which displays the messages of the conversation selected by the user.
         2. a list of divs for each conversation in the user's history.
             
         Div 1. is invisible until a Div 2 is clicked.
         --%>
+
+    <asp:Button ID="btnInsertCommand" runat="server" Text="Insert Data Into Convo table" OnClick="btnInsertCommand_Click" />
+
     <div class="contentWrapper">
-        <div id="myMessage"  visible="true" class="conversationBox theirImage" runat="server" >
+        <div id="myMessage"  visible="false" class="conversationBox theirImage" runat="server" >
             <asp:Button ID="closeThisMessage" runat="server" Text="X" CssClass="purpleButton" style="margin: 10px 10px; float:right;"/>
             <br />
             <asp:Image ID="imgTheirProfilePic" runat="server" ImageUrl="~/Images/blank-profile-grey.png" style="position: absolute; bottom:0px; margin-left:40px; margin-top: 900px"/>
@@ -103,13 +106,13 @@
                 rptModules.DataBind();
             } 
         -->
-        <div id="myConversations" visible="false" runat="server">
+        <div id="myConversations" visible="true" runat="server">
             <asp:Repeater ID="rptConversations" runat="server">
                 <ItemTemplate>
                     <div class="conversationBox linkingDiv">
-                        <asp:Image ID="imgTheirProfilePic" runat="server" CssClass="theirImage"/>
+                        <%--<asp:Image ID="imgTheirProfilePic" runat="server" CssClass="theirImage"/>
                         <asp:Label ID="lblTheirName" runat="server" Text='<%#getUsername2((Eval("SenderName")).ToString(),(Eval("ReceiverName")).ToString())%>' CssClass="theirName"></asp:Label>
-                        <asp:Label ID="lblLastMessage" runat="server" Text='<%#Eval("Content") %>' CssClass="lastMessage"></asp:Label>
+                        <asp:Label ID="lblLastMessage" runat="server" Text='<%#Eval("Content") %>' CssClass="lastMessage"></asp:Label>--%>
                     </div>
                 </ItemTemplate>
             </asp:Repeater>

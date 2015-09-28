@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using DAL;
 using System.Data;
 using DataModels;
+using System.Reflection;
 
 namespace BLL
 {
@@ -27,16 +28,14 @@ namespace BLL
             messageManager = new DALMessageMngr();
             allMessages = messageManager.getSentAndReceivedMessages(userID);
         }
-        public DataTable getMessagesTest(int id)
+        public List<Conversation> getMessagesTest(int id)
         {
             string filter = "true";//ReceiverID = '" + userID + "' OR SenderID = '" + userID + "'";
-            DataTable table = new DataTable(); //filters and sorts results
             DataRow[] rows = allMessages.Select(filter, orderNewToOld);
-            //foreach (DataRow row in rows)
-            //{
-            //    table.Rows.Add(null);
-            //}
-            return rows[0].Table;
+
+            List<Conversation> convoList = DataTableToList<Conversation>(rows[0].Table);
+
+            return convoList;
         }
 
         public DataRow[] getAllMessages()
@@ -49,6 +48,49 @@ namespace BLL
         {
             string filter = "SenderID = '" + user2ID + "' OR ReceiverID = '" + user2ID + "'";
             return allMessages.Select(filter, orderOldToNew);//filters and sorts results
+        }
+
+
+        // Helper method to convert DataTable to List<T>
+        // Method written by Gaui http://codereview.stackexchange.com/a/56857
+
+        public static List<T> DataTableToList<T>(DataTable table) where T : class, new()
+        {
+            try
+            {
+                List<T> list = new List<T>();
+
+                foreach (var row in table.AsEnumerable())
+                {
+                    T obj = new T();
+
+                    foreach (var prop in obj.GetType().GetProperties())
+                    {
+                        try
+                        {
+                            PropertyInfo propertyInfo = obj.GetType().GetProperty(prop.Name);
+                            propertyInfo.SetValue(obj, Convert.ChangeType(row[prop.Name], propertyInfo.PropertyType), null);
+                        }
+                        catch
+                        {
+                            continue;
+                        }
+                    }
+
+                    list.Add(obj);
+                }
+
+                return list;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public void InsertIntoConvoTable()
+        {
+            messageManager.InsertIntoConvoTable();
         }
 
         /* Unused functionality

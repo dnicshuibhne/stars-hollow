@@ -13,6 +13,15 @@ namespace BD_Web_Group_Project_Webpages_v1 {
     public partial class MyMessages {
         
         /// <summary>
+        /// btnInsertCommand control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnInsertCommand;
+        
+        /// <summary>
         /// myMessage control.
         /// </summary>
         /// <remarks>
