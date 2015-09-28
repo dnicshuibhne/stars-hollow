@@ -14,8 +14,8 @@
                 <asp:RegularExpressionValidator ID="regxvLocation" runat="server" ControlToValidate="txtTown" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9\s\,\.\-]+" ValidationGroup="vgRegisterPage1"><br /> Town may only contain the following characters: <br /> [A-Z] [a-z] [0-9] [space] [,] [.] [-]</asp:RegularExpressionValidator>
                 <br />
                 <br />
-                <asp:Label ID="County" runat="server" Text="County "></asp:Label>
-                <asp:DropDownList ID="ddlCounty" runat="server"></asp:DropDownList>
+                <asp:Label ID="lblCounty" runat="server" Text="County "></asp:Label>
+                <asp:DropDownList ID="ddlCounty" runat="server" AppendDataBoundItems="True"><asp:ListItem Text="-- pick one --" Value=""></asp:ListItem></asp:DropDownList>
                 <br />
                 <br />
                 <asp:Label ID="lblProfesssion" runat="server" Text="Profession "></asp:Label>
@@ -24,28 +24,19 @@
                 <br />
                 <br />
                 <asp:Label ID="lblGender" runat="server" Text="Gender "></asp:Label>
-                <asp:DropDownList ID="ddlGender" runat="server"></asp:DropDownList>
+                <asp:DropDownList ID="ddlGender" runat="server" AppendDataBoundItems="True"><asp:ListItem Text="-- pick one --" Value=""></asp:ListItem></asp:DropDownList>
                 <br />
                 <br />
-
                 <asp:Label ID="lblOrientation" runat="server" Text="Orientation "></asp:Label>
-                <asp:DropDownList ID="ddlOrientation" runat="server"></asp:DropDownList>
+                <asp:DropDownList ID="ddlOrientation" runat="server" AppendDataBoundItems="True"><asp:ListItem Text="-- pick one --" Value=""></asp:ListItem></asp:DropDownList>
                 <br />
                 <br />
-                <asp:Label ID="lblEyeColour" runat="server" Text="Eye colour "></asp:Label>
-                <asp:DropDownList ID="ddlEyeColour" runat="server"></asp:DropDownList>
-                <br />
-                <br />
-                <asp:Label ID="lblHairColour" runat="server" Text="Hair Colour "></asp:Label>
-                <asp:DropDownList ID="ddlHairColour" runat="server"></asp:DropDownList>
-                <br />
-                <br />
-                <asp:Label ID="lblAge" runat="server" Text="Age "></asp:Label>
-                <asp:DropDownList ID="ddlAge" runat="server"></asp:DropDownList>
+                <asp:Label ID="lblAgeRange" runat="server" Text="Age "></asp:Label>
+                <asp:DropDownList ID="ddlAgeRange" runat="server" AppendDataBoundItems="True"><asp:ListItem Text="-- pick one --" Value=""></asp:ListItem></asp:DropDownList>
                 <br />
                 <br />
                 <br />
-                <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="blueButton"/>
+                <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="blueButton" OnClick="btnSearch_Click"/>
                 <br />
                 <br />
             </div>

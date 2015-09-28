@@ -38,29 +38,43 @@ namespace DAL
 
             bool selectAll = !(
                 isAgeRange 
-                && isBuild 
-                && isCounty
-                && isGender
-                && isHeight
-                && isProfession
-                && isRelationshipStatus
-                && isSexualOrientation
-                && isTown
-                && isHobbies);
+                || isBuild 
+                || isCounty
+                || isGender
+                || isHeight
+                || isProfession
+                || isRelationshipStatus
+                || isSexualOrientation
+                || isTown
+                || isHobbies);
 
             string query;
             if (!selectAll)
             {
-                query = "SELECT * FROM " + Resources.USER_INFORMATION_TABLE + " WHERE ";
-                if (isAgeRange) query += Resources.AGE_RANGE_COLUMN + "=" + Resources.AGE_RANGE_PARAM + " AND ";
-                if (isBuild) query += " " + Resources.BUILD_COLUMN + "=" + Resources.BUILD_PARAM + " AND ";
-                if (isCounty) query += " " + Resources.COUNTY_COLUMN + "=" + Resources.BUILD_PARAM + " AND ";
-                if (isGender) query += Resources.GENDER_COLUMN + "=" + Resources.GENDER_PARAM + " AND ";
-                if (isHeight) query += Resources.HEIGHT_COLUMN + "=" + Resources.HEIGHT_PARAM + " AND ";
-                if (isProfession) query += Resources.PROFESSION_COLUMN + "=" + Resources.PROFESSION_PARAM + " AND ";
-                if (isRelationshipStatus) query += Resources.RELATIONSHIP_STATUS_COLUMN + "=" + Resources.RELATIONSHIP_STATUS_PARAM + " AND ";
-                if (isSexualOrientation) query += Resources.SEXUAL_ORIENTATION_COLUMN + "=" + Resources.SEXUAL_ORIENTATION_PARAM + " AND ";
-                if (isTown) query += Resources.TOWN_COLUMN + "=" + Resources.TOWN_PARAM + " AND ";
+                int paramVal = 0;
+                query = "SELECT Users.UserID, Users.Username, Age, Build, County, Ethnicity, EyeColor, Gender, HairColor, Height, IdealDate, RelationshipStatus, Profession, SexualOrientation, Town, ProfilePicturePath, Comments "
+                    + " FROM " + Resources.USER_INFORMATION_TABLE 
+                    + " INNER JOIN dbo.Users ON UserInformation.UserID = Users.UserID"
+                    + " WHERE ";
+                //if (isAgeRange) query += Resources.AGE_RANGE_COLUMN + "=" + Resources.AGE_RANGE_PARAM + " AND ";
+                //if (isBuild) query += " " + Resources.BUILD_COLUMN + "=" + Resources.BUILD_PARAM + " AND ";
+                //if (isCounty) query += " " + Resources.COUNTY_COLUMN + "=" + Resources.BUILD_PARAM + " AND ";
+                //if (isGender) query += Resources.GENDER_COLUMN + "=" + Resources.GENDER_PARAM + " AND ";
+                //if (isHeight) query += Resources.HEIGHT_COLUMN + "=" + Resources.HEIGHT_PARAM + " AND ";
+                //if (isProfession) query += Resources.PROFESSION_COLUMN + "=" + Resources.PROFESSION_PARAM + " AND ";
+                //if (isRelationshipStatus) query += Resources.RELATIONSHIP_STATUS_COLUMN + "=" + Resources.RELATIONSHIP_STATUS_PARAM + " AND ";
+                //if (isSexualOrientation) query += Resources.SEXUAL_ORIENTATION_COLUMN + "=" + Resources.SEXUAL_ORIENTATION_PARAM + " AND ";
+                //if (isTown) query += Resources.TOWN_COLUMN + "=" + Resources.TOWN_PARAM + " AND ";
+
+                if (isAgeRange) query += Resources.AGE_RANGE_COLUMN + "=@"+paramVal++.ToString() + " AND ";
+                if (isBuild) query += " " + Resources.BUILD_COLUMN + "=@" + paramVal++.ToString() + " AND ";
+                if (isCounty) query += " " + Resources.COUNTY_COLUMN + "=@" + paramVal++.ToString() + " AND ";
+                if (isGender) query += Resources.GENDER_COLUMN + "=@" + paramVal++.ToString() + " AND ";
+                if (isHeight) query += Resources.HEIGHT_COLUMN + "=@" + paramVal++.ToString() + " AND ";
+                if (isProfession) query += Resources.PROFESSION_COLUMN + "=@" + paramVal++.ToString() + " AND ";
+                if (isRelationshipStatus) query += Resources.RELATIONSHIP_STATUS_COLUMN + "=@" + paramVal++.ToString() + " AND ";
+                if (isSexualOrientation) query += Resources.SEXUAL_ORIENTATION_COLUMN + "=@" + paramVal++.ToString() + " AND ";
+                if (isTown) query += Resources.TOWN_COLUMN + "=@" + paramVal.ToString() + " AND ";
 
                 query = query.Substring(0, query.Length - 5);
             }
@@ -78,16 +92,16 @@ namespace DAL
                     if (!selectAll)
                     {
                         cmd.CommandType = CommandType.Text;
-
-                        if (isAgeRange) cmd.Parameters.Add(Resources.AGE_RANGE_PARAM, SqlDbType.NVarChar).Value = ageRange;
-                        if (isBuild) cmd.Parameters.Add(Resources.BUILD_PARAM, SqlDbType.NVarChar).Value = build;
-                        if (isCounty) cmd.Parameters.Add(Resources.COUNTY_PARAM, SqlDbType.NVarChar).Value = county;
-                        if (isGender) cmd.Parameters.Add(Resources.GENDER_PARAM, SqlDbType.NVarChar).Value = gender;
-                        if (isHeight) cmd.Parameters.Add(Resources.HEIGHT_PARAM, SqlDbType.NVarChar).Value = height;
-                        if (isProfession) cmd.Parameters.Add(Resources.PROFESSION_PARAM, SqlDbType.NVarChar).Value = profession;
-                        if (isRelationshipStatus)  cmd.Parameters.Add(Resources.RELATIONSHIP_STATUS_PARAM, SqlDbType.NVarChar).Value = relationshipStatus;
-                        if (isSexualOrientation) cmd.Parameters.Add(Resources.SEXUAL_ORIENTATION_PARAM, SqlDbType.NVarChar).Value = sexualOrientation;
-                        if (isTown) cmd.Parameters.Add(Resources.TOWN_PARAM, SqlDbType.NVarChar).Value = town;
+                        int paramVal = 0;
+                        if (isAgeRange) cmd.Parameters.Add(paramVal++.ToString(), SqlDbType.NVarChar).Value = ageRange;
+                        if (isBuild) cmd.Parameters.Add(paramVal++.ToString(), SqlDbType.NVarChar).Value = build;
+                        if (isCounty) cmd.Parameters.Add(paramVal++.ToString(), SqlDbType.NVarChar).Value = county;
+                        if (isGender) cmd.Parameters.Add(paramVal++.ToString(), SqlDbType.NVarChar).Value = gender;
+                        if (isHeight) cmd.Parameters.Add(paramVal++.ToString(), SqlDbType.NVarChar).Value = height;
+                        if (isProfession) cmd.Parameters.Add(paramVal++.ToString(), SqlDbType.NVarChar).Value = profession;
+                        if (isRelationshipStatus) cmd.Parameters.Add(paramVal++.ToString(), SqlDbType.NVarChar).Value = relationshipStatus;
+                        if (isSexualOrientation) cmd.Parameters.Add(paramVal++.ToString(), SqlDbType.NVarChar).Value = sexualOrientation;
+                        if (isTown) cmd.Parameters.Add(paramVal++.ToString(), SqlDbType.NVarChar).Value = town;
                     }
                     else
                     {
@@ -103,21 +117,21 @@ namespace DAL
                             while (dr.Read())
                             {
                                 UserModel user = new UserModel(dr.GetInt32((int)UserProfile.User), dr.GetString(1));
-                                user.Age = dr.GetInt32((int)UserProfile.Age);
-                                user.Build = dr.GetString((int)UserProfile.Build);
-                                user.County = dr.GetString((int)UserProfile.County);
-                                user.Ethnicity = dr.GetString((int)UserProfile.Ethnicity);
-                                user.EyeColor = dr.GetString((int)UserProfile.EyeColor);
-                                user.Gender = dr.GetString((int)UserProfile.Gender);
-                                user.HairColor = dr.GetString((int)UserProfile.HairColor);
-                                user.Height = dr.GetString((int)UserProfile.Height);
-                                user.IdealDate = dr.GetString((int)UserProfile.IdealDate);
-                                user.RelationshipStatus = dr.GetString((int)UserProfile.RelationshipStatus);
-                                user.Profession = dr.GetString((int)UserProfile.Profession);
-                                user.SexualOrientation = dr.GetString((int)UserProfile.SexualOrientation);
-                                user.Town = dr.GetString((int)UserProfile.Town);
-                                //user.ProfilePicturePath = dr.GetString((int)UserProfile.ProfilePicturePath);
-                                //user.Comments = dr.GetString((int)UserProfile.Comments);
+                                if (!dr.IsDBNull((int)UserProfile.Age)) user.Age = dr.GetInt32((int)UserProfile.Age);
+                                if (!dr.IsDBNull((int)UserProfile.Build)) user.Build = dr.GetString((int)UserProfile.Build);
+                                if (!dr.IsDBNull((int)UserProfile.County)) user.County = dr.GetString((int)UserProfile.County);
+                                if (!dr.IsDBNull((int)UserProfile.Ethnicity)) user.Ethnicity = dr.GetString((int)UserProfile.Ethnicity);
+                                if (!dr.IsDBNull((int)UserProfile.EyeColor)) user.EyeColor = dr.GetString((int)UserProfile.EyeColor);
+                                if (!dr.IsDBNull((int)UserProfile.Gender)) user.Gender = dr.GetString((int)UserProfile.Gender);
+                                if (!dr.IsDBNull((int)UserProfile.HairColor)) user.HairColor = dr.GetString((int)UserProfile.HairColor);
+                                if (!dr.IsDBNull((int)UserProfile.Height)) user.Height = dr.GetString((int)UserProfile.Height);
+                                if (!dr.IsDBNull((int)UserProfile.IdealDate)) user.IdealDate = dr.GetString((int)UserProfile.IdealDate);
+                                if (!dr.IsDBNull((int)UserProfile.RelationshipStatus)) user.RelationshipStatus = dr.GetString((int)UserProfile.RelationshipStatus);
+                                if (!dr.IsDBNull((int)UserProfile.Profession)) user.Profession = dr.GetString((int)UserProfile.Profession);
+                                if (!dr.IsDBNull((int)UserProfile.SexualOrientation)) user.SexualOrientation = dr.GetString((int)UserProfile.SexualOrientation);
+                                if (!dr.IsDBNull((int)UserProfile.Town)) user.Town = dr.GetString((int)UserProfile.Town);
+                                //if (!dr.IsDBNull((int)UserProfile.ProfilePicturePath)) user.ProfilePicturePath = dr.GetString((int)UserProfile.ProfilePicturePath);
+                                //if (!dr.IsDBNull((int)UserProfile.Comments)) user.Comments = dr.GetString((int)UserProfile.Comments);
 
                                 users.Add(user);
                             }

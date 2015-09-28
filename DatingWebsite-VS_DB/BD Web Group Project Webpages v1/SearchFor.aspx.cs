@@ -14,7 +14,6 @@ namespace BD_Web_Group_Project_Webpages_v1
 {
     public partial class SearchFor : System.Web.UI.Page
     {
-        BLLSearchMngr searchManager;
         BLLAttributeMngr attributeManager;
         List<string> attributes;
 
@@ -30,7 +29,6 @@ namespace BD_Web_Group_Project_Webpages_v1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            searchManager = new BLLSearchMngr();
             attributeManager = new BLLAttributeMngr();
 
             if (!IsPostBack)
