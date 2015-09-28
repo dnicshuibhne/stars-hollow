@@ -202,21 +202,21 @@ namespace BD_Web_Group_Project_Webpages_v1 {
         protected global::System.Web.UI.WebControls.ImageButton imgBtnSendMessage;
         
         /// <summary>
-        /// myConversations control.
+        /// mySummaries control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl myConversations;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mySummaries;
         
         /// <summary>
-        /// rptConversations control.
+        /// rptSummaries control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptConversations;
+        protected global::System.Web.UI.WebControls.Repeater rptSummaries;
     }
 }

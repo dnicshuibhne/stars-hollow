@@ -84,16 +84,18 @@ namespace BD_Web_Group_Project_Webpages_v1
             }
 
             // Allocate List to repeater datasource.
-            rptConversations.DataSource = summaryList;
-            rptConversations.DataBind();
+            rptSummaries.DataSource = summaryList;
+            rptSummaries.DataBind();
         }
+
+        
 
         private void getConversation(int user2ID)
         {
             //rptconvoMessages.DataSource = messageManager.getConversation(user2ID);
             //rptconvoMessages.DataBind();
             myMessage.Visible = true;
-            myConversations.Visible = false;
+            mySummaries.Visible = false;
         }
 
         public void getCssClass(int senderID, int receiverID)
@@ -130,7 +132,7 @@ namespace BD_Web_Group_Project_Webpages_v1
         protected void closeThisMessage_Click(object sender, EventArgs e)
         {
             myMessage.Visible = false;
-            myConversations.Visible = true;
+            mySummaries.Visible = true;
         }
 
         protected void RepeaterItemCreated(object sender, RepeaterItemEventArgs e)
@@ -194,5 +196,15 @@ namespace BD_Web_Group_Project_Webpages_v1
 
             messageManager.InsertIntoConvoTable(newConvo);
         }
+
+        protected void rptSummaries_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            
+                mySummaries.Visible = false;
+                myMessage.Visible = true;
+            
+        
+        }
+
     }
 }

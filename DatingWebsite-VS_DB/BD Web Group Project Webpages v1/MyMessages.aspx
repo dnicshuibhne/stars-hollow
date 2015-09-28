@@ -106,21 +106,20 @@
                 rptModules.DataBind();
             } 
         -->
-        <div id="myConversations" visible="true" runat="server">
-            <asp:Repeater ID="rptConversations" runat="server">
+        <div id="mySummaries" visible="true" runat="server">
+            <asp:Repeater ID="rptSummaries" runat="server" OnItemCommand="rptSummaries_ItemCommand" >
                 <ItemTemplate>
                     <div class="conversationBox linkingDiv">
-                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl=<%# DataBinder.Eval(Container.DataItem, "Url") %>
-                            <div class="theirImage">
-                                <img src="Images/blank-profile-grey.png" alt="User's profile picture"/>
-                            </div>
-                            <div class="theirName">
-                                <%#Eval("OtherPersonName") %>
-                            </div>
-                            <div class="lastMessage">
-                                <%#Eval("LastMessage") %>
-                            </div>
-                        </asp:HyperLink>
+                        <asp:Label ID="Label15" runat="server" Text=<%#Eval("ConversationID") %> Visible="False"></asp:Label>
+                        <div class="theirImage">
+                            <img src="Images/blank-profile-grey.png" alt="User's profile picture"/>
+                        </div>
+                        <div class="theirName">
+                            <%#Eval("OtherPersonName") %>
+                        </div>
+                        <div class="lastMessage">
+                            <%#Eval("LastMessage") %>
+                        </div>
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
