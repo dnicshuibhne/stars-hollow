@@ -70,7 +70,7 @@
                 <asp:Repeater ID="rptResults" runat="server">
                     <ItemTemplate>
                         <a href='ViewMatchProfile.aspx?<%#Eval("Username") %>'>
-                            <div class="resultsBox linkingDiv">
+                            <div class="resultBox linkingDiv">
                                 <asp:Image ID="imgProfilePic" runat="server" CssClass="resultImage"/>
                                 <div class="resultText">
                                     <asp:Label ID="lblName" runat="server" Text='<%#Eval("Username") %>' CssClass="resultName"></asp:Label>
