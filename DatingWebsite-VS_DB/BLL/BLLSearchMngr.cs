@@ -24,12 +24,5 @@ namespace BLL
         {
             return searchManager.DALSearchForUsersExact(ageRange, build, county, gender, height, profession, relationshipStatus, sexualOrientation, town, hobbies);
         }
-
-        //public DataTable SearchForUsers(NameValueCollection searchParams)
-        //{
-        //    return searchManager.SearchForUsers(searchParams);
-        //}
-
-
     }
 }
