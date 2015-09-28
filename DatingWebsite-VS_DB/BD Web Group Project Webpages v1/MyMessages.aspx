@@ -24,8 +24,8 @@
                         <%--<div class='<%getCssClass((int)Eval("SenderID"), (int)Eval("ReceiverID")); %>'> <!-- Return the CSS class from a method which compares the message's sender ID with the user's ID -->
                             <asp:Label ID="lblMessage" runat="server" Text='<%#Eval("MessageText") %>'></asp:Label>
 
-                        </div>--%>
-                        
+                        </div>
+                        --%>
                     </ItemTemplate>
                 </asp:Repeater>
                 <!-- 
@@ -110,9 +110,17 @@
             <asp:Repeater ID="rptConversations" runat="server">
                 <ItemTemplate>
                     <div class="conversationBox linkingDiv">
-                        <%--<asp:Image ID="imgTheirProfilePic" runat="server" CssClass="theirImage"/>
-                        <asp:Label ID="lblTheirName" runat="server" Text='<%#getUsername2((Eval("SenderName")).ToString(),(Eval("ReceiverName")).ToString())%>' CssClass="theirName"></asp:Label>
-                        <asp:Label ID="lblLastMessage" runat="server" Text='<%#Eval("Content") %>' CssClass="lastMessage"></asp:Label>--%>
+                        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl=<%# DataBinder.Eval(Container.DataItem, "Url") %>
+                            <div class="theirImage">
+                                <img src="Images/blank-profile-grey.png" alt="User's profile picture"/>
+                            </div>
+                            <div class="theirName">
+                                <%#Eval("OtherPersonName") %>
+                            </div>
+                            <div class="lastMessage">
+                                <%#Eval("LastMessage") %>
+                            </div>
+                        </asp:HyperLink>
                     </div>
                 </ItemTemplate>
             </asp:Repeater>
@@ -122,7 +130,7 @@
                     I'm keeping it here as a temporary guide for the visual layout of each conversation summary.
                  -->
             
-                <div class="conversationWrapper">
+                <%--<div class="conversationWrapper">
                 <a>
                     <div class="conversationBox linkingDiv">
                         <div class="theirImage">
@@ -131,13 +139,12 @@
                         <div class="theirName">
                             Stars Hollow
                         </div>
-                        <asp:Label ID="lblTheirName" runat="server" Text='Respose.Write("");' CssClass="theirName"></asp:Label>
                         <div class="lastMessage">
                             Hi, welcome to our site!
                         </div>
                     </div>
                 </a>
-            </div>
+                </div>--%>
                 
         </div>
     </div>
