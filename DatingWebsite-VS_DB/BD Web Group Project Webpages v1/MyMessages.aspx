@@ -109,18 +109,19 @@
         <div id="mySummaries" visible="true" runat="server">
             <asp:Repeater ID="rptSummaries" runat="server" OnItemCommand="rptSummaries_ItemCommand" >
                 <ItemTemplate>
-                    <div class="conversationBox linkingDiv">
-                        <asp:Label ID="Label15" runat="server" Text=<%#Eval("ConversationID") %> Visible="False"></asp:Label>
-                        <div class="theirImage">
-                            <img src="Images/blank-profile-grey.png" alt="User's profile picture"/>
+                    <a href='MyMessages.aspx?ID=<%#Eval("ConversationID") %>'>
+                        <div class="conversationBox linkingDiv">
+                            <div class="theirImage">
+                                <img src="Images/blank-profile-grey.png" alt="User's profile picture"/>
+                            </div>
+                            <div class="theirName">
+                                <%#Eval("OtherPersonName") %>
+                            </div>
+                            <div class="lastMessage">
+                                <%#Eval("LastMessage") %>
+                            </div>
                         </div>
-                        <div class="theirName">
-                            <%#Eval("OtherPersonName") %>
-                        </div>
-                        <div class="lastMessage">
-                            <%#Eval("LastMessage") %>
-                        </div>
-                    </div>
+                    </a>
                 </ItemTemplate>
             </asp:Repeater>
                 <!-- 
