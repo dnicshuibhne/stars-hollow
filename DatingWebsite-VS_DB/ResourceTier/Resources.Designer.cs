@@ -592,6 +592,24 @@ namespace ResourceTier {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to uspUpdateConversation.
+        /// </summary>
+        public static string UPDATE_CONVO {
+            get {
+                return ResourceManager.GetString("UPDATE_CONVO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to uspUpdateUserAccount.
+        /// </summary>
+        public static string USER_ACCOUNT_UPDATE_PROC {
+            get {
+                return ResourceManager.GetString("USER_ACCOUNT_UPDATE_PROC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to UserSettings.
         /// </summary>
         public static string USER_COOKIE {
@@ -606,6 +624,24 @@ namespace ResourceTier {
         public static string USER_CREATE_PROC {
             get {
                 return ResourceManager.GetString("USER_CREATE_PROC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to uspUpdateUserDetails.
+        /// </summary>
+        public static string USER_DETAILS_UPDATE_PROC {
+            get {
+                return ResourceManager.GetString("USER_DETAILS_UPDATE_PROC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UserHobbies.
+        /// </summary>
+        public static string USER_HOBBIES_TABLE {
+            get {
+                return ResourceManager.GetString("USER_HOBBIES_TABLE", resourceCulture);
             }
         }
         

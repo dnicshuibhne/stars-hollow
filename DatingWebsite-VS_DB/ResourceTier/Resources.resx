@@ -353,6 +353,10 @@
     <value>@town</value>
     <comment>PARAM</comment>
   </data>
+  <data name="UPDATE_CONVO" xml:space="preserve">
+    <value>uspUpdateConversation</value>
+    <comment>PROCEDURE</comment>
+  </data>
   <data name="USERID_PARAM" xml:space="preserve">
     <value>@userid</value>
     <comment>PARAM</comment>
@@ -365,6 +369,10 @@
     <value>@username</value>
     <comment>PARAM</comment>
   </data>
+  <data name="USER_ACCOUNT_UPDATE_PROC" xml:space="preserve">
+    <value>uspUpdateUserAccount</value>
+    <comment>PROCEDURE</comment>
+  </data>
   <data name="USER_COOKIE" xml:space="preserve">
     <value>UserSettings</value>
     <comment>COOKIE</comment>
@@ -372,6 +380,14 @@
   <data name="USER_CREATE_PROC" xml:space="preserve">
     <value>uspAddNewUser</value>
     <comment>PROCEDURE</comment>
+  </data>
+  <data name="USER_DETAILS_UPDATE_PROC" xml:space="preserve">
+    <value>uspUpdateUserDetails</value>
+    <comment>PROCEDURE</comment>
+  </data>
+  <data name="USER_HOBBIES_TABLE" xml:space="preserve">
+    <value>UserHobbies</value>
+    <comment>TABLE</comment>
   </data>
   <data name="USER_INFORMATION_TABLE" xml:space="preserve">
     <value>UserInformation</value>
