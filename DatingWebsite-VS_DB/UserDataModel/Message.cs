@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace DataModels
 {
-    class Message: IComparable<Message>
+    public class Message: IComparable<Message>
     {
-        public int MessageID { get; set; }
-        public UserModel SenderID { get; set; }
-        public int ReceiverID { get; set; }
+        public int SenderID { get; set; }
         public DateTime Timestamp { get; set; }
-        public StringBuilder content { get; set; }
+        public string Content { get; set; }
 
         public int CompareTo(Message other)
         {

@@ -285,6 +285,7 @@ GO
 ------------------------------------------------------------ MESSAGE PROCEDURES ----------------------------------------------------------- 
 ------------------------------------------------------------------------------------------------------------------------------------------
 
+-- Get All Messages --
 DROP PROCEDURE uspAllMessages
 GO
 
@@ -315,6 +316,47 @@ WHERE
 	OR
 	Messages.ReceiverID = @userID
 GO
+
+-- Get a Single Conversation By ConversationID --
+CREATE PROCEDURE uspGetConversationByID
+@convoID INT
+AS  
+SELECT
+	Conversation.ConversationID,
+	Conversation.ParticipantA_ID,
+	Conversation.ParticipantB_ID,
+	ParticipantA.Username AS ParticipantA_Name,
+	ParticipantB.Username AS ParticipantB_Name,
+	Conversation.MessageContent
+FROM [Conversation]
+	Inner Join Users AS ParticipantB
+	ON 
+		(
+			Conversation.ParticipantB_ID = ParticipantB.UserID 
+		)
+	Inner Join Users AS ParticipantA
+	ON 
+		(
+			Conversation.ParticipantA_ID = ParticipantA.UserID 
+		)
+WHERE 
+	Conversation.ConversationID = @convoID
+GO
+
+-- Updating a Conversation record by ConversationID
+CREATE PROCEDURE [dbo].uspUpdateConversation
+	@convoID int,
+	@MessageContent xml
+AS
+BEGIN
+	SET NOCOUNT ON
+	UPDATE dbo.Conversation 
+		SET MessageContent = @MessageContent 
+	WHERE 
+		dbo.Conversation.ConversationID = @convoID
+END
+GO
+
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------

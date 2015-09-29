@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using DAL;
 using System.Data;
 using DataModels;
+using System.Reflection;
 
 namespace BLL
 {
@@ -17,7 +18,7 @@ namespace BLL
     {
         private DALMessageMngr messageManager;
         private int userID;
-        private DataTable allMessages;
+        private List<Conversation> allMessages;
         private string orderNewToOld = "Timestamp DESC"; // newest to oldest
         private string orderOldToNew = "Timestamp ASC"; // oldest to newest
 
@@ -25,30 +26,27 @@ namespace BLL
         {
             this.userID = userID;
             messageManager = new DALMessageMngr();
+            
+        }
+        public List<Conversation> getMessagesTest(int id)
+        {
+            //string filter = "true";//ReceiverID = '" + userID + "' OR SenderID = '" + userID + "'";
+            //List<Conversation> convoList = DataTableToList<Conversation>(rows[0].Table);
+
             allMessages = messageManager.getSentAndReceivedMessages(userID);
-        }
-        public DataTable getMessagesTest(int id)
-        {
-            string filter = "true";//ReceiverID = '" + userID + "' OR SenderID = '" + userID + "'";
-            DataTable table = new DataTable(); //filters and sorts results
-            DataRow[] rows = allMessages.Select(filter, orderNewToOld);
-            //foreach (DataRow row in rows)
-            //{
-            //    table.Rows.Add(null);
-            //}
-            return rows[0].Table;
+
+            return allMessages;
         }
 
-        public DataRow[] getAllMessages()
+        public Conversation UpdateConvoTable(Conversation selectedConvo)
         {
-            string filter = "true";//ReceiverID = '" + userID + "' OR SenderID = '" + userID + "'";
-            return allMessages.Select(filter, orderNewToOld); //filters and sorts results
+            selectedConvo = messageManager.UpdateConvoTable(selectedConvo);
+            return selectedConvo;
         }
 
-        public DataRow[] getConversation(int user2ID)
+        public void InsertIntoConvoTable(Conversation newConvo)
         {
-            string filter = "SenderID = '" + user2ID + "' OR ReceiverID = '" + user2ID + "'";
-            return allMessages.Select(filter, orderOldToNew);//filters and sorts results
+            messageManager.InsertIntoConvoTable(newConvo);
         }
 
         /* Unused functionality
