@@ -241,6 +241,10 @@
     <value>uspAllMessages</value>
     <comment>PROCEDURE</comment>
   </data>
+  <data name="GET_THIS_CONVO" xml:space="preserve">
+    <value>uspGetConversationByID</value>
+    <comment>PROCEDURE</comment>
+  </data>
   <data name="HAIR_COLOR_COLUMN" xml:space="preserve">
     <value>HairColor</value>
     <comment>COLUMN</comment>
@@ -340,6 +344,10 @@
   <data name="TOWN_PARAM" xml:space="preserve">
     <value>@town</value>
     <comment>PARAM</comment>
+  </data>
+  <data name="UPDATE_CONVO" xml:space="preserve">
+    <value>uspUpdateConversation</value>
+    <comment>PROCEDURE</comment>
   </data>
   <data name="USERID_PARAM" xml:space="preserve">
     <value>@userid</value>

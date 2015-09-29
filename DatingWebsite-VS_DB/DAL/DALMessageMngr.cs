@@ -100,6 +100,120 @@ namespace DAL
             return data.Tables[0];
         }
 
+        public Conversation UpdateConvoTable(Conversation selectedConvo)
+        {
+           /*
+            * This method first updates selectedConvo from the database, 
+            * then stores it in the database with the new user-defined messages.
+            * */
+
+            Conversation updatedConvo = new Conversation();
+
+            try
+            {
+                updatedConvo = RefreshConversation(selectedConvo);
+
+                /*
+                 * We now have 2 versions of the same conversation: 1 with the user's newest message,
+                 * and 1 which might have new messages from the other particpant.
+                 * So, add the latest user message to the list of updated messages.
+                 * */
+                updatedConvo.MessagesList.Add(selectedConvo.MessagesList.ElementAt(selectedConvo.MessagesList.Count - 1));
+
+                using (SqlConnection con = new SqlConnection(conString))
+                {
+                    using (SqlCommand cmd = new SqlCommand(Resources.UPDATE_CONVO, con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@convoID", SqlDbType.Int).Value = updatedConvo.ConversationID;
+                        
+                        #region Convert List<Message> to XML
+
+                        DataSet ds = new DataSet("Conversation");
+                        DataTable dt = new DataTable("Message");
+                        dt.Columns.Add("SenderID");
+                        dt.Columns.Add("TimeStamp");
+                        dt.Columns.Add("Content");
+
+                        ds.Tables.Add(dt);
+
+                        foreach (Message msg in updatedConvo.MessagesList)
+                        {
+                            DataRow row = dt.NewRow();
+                            row["SenderID"] = msg.SenderID;
+                            row["TimeSTamp"] = msg.Timestamp;
+                            row["Content"] = msg.Content;
+
+                            dt.Rows.Add(row);
+                        }
+                        ds.AcceptChanges();
+
+                        cmd.Parameters.AddWithValue("@MessageContent", SqlDbType.Xml).Value = ds.GetXml();
+
+                        #endregion
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return updatedConvo;
+        }
+
+        private Conversation RefreshConversation(Conversation selectedConvo)
+        {
+            Conversation updatedConvo = new Conversation();
+            string procname = Resources.GET_THIS_CONVO;
+
+            try
+            {
+                using (SqlConnection con = new SqlConnection(conString))
+                {
+                    using (SqlCommand cmd= new SqlCommand(procname, con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("@convoID", SqlDbType.Int).Value = selectedConvo.ConversationID;
+
+                        con.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                updatedConvo.ConversationID = Convert.ToInt32(reader.GetValue(Convert.ToInt32(0)).ToString());
+                                updatedConvo.ParticipantA_ID = Convert.ToInt32(reader.GetValue(Convert.ToInt32(1)).ToString());
+                                updatedConvo.ParticipantB_ID = Convert.ToInt32(reader.GetValue(Convert.ToInt32(2)).ToString());
+                                updatedConvo.ParticipantA_Name = reader.GetValue(Convert.ToInt32(3)).ToString();
+                                updatedConvo.ParticipantB_Name = reader.GetValue(Convert.ToInt32(4)).ToString();
+
+                                // Gets XML data from database and stores it in convo as List<Msssage>.
+                                XmlDocument xDoc = new XmlDocument();
+                                xDoc.LoadXml(reader.GetValue(Convert.ToInt32(5)).ToString());
+                                updatedConvo.ConvertXMLToList(xDoc);
+
+                            }
+                        }
+                    
+                        con.Close();
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return updatedConvo;
+        }
+
+
+        // Helper method to add dummy records into the database
         public void InsertIntoConvoTable(Conversation newConvo)
         {
             string query = @"INSERT INTO Conversation

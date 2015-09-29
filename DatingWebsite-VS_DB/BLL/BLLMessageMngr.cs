@@ -38,21 +38,11 @@ namespace BLL
             return allMessages;
         }
 
-        /*
-        public DataRow[] getAllMessages()
+        public Conversation UpdateConvoTable(Conversation selectedConvo)
         {
-            string filter = "true";//ReceiverID = '" + userID + "' OR SenderID = '" + userID + "'";
-            return allMessages.Select(filter, orderNewToOld); //filters and sorts results
+            selectedConvo = messageManager.UpdateConvoTable(selectedConvo);
+            return selectedConvo;
         }
-
-        public DataRow[] getConversation(int user2ID)
-        {
-            string filter = "SenderID = '" + user2ID + "' OR ReceiverID = '" + user2ID + "'";
-            return allMessages.Select(filter, orderOldToNew);//filters and sorts results
-        }
-
-        */
-        
 
         public void InsertIntoConvoTable(Conversation newConvo)
         {

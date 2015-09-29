@@ -451,16 +451,29 @@ span.validator[style*="inline"]{
     font-style: italic;
 }
 
+#MessageThreadUpperWrapper {
+    margin: auto;
+    display:block;
+}
+
 #convoMessages {
     margin-left: 100px;
     margin-top: 50px;
     width: 400px;
     height: 500px;
     overflow-y: scroll;
-    vertical-align:bottom;
-    border-top: 1px solid #5C5C5C;
-    border-bottom: 1px solid #5C5C5C;
+    
+    border-top: 1px solid #824187; /* dark purple */
+    border-bottom: 1px solid #824187;
     color: #5C5C5C;
+}
+
+.messageThreadImage {
+    float: left;
+    vertical-align:bottom;
+    display:table-cell;
+    height:90px;
+    width: auto;
 }
 
 .theirMessage, .myMessage {
