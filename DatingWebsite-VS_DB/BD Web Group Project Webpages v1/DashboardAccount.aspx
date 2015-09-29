@@ -20,7 +20,7 @@
             <br />
             <br />
             <br />
-            <asp:Button ID="btnUpdateEmail" runat="server" Text="Update Email" ValidationGroup="vgUpdateEmail" CssClass="blueButton dashboardButton"/>
+            <asp:Button ID="btnUpdateEmail" runat="server" Text="Update Email" ValidationGroup="vgUpdateEmail" CssClass="blueButton dashboardButton" OnClick="btnUpdateEmail_Click"/>
             <br />
             <br />
         </div>
@@ -50,7 +50,7 @@
             <br />
             <br />
             <br />
-            <asp:Button ID="btnUpdatePwd" runat="server" Text="Set New Password" ValidationGroup="vgUpdatePwd" CssClass="blueButton dashboardButton"/>
+            <asp:Button ID="btnUpdatePwd" runat="server" Text="Set New Password" ValidationGroup="vgUpdatePwd" CssClass="blueButton dashboardButton" OnClick="btnUpdatePwd_Click"/>
             <br />
             <br />
         </div>

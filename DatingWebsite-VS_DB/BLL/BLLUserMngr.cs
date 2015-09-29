@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 //
 using DataModels;
 using DAL;
+using ResourceTier;
 using System.Data;
-using System.Web;
+using System.Web.SessionState;
 
 namespace BLL //Business Logic Layer
 { 
@@ -59,7 +60,17 @@ namespace BLL //Business Logic Layer
 
         public void BLLUpdateUser(UserModel user)
         {
-            DalUserManager.DALUpdateUser(user);
+            DalUserManager.DALUpdateUserDetails(user);
+        }
+
+        public void BLLUpdateUserEmail(String email)
+        {
+            DalUserManager.DALUpdateUserEmail(email);
+        }
+
+        public void BLLUpdateUserPassword(String password)
+        {
+            DalUserManager.DALUpdateUserPassword(password);
         }
 
         public UserModel BLLGetUser(int id)
@@ -77,9 +88,23 @@ namespace BLL //Business Logic Layer
             DalUserManager.DALSetHobbies(user);
         }
 
-        public List<int> BLLGetHobbies(int id)
+        public Dictionary<int, string> BLLGetHobbies(int id)
         {
-            return DalUserManager.DALGetHobbies(id);
+            return DalUserManager.DALGetUserHobbies(id);
+        }
+
+        public DataTable BLLGetHobbiesTable(int id)
+        {
+            return DalUserManager.DALGetUserHobbiesTable(id);
+        }
+
+
+        /*
+         * Obtains User from Session
+         */
+        public UserModel BLLGetCurrentUser(HttpSessionState Session)
+        {
+            return (UserModel)Session.Contents[Resources.USER_SESSION_STATE];
         }
 
     }

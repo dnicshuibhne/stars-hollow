@@ -157,42 +157,19 @@ namespace DAL //Data Access Layer
                 }
             }
         }
-        /* OUT OF DATE - MISSING PARAMS*/
-        //public void DALAddUserInformation(int userID, string town, string county, string prof, string eye, string hair, string status, string ethnicity, string gender, string orientation, string build, string height, int age, string idealdate, string comment)
-        //{
-        //    String proc = "uspAddAllUserDetails";
 
-        //    using (SqlConnection con = new SqlConnection(conString))
-        //    {
-        //        using (SqlCommand cmd = new SqlCommand(proc, con))
-        //        {
-        //            cmd.CommandType = CommandType.StoredProcedure;
-
-        //            cmd.Parameters.Add(Resources.USERID_PARAM, SqlDbType.Int).Value = userID;
-        //            cmd.Parameters.Add(Resources.PROFESSION_PARAM, SqlDbType.NVarChar).Value = prof;
-        //            cmd.Parameters.Add(Resources.TOWN_PARAM, SqlDbType.NVarChar).Value = town;
-        //            cmd.Parameters.Add(Resources.COUNTY_PARAM, SqlDbType.NVarChar).Value = county;
-        //            cmd.Parameters.Add(Resources.GENDER_PARAM, SqlDbType.NVarChar).Value = gender;
-        //            cmd.Parameters.Add(Resources.SEXUAL_ORIENTATION_PARAM, SqlDbType.NVarChar).Value = orientation;
-        //            cmd.Parameters.Add(Resources.AGE_PARAM, SqlDbType.Int).Value = age;
-        //            cmd.Parameters.Add(Resources.ETHNICITY_PARAM, SqlDbType.NVarChar).Value = ethnicity;
-        //            cmd.Parameters.Add(Resources.RELATIONSHIP_STATUS_PARAM, SqlDbType.NVarChar).Value = status;
-        //            cmd.Parameters.Add(Resources.HAIR_COLOR_PARAM, SqlDbType.NVarChar).Value = hair;
-        //            cmd.Parameters.Add(Resources.EYE_COLOR_PARAM, SqlDbType.NVarChar).Value = eye;
-        //            cmd.Parameters.Add(Resources.HEIGHT_PARAM, SqlDbType.NVarChar).Value = height;
-        //            cmd.Parameters.Add(Resources.BUILD_PARAM, SqlDbType.NVarChar).Value = build;
-        //            cmd.Parameters.Add(Resources.IDEAL_DATE_PARAM, SqlDbType.NVarChar).Value = idealdate;
-        //            cmd.Parameters.Add(Resources.COMMENT_PARAM, SqlDbType.NVarChar).Value = comment;
-        //        }
-        //    }
-        //}
-
-
-        public void DALUpdateUser(UserModel user)
+        public void DALUpdateUserDetails(UserModel user)
         {
+            string addHobbiesQuery = "INSERT " + Resources.USER_HOBBIES_TABLE + " VALUES ";
+            foreach (int hobbyID in user.Hobbies)
+            {
+                addHobbiesQuery += string.Format("({0},{1}),", user.ID, hobbyID);
+            }
+            addHobbiesQuery = addHobbiesQuery.Substring(0, addHobbiesQuery.Length - 1);
+
             using (SqlConnection con = new SqlConnection(conString))
             {
-                using (SqlCommand cmd = new SqlCommand(Resources.USER_UPDATE_PROC, con))
+                using (SqlCommand cmd = new SqlCommand(Resources.USER_DETAILS_UPDATE_PROC, con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -233,10 +210,70 @@ namespace DAL //Data Access Layer
                     {
                         con.Open();
                         int rowsAffected = cmd.ExecuteNonQuery();
+
+                        cmd.Parameters.Clear();
+                        cmd.CommandType = CommandType.Text;
+                        cmd.CommandText = addHobbiesQuery;
+                        rowsAffected = cmd.ExecuteNonQuery();
+
                     }
                     catch (SqlException e)
                     {
-                        throw new Exception("Error Adding Attributes to User: "+e.Message);
+                        throw new Exception("Error Adding Attributes to User: " + e.Message);
+                    }
+                    finally
+                    {
+                        con.Close();
+                    }
+                }
+            }
+        }
+
+        public void DALUpdateUserEmail(String email)
+        {
+            using (SqlConnection con = new SqlConnection(conString))
+            {
+                using (SqlCommand cmd = new SqlCommand(Resources.USER_ACCOUNT_UPDATE_PROC, con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(Resources.EMAIL_PARAM, SqlDbType.NVarChar).Value = email;
+                                        
+                    try
+                    {
+                        con.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new Exception("Error Updating User Account: " + e.Message);
+                    }
+                    finally
+                    {
+                        con.Close();
+                    }
+                }
+            }
+        }
+
+        public void DALUpdateUserPassword(String password)
+        {
+            using (SqlConnection con = new SqlConnection(conString))
+            {
+                using (SqlCommand cmd = new SqlCommand(Resources.USER_ACCOUNT_UPDATE_PROC, con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(Resources.PASSWORD_PARAM, SqlDbType.NVarChar).Value = password;
+                                        
+                    try
+                    {
+                        con.Open();
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                    }
+                    catch (SqlException e)
+                    {
+                        throw new Exception("Error Updating User Account: " + e.Message);
                     }
                     finally
                     {
@@ -281,7 +318,6 @@ namespace DAL //Data Access Layer
                             if (!reader.IsDBNull((int)UserProfile.Gender)) user.Gender = reader.GetString((int)UserProfile.Gender);
                             if (!reader.IsDBNull((int)UserProfile.HairColor)) user.HairColor = reader.GetString((int)UserProfile.HairColor);
                             if (!reader.IsDBNull((int)UserProfile.Height)) user.Height = reader.GetString((int)UserProfile.Height);
-                            //hobbies - parse xml
                             if (!reader.IsDBNull((int)UserProfile.IdealDate)) user.IdealDate = reader.GetString((int)UserProfile.IdealDate);
                             if (!reader.IsDBNull((int)UserProfile.Profession)) user.Profession = reader.GetString((int)UserProfile.Profession);
                             if (!reader.IsDBNull((int)UserProfile.RelationshipStatus)) user.RelationshipStatus = reader.GetString((int)UserProfile.RelationshipStatus);
@@ -289,6 +325,18 @@ namespace DAL //Data Access Layer
                             if (!reader.IsDBNull((int)UserProfile.Town)) user.Town = reader.GetString((int)UserProfile.Town);
                             if (!reader.IsDBNull((int)UserProfile.ProfilePicturePath)) user.ProfilePicturePath = reader.GetString((int)UserProfile.ProfilePicturePath);
                             if (!reader.IsDBNull((int)UserProfile.Comments)) user.Comments = reader.GetString((int)UserProfile.Comments);
+                        }
+                        reader.Close();
+
+                        cmd.Parameters.Clear();
+                        cmd.CommandText = Resources.GET_USER_HOBBIES_PROC;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add(Resources.USERID_PARAM, SqlDbType.Int).Value = id;
+
+                        reader = cmd.ExecuteReader();
+                        while(reader.Read())
+                        {
+                            user.Hobbies.Add(reader.GetInt32(0));
                         }
                         reader.Close();
                     }
@@ -346,6 +394,18 @@ namespace DAL //Data Access Layer
                             if (!reader.IsDBNull((int)UserProfile.Comments)) user.Comments = reader.GetString((int)UserProfile.Comments);
                         }
                         reader.Close();
+
+                        cmd.Parameters.Clear();
+                        cmd.CommandText = Resources.GET_USER_HOBBIES_PROC;
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add(Resources.USERID_PARAM, SqlDbType.Int).Value = user.ID;
+
+                        reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            user.Hobbies.Add(reader.GetInt32(0));
+                        }
+                        reader.Close();
                     }
                     catch (SqlException e)
                     {
@@ -364,25 +424,60 @@ namespace DAL //Data Access Layer
         }
 
 
-
-        public List<int> DALGetHobbies(int id)
+        public Dictionary<int, string> DALGetUserHobbies(int id)
         {
-            string sql = "SELECT "+Resources.HOBBIES_ID_COLUMN+" FROM " + Resources.USER_HOBBIES_TABLE + " WHERE UserID =" + id;
-            List<int> hobbies = null;
+            Dictionary<int, String> hobbies = null;
             SqlDataReader reader;
 
             using (SqlConnection con = new SqlConnection(conString))
             {
-                using (SqlCommand cmd = new SqlCommand(sql, con))
+                using (SqlCommand cmd = new SqlCommand(Resources.GET_USER_HOBBIES_PROC, con))
                 {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(Resources.USERID_PARAM, SqlDbType.Int).Value = id;
+
                     try
                     {
                         con.Open();
-                        hobbies = new List<int>();
+                        hobbies = new Dictionary<int, string>();
                         reader = cmd.ExecuteReader();
                         while (reader.Read())
                         {
-                            hobbies.Add(reader.GetInt32(0));
+                            hobbies.Add(reader.GetInt32(0), reader.GetString(1));
+                        }
+                    }
+                    catch (SqlException e)
+                    {
+                        throw;
+                    }
+                    finally
+                    {
+                        con.Close();
+                    }
+                }
+            }
+            return hobbies;
+        }
+
+        public DataTable DALGetUserHobbiesTable(int id)
+        {
+            DataTable hobbies = null;
+
+            using (SqlConnection con = new SqlConnection(conString))
+            {
+                using (SqlDataAdapter adapter = new SqlDataAdapter(Resources.GET_USER_HOBBIES_PROC, con))
+                {
+                    adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+                    adapter.SelectCommand.Parameters.Add(Resources.USERID_PARAM, SqlDbType.Int).Value = id;
+
+                    try
+                    {
+                        con.Open();
+                        hobbies = new DataTable();
+                        int rowsAffected = adapter.Fill(hobbies);
+                        if (rowsAffected < 1 || hobbies == null)
+                        {
+                            throw new Exception("No Results Returned.");
                         }
                     }
                     catch (SqlException e)
