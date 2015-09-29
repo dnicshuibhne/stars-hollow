@@ -61,6 +61,15 @@ namespace ResourceTier {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to uspAddUserImages.
+        /// </summary>
+        public static string ADD_USER_IMAGES_PROC {
+            get {
+                return ResourceManager.GetString("ADD_USER_IMAGES_PROC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Age.
         /// </summary>
         public static string AGE_COLUMN {
@@ -367,6 +376,15 @@ namespace ResourceTier {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to uspGetUserImages.
+        /// </summary>
+        public static string GET_USER_IMAGES_PROC {
+            get {
+                return ResourceManager.GetString("GET_USER_IMAGES_PROC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to HairColor.
         /// </summary>
         public static string HAIR_COLOR_COLUMN {
@@ -462,6 +480,15 @@ namespace ResourceTier {
         public static string IDEAL_DATE_PARAM {
             get {
                 return ResourceManager.GetString("IDEAL_DATE_PARAM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to @imagefile.
+        /// </summary>
+        public static string IMAGE_FILER_PARAM {
+            get {
+                return ResourceManager.GetString("IMAGE_FILER_PARAM", resourceCulture);
             }
         }
         
