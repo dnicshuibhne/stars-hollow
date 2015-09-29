@@ -57,6 +57,7 @@ namespace DataModels
         public UserModel(string Username)
         {
             this.Username = Username;
+            this.ProfilePicturePath = "~/Images/blank-profile-grey.png";
             Hobbies = new List<int>();
         }
         
@@ -65,6 +66,7 @@ namespace DataModels
         {
             this.ID = ID;
             this.Username = Username;
+            this.ProfilePicturePath = "~/Images/blank-profile-grey.png";
             Hobbies = new List<int>();
         }
 

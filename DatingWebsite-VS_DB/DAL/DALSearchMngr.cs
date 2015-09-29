@@ -23,7 +23,7 @@ namespace DAL
         }
 
         /*Returns users that match the specified criteria exactly*/
-        public List<UserModel> DALSearchForUsersExact(string ageRange, string build, string county, string gender, string height, string profession, string relationshipStatus, string sexualOrientation, string town, List<string> hobbies)
+        public List<UserModel> DALSearchForUsersExact(string ageRange, string build, string county, string gender, string height, string profession, string relationshipStatus, string sexualOrientation, string town, List<int> hobbies)
         {
             bool isAgeRange = ageRange != null && ageRange.Length > 0;
             bool isBuild = build != null && build.Length > 0;
@@ -53,18 +53,10 @@ namespace DAL
             {
                 int paramVal = 0;
                 query = "SELECT Users.UserID, Users.Username, Age, Build, County, Ethnicity, EyeColor, Gender, HairColor, Height, IdealDate, RelationshipStatus, Profession, SexualOrientation, Town, ProfilePicturePath, Comments "
-                    + " FROM " + Resources.USER_INFORMATION_TABLE 
+                    + " FROM " + Resources.USER_INFORMATION_TABLE
                     + " INNER JOIN dbo.Users ON UserInformation.UserID = Users.UserID"
+                    + " INNER JOIN UserHobbies ON UserInformation.UserID = UserHobbies.UserID"
                     + " WHERE ";
-                //if (isAgeRange) query += Resources.AGE_RANGE_COLUMN + "=" + Resources.AGE_RANGE_PARAM + " AND ";
-                //if (isBuild) query += " " + Resources.BUILD_COLUMN + "=" + Resources.BUILD_PARAM + " AND ";
-                //if (isCounty) query += " " + Resources.COUNTY_COLUMN + "=" + Resources.BUILD_PARAM + " AND ";
-                //if (isGender) query += Resources.GENDER_COLUMN + "=" + Resources.GENDER_PARAM + " AND ";
-                //if (isHeight) query += Resources.HEIGHT_COLUMN + "=" + Resources.HEIGHT_PARAM + " AND ";
-                //if (isProfession) query += Resources.PROFESSION_COLUMN + "=" + Resources.PROFESSION_PARAM + " AND ";
-                //if (isRelationshipStatus) query += Resources.RELATIONSHIP_STATUS_COLUMN + "=" + Resources.RELATIONSHIP_STATUS_PARAM + " AND ";
-                //if (isSexualOrientation) query += Resources.SEXUAL_ORIENTATION_COLUMN + "=" + Resources.SEXUAL_ORIENTATION_PARAM + " AND ";
-                //if (isTown) query += Resources.TOWN_COLUMN + "=" + Resources.TOWN_PARAM + " AND ";
 
                 if (isAgeRange) query += Resources.AGE_RANGE_COLUMN + "=@"+paramVal++.ToString() + " AND ";
                 if (isBuild) query += " " + Resources.BUILD_COLUMN + "=@" + paramVal++.ToString() + " AND ";
@@ -74,9 +66,23 @@ namespace DAL
                 if (isProfession) query += Resources.PROFESSION_COLUMN + "=@" + paramVal++.ToString() + " AND ";
                 if (isRelationshipStatus) query += Resources.RELATIONSHIP_STATUS_COLUMN + "=@" + paramVal++.ToString() + " AND ";
                 if (isSexualOrientation) query += Resources.SEXUAL_ORIENTATION_COLUMN + "=@" + paramVal++.ToString() + " AND ";
-                if (isTown) query += Resources.TOWN_COLUMN + "=@" + paramVal.ToString() + " AND ";
+                if (isTown) query += Resources.TOWN_COLUMN + "=@" + paramVal++.ToString() + " AND ";
 
-                query = query.Substring(0, query.Length - 5);
+                if (hobbies != null && hobbies.Count > 0)
+                {
+                    query += "(";
+                    
+                    foreach(int hobbyID in hobbies)
+                    {
+                        query += string.Format("UserHobbies.HobbyID = @{0} OR ", paramVal++);
+                    }
+                    query = query.Substring(0, query.Length - 3);
+                    query += ")";
+                }
+
+                else
+                    query = query.Substring(0, query.Length - 5);
+
             }
             else
             {
@@ -102,6 +108,14 @@ namespace DAL
                         if (isRelationshipStatus) cmd.Parameters.Add(paramVal++.ToString(), SqlDbType.NVarChar).Value = relationshipStatus;
                         if (isSexualOrientation) cmd.Parameters.Add(paramVal++.ToString(), SqlDbType.NVarChar).Value = sexualOrientation;
                         if (isTown) cmd.Parameters.Add(paramVal++.ToString(), SqlDbType.NVarChar).Value = town;
+
+                        if (hobbies != null && hobbies.Count > 0)
+                        {
+                            foreach (int hobbyID in hobbies)
+                            {
+                                cmd.Parameters.Add(paramVal++.ToString(), SqlDbType.Int).Value = hobbyID;
+                            }
+                        }
                     }
                     else
                     {
