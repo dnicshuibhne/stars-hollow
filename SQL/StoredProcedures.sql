@@ -49,6 +49,7 @@ CREATE  PROCEDURE uspUpdateUserDetails
 @relationshipstatus varchar (50) = NULL,
 @sexualorientation varchar (50) = NULL,
 @town varchar (50) = NULL,
+@comments varchar (50) = NULL,
 @profilepic varchar(max) = NULL
 
 AS
@@ -69,7 +70,26 @@ BEGIN
 	IF(@relationshipstatus IS NOT NULL) Begin UPDATE dbo.UserInformation SET RelationshipStatus = @relationshipstatus WHERE dbo.UserInformation.UserID = @userid END
 	IF(@sexualorientation IS NOT NULL) Begin UPDATE dbo.UserInformation SET SexualOrientation = @sexualorientation WHERE dbo.UserInformation.UserID = @userid END
 	IF(@town IS NOT NULL) Begin UPDATE dbo.UserInformation SET Town = @town WHERE dbo.UserInformation.UserID = @userid END
+	IF(@comments IS NOT NULL) Begin UPDATE dbo.UserInformation SET Comments = @comments WHERE dbo.UserInformation.UserID = @userid END
 	IF(@profilepic IS NOT NULL) Begin UPDATE dbo.UserInformation SET ProfilePicturePath = @profilepic WHERE dbo.UserInformation.UserID = @userid END
+END
+GO
+
+--- Update User Account Details - all params are optional except user id
+DROP  PROCEDURE uspUpdateUserAccount
+GO
+CREATE  PROCEDURE uspUpdateUserAccount
+@userid int,
+@username varchar(50) = NULL,
+@password varchar(50) = NULL,
+@email varchar(50) = NULL
+
+AS
+BEGIN
+    SET NOCOUNT ON;
+	IF(@username IS NOT NULL) Begin UPDATE dbo.Users SET Username = @username WHERE dbo.Users.UserID = @userid END
+	IF(@password IS NOT NULL) Begin UPDATE dbo.Users SET Password = @password WHERE dbo.Users.UserID = @userid END
+	IF(@email IS NOT NULL) Begin UPDATE dbo.Users SET Email = @email WHERE dbo.Users.UserID = @userid END
 END
 GO
 
@@ -126,7 +146,6 @@ SELECT
 	UserInformation.Gender,
 	UserInformation.HairColor,
 	UserInformation.Height,
-	--UserInformation.Hobbies,
 	UserInformation.IdealDate,
 	UserInformation.RelationshipStatus,
 	UserInformation.Profession,
@@ -159,7 +178,6 @@ SELECT
 	UserInformation.Gender,
 	UserInformation.HairColor,
 	UserInformation.Height,
-	--UserInformation.Hobbies,
 	UserInformation.IdealDate,
 	UserInformation.RelationshipStatus,
 	UserInformation.Profession,
@@ -182,11 +200,11 @@ CREATE  PROCEDURE uspSearchForUserAny
 @county varchar(50) = NULL,
 @gender varchar(50) = NULL,
 @height varchar (50) = NULL,
---@hobbies XML = NULL,
 @profession varchar(50) = NULL,
 @relationshipstatus varchar (50) = NULL,
 @sexualorientation varchar (50) = NULL,
-@town varchar (50) = NULL
+@town varchar (50) = NULL,
+@hobbyname varchar (50) = NULL
 
 AS
 BEGIN 
@@ -201,8 +219,6 @@ BEGIN
 	SELECT * FROM dbo.UserInformation WHERE Gender = @gender 
 	UNION
 	SELECT * FROM dbo.UserInformation WHERE Height = @height 
-	--UNION
-	--SELECT * FROM dbo.UserInformation WHERE Hobbies = @hobbies 
 	UNION
 	SELECT * FROM dbo.UserInformation WHERE Profession = @profession 
 	UNION
@@ -211,6 +227,10 @@ BEGIN
 	SELECT * FROM dbo.UserInformation WHERE SexualOrientation = @sexualorientation 
 	UNION
 	SELECT * FROM dbo.UserInformation WHERE Town = @town 
+	UNION
+	SELECT * FROM dbo.UserInformation 
+		INNER JOIN UserHobbies ON UserInformation.UserID = UserHobbies.UserID
+		WHERE UserHobbies.HobbyName = @hobbyname
 	)
 	a
 	INNER JOIN dbo.Users
@@ -231,10 +251,35 @@ BEGIN
 	
 END
 GO
+
+-- Get All Users
+DROP PROCEDURE uspGetUserHobbies
+GO
+CREATE PROCEDURE uspGetUserHobbies
+@userid int
+AS
+BEGIN
+    SELECT Hobbies.HobbyID, HobbyName
+	FROM Hobbies
+	INNER JOIN dbo.UserHobbies
+	ON Hobbies.HobbyID = UserHobbies.HobbyID	
+	WHERE UserHobbies.UserID = @userid
+END
+GO
+
 ------------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------ ATTRIBUTE PROCEDURES ----------------------------------------------------------- 
 ------------------------------------------------------------------------------------------------------------------------------------------
-
+-- Get All Users
+DROP PROCEDURE uspGetHobbies
+GO
+CREATE PROCEDURE uspGetHobbies
+AS
+BEGIN
+    SELECT *
+	FROM Hobbies
+END
+GO
 
 ------------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------ MESSAGE PROCEDURES ----------------------------------------------------------- 

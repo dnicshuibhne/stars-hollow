@@ -93,17 +93,49 @@ namespace DAL // Data Access Layer
             return table;
         }
 
-        public DataTable DALGetHobbies()
+        public Dictionary<int, string> DALGetHobbies()
         {
-            string sql = "SELECT * FROM " + Resources.HOBBIES_TABLE;
+            Dictionary<int, string> hobbies;
+
+            using (SqlConnection con = new SqlConnection(conString))
+            {
+                using (SqlCommand cmd = new SqlCommand(Resources.GET_HOBBIES_PROC, con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    try
+                    {
+                        con.Open();
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        hobbies = new Dictionary<int, string>();
+                        while (reader.Read())
+                        {
+                            hobbies.Add(reader.GetInt32(0),reader.GetString(1));
+                        }
+                    }
+                    catch (SqlException e)
+                    {
+                        throw;
+                    }
+                    finally
+                    {
+                        con.Close();
+                    }
+                }
+            }
+            return hobbies;
+        }
+
+        public DataTable DALGetHobbiesTable()
+        {
             DataTable table = null;
 
             using (SqlConnection con = new SqlConnection(conString))
             {
                 using (SqlDataAdapter adapter = new SqlDataAdapter())
                 {
-                    adapter.SelectCommand = new SqlCommand(sql, con);
-                    adapter.SelectCommand.CommandType = CommandType.Text;
+                    adapter.SelectCommand = new SqlCommand(Resources.GET_HOBBIES_PROC, con);
+                    adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
                     try
                     {
                         con.Open();

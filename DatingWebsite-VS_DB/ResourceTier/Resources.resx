@@ -157,7 +157,7 @@
     <value>Attribute</value>
     <comment>VIEW_COLUMN</comment>
   </data>
-  <data name="ATTRIBUTE_VIEW_VALUE_COLUMN1" xml:space="preserve">
+  <data name="ATTRIBUTE_VIEW_VALUE_COLUMN" xml:space="preserve">
     <value>Attribute_Value</value>
     <comment>VIEW_COLUMN</comment>
   </data>
@@ -237,12 +237,20 @@
     <value>uspGetAllUsers</value>
     <comment>PROCEDURE</comment>
   </data>
+  <data name="GET_HOBBIES_PROC" xml:space="preserve">
+    <value>uspGetHobbies</value>
+    <comment>PROCEDURE</comment>
+  </data>
   <data name="GET_MESSAGES_PROC" xml:space="preserve">
     <value>uspAllMessages</value>
     <comment>PROCEDURE</comment>
   </data>
   <data name="GET_THIS_CONVO" xml:space="preserve">
     <value>uspGetConversationByID</value>
+    <comment>PROCEDURE</comment>
+  </data>
+  <data name="GET_USER_HOBBIES_PROC" xml:space="preserve">
+    <value>uspGetUserHobbies</value>
     <comment>PROCEDURE</comment>
   </data>
   <data name="HAIR_COLOR_COLUMN" xml:space="preserve">
@@ -345,10 +353,6 @@
     <value>@town</value>
     <comment>PARAM</comment>
   </data>
-  <data name="UPDATE_CONVO" xml:space="preserve">
-    <value>uspUpdateConversation</value>
-    <comment>PROCEDURE</comment>
-  </data>
   <data name="USERID_PARAM" xml:space="preserve">
     <value>@userid</value>
     <comment>PARAM</comment>
@@ -368,10 +372,6 @@
   <data name="USER_CREATE_PROC" xml:space="preserve">
     <value>uspAddNewUser</value>
     <comment>PROCEDURE</comment>
-  </data>
-  <data name="USER_HOBBIES_TABLE" xml:space="preserve">
-    <value>UserHobbies</value>
-    <comment>TABLE</comment>
   </data>
   <data name="USER_INFORMATION_TABLE" xml:space="preserve">
     <value>UserInformation</value>
@@ -396,9 +396,5 @@
   <data name="USER_TABLE" xml:space="preserve">
     <value>Users</value>
     <comment>TABLE</comment>
-  </data>
-  <data name="USER_UPDATE_PROC" xml:space="preserve">
-    <value>uspUpdateUserDetails</value>
-    <comment>PROCEDURE</comment>
   </data>
 </root>

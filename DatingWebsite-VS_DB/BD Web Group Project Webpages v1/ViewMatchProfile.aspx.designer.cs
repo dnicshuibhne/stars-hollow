@@ -31,31 +31,31 @@ namespace BD_Web_Group_Project_Webpages_v1 {
         protected global::System.Web.UI.WebControls.Image imgProfilePicture;
         
         /// <summary>
-        /// lblUSerDescription control.
+        /// lblUserDescription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUSerDescription;
+        protected global::System.Web.UI.WebControls.Label lblUserDescription;
         
         /// <summary>
-        /// lblLocation control.
+        /// lblCounty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLocation;
+        protected global::System.Web.UI.WebControls.Label lblCounty;
         
         /// <summary>
-        /// lblUserLocation control.
+        /// lblUserCounty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUserLocation;
+        protected global::System.Web.UI.WebControls.Label lblUserCounty;
         
         /// <summary>
         /// lblProfesssion control.
@@ -148,30 +148,30 @@ namespace BD_Web_Group_Project_Webpages_v1 {
         protected global::System.Web.UI.WebControls.Label lblUserHairColor;
         
         /// <summary>
-        /// lblAgeRange control.
+        /// lblAge control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAgeRange;
+        protected global::System.Web.UI.WebControls.Label lblAge;
         
         /// <summary>
-        /// lblUserAgeRange control.
+        /// lblUserAge control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblUserAgeRange;
+        protected global::System.Web.UI.WebControls.Label lblUserAge;
         
         /// <summary>
-        /// Repeater1 control.
+        /// hobbyRepeater control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater Repeater1;
+        protected global::System.Web.UI.WebControls.Repeater hobbyRepeater;
     }
 }

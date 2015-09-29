@@ -58,7 +58,8 @@ namespace BLL
         public List<string> BLLGetBuild() { return GetAttributeValues(Resources.BUILD_TABLE); }
         public List<string> BLLGetAgeRange() { return GetAttributeValues(Resources.AGE_RANGE_TABLE); }
 
-        public DataTable BLLGetHobbies() { return attributeManager.DALGetHobbies(); }
+        public DataTable BLLGetHobbiesTable() { return attributeManager.DALGetHobbiesTable(); }
+        //public Dictionary<int,string> BLLGetHobbies() { return attributeManager.DALGetHobbies(); }
 
     }
 }

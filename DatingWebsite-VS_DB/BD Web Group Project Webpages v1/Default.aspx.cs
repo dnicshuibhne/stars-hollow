@@ -19,22 +19,16 @@ namespace BD_Web_Group_Project_Webpages_v1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                loginPage2.Visible = false;
-            }
 
-            UserModel user = getCurrentUser();
+            userManager = new BLLUserMngr();
+            UserModel user = userManager.BLLGetCurrentUser(Session);
             if (user != null)
             {
-                //user.Hobbies = userManager.BLLGetHobbies(user.ID); // write stroed proc to 
-                setCurrentUser(user);
                 Response.Redirect("DashboardPersonal.aspx");
             }
-            else
+            else if (!IsPostBack)
             {
-                userManager = new BLLUserMngr();
-                //if registration
+                //loginPage2.Visible = false;
                 fillRegistrationData();
             }
         }
@@ -51,23 +45,6 @@ namespace BD_Web_Group_Project_Webpages_v1
             {
                 Session.Add(Resources.USER_SESSION_STATE, user);
             }
-        }
-
-
-        /*
-         * Obtains User from Session
-         */
-        public UserModel getCurrentUser()
-        {
-            return (UserModel)Session.Contents[Resources.USER_SESSION_STATE];
-        }
-
-        /*
-         * Remove User from Session
-         */
-        private void setLogout()
-        {
-            Session.Remove(Resources.USER_SESSION_STATE);
         }
 
         /*
@@ -124,8 +101,9 @@ namespace BD_Web_Group_Project_Webpages_v1
             int id = userManager.BLLLogin(username, password);
             if (id > 0)
             {
-                UserModel user = new UserModel(id, username);
-                user.Hobbies = userManager.BLLGetHobbies(user.ID);
+                UserModel user = userManager.BLLGetUser(id);
+                user.Hobbies = userManager.BLLGetHobbies(user.ID).Keys.ToList<int>();
+
                 setCurrentUser(user);
                 Response.Redirect("DashboardPersonal.aspx", true);
             }
@@ -174,11 +152,11 @@ namespace BD_Web_Group_Project_Webpages_v1
             int id = userManager.BLLCreateUser(txtUserName.Text, txtEmail.Text, txtCreatePwd.Text);
             if (id > 0)
             {
-                UserModel user = new UserModel(id,txtUserName.Text);
+                UserModel user = new UserModel(id, txtUserName.Text);
                 user.SexualOrientation = ddlOrientation.SelectedValue;
                 user.Gender = ddlGender.SelectedValue;
                 user.County = ddlCounty.SelectedValue;
-
+                userManager.BLLUpdateUser(user);
                 setCurrentUser(user);
                 Response.Write("User Created");
                 Response.Redirect("DashboardPersonal.aspx");

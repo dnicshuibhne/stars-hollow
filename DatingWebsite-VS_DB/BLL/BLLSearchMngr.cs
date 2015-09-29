@@ -20,16 +20,9 @@ namespace BLL
             searchManager = new DALSearchMngr();
         }
 
-        public List<UserModel> BLLSearchForUsersExact(string ageRange, string build, string county, string gender, string height, string profession, string relationshipStatus, string sexualOrientation, string town, List<string> hobbies)
+        public List<UserModel> BLLSearchForUsersExact(string ageRange, string build, string county, string gender, string height, string profession, string relationshipStatus, string sexualOrientation, string town, List<int> hobbies)
         {
             return searchManager.DALSearchForUsersExact(ageRange, build, county, gender, height, profession, relationshipStatus, sexualOrientation, town, hobbies);
         }
-
-        //public DataTable SearchForUsers(NameValueCollection searchParams)
-        //{
-        //    return searchManager.SearchForUsers(searchParams);
-        //}
-
-
     }
 }

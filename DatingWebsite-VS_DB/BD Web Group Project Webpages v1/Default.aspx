@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cphDefaultBody" runat="server">
 
     <!-- added id="loginScreen" -->
-    <div id="loginScreen" class="loginScreen" runat="server"  >
+    <div id="loginScreen" class="loginScreen" runat="server" visible="False"  >
 
         <!-- .loginScreen should set to 'display: none;' on page load, and when btnCancel is clicked.
             Its display should set to 'inline' when btnLogin is clicked.
@@ -70,14 +70,14 @@
                         <br />
 
                         <asp:Label ID="lblIAmA" runat="server" Text="I am a " CssClass="loginControls"></asp:Label>
-                        <asp:DropDownList ID="ddlOrientation" runat="server" Style="width: 114px;" ValidationGroup="vgRegisterPage1"></asp:DropDownList>
-                        <asp:DropDownList ID="ddlGender" runat="server" Style="width: 114px;" ValidationGroup="vgRegisterPage1"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlOrientation" runat="server" AppendDataBoundItems="True" Style="width: 114px;" ValidationGroup="vgRegisterPage1"><asp:ListItem Text="-- pick one --" Value=""></asp:ListItem></asp:DropDownList>
+                        <asp:DropDownList ID="ddlGender" runat="server" AppendDataBoundItems="True" Style="width: 114px;" ValidationGroup="vgRegisterPage1"><asp:ListItem Text="-- pick one --" Value=""></asp:ListItem></asp:DropDownList>
                         <asp:RequiredFieldValidator ID="rfvOrientation" runat="server" ControlToValidate="ddlOrientation" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage1"> Please select your Orientation</asp:RequiredFieldValidator>
                         <asp:RequiredFieldValidator ID="rfvGender" runat="server" ControlToValidate="ddlGender" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage1"> Please select your Gender</asp:RequiredFieldValidator>
                         <br />
 
                         <asp:Label ID="lblCounty" runat="server" Text="County "></asp:Label>
-                        <asp:DropDownList ID="ddlCounty" runat="server" Style="width: 114px;" ValidationGroup="vgRegisterPage1"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlCounty" runat="server" AppendDataBoundItems="True" Style="width: 114px;" ValidationGroup="vgRegisterPage1"><asp:ListItem Text="-- pick one --" Value=""></asp:ListItem></asp:DropDownList>
                         <asp:RequiredFieldValidator ID="rfvCounty" runat="server" ControlToValidate="ddlCounty" Display="Dynamic" CssClass="validator" ValidationGroup="vgRegisterPage1"> Please select your County</asp:RequiredFieldValidator>
                         <br />
                         <br />
