@@ -15,5 +15,10 @@ namespace BD_Web_Group_Project_Webpages_v1
         protected void Page_Load(object sender, EventArgs e)
         {
         }
+
+        protected void btnUpload_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
