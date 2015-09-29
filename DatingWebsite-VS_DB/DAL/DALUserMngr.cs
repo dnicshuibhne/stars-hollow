@@ -10,6 +10,7 @@ using System.Data;
 using System.Diagnostics;
 using DataModels;
 using ResourceTier;
+using System.Drawing;
 
 
 namespace DAL //Data Access Layer
@@ -384,7 +385,7 @@ namespace DAL //Data Access Layer
                             if (!reader.IsDBNull((int)UserProfile.Gender)) user.Gender = reader.GetString((int)UserProfile.Gender);
                             if (!reader.IsDBNull((int)UserProfile.HairColor)) user.HairColor = reader.GetString((int)UserProfile.HairColor);
                             if (!reader.IsDBNull((int)UserProfile.Height)) user.Height = reader.GetString((int)UserProfile.Height);
-                            //hobbies - parse xml
+                            //images - parse xml
                             if (!reader.IsDBNull((int)UserProfile.IdealDate)) user.IdealDate = reader.GetString((int)UserProfile.IdealDate);
                             if (!reader.IsDBNull((int)UserProfile.Profession)) user.Profession = reader.GetString((int)UserProfile.Profession);
                             if (!reader.IsDBNull((int)UserProfile.RelationshipStatus)) user.RelationshipStatus = reader.GetString((int)UserProfile.RelationshipStatus);
@@ -424,40 +425,40 @@ namespace DAL //Data Access Layer
         }
 
 
-        public Dictionary<int, string> DALGetUserHobbies(int id)
-        {
-            Dictionary<int, String> hobbies = null;
-            SqlDataReader reader;
+        //public Dictionary<int, string> DALGetUserHobbies(int id)
+        //{
+        //    Dictionary<int, String> hobbies = null;
+        //    SqlDataReader reader;
 
-            using (SqlConnection con = new SqlConnection(conString))
-            {
-                using (SqlCommand cmd = new SqlCommand(Resources.GET_USER_HOBBIES_PROC, con))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(Resources.USERID_PARAM, SqlDbType.Int).Value = id;
+        //    using (SqlConnection con = new SqlConnection(conString))
+        //    {
+        //        using (SqlCommand cmd = new SqlCommand(Resources.GET_USER_HOBBIES_PROC, con))
+        //        {
+        //            cmd.CommandType = CommandType.StoredProcedure;
+        //            cmd.Parameters.Add(Resources.USERID_PARAM, SqlDbType.Int).Value = id;
 
-                    try
-                    {
-                        con.Open();
-                        hobbies = new Dictionary<int, string>();
-                        reader = cmd.ExecuteReader();
-                        while (reader.Read())
-                        {
-                            hobbies.Add(reader.GetInt32(0), reader.GetString(1));
-                        }
-                    }
-                    catch (SqlException e)
-                    {
-                        throw;
-                    }
-                    finally
-                    {
-                        con.Close();
-                    }
-                }
-            }
-            return hobbies;
-        }
+        //            try
+        //            {
+        //                con.Open();
+        //                hobbies = new Dictionary<int, string>();
+        //                reader = cmd.ExecuteReader();
+        //                while (reader.Read())
+        //                {
+        //                    hobbies.Add(reader.GetInt32(0), reader.GetString(1));
+        //                }
+        //            }
+        //            catch (SqlException e)
+        //            {
+        //                throw;
+        //            }
+        //            finally
+        //            {
+        //                con.Close();
+        //            }
+        //        }
+        //    }
+        //    return hobbies;
+        //}
 
         public DataTable DALGetUserHobbiesTable(int id)
         {
@@ -531,6 +532,77 @@ namespace DAL //Data Access Layer
                 }
             }
         }
+
+        //public DataTable DALGetUserImagesTable(int userID)
+        //{
+        //    DataTable images = null;
+
+        //    using (SqlConnection con = new SqlConnection(conString))
+        //    {
+        //        using (SqlDataAdapter adapter = new SqlDataAdapter(Resources.GET_USER_IMAGES_PROC, con))
+        //        {
+        //            adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
+        //            adapter.SelectCommand.Parameters.Add(Resources.USERID_PARAM, SqlDbType.Int).Value = userID;
+
+        //            try
+        //            {
+        //                con.Open();
+        //                images = new DataTable();
+        //                int rowsAffected = adapter.Fill(images);
+        //                if (rowsAffected < 1 || images == null)
+        //                {
+        //                    throw new Exception("No Results Returned.");
+        //                }
+        //            }
+        //            catch (SqlException e)
+        //            {
+        //                throw;
+        //            }
+        //            finally
+        //            {
+        //                con.Close();
+        //            }
+        //        }
+        //    }
+        //    return images;
+        //}
+
+        //public List<Image> DALGetUserImages(int userID)
+        //{
+        //    List<Image> images = null;
+
+        //    using (SqlConnection con = new SqlConnection(conString))
+        //    {
+        //        using (SqlCommand cmd = new SqlCommand(Resources.GET_USER_IMAGES_PROC, con))
+        //        {
+        //            cmd.CommandType = CommandType.StoredProcedure;
+        //            cmd.Parameters.Add(Resources.USERID_PARAM, SqlDbType.Int).Value = userID;
+
+        //            try
+        //            {
+        //                con.Open();
+        //                images = new List<Image>();
+
+        //                SqlDataReader reader = cmd.ExecuteReader();
+        //                while(reader.Read())
+        //                {
+        //                    //images.Add(reader.get);
+        //                }
+        //            }
+        //            catch (SqlException e)
+        //            {
+        //                throw;
+        //            }
+        //            finally
+        //            {
+        //                con.Close();
+        //            }
+        //        }
+        //    }
+        //    return images;
+        //}
+
+        
 
         //    public void addUserInformation(int userID ,Dictionary<string, string> userAttributes)
         //    {

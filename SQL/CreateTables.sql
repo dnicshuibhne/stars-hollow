@@ -139,13 +139,19 @@ CREATE TABLE [dbo].[UserInformation] (
 
 --------------------------------------------------------------------------------
 
-CREATE TABLE [dbo].[UserImages] (
-    [UserID]  INT NOT NULL,
-    [ImageID] INT NOT NULL,
-    PRIMARY KEY CLUSTERED ([ImageID] ASC, [UserId] ASC),
-    FOREIGN KEY ([UserID]) REFERENCES [dbo].[Users] ([UserID])
+--CREATE TABLE [dbo].[UserImages] (
+--    [UserID]  INT NOT NULL,
+--    [ImageID] INT NOT NULL,
+--    PRIMARY KEY CLUSTERED ([ImageID] ASC, [UserId] ASC),
+--    FOREIGN KEY ([UserID]) REFERENCES [dbo].[Users] ([UserID])
+--);
+CREATE TABLE [dbo].[UserImages]
+(
+	[ImageID] INT IDENTITY (1, 1) NOT NULL PRIMARY KEY, 
+    [UserID] INT NOT NULL, 
+    [ImageFile] IMAGE NOT NULL, 
+    CONSTRAINT [FK_UserID_Users] FOREIGN KEY (UserID) REFERENCES Users(UserID)
 );
-
 ------------------------------------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------ MESSAGE TABLE ----------------------------------------------------------- 
 ------------------------------------------------------------------------------------------------------------------------------------------

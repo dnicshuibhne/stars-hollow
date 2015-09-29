@@ -191,53 +191,6 @@ ON [Users].UserID  = UserInformation.UserID
 WHERE [Users].UserID=@userID
 GO
 
---- Search by User attributes, returns users that match any of the criteria - all params are optional 
-DROP  PROCEDURE uspSearchForUserAny
-GO
-CREATE  PROCEDURE uspSearchForUserAny
-@ageRange varchar(50) = NULL,
-@build varchar(50) = NULL,
-@county varchar(50) = NULL,
-@gender varchar(50) = NULL,
-@height varchar (50) = NULL,
-@profession varchar(50) = NULL,
-@relationshipstatus varchar (50) = NULL,
-@sexualorientation varchar (50) = NULL,
-@town varchar (50) = NULL,
-@hobbyname varchar (50) = NULL
-
-AS
-BEGIN 
-	SELECT DISTINCT(a.UserID), Users.Username, Age, AgeRange, Build, County, Ethnicity, EyeColor, Gender, HairColor, Height, IdealDate, RelationshipStatus, Profession, SexualOrientation, Town, ProfilePicturePath, Comments FROM
-	(
-	SELECT * FROM dbo.UserInformation WHERE dbo.UserInformation.AgeRange = @ageRange 
-	UNION
-	SELECT * FROM dbo.UserInformation WHERE Build = @build 
-	UNION
-	SELECT * FROM dbo.UserInformation WHERE County = @county 
-	UNION
-	SELECT * FROM dbo.UserInformation WHERE Gender = @gender 
-	UNION
-	SELECT * FROM dbo.UserInformation WHERE Height = @height 
-	UNION
-	SELECT * FROM dbo.UserInformation WHERE Profession = @profession 
-	UNION
-	SELECT * FROM dbo.UserInformation WHERE RelationshipStatus = @relationshipstatus 
-	UNION
-	SELECT * FROM dbo.UserInformation WHERE SexualOrientation = @sexualorientation 
-	UNION
-	SELECT * FROM dbo.UserInformation WHERE Town = @town 
-	UNION
-	SELECT * FROM dbo.UserInformation 
-		INNER JOIN UserHobbies ON UserInformation.UserID = UserHobbies.UserID
-		WHERE UserHobbies.HobbyName = @hobbyname
-	)
-	a
-	INNER JOIN dbo.Users
-	ON a.UserID = Users.UserID
-END
-GO
-
 -- Get All Users
 DROP PROCEDURE uspGetAllUsers
 GO
@@ -252,7 +205,7 @@ BEGIN
 END
 GO
 
--- Get All Users
+-- Get All Hobbies For A User
 DROP PROCEDURE uspGetUserHobbies
 GO
 CREATE PROCEDURE uspGetUserHobbies
@@ -264,6 +217,32 @@ BEGIN
 	INNER JOIN dbo.UserHobbies
 	ON Hobbies.HobbyID = UserHobbies.HobbyID	
 	WHERE UserHobbies.UserID = @userid
+END
+GO
+
+-- Get All Images for a User
+DROP PROCEDURE uspGetUserImages
+GO
+CREATE PROCEDURE uspGetUserImages
+@userid int
+AS
+BEGIN
+    SELECT ImageID, ImageFile
+	FROM UserImages	
+	WHERE UserImages.UserID = @userid
+END
+GO
+
+-- Add an Image for a User
+DROP PROCEDURE uspAddUserImages
+GO
+CREATE PROCEDURE uspAddUserImages
+@userid int,
+@imagefile image
+AS
+BEGIN
+    INSERT INTO UserImages 
+	VALUES(@userid, @imagefile)
 END
 GO
 
@@ -318,6 +297,8 @@ WHERE
 GO
 
 -- Get a Single Conversation By ConversationID --
+DROP PROCEDURE uspGetConversationByID
+GO
 CREATE PROCEDURE uspGetConversationByID
 @convoID INT
 AS  
@@ -344,6 +325,8 @@ WHERE
 GO
 
 -- Updating a Conversation record by ConversationID
+DROP PROCEDURE [dbo].uspUpdateConversation
+GO
 CREATE PROCEDURE [dbo].uspUpdateConversation
 	@convoID int,
 	@MessageContent xml

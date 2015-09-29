@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ADD_USER_IMAGES_PROC" xml:space="preserve">
+    <value>uspAddUserImages</value>
+    <comment>PROCEDURE</comment>
+  </data>
   <data name="AGE_COLUMN" xml:space="preserve">
     <value>Age</value>
     <comment>COLUMN</comment>
@@ -253,6 +257,10 @@
     <value>uspGetUserHobbies</value>
     <comment>PROCEDURE</comment>
   </data>
+  <data name="GET_USER_IMAGES_PROC" xml:space="preserve">
+    <value>uspGetUserImages</value>
+    <comment>PROCEDURE</comment>
+  </data>
   <data name="HAIR_COLOR_COLUMN" xml:space="preserve">
     <value>HairColor</value>
     <comment>COLUMN</comment>
@@ -295,6 +303,10 @@
   </data>
   <data name="IDEAL_DATE_PARAM" xml:space="preserve">
     <value>@idealdate</value>
+    <comment>PARAM</comment>
+  </data>
+  <data name="IMAGE_FILER_PARAM" xml:space="preserve">
+    <value>@imagefile</value>
     <comment>PARAM</comment>
   </data>
   <data name="LOCATION_COLUMN" xml:space="preserve">
