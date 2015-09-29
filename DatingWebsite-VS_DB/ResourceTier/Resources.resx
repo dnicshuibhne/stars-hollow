@@ -245,6 +245,10 @@
     <value>uspAllMessages</value>
     <comment>PROCEDURE</comment>
   </data>
+  <data name="GET_THIS_CONVO" xml:space="preserve">
+    <value>uspGetConversationByID</value>
+    <comment>PROCEDURE</comment>
+  </data>
   <data name="GET_USER_HOBBIES_PROC" xml:space="preserve">
     <value>uspGetUserHobbies</value>
     <comment>PROCEDURE</comment>
@@ -348,6 +352,10 @@
   <data name="TOWN_PARAM" xml:space="preserve">
     <value>@town</value>
     <comment>PARAM</comment>
+  </data>
+  <data name="UPDATE_CONVO" xml:space="preserve">
+    <value>uspUpdateConversation</value>
+    <comment>PROCEDURE</comment>
   </data>
   <data name="USERID_PARAM" xml:space="preserve">
     <value>@userid</value>

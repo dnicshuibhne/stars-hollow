@@ -18,96 +18,213 @@ namespace BD_Web_Group_Project_Webpages_v1
         UserModel user;
         string sentCss = "myMessage";
         string receivedCss = "theirMessage";
+        static List<Conversation> conversationList;
+        static Conversation selectedConversation;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            /* check if logged in*/
-            user = (UserModel)Session[Resources.USER_SESSION_STATE];
-            if (user == null || user.ID < 1)
+            // Instantiate selectedConversation, if required.
+            if (selectedConversation == null)
             {
-                Response.Redirect("Default.aspx", true);
+                selectedConversation = new Conversation();
             }
 
-            //messageManager = new BLLMessageMngr(user.ID);
-            //getMessages();
+            // Check if query string contains ConversationID value
+            String selectedConvoID = Request.ServerVariables["QUERY_STRING"];
+
+            if (selectedConvoID.Length > 0)
+            {
+                // If a conversation was selected, retreive the selected conversation 
+                // according to its ID in conversation<List> and present its messages to the user.
+                int selectedIDasInt;
+                if (int.TryParse(selectedConvoID, out selectedIDasInt))
+                {
+                    for (int i = 0; i < conversationList.Count; i++ )
+                    {
+                        if (conversationList.ElementAt(i).ConversationID.Equals(selectedIDasInt))
+                        {
+                            selectedConversation = conversationList.ElementAt(i);
+                            break;
+                        }
+                    }
+
+                    mySummaries.Visible = false;
+                    MessageThread.Visible = true;
+                    PopulateMessageThread(selectedConversation);
+                }
+            }
+
+            /* check if logged in*/
+            user = (UserModel)Session[Resources.USER_SESSION_STATE];
+            //if (user == null || user.ID < 1)
+            //{
+            //    //Response.Redirect("Default.aspx", true);
+            //}
+
+            user = new UserModel();
+            user.ID = 1;
+            messageManager = new BLLMessageMngr(user.ID);
+            getMessages();
         }
         
         private void getMessages()
         {
-            rptConversations.DataSource = messageManager.getMessagesTest(1);
-            rptConversations.DataBind();
-            //GridView1.DataSource = messageManager.getMessagesTest(1);
-            //GridView1.DataBind();
+            try
+            {
+                // Retreive full list of Conversations
+                conversationList = messageManager.getMessagesTest(1);
+
+                List<ConversationSummary> summaryList = new List<ConversationSummary>();
+
+                foreach (Conversation convo in conversationList)
+                {
+                    ConversationSummary newSummary = new ConversationSummary();
+                    int lastIndex = convo.MessagesList.Count - 1;
+
+                    // Ensure the messages in this conversation are chronologically ordered
+                    convo.MessagesList = (from c in convo.MessagesList
+                                          orderby c.Timestamp ascending
+                                          select new Message()
+                                          {
+                                              SenderID = c.SenderID,
+                                              Timestamp = c.Timestamp,
+                                              Content = c.Content
+                                          }).ToList();
+
+                    // Assign last message in this conversation that does not belong to the logged in user 
+                    // to summary's values
+                    newSummary.ConversationID = convo.ConversationID;
+
+                    if (convo.MessagesList[lastIndex].SenderID == user.ID)
+                    {
+                        newSummary.LastMessage = ">> " + convo.MessagesList[lastIndex].Content;
+                    }
+                    else
+                    {
+                        newSummary.LastMessage = convo.MessagesList[lastIndex].Content;
+                    }
+                    
+                    newSummary.OtherPersonName = convo.ParticipantA_Name != user.Username ? convo.ParticipantA_Name : convo.ParticipantB_Name;
+                    summaryList.Add(newSummary);
+                }
+
+                // Allocate List to repeater datasource.
+                rptSummaries.DataSource = summaryList;
+                rptSummaries.DataBind();
+            }
+            catch (Exception)
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Error", "alert('Error loading messages from database.')", true);
+                throw;
+            }
         }
 
-        private void getConversation(int user2ID)
+        protected void closeThisMessage_Click1(object sender, EventArgs e)
         {
-            //rptconvoMessages.DataSource = messageManager.getConversation(user2ID);
-            //rptconvoMessages.DataBind();
-            myMessage.Visible = true;
-            myConversations.Visible = false;
+            MessageThread.Visible = false;
+            mySummaries.Visible = true;
+            selectedConversation = null;
         }
 
-        public void getCssClass(int senderID, int receiverID)
+        private void PopulateMessageThread(Conversation convo)
         {
+            // This fills rptconvoMessages with all the messages in selectedConvo
+            // and assigns CSS classes according to the message's sender.
+            rptconvoMessages.DataSource = convo.MessagesList;
+            rptconvoMessages.DataBind();
+        }
+
+        public string getCssClass(int senderID)
+        {
+            /* 
+             * 
+             * TEMPORARY WORKAROUND FOR ME WHILE I'M NOT LOGGED IN
+             * 
+             * */
+            user = new UserModel();
+            user.ID = 1;
+            //
+            
             if (user.ID.Equals(senderID))
-                Response.Write(sentCss);
-            else if (user.ID.Equals(receiverID))
-                Response.Write(receivedCss);
-        }
-        
-        protected void viewThisMessage(string senderID, string receiverID)
-        {
-            int sent = int.Parse(senderID);
-            int received = int.Parse(receiverID);
-            if(user.ID.Equals(sent))
-                getConversation(received);
-            else if(user.ID.Equals(received))
-                getConversation(sent);
+                return sentCss;
+            else 
+                return receivedCss;
         }
 
-        protected void viewThisMessage_Click(object sender, EventArgs e)
+        protected void imgBtnSendMessage_Click(object sender, ImageClickEventArgs e)
         {
-            Control c = (Control)sender;
+            /*
+             * This button does three things:
+             *  1. It saves the latest message to selectedConvo.MessageList.
+             *  2. It sends the entire conversation to the database to be refreshed and then stored.
+             *  3. It refreshes the repeater.
+             *  
+             * The second point seems excessive as there will therefore be a database call every time
+             * a message is sent. But for users who expect to be able to message one another, 
+             * a narrow frame of time between messages being sent and received, 
+             * and therefore stored in the database and fetched, is essential.
+             * */
 
+            try
+            {
+                // Point 1.
+                Message newMessage = new Message();
+                newMessage.SenderID = user.ID;
+                newMessage.Timestamp = DateTime.Now;
+                newMessage.Content = txtNewMessage.Text;
+
+                selectedConversation.MessagesList.Add(newMessage);
+
+                // Point 2.
+                selectedConversation = messageManager.UpdateConvoTable(selectedConversation);
+
+                // Point 3.
+                PopulateMessageThread(selectedConversation);
+
+                txtNewMessage.Text = "";
+            }
+            catch (Exception)
+            {
+                Page.ClientScript.RegisterStartupScript(this.GetType(), "Error", "alert('Error sending message. Message not delivered.')", true);
+                throw;
+            }
         }
 
-        protected void rptConversations_ItemCommand(object source, RepeaterCommandEventArgs e)
-        {
-            RepeaterItem item = (RepeaterItem)source;
-            string s = item.DataItem.ToString();
-            item.Visible = false;
-        }
+        // Helper method for filling dummy data into the Conversation table
 
-        protected void closeThisMessage_Click(object sender, EventArgs e)
+        protected void btnInsertCommand_Click(object sender, EventArgs e)
         {
-            myMessage.Visible = false;
-            myConversations.Visible = true;
-        }
+            Conversation newConvo = new Conversation();
 
-        protected void RepeaterItemCreated(object sender, RepeaterItemEventArgs e)
-        {
-            Label l = e.Item.FindControl("lblSr") as Label;
-            if (l != null)
-                l.Text = e.Item.ItemIndex + 1 + "";
-        }
+            newConvo.ParticipantA_ID = 12;
+            newConvo.ParticipantB_ID = 1;
 
-        ///////////////////////////
+            Message msg1 = new Message();
+            msg1.SenderID = 12;
+            msg1.Timestamp = DateTime.Now;
+            msg1.Content = "How did you get on on Saturday";
 
-        public string getUsername2(string senderName, string receiverName)
-        {
-            if (user.Username.Equals(senderName))
-                return receiverName;
-            else if (user.ID.Equals(receiverName))
-                return senderName;
-            else
-                return "Unidentified Sender";
-        }
+            Message msg2 = new Message();
+            msg2.SenderID = 1;
+            msg2.Timestamp = DateTime.Now;
+            msg2.Content = "What was on Saturday?";
+            
+            Message msg3 = new Message();
+            msg3.SenderID = 1;
+            msg3.Timestamp = DateTime.Now;
+            msg3.Content = "Wait, oh the cinema. Yeah it was nice. Good movie, highly recommended.";
 
-        protected void setSenderLabel(object sender, string senderName, string receiverName)
-        {
-            Label l = (Label)sender;
-            l.Text = getUsername2(senderName, "StarsHollow");
+            Message msg4 = new Message();
+            msg4.SenderID = 12;
+            msg4.Timestamp = DateTime.Now;
+            msg4.Content = "Which film was it again?";
+
+            newConvo.MessagesList.Add(msg1);
+            newConvo.MessagesList.Add(msg2);
+            newConvo.MessagesList.Add(msg3);
+            newConvo.MessagesList.Add(msg4);
+
+            messageManager.InsertIntoConvoTable(newConvo);
         }
     }
 }

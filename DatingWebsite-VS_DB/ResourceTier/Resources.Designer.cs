@@ -349,6 +349,15 @@ namespace ResourceTier {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to uspGetConversationByID.
+        /// </summary>
+        public static string GET_THIS_CONVO {
+            get {
+                return ResourceManager.GetString("GET_THIS_CONVO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to uspGetUserHobbies.
         /// </summary>
         public static string GET_USER_HOBBIES_PROC {
@@ -579,6 +588,15 @@ namespace ResourceTier {
         public static string TOWN_PARAM {
             get {
                 return ResourceManager.GetString("TOWN_PARAM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to uspUpdateConversation.
+        /// </summary>
+        public static string UPDATE_CONVO {
+            get {
+                return ResourceManager.GetString("UPDATE_CONVO", resourceCulture);
             }
         }
         
