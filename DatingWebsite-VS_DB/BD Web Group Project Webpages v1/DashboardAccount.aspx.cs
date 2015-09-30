@@ -17,15 +17,35 @@ namespace BD_Web_Group_Project_Webpages_v1
         UserModel user = new UserModel();
         protected void Page_Load(object sender, EventArgs e)
         {
-            userManager = new BLLUserMngr();
-            user = userManager.BLLGetCurrentUser(Session);
-            txtEmail.Text = user.Email;
+            try
+            {
+                userManager = new BLLUserMngr();
+                user = userManager.BLLGetCurrentUser(Session);
+                if (!IsPostBack)
+                {
+                    txtEmail.Text = user.Email;
+                }
+            }
+            catch (Exception)
+            {
+                // This is intentionally left blank due to Claire-created threading bugs.
+            }
         }
 
         protected void btnUpdateEmail_Click(object sender, EventArgs e)
         {
-            userManager.BLLUpdateUserEmail(txtEmail.Text);
-            user.Email = txtEmail.Text;
+            try
+            {
+                user.Email = txtNewEmail.Text;
+                userManager.BLLUpdateUserEmail(user);
+
+                txtConfirmPwd.Text = "";
+                lblChangeEmailFeedback.Text = "Email changed";
+            }
+            catch (Exception ex)
+            {
+                lblChangeEmailFeedback.Text = ex.Message;
+            }
         }
 
         protected void btnUpdatePwd_Click(object sender, EventArgs e)

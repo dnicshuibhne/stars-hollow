@@ -13,18 +13,18 @@
         </header>
         <nav>
             
-            <asp:Menu runat="server" Orientation="Horizontal" StaticEnableDefaultPopOutImage="false" DynamicMenuItemStyle-BorderStyle="Solid" DynamicMenuItemStyle-BorderWidth="1px" DynamicMenuItemStyle-BorderColor="Black" OnMenuItemClick="StarsHollow_MenuItemClick">
+            <asp:Menu ID="TopNavBarControl" runat="server" Orientation="Horizontal" StaticEnableDefaultPopOutImage="false" DynamicMenuItemStyle-BorderStyle="Solid" DynamicMenuItemStyle-BorderWidth="1px" DynamicMenuItemStyle-BorderColor="Black" OnMenuItemClick="StarsHollow_MenuItemClick">
                 <DynamicMenuItemStyle CssClass="topMenu" HorizontalPadding="20px" ItemSpacing="10px" VerticalPadding="25px" />
                 <StaticMenuItemStyle CssClass="topMenu" HorizontalPadding="20px" VerticalPadding="45px" Width="100px" />
                 <StaticSelectedStyle BackColor="#333333" ForeColor="White" />
                 <DynamicMenuStyle BorderColor="Black" BorderStyle="Solid" BorderWidth="1px" />
                 <Items>
-                    <asp:MenuItem NavigateUrl="~/Dashboard.aspx" Text="Dashboard" Value="Dashboard">
+                    <asp:MenuItem NavigateUrl="~/DashboardPersonal.aspx" Text="Dashboard" Value="Dashboard">
                         <asp:MenuItem NavigateUrl="~/DashboardPersonal.aspx" Text="Edit Personal Details" value="Edit Personal Details"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/DashboardAccount.aspx" Text="Edit Account Details" value="Edit Account Details"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/MyGallery.aspx" Text="My Gallery" value="My Gallery"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/MyMessages.aspx" Text="My Messages" value="My Messages"></asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/MyProfile.aspx" Text="View My Profile" value="View My Profile"></asp:MenuItem>
+                        <asp:MenuItem Text="View My Profile" value="View My Profile"></asp:MenuItem>
                     </asp:MenuItem>
                     <asp:MenuItem NavigateUrl="~/SearchFor.aspx" Text="Search" Value="Search"></asp:MenuItem>
                     <asp:MenuItem Text="Logout" Value="Logout"></asp:MenuItem>
