@@ -30,7 +30,7 @@ namespace BD_Web_Group_Project_Webpages_v1
             catch (Exception)
             {
                 //Log error
-                Response.Redirect("404.aspx");
+                Response.Redirect("404.aspx", false);
             }
             if (!IsPostBack)
             {

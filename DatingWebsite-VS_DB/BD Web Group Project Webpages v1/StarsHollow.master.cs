@@ -20,7 +20,7 @@ namespace BD_Web_Group_Project_Webpages_v1
                 UserModel user = (UserModel)Session[Resources.USER_SESSION_STATE];
                 if (user == null || user.ID < 1)
                 {
-                    Response.Redirect("Default.aspx", true);
+                    Response.Redirect("Default.aspx", false);
                 }
                 else
                 {
@@ -38,7 +38,7 @@ namespace BD_Web_Group_Project_Webpages_v1
             if (e.Item.Value == "Logout")
             {
                 Session.Remove(Resources.USER_SESSION_STATE);
-                Response.Redirect("Default.aspx");
+                Response.Redirect("Default.aspx", false);
             }
         }
     }

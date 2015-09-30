@@ -19,26 +19,26 @@ namespace BD_Web_Group_Project_Webpages_v1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //try
-            //{
-            userManager = new BLLUserMngr();
+            try
+            {
+                userManager = new BLLUserMngr();
                 UserModel user = userManager.BLLGetCurrentUser(Session);
 
                 if (user != null)
                 {
-                    Response.Redirect("SearchFor.aspx");
+                    Response.Redirect("SearchFor.aspx",false);
                 }
                 else if (!IsPostBack)
                 {
-                    //loginPage2.Visible = false;
+                    loginPage2.Visible = false;
                     fillRegistrationData();
                 }
-            //}
-            //catch (Exception)
-            //{
-            //    //Log error
-            //    Response.Redirect("404.aspx");
-            //}
+            }
+            catch (Exception)
+            {
+                //Log error
+                Response.Redirect("404.aspx", false);
+            }
         }
 
         #region Page Load Methods
@@ -80,7 +80,7 @@ namespace BD_Web_Group_Project_Webpages_v1
             catch (Exception)
             {
                 //Log error
-                Response.Redirect("404.aspx");
+                Response.Redirect("404.aspx", false);
             }
         }
         #endregion
@@ -121,7 +121,7 @@ namespace BD_Web_Group_Project_Webpages_v1
                     user.Hobbies = userManager.BLLGetHobbies(user.ID).Keys.ToList<int>();
 
                     setCurrentUser(user);
-                    Response.Redirect("SearchFor.aspx", true);
+                    Response.Redirect("SearchFor.aspx", false);
                 }
                 else
                 {
@@ -133,7 +133,7 @@ namespace BD_Web_Group_Project_Webpages_v1
             catch (Exception)
             {
                 //Log error
-                Response.Redirect("404.aspx");
+                Response.Redirect("404.aspx", false);
             }
         }
         #endregion
@@ -181,7 +181,7 @@ namespace BD_Web_Group_Project_Webpages_v1
                 userManager.BLLUpdateUser(user);
                 setCurrentUser(user);
                 Response.Write("User Created");
-                Response.Redirect("DashboardPersonal.aspx");
+                Response.Redirect("DashboardPersonal.aspx",false);
             }
             else
             {

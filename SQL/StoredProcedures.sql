@@ -341,6 +341,8 @@ END
 GO
 
 -- Adding a new record to Conversation
+Drop PROCEDURE [dbo].[uspAddNewConversation]
+GO
 CREATE PROCEDURE [dbo].[uspAddNewConversation]
 	@partA_ID int,
 	@partB_ID int,
