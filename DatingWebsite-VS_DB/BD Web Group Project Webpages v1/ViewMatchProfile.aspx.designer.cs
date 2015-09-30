@@ -49,6 +49,15 @@ namespace BD_Web_Group_Project_Webpages_v1 {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
+        /// SendMsgLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor SendMsgLink;
+        
+        /// <summary>
         /// SendMNewMessageButton control.
         /// </summary>
         /// <remarks>
@@ -56,6 +65,15 @@ namespace BD_Web_Group_Project_Webpages_v1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl SendMNewMessageButton;
+        
+        /// <summary>
+        /// SendMsgInput control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SendMsgInput;
         
         /// <summary>
         /// txtNewMessage control.
@@ -83,6 +101,15 @@ namespace BD_Web_Group_Project_Webpages_v1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator reqvalNewMessage;
+        
+        /// <summary>
+        /// lblNewMessageFeedback control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNewMessageFeedback;
         
         /// <summary>
         /// lblUserDescription control.

@@ -35,8 +35,9 @@ namespace BD_Web_Group_Project_Webpages_v1
 
             if (selectedConvoID.Length > 0)
             {
-                // If a conversation was selected, retreive the selected conversation 
-                // according to its ID in conversation<List> and present its messages to the user.
+                /* If a conversation was selected, retreive the selected conversation 
+                 * according to its ID in conversation<List> and present its messages to the user.
+                 * */
                 int selectedIDasInt;
                 if (int.TryParse(selectedConvoID, out selectedIDasInt))
                 {
@@ -55,7 +56,6 @@ namespace BD_Web_Group_Project_Webpages_v1
                 }
             }
 
-            /* check if logged in*/
             userManager = new BLLUserMngr();
             user = userManager.BLLGetCurrentUser(Session);
 
@@ -89,8 +89,9 @@ namespace BD_Web_Group_Project_Webpages_v1
                                               Content = c.Content
                                           }).ToList();
 
-                    // Assign last message in this conversation that does not belong to the logged in user 
-                    // to summary's values
+                    /* Assign last message in this conversation that does not belong to the logged in user 
+                     * to summary's values
+                     * */
                     newSummary.ConversationID = convo.ConversationID;
 
                     if (convo.MessagesList[lastIndex].SenderID == user.ID)
@@ -126,8 +127,9 @@ namespace BD_Web_Group_Project_Webpages_v1
 
         private void PopulateMessageThread(Conversation convo)
         {
-            // This fills rptconvoMessages with all the messages in selectedConvo
-            // and assigns CSS classes according to the message's sender.
+            /* This fills rptconvoMessages with all the messages in selectedConvo
+             * and assigns CSS classes according to the message's sender.
+             * */
             rptconvoMessages.DataSource = convo.MessagesList;
             rptconvoMessages.DataBind();
         }
@@ -188,8 +190,8 @@ namespace BD_Web_Group_Project_Webpages_v1
             }
         }
 
-        // Helper method for filling dummy data into the Conversation table
 
+        // Helper method for filling dummy data into the Conversation table
         protected void btnInsertCommand_Click(object sender, EventArgs e)
         {
             Conversation newConvo = new Conversation();

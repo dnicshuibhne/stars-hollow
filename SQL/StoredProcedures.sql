@@ -340,6 +340,28 @@ BEGIN
 END
 GO
 
+-- Adding a new record to Conversation
+CREATE PROCEDURE [dbo].[uspAddNewConversation]
+	@partA_ID int,
+	@partB_ID int,
+	@MessageContent xml
+AS
+BEGIN
+	INSERT INTO Conversation
+	(
+		ParticipantA_ID,
+		ParticipantB_ID,
+		MessageContent
+	)
+	VALUES
+	(
+		@partA_ID,
+		@partB_ID,
+		@MessageContent
+	)
+END
+GO
+
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------

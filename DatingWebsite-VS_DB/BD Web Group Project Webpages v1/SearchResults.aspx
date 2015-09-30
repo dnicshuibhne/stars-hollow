@@ -65,7 +65,7 @@
             <div class="contentWrapper">
                 <asp:Repeater ID="rptResults" runat="server">
                     <ItemTemplate>
-                        <a href='ViewMatchProfile.aspx?<%#Eval("Username") %>'>
+                        <a href='ViewMatchProfile.aspx?username=<%#Eval("Username") %>'>
                             <div class="resultBox linkingDiv">
                                 <asp:Image ID="imgProfilePic" runat="server" CssClass="resultImage"/>
                                 <div class="resultText">
