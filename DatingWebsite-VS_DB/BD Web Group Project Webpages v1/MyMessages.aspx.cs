@@ -15,6 +15,7 @@ namespace BD_Web_Group_Project_Webpages_v1
     public partial class MyMessages : System.Web.UI.Page
     {
         BLLMessageMngr messageManager;
+        BLLUserMngr userManager;
         UserModel user;
         string sentCss = "myMessage";
         string receivedCss = "theirMessage";
@@ -55,11 +56,8 @@ namespace BD_Web_Group_Project_Webpages_v1
             }
 
             /* check if logged in*/
-            user = (UserModel)Session[Resources.USER_SESSION_STATE];
-            //if (user == null || user.ID < 1)
-            //{
-            //    //Response.Redirect("Default.aspx", true);
-            //}
+            userManager = new BLLUserMngr();
+            user = userManager.BLLGetCurrentUser(Session);
 
             user = new UserModel();
             user.ID = 1;
@@ -136,14 +134,14 @@ namespace BD_Web_Group_Project_Webpages_v1
 
         public string getCssClass(int senderID)
         {
-            /* 
-             * 
-             * TEMPORARY WORKAROUND FOR ME WHILE I'M NOT LOGGED IN
-             * 
-             * */
-            user = new UserModel();
-            user.ID = 1;
-            //
+            ///* 
+            // * 
+            // * TEMPORARY WORKAROUND FOR ME WHILE I'M NOT LOGGED IN
+            // * 
+            // * */
+            //user = new UserModel();
+            //user.ID = 1;
+            ////
             
             if (user.ID.Equals(senderID))
                 return sentCss;

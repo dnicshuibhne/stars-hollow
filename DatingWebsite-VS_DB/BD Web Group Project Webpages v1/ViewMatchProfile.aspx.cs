@@ -34,5 +34,15 @@ namespace BD_Web_Group_Project_Webpages_v1
                 hobbyRepeater.DataBind();
             }
         }
+
+        protected void btnSendNewMessage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void imgBtnSendMessage_Click(object sender, ImageClickEventArgs e)
+        {
+
+        }
     }
 }

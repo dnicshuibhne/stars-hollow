@@ -10,7 +10,38 @@
         <br />
         <asp:Image ID="imgProfilePicture" runat="server" ImageUrl="~/Images/blank-profile-grey.png" CssClass="profilePic"/>
         <br />
-        
+        <br />
+        <asp:ScriptManager ID="ScriptManager1" runat="server" />
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                
+                
+                <%--This might be the answer to my problem http://stackoverflow.com/questions/17875489/call-asp-net-function-method-from-div-onclick--%>
+
+
+                <div id="SendMNewMessageButton" runat="server">
+                    <div id="SendNewMessage">
+                        Send Me a Message
+                    </div>
+                </div>
+                <%--<asp:Button ID="btnSendNewMessage" runat="server" Text="Send Me a Message" CssClass="blueButton" OnClick="btnSendNewMessage_Click" style="font-size:20px; width:30vw; padding: 20px; margin: auto; display: block; border: 1px solid #824187;"/>--%>
+                <div class="detailsWrapper" style="background-color: #A8D1FF">
+                    <div id="myMessageInputWrapper">
+                        <br />
+                        <div id="myMessageTxt">
+                            <asp:TextBox ID="txtNewMessage" runat="server" TextMode="MultiLine" Style="resize:none; border: 1px solid #824187;" ForeColor="Black" Height="55px" Width="250px" ToolTip="Say hi"></asp:TextBox>
+                        </div>
+                        <div id="myMessageSendBtn">
+                            <asp:ImageButton ID="imgBtnSendMessage" runat="server" ImageUrl="~/Images/rsz_1008006-glossy-black-icon-arrows-arrowhead2-right.png" OnClick="imgBtnSendMessage_Click" ValidationGroup="NewMessageValGroup" style="background-color: white; border-radius: 2em; margin-left: 5px; border: 1px solid #824187;"/>
+                        </div>
+                        <br />
+                        <asp:RequiredFieldValidator ID="reqvalNewMessage" runat="server" ErrorMessage="You can't enter an empty message" ControlToValidate="txtNewMessage" ValidationGroup="NewMessageValGroup"></asp:RequiredFieldValidator>
+                    </div>
+                </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+        <br />
+        <br />
         <div class="detailsWrapper">
         <fieldset class="detailsBox">
             <legend>About Me</legend>
