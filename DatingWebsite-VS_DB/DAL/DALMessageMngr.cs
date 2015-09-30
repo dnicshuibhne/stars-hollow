@@ -212,6 +212,59 @@ namespace DAL
             return updatedConvo;
         }
 
+        public bool AddNewConversation(Conversation newConvo)
+        {
+            bool isAddedSuccessfully = false;
+
+            try
+            {
+                using (SqlConnection con = new SqlConnection(conString))
+                {
+                    using (SqlCommand cmd = new SqlCommand(Resources.ADD_NEW_CONVO, con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@partA_ID", SqlDbType.Int).Value = newConvo.ParticipantA_ID;
+                        cmd.Parameters.AddWithValue("@partB_ID", SqlDbType.Int).Value = newConvo.ParticipantB_ID;
+
+                        #region Convert List<Message> to XML
+
+                        DataSet ds = new DataSet("Conversation");
+                        DataTable dt = new DataTable("Message");
+                        dt.Columns.Add("SenderID");
+                        dt.Columns.Add("TimeStamp");
+                        dt.Columns.Add("Content");
+
+                        ds.Tables.Add(dt);
+
+                        foreach (Message msg in newConvo.MessagesList)
+                        {
+                            DataRow row = dt.NewRow();
+                            row["SenderID"] = msg.SenderID;
+                            row["TimeSTamp"] = msg.Timestamp;
+                            row["Content"] = msg.Content;
+
+                            dt.Rows.Add(row);
+                        }
+                        ds.AcceptChanges();
+
+                        cmd.Parameters.AddWithValue("@MessageContent", SqlDbType.Xml).Value = ds.GetXml();
+
+                        #endregion
+
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return isAddedSuccessfully;
+        }
+
 
         // Helper method to add dummy records into the database
         public void InsertIntoConvoTable(Conversation newConvo)
