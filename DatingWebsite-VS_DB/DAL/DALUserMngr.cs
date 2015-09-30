@@ -236,14 +236,15 @@ namespace DAL //Data Access Layer
             }
         }
 
-        public void DALUpdateUserEmail(String email)
+        public void DALUpdateUserEmail(UserModel selectedUser)
         {
             using (SqlConnection con = new SqlConnection(conString))
             {
                 using (SqlCommand cmd = new SqlCommand(Resources.USER_ACCOUNT_UPDATE_PROC, con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(Resources.EMAIL_PARAM, SqlDbType.NVarChar).Value = email;
+                    cmd.Parameters.Add(Resources.USERID_PARAM, SqlDbType.Int).Value = selectedUser.ID;
+                    cmd.Parameters.Add(Resources.EMAIL_PARAM, SqlDbType.NVarChar).Value = selectedUser.Email;
                                         
                     try
                     {
@@ -484,7 +485,8 @@ namespace DAL //Data Access Layer
                         int rowsAffected = adapter.Fill(hobbies);
                         if (rowsAffected < 1 || hobbies == null)
                         {
-                            throw new Exception("No Results Returned.");
+                            return hobbies;
+                            //throw new Exception("No Results Returned.");
                         }
                     }
                     catch (SqlException e)

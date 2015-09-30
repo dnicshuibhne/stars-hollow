@@ -22,6 +22,10 @@ namespace BD_Web_Group_Project_Webpages_v1
                 {
                     Response.Redirect("Default.aspx", true);
                 }
+                else
+                {
+                    TopNavBarControl.Items[0].ChildItems[4].NavigateUrl = "ViewMatchProfile.aspx?username=" + user.Username;
+                }
             }
         }
 

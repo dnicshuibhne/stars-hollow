@@ -63,9 +63,9 @@ namespace BLL //Business Logic Layer
             DalUserManager.DALUpdateUserDetails(user);
         }
 
-        public void BLLUpdateUserEmail(String email)
+        public void BLLUpdateUserEmail(UserModel selectedUser)
         {
-            DalUserManager.DALUpdateUserEmail(email);
+            DalUserManager.DALUpdateUserEmail(selectedUser);
         }
 
         public void BLLUpdateUserPassword(String password)
