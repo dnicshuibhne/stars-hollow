@@ -153,20 +153,20 @@ CREATE TABLE [dbo].[UserImages]
     CONSTRAINT [FK_UserID_Users] FOREIGN KEY (UserID) REFERENCES Users(UserID)
 );
 ------------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------- MESSAGE TABLE ----------------------------------------------------------- 
+------------------------------------------------------------ CONVERSATION TABLE ----------------------------------------------------------- 
 ------------------------------------------------------------------------------------------------------------------------------------------
 
 
-CREATE TABLE [dbo].[Messages] (
-    [MessageID]  INT  IDENTITY (1, 1) NOT NULL,
-    [SenderID] INT NOT NULL,
-	[ReceiverID] INT NOT NULL,
-	[Timestamp] DATETIME NOT NULL,
-	[Content] NVarChar (MAX) NULL,
-    PRIMARY KEY CLUSTERED ([MessageID] ASC),
-    FOREIGN KEY ([SenderID]) REFERENCES [dbo].[Users] ([UserID]),
-	 FOREIGN KEY ([ReceiverID]) REFERENCES [dbo].[Users] ([UserID])
+CREATE TABLE [dbo].[Conversation] (
+    [ConversationID]  INT IDENTITY (1, 1) NOT NULL,
+    [ParticipantA_ID] INT NOT NULL,
+    [ParticipantB_ID] INT NOT NULL,
+    [MessageContent]  XML NULL,
+    PRIMARY KEY CLUSTERED ([ConversationID] ASC),
+	FOREIGN KEY ([ParticipantA_ID]) REFERENCES [dbo].[Users] ([UserID]),
+    FOREIGN KEY ([ParticipantB_ID]) REFERENCES [dbo].[Users] ([UserID])
 );
+
 --------------------------------------------------------------------------------
 
 

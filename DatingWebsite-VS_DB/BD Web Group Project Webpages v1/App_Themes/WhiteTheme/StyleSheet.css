@@ -621,6 +621,25 @@ span.validator[style*="inline"]{
     margin: 30px 0px;
 }
 
+#SendNewMessage {
+    border: 1px solid #824187; /* dark purple */
+    border-radius: 40px;
+    background-color: #A8D1FF; /* light blue */
+    padding: 10px 20px;
+    color: white;
+    text-align: center;
+}
+#SendNewMessage:hover {
+    color: #FF7029; /* orange */
+    position: relative;
+    left: -5px;
+    top: -5px;
+    background-color: white;
+    -webkit-box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.75);
+    box-shadow: 5px 5px 0px 0px rgba(0,0,0,0.75);
+}
+
 /* RSS styles */
 #rss{
     margin: auto;
