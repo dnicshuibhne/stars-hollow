@@ -14,7 +14,7 @@ namespace BD_Web_Group_Project_Webpages_v1
     public partial class DashboardAccount : System.Web.UI.Page
     {
         BLLUserMngr userManager;
-        UserModel user;
+        UserModel user = new UserModel();
         protected void Page_Load(object sender, EventArgs e)
         {
             userManager = new BLLUserMngr();
