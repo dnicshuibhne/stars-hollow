@@ -33,10 +33,10 @@ namespace DAL
         {
             DataSet data = new DataSet();
             List<Conversation> convoList = new List<Conversation>();
-            
+
             using (SqlConnection con = new SqlConnection(conString))
             {
-                using (SqlCommand cmd= new SqlCommand(procname, con))
+                using (SqlCommand cmd = new SqlCommand(procname, con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@userID", SqlDbType.Int).Value = userID;
@@ -63,7 +63,7 @@ namespace DAL
                             convoList.Add(convo);
                         }
                     }
-                    
+
                     con.Close();
                 }
             }
@@ -75,7 +75,7 @@ namespace DAL
         public DataTable getMessagesTest(int userID)
         {
             DataSet data = new DataSet();
-            string sql = "Select * from Messages Where SenderID=\'"+userID+"\'";
+            string sql = "Select * from Messages Where SenderID=\'" + userID + "\'";
 
             using (SqlConnection con = new SqlConnection(conString))
             {
@@ -102,10 +102,10 @@ namespace DAL
 
         public Conversation UpdateConvoTable(Conversation selectedConvo)
         {
-           /*
-            * This method first updates selectedConvo from the database, 
-            * then stores it in the database with the new user-defined messages.
-            * */
+            /*
+             * This method first updates selectedConvo from the database, 
+             * then stores it in the database with the new user-defined messages.
+             * */
 
             Conversation updatedConvo = new Conversation();
 
@@ -126,7 +126,7 @@ namespace DAL
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.AddWithValue("@convoID", SqlDbType.Int).Value = updatedConvo.ConversationID;
-                        
+
                         #region Convert List<Message> to XML
 
                         DataSet ds = new DataSet("Conversation");
@@ -175,7 +175,7 @@ namespace DAL
             {
                 using (SqlConnection con = new SqlConnection(conString))
                 {
-                    using (SqlCommand cmd= new SqlCommand(procname, con))
+                    using (SqlCommand cmd = new SqlCommand(procname, con))
                     {
                         cmd.CommandType = CommandType.StoredProcedure;
                         cmd.Parameters.Add("@convoID", SqlDbType.Int).Value = selectedConvo.ConversationID;
@@ -199,7 +199,7 @@ namespace DAL
 
                             }
                         }
-                    
+
                         con.Close();
                     }
                 }
@@ -300,14 +300,14 @@ namespace DAL
                     ds.Tables.Add(dt);
 
                     foreach (Message msg in newConvo.MessagesList)
-	                {
-		                DataRow row = dt.NewRow();
+                    {
+                        DataRow row = dt.NewRow();
                         row["SenderID"] = msg.SenderID;
                         row["TimeSTamp"] = msg.Timestamp;
                         row["Content"] = msg.Content;
 
                         dt.Rows.Add(row);
-	                }
+                    }
                     ds.AcceptChanges();
 
                     cmd.Parameters.AddWithValue("msgContent", SqlDbType.Xml).Value = ds.GetXml();
@@ -327,64 +327,5 @@ namespace DAL
                 }
             }
         }
-
-        //public DataTable getReceivedMessages(int receiverID)
-        //{
-        //    return getMessages(receiverID, "receivedMessagesProc");
-        //}
-
-        //public DataTable getSentMessages(int senderID)
-        //{
-        //    return getMessages(senderID, "sentMessagesProc");
-        //}
-
-        //private void XmlTest()
-        //{
-        //    SqlDataReader reader;
-        //    int ID = 15;
-        //    string proc = "getReceivedMessages";
-        //    string receiverIDParam = "@receiverID";
-
-
-        //    SqlConnection con = new SqlConnection(conString);
-
-        //    using (SqlCommand cmd = new SqlCommand(proc, con))
-        //    {
-        //        cmd.CommandType = CommandType.StoredProcedure;
-        //        cmd.Parameters.Add(receiverIDParam, SqlDbType.Int).Value = ID;
-        //        DataTable table = new DataTable();
-        //        table.Columns.Add(MESSAGE_ID_STR);
-        //        table.Columns.Add(SENDER_ID_STR);
-        //        table.Columns.Add(RECEIVER_ID_STR);
-        //        table.Columns.Add(TIMESTAMP_STR);
-        //        table.Columns.Add(CONTENT);
-
-        //        using (con)
-        //        {
-        //            con.Open();
-        //            reader = cmd.ExecuteReader();
-        //            while (reader.Read())
-        //            {
-        //                string xml = reader["message"].ToString();
-        //                XmlDocument xDoc = new XmlDocument();
-        //                xDoc.LoadXml(xml);
-        //                XmlNodeList list = xDoc.SelectNodes("/modules/module");
-        //                foreach (XmlNode node in list)
-        //                {
-        //                    DataRow dataRow = table.NewRow();
-        //                    dataRow[MESSAGE_ID_STR] = node.SelectSingleNode("message_id").InnerText;
-        //                    dataRow[SENDER_ID_STR] = node.SelectSingleNode("sender_id").InnerText;
-        //                    dataRow[RECEIVER_ID_STR] = node.SelectSingleNode("reciever_id").InnerText;
-        //                    dataRow[TIMESTAMP_STR] = node.SelectSingleNode("timestamp").InnerText;
-        //                    dataRow[CONTENT] = node.SelectSingleNode("content").InnerText;
-        //                    table.Rows.Add(dataRow);
-        //                }
-        //            }
-
-        //        }
-        //    }
-
-        //}
-        //
     }
 }

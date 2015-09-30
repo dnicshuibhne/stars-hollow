@@ -20,7 +20,7 @@ namespace DAL //Data Access Layer
     {
         User,
         Email,
-        Age, 
+        Age,
         AgeRange,
         Build,
         County,
@@ -28,8 +28,7 @@ namespace DAL //Data Access Layer
         EyeColor,
         Gender,
         HairColor,
-        Height, 
-        //Hobbies,
+        Height,
         IdealDate,
         RelationshipStatus,
         Profession,
@@ -159,6 +158,7 @@ namespace DAL //Data Access Layer
             }
         }
 
+        /* Updates a user in the the UserInformation Table */
         public void DALUpdateUserDetails(UserModel user)
         {
             string addHobbiesQuery = string.Empty;
@@ -236,6 +236,8 @@ namespace DAL //Data Access Layer
             }
         }
 
+
+        /* Updates the user's email*/
         public void DALUpdateUserEmail(UserModel selectedUser)
         {
             using (SqlConnection con = new SqlConnection(conString))
@@ -245,7 +247,7 @@ namespace DAL //Data Access Layer
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(Resources.USERID_PARAM, SqlDbType.Int).Value = selectedUser.ID;
                     cmd.Parameters.Add(Resources.EMAIL_PARAM, SqlDbType.NVarChar).Value = selectedUser.Email;
-                                        
+
                     try
                     {
                         con.Open();
@@ -264,15 +266,17 @@ namespace DAL //Data Access Layer
             }
         }
 
-        public void DALUpdateUserPassword(String password)
+        /* Updates the user's password*/
+        public void DALUpdateUserPassword(UserModel user, string password)
         {
             using (SqlConnection con = new SqlConnection(conString))
             {
                 using (SqlCommand cmd = new SqlCommand(Resources.USER_ACCOUNT_UPDATE_PROC, con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(Resources.USERID_PARAM, SqlDbType.Int).Value = user.ID;
                     cmd.Parameters.Add(Resources.PASSWORD_PARAM, SqlDbType.NVarChar).Value = password;
-                                        
+
                     try
                     {
                         con.Open();
@@ -291,6 +295,7 @@ namespace DAL //Data Access Layer
             }
         }
 
+        /* Returns a user with the given ID */
         public UserModel DALGetUser(int id)
         {
             UserModel user = null;
@@ -314,7 +319,7 @@ namespace DAL //Data Access Layer
 
                             int position = (int)UserProfile.User;
 
-                            if (!reader.IsDBNull(position) )
+                            if (!reader.IsDBNull(position))
                                 user.Username = reader.GetString(position);
 
                             if (!reader.IsDBNull((int)UserProfile.Age)) user.Age = reader.GetInt32((int)UserProfile.Age);
@@ -342,7 +347,7 @@ namespace DAL //Data Access Layer
                         cmd.Parameters.Add(Resources.USERID_PARAM, SqlDbType.Int).Value = id;
 
                         reader = cmd.ExecuteReader();
-                        while(reader.Read())
+                        while (reader.Read())
                         {
                             user.Hobbies.Add(reader.GetInt32(0));
                         }
@@ -363,6 +368,7 @@ namespace DAL //Data Access Layer
             return user;
         }
 
+        /* Returns a user with the given username */
         public UserModel DALGetUser(string username)
         {
             UserModel user = null;
@@ -432,6 +438,7 @@ namespace DAL //Data Access Layer
         }
 
 
+        /* Gets all of the hobbies for the user with the given id - as a dictionary*/
         public Dictionary<int, string> DALGetUserHobbies(int id)
         {
             Dictionary<int, String> hobbies = null;
@@ -467,6 +474,7 @@ namespace DAL //Data Access Layer
             return hobbies;
         }
 
+        /* Gets all of the hobbies for the user with the given id - as a table*/
         public DataTable DALGetUserHobbiesTable(int id)
         {
             DataTable hobbies = null;
@@ -502,16 +510,17 @@ namespace DAL //Data Access Layer
             return hobbies;
         }
 
+        /* Sets the hobbies for the user with the given id - as a dictionary*/
         public void DALSetHobbies(UserModel user)
         {
             int rowsAffected;
 
-            if(user == null)
+            if (user == null)
                 return;
-            if(user.Hobbies.Count <= 0)
+            if (user.Hobbies.Count <= 0)
                 return;
-            
-            string sql = "INSERT INTO "+Resources.USER_HOBBIES_TABLE + " VALUES ";
+
+            string sql = "INSERT INTO " + Resources.USER_HOBBIES_TABLE + " VALUES ";
             foreach (int hobbyID in user.Hobbies)
             {
                 sql += "(" + user.ID + ",'" + hobbyID + "')";
@@ -541,91 +550,5 @@ namespace DAL //Data Access Layer
             }
         }
 
-        //public DataTable DALGetUserImagesTable(int userID)
-        //{
-        //    DataTable images = null;
-
-        //    using (SqlConnection con = new SqlConnection(conString))
-        //    {
-        //        using (SqlDataAdapter adapter = new SqlDataAdapter(Resources.GET_USER_IMAGES_PROC, con))
-        //        {
-        //            adapter.SelectCommand.CommandType = CommandType.StoredProcedure;
-        //            adapter.SelectCommand.Parameters.Add(Resources.USERID_PARAM, SqlDbType.Int).Value = userID;
-
-        //            try
-        //            {
-        //                con.Open();
-        //                images = new DataTable();
-        //                int rowsAffected = adapter.Fill(images);
-        //                if (rowsAffected < 1 || images == null)
-        //                {
-        //                    throw new Exception("No Results Returned.");
-        //                }
-        //            }
-        //            catch (SqlException e)
-        //            {
-        //                throw;
-        //            }
-        //            finally
-        //            {
-        //                con.Close();
-        //            }
-        //        }
-        //    }
-        //    return images;
-        //}
-
-        //public List<Image> DALGetUserImages(int userID)
-        //{
-        //    List<Image> images = null;
-
-        //    using (SqlConnection con = new SqlConnection(conString))
-        //    {
-        //        using (SqlCommand cmd = new SqlCommand(Resources.GET_USER_IMAGES_PROC, con))
-        //        {
-        //            cmd.CommandType = CommandType.StoredProcedure;
-        //            cmd.Parameters.Add(Resources.USERID_PARAM, SqlDbType.Int).Value = userID;
-
-        //            try
-        //            {
-        //                con.Open();
-        //                images = new List<Image>();
-
-        //                SqlDataReader reader = cmd.ExecuteReader();
-        //                while(reader.Read())
-        //                {
-        //                    //images.Add(reader.get);
-        //                }
-        //            }
-        //            catch (SqlException e)
-        //            {
-        //                throw;
-        //            }
-        //            finally
-        //            {
-        //                con.Close();
-        //            }
-        //        }
-        //    }
-        //    return images;
-        //}
-
-        
-
-        //    public void addUserInformation(int userID ,Dictionary<string, string> userAttributes)
-        //    {
-        //        string sqlStart = "UPDATE ";
-        //        string sqlMiddle = " SET ";
-        //        string sqlEnd = " WHERE UserID=";
-        //        string kvString = userAttributes.Keys.ElementAt(0);
-
-        //        for (int i = 1; i < userAttributes.Count;i++)
-        //        {
-        //            kvString += kvp.Key + ",";
-        //        }
-        //        kvString = kvString.Substring(0, kvString.Length - 2);
-
-        //        string query = sqlStart + USER_INFORMATION_TABLE + kvString + sqlMiddle + userID;
-        //    }
     }
 }

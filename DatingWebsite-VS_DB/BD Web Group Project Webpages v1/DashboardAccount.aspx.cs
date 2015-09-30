@@ -17,19 +17,20 @@ namespace BD_Web_Group_Project_Webpages_v1
         UserModel user = new UserModel();
         protected void Page_Load(object sender, EventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 userManager = new BLLUserMngr();
                 user = userManager.BLLGetCurrentUser(Session);
                 if (!IsPostBack)
                 {
                     txtEmail.Text = user.Email;
                 }
-            //}
-            //catch (Exception)
-            //{
-            //    // This is intentionally left blank due to Claire-created threading bugs.
-            //}
+            }
+            catch (Exception)
+            {
+                //Log error
+                Response.Redirect("404.aspx");
+            }
         }
 
         protected void btnUpdateEmail_Click(object sender, EventArgs e)
@@ -43,15 +44,24 @@ namespace BD_Web_Group_Project_Webpages_v1
                 txtEmail.Text = user.Email;
                 txtNewEmail.Text = "";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                lblChangeEmailFeedback.Text = ex.Message;
+                //Log error
+                Response.Redirect("404.aspx");
             }
         }
 
         protected void btnUpdatePwd_Click(object sender, EventArgs e)
         {
-            userManager.BLLUpdateUserPassword(txtNewPwd.Text);
+            try
+            {
+                userManager.BLLUpdateUserPassword(user, txtNewPwd.Text);
+            }
+            catch (Exception)
+            {
+                //Log error
+                Response.Redirect("404.aspx");
+            }
         }
     }
 }

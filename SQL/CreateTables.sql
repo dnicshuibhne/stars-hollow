@@ -1,4 +1,6 @@
 ﻿-- DROP TABLES --
+Drop Table [dbo].Messages
+Drop Table [dbo].UserImages
 Drop Table UserHobbies
 Drop Table UserInformation
 DROP TABLE [dbo].[Conversation]

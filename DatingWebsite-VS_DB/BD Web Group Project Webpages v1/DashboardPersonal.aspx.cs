@@ -22,8 +22,16 @@ namespace BD_Web_Group_Project_Webpages_v1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            userManager = new BLLUserMngr();
-            user = userManager.BLLGetCurrentUser(Session);
+            try
+            {
+                userManager = new BLLUserMngr();
+                user = userManager.BLLGetCurrentUser(Session);
+            }
+            catch (Exception)
+            {
+                //Log error
+                Response.Redirect("404.aspx");
+            }
             if (!IsPostBack)
             {
                 /*Retrieve and load the values of each attribute*/
@@ -74,7 +82,7 @@ namespace BD_Web_Group_Project_Webpages_v1
                 if (user != null)
                 {
                     if (user.Age != null && user.Age > 0) txtAge.Text = user.Age.ToString();
-                    if (user.IdealDate!=null && user.IdealDate.Length > 0) txtIdealDate.Text = user.IdealDate;
+                    if (user.IdealDate != null && user.IdealDate.Length > 0) txtIdealDate.Text = user.IdealDate;
                     if (user.Profession != null && user.Profession.Length > 0) txtProfession.Text = user.Profession;
                     if (user.Town != null && user.Town.Length > 0) txtTown.Text = user.Town;
                     if (user.Comments != null && user.Comments.Length > 0) txtComments.Text = user.Comments;
@@ -88,7 +96,7 @@ namespace BD_Web_Group_Project_Webpages_v1
                     if (user.Height != null && user.Height.Length > 0) ddlHeight.Items.FindByValue(user.Height).Selected = true;
                     if (user.RelationshipStatus != null && user.RelationshipStatus.Length > 0) ddlRelationshipStatus.Items.FindByValue(user.RelationshipStatus).Selected = true;
                     if (user.SexualOrientation != null && user.SexualOrientation.Length > 0) ddlOrientation.Items.FindByValue(user.SexualOrientation).Selected = true;
-                    
+
                     // Populate the CheckBoxList items only when it's not a postback.
                     foreach (int i in user.Hobbies)
                     {

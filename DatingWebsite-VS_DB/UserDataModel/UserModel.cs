@@ -8,6 +8,8 @@ namespace DataModels
 {
     public class UserModel
     {
+
+        /* A user object */
         private const string AGE_RANGE_1 = "18-25";
         private const string AGE_RANGE_2 = "26-32";
         private const string AGE_RANGE_3 = "33-39";
@@ -31,7 +33,6 @@ namespace DataModels
         }
         public string AgeRange { get { return _ageRange; } }
         public string Username { get; set; }
-        //public string Password { get; set; }
         public string Email { get; set; }
         public string Town { get; set; }
         public string County { get; set; }
@@ -53,7 +54,6 @@ namespace DataModels
             Hobbies = new List<int>();
         }
 
-        //public UserModel(string Username, string Password)
         public UserModel(string Username)
         {
             this.Username = Username;
@@ -61,7 +61,6 @@ namespace DataModels
             Hobbies = new List<int>();
         }
         
-        //public UserModel(int ID, string Username, string Password)
         public UserModel(int ID, string Username)
         {
             this.ID = ID;

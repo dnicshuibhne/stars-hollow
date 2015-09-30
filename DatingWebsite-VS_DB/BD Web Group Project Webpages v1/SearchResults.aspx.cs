@@ -20,12 +20,20 @@ namespace BD_Web_Group_Project_Webpages_v1
         BLLAttributeMngr attributeManager;
         List<string> attributes;
         List<UserModel> foundUsers;
-        int resultsAtATime = 2;
+        int resultsAtATime = 20; /* In future features a control can be added to allow the user to set this value*/
         int resultsIndex = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            searchManager = new BLLSearchMngr();
+            try
+            {
+                searchManager = new BLLSearchMngr();
+            }
+            catch (Exception)
+            {
+                //Log error
+                Response.Redirect("404.aspx");
+            }
 
             if (!IsPostBack)
             {
@@ -34,15 +42,16 @@ namespace BD_Web_Group_Project_Webpages_v1
                 {
                     foundUsers = searchManager.BLLSearchForUsersExact(searchForPage.AgeRange, searchForPage.Build, searchForPage.County, searchForPage.Gender,
                         searchForPage.Height, searchForPage.Profession, searchForPage.RelationshipStatus, searchForPage.SexualOrientation, searchForPage.Town, searchForPage.Hobbies);
-                    
+
                     UpdateResultView();
 
                     attributeManager = new BLLAttributeMngr();
                     getAttributes();
                 }
-                catch (SqlException e2)
+                catch (Exception)
                 {
-                    throw;//???
+                    //Log error
+                    Response.Redirect("404.aspx");
                 }
             }
             else
@@ -55,21 +64,29 @@ namespace BD_Web_Group_Project_Webpages_v1
 
         private void getAttributes()
         {
-            attributes = attributeManager.BLLGetAgeRange();
-            ddlAgeRange.DataSource = attributes;
-            ddlAgeRange.DataBind();
+            try
+            {
+                attributes = attributeManager.BLLGetAgeRange();
+                ddlAgeRange.DataSource = attributes;
+                ddlAgeRange.DataBind();
 
-            attributes = attributeManager.BLLGetCounty();
-            ddlCounty.DataSource = attributes;
-            ddlCounty.DataBind();
+                attributes = attributeManager.BLLGetCounty();
+                ddlCounty.DataSource = attributes;
+                ddlCounty.DataBind();
 
-            attributes = attributeManager.BLLGetGenders();
-            ddlGender.DataSource = attributes;
-            ddlGender.DataBind();
+                attributes = attributeManager.BLLGetGenders();
+                ddlGender.DataSource = attributes;
+                ddlGender.DataBind();
 
-            attributes = attributeManager.BLLGetSexualOrientation();
-            ddlOrientation.DataSource = attributes;
-            ddlOrientation.DataBind();
+                attributes = attributeManager.BLLGetSexualOrientation();
+                ddlOrientation.DataSource = attributes;
+                ddlOrientation.DataBind();
+            }
+            catch (Exception)
+            {
+                //Log error
+                Response.Redirect("404.aspx");
+            }
         }
 
         private void UpdateResultView()
@@ -77,9 +94,9 @@ namespace BD_Web_Group_Project_Webpages_v1
             rptResults.DataSource = foundUsers.Skip(resultsIndex).Take(resultsAtATime).ToList<UserModel>();
             rptResults.DataBind();
 
-            if (foundUsers.Count < resultsAtATime)  resultsAtATime = foundUsers.Count;
+            if (foundUsers.Count < resultsAtATime) resultsAtATime = foundUsers.Count;
             lblTotalNumResults.Text = "Found " + foundUsers.Count + " Results";
-            lblShowingNumResults.Text = "Showing "+(resultsIndex+1)+"-" + (resultsIndex+resultsAtATime) + " of " + foundUsers.Count;
+            lblShowingNumResults.Text = "Showing " + (resultsIndex + 1) + "-" + (resultsIndex + resultsAtATime) + " of " + foundUsers.Count;
 
             Session["UserSearchResults"] = foundUsers;
             Session["resultsIndex"] = resultsIndex;

@@ -55,13 +55,19 @@ namespace BD_Web_Group_Project_Webpages_v1
                     PopulateMessageThread(selectedConversation);
                 }
             }
-
+            try{
             userManager = new BLLUserMngr();
             user = userManager.BLLGetCurrentUser(Session);
 
             user = new UserModel();
             user.ID = 1;
             messageManager = new BLLMessageMngr(user.ID);
+            }
+            catch (Exception)
+            {
+                //Log error
+                Response.Redirect("404.aspx");
+            }
             getMessages();
         }
         

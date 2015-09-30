@@ -11,9 +11,9 @@
         <asp:Image ID="imgProfilePicture" runat="server" ImageUrl="~/Images/blank-profile-grey.png" CssClass="profilePic"/>
         <br />
         <br />
-        <asp:ScriptManager ID="ScriptManager1" runat="server" />
-        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-            <ContentTemplate>
+      <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" />
+      <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+       <ContentTemplate>--%>
                 <a id="SendMsgLink" runat="server" >
                     <div id="SendMNewMessageButton" runat="server">
                         <div id="SendNewMessage">
@@ -35,8 +35,8 @@
                         <asp:Label ID="lblNewMessageFeedback" runat="server" Text=""></asp:Label>
                     </div>
                 </div>
-            </ContentTemplate>
-        </asp:UpdatePanel>
+          <%--  </ContentTemplate>
+        </asp:UpdatePanel>--%>
         <br />
         <br />
         <div class="detailsWrapper">

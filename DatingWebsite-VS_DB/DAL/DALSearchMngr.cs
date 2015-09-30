@@ -16,6 +16,8 @@ namespace DAL
 {
     public class DALSearchMngr
     {
+        /* Provides methods for returning users based on given criteria */
+
         private string conString;
         public DALSearchMngr()
         {
