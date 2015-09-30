@@ -138,12 +138,6 @@ INSERT INTO [dbo].[RelationshipStatus] ([RelationshipStatus]) VALUES
 ('In An Open Relationship'),
 ('It''s Complicated')
 
-INSERT INTO [dbo].[MaritalStatus] ([MaritalStatus]) VALUES 
-('Divorced'),
-('Never Married'),
-('Seperated'),
-('Widowed')
-
 INSERT INTO [dbo].[SexualOrientation] ([SexualOrientation]) VALUES 
 ('Prefer Not To Say'),
 ('Gay'),
