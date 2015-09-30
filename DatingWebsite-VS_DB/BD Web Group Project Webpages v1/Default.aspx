@@ -16,7 +16,7 @@
                 <h3>Login</h3>
                 <br />
                 <br />
-                <asp:Label ID="valLogin" runat="server" Text="Invalid Username/Password" Visible="False" ForeColor="Red"></asp:Label>
+                
                 <!-- lblLoginUsername was Label1 -->
                 <asp:Label ID="lblLoginUsername" runat="server" Text="Username: "></asp:Label>
                 <!-- txtLoginUsername was TextBox1 -->
@@ -26,6 +26,7 @@
                 <!-- txtLoginPassword was txtPassword -->
                 <asp:TextBox ID="txtLoginPassword" runat="server" CssClass="loginTextBox" TextMode="Password"></asp:TextBox>
                 <br />
+                <asp:Label ID="valLogin" runat="server" Text="Invalid Username/Password" Visible="False" ForeColor="Red" Font-Size="Small"></asp:Label>
                 <br />
                 <div class="loginButtons">
                     <asp:Button ID="btnCancel" runat="server" CssClass="blueButton" Font-Size="20px" Text="Cancel" Style="padding: .3em 2em;" OnClick="btnCancelLogin_Click" />
