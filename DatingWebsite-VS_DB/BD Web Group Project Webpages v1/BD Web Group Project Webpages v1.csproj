@@ -57,6 +57,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="404.aspx" />
     <Content Include="App_Data\DatingWebsite.mdf" />
     <Content Include="App_Data\DatingWebsite_log.ldf">
       <DependentUpon>DatingWebsite.mdf</DependentUpon>
@@ -71,6 +72,7 @@
     <Content Include="Images\blank-profile-grey.png" />
     <Content Include="Images\DreamDate.png" />
     <Content Include="Images\DreamDateHeader.png" />
+    <Content Include="Images\dreamdate_brokenheart.png" />
     <Content Include="Images\rsz_1008006-glossy-black-icon-arrows-arrowhead2-right.png" />
     <Content Include="MyMessages.aspx" />
     <Content Include="RSSNews.aspx" />
@@ -81,6 +83,13 @@
     <Content Include="UploadImages.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="404.aspx.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="404.aspx.designer.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DashboardAccount.aspx.cs">
       <DependentUpon>DashboardAccount.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
