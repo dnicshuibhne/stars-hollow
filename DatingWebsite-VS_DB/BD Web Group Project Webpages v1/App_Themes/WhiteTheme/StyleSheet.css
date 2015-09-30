@@ -28,6 +28,7 @@ nav {
 section {
     color: white;
     background-color: #A352AA; /* purple */
+    border: 1px solid #824187; /* dark purple */
     border-radius: 40px;
     padding: 70px;
     width: 50vw;
@@ -201,15 +202,6 @@ html * {
     padding-left: 10px;
     padding-right: 10px;
 }
-
-
-/* The following style is used to display Validator controls in block format */
-/* I'm commenting it out for now until I can test the page's visual layout.
-
-span.validator[style*="inline"]{
-    display: block !important;
-}
-    */
 
 #bodyContents {
     margin-left: 300px;
@@ -648,4 +640,16 @@ span.validator[style*="inline"]{
     display: block;
     background-color: white;
     border-radius: 20px;
+}
+
+/* 404 styles */
+#fourohfourpage {
+    margin: 100px auto;
+    display: block;
+    width: 60vw;
+    background-color: #A352AA; /* purple */
+    border: 1px solid #824187; /* dark purple */
+    border-radius: 40px;
+    padding: 70px;
+    min-height: 30vh;
 }
