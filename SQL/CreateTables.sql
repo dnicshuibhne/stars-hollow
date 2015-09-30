@@ -1,8 +1,9 @@
 ﻿-- DROP TABLES --
+Drop Table [dbo].Messages
+Drop Table [dbo].UserImages
 Drop Table UserHobbies
-Drop Table UserImages
 Drop Table UserInformation
-Drop Table Messages
+DROP TABLE [dbo].[Conversation]
 Drop Table [dbo].[Users] 
 
 Drop Table AgeRange
@@ -15,7 +16,6 @@ Drop Table HairColor
 Drop Table Height
 Drop Table Hobbies
 Drop Table RelationshipStatus
-Drop Table MaritalStatus
 Drop Table SexualOrientation
 
 ------------------------------------------------------------------------------------------------------------------------------------------
@@ -74,11 +74,6 @@ CREATE TABLE [dbo].[RelationshipStatus] (
     PRIMARY KEY CLUSTERED ([RelationshipStatus] ASC)
 );
 
-CREATE TABLE [dbo].[MaritalStatus] (
-    [MaritalStatus] NVARCHAR (50) NOT NULL,
-    PRIMARY KEY CLUSTERED ([MaritalStatus] ASC)
-);
-
 CREATE TABLE [dbo].[SexualOrientation] (
     [SexualOrientation] NVARCHAR (50) NOT NULL,
     PRIMARY KEY CLUSTERED ([SexualOrientation] ASC)
@@ -100,22 +95,21 @@ CREATE TABLE [dbo].[Users] (
 CREATE TABLE [dbo].[UserInformation] (
     [UserID]             INT     NOT NULL,
 	[Age]           int  NULL,
-    [Build]              NVARCHAR (50)  NULL,
     [AgeRange]              NVARCHAR (50)  NULL,
+    [Build]              NVARCHAR (50)  NULL,
     [County]              NVARCHAR (50)  NULL,
     [Ethnicity]         NVARCHAR  (50)  NULL,
     [EyeColor]          NVARCHAR (50)  NULL,
     [Gender]             NVARCHAR (50)  NULL,
     [HairColor]         NVARCHAR (50)  NULL,
 	[Height]             NVARCHAR (50)  NULL,
-	--[Hobbies]             XML  NULL,
 	[IdealDate] NVARCHAR (MAX) NULL,
     [Profession]         NVARCHAR (50)  NULL,
 	[RelationshipStatus]            NVARCHAR  (50) NULL,
     [SexualOrientation]  NVARCHAR (50)  NULL,
     [Town]  NVARCHAR (50)  NULL,
     [ProfilePicturePath] NVARCHAR (MAX) NULL,
-    [Comments] NVARCHAR (50) NULL,
+    [Comments] NVARCHAR (300) NULL,
 	PRIMARY KEY CLUSTERED ([UserID] ASC),
 	FOREIGN KEY ([UserID]) REFERENCES [dbo].[Users]([UserID]),
     FOREIGN KEY ([Build]) REFERENCES [dbo].[Build] ([Build]),
@@ -137,36 +131,20 @@ CREATE TABLE [dbo].[UserInformation] (
     FOREIGN KEY ([UserID]) REFERENCES [dbo].[Users] ([UserID])
 	);
 
---------------------------------------------------------------------------------
 
---CREATE TABLE [dbo].[UserImages] (
---    [UserID]  INT NOT NULL,
---    [ImageID] INT NOT NULL,
---    PRIMARY KEY CLUSTERED ([ImageID] ASC, [UserId] ASC),
---    FOREIGN KEY ([UserID]) REFERENCES [dbo].[Users] ([UserID])
---);
-CREATE TABLE [dbo].[UserImages]
-(
-	[ImageID] INT IDENTITY (1, 1) NOT NULL PRIMARY KEY, 
-    [UserID] INT NOT NULL, 
-    [ImageFile] IMAGE NOT NULL, 
-    CONSTRAINT [FK_UserID_Users] FOREIGN KEY (UserID) REFERENCES Users(UserID)
-);
 ------------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------- MESSAGE TABLE ----------------------------------------------------------- 
+------------------------------------------------------------ CONVERSATION TABLE ----------------------------------------------------------- 
 ------------------------------------------------------------------------------------------------------------------------------------------
 
 
-CREATE TABLE [dbo].[Messages] (
-    [MessageID]  INT  IDENTITY (1, 1) NOT NULL,
-    [SenderID] INT NOT NULL,
-	[ReceiverID] INT NOT NULL,
-	[Timestamp] DATETIME NOT NULL,
-	[Content] NVarChar (MAX) NULL,
-    PRIMARY KEY CLUSTERED ([MessageID] ASC),
-    FOREIGN KEY ([SenderID]) REFERENCES [dbo].[Users] ([UserID]),
-	 FOREIGN KEY ([ReceiverID]) REFERENCES [dbo].[Users] ([UserID])
+CREATE TABLE [dbo].[Conversation] (
+    [ConversationID]  INT IDENTITY (1, 1) NOT NULL,
+    [ParticipantA_ID] INT NOT NULL,
+    [ParticipantB_ID] INT NOT NULL,
+    [MessageContent]  XML NULL,
+    PRIMARY KEY CLUSTERED ([ConversationID] ASC),
+	FOREIGN KEY ([ParticipantA_ID]) REFERENCES [dbo].[Users] ([UserID]),
+    FOREIGN KEY ([ParticipantB_ID]) REFERENCES [dbo].[Users] ([UserID])
 );
+
 --------------------------------------------------------------------------------
-
-

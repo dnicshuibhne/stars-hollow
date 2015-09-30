@@ -138,12 +138,6 @@ INSERT INTO [dbo].[RelationshipStatus] ([RelationshipStatus]) VALUES
 ('In An Open Relationship'),
 ('It''s Complicated')
 
-INSERT INTO [dbo].[MaritalStatus] ([MaritalStatus]) VALUES 
-('Divorced'),
-('Never Married'),
-('Seperated'),
-('Widowed')
-
 INSERT INTO [dbo].[SexualOrientation] ([SexualOrientation]) VALUES 
 ('Prefer Not To Say'),
 ('Gay'),
@@ -229,16 +223,10 @@ INSERT INTO [dbo].[UserHobbies] ([UserId], [HobbyID]) VALUES
 (7, 12)
 
 
------------------------------------------------------------------------------------------
-INSERT INTO [dbo].[Messages] ([SenderID], [ReceiverID], [Timestamp], [Content]) VALUES 
-(1, 2, '2015-01-01 00:00:00', 'Hey! What''s up?'),
-(2, 1, '2015-01-01 01:00:00', 'Not much :) How''s you?'),
-(1, 2, '2015-01-02 00:00:00', 'Pretty cool. Check out this cat gif!'),
-(2, 1, '2015-01-02 02:00:00', 'Haha noice!')
+--------------------------------------------------------------------------------
 
-
-
---
-
-
-
+SET IDENTITY_INSERT [dbo].[Conversation] ON
+INSERT INTO [dbo].[Conversation] ([ConversationID], [ParticipantA_ID], [ParticipantB_ID], [MessageContent]) VALUES (5, 20, 1, N'<Conversation><Message><SenderID>20</SenderID><TimeStamp>29/09/2015 17:59:38</TimeStamp><Content>Hello is this Hugo?</Content></Message><Message><SenderID>20</SenderID><TimeStamp>29/09/2015 17:59:38</TimeStamp><Content>Hugo? Hello Hugo?.</Content></Message><Message><SenderID>1</SenderID><TimeStamp>29/09/2015 17:59:38</TimeStamp><Content>I''m not Hugo</Content></Message><Message><SenderID>20</SenderID><TimeStamp>29/09/2015 17:59:38</TimeStamp><Content>Oh sorry Hugo</Content></Message></Conversation>')
+INSERT INTO [dbo].[Conversation] ([ConversationID], [ParticipantA_ID], [ParticipantB_ID], [MessageContent]) VALUES (7, 7, 1, N'<Conversation><Message><SenderID>7</SenderID><TimeStamp>29/09/2015 18:03:36</TimeStamp><Content>Hi, how are you finding the site?</Content></Message><Message><SenderID>1</SenderID><TimeStamp>29/09/2015 18:03:36</TimeStamp><Content>Hey, it''s pretty good. Very well made imo.</Content></Message><Message><SenderID>7</SenderID><TimeStamp>29/09/2015 18:03:36</TimeStamp><Content>I agree.</Content></Message><Message><SenderID>7</SenderID><TimeStamp>29/09/2015 18:03:36</TimeStamp><Content>Master craftsmanship I''d say</Content></Message></Conversation>')
+INSERT INTO [dbo].[Conversation] ([ConversationID], [ParticipantA_ID], [ParticipantB_ID], [MessageContent]) VALUES (8, 12, 1, N'<Conversation><Message><SenderID>12</SenderID><TimeStamp>29/09/2015 18:05:40</TimeStamp><Content>How did you get on on Saturday</Content></Message><Message><SenderID>1</SenderID><TimeStamp>29/09/2015 18:05:40</TimeStamp><Content>What was on Saturday?</Content></Message><Message><SenderID>1</SenderID><TimeStamp>29/09/2015 18:05:40</TimeStamp><Content>Wait, oh the cinema. Yeah it was nice. Good movie, highly recommended.</Content></Message><Message><SenderID>12</SenderID><TimeStamp>29/09/2015 18:05:40</TimeStamp><Content>Which film was it again?</Content></Message></Conversation>')
+SET IDENTITY_INSERT [dbo].[Conversation] OFF

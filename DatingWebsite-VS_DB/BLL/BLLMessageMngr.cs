@@ -22,12 +22,15 @@ namespace BLL
         private string orderNewToOld = "Timestamp DESC"; // newest to oldest
         private string orderOldToNew = "Timestamp ASC"; // oldest to newest
 
+        public BLLMessageMngr()
+        { }
+
         public BLLMessageMngr(int userID)
         {
             this.userID = userID;
-            messageManager = new DALMessageMngr();
-            
+            messageManager = new DALMessageMngr();    
         }
+
         public List<Conversation> getMessagesTest(int id)
         {
             //string filter = "true";//ReceiverID = '" + userID + "' OR SenderID = '" + userID + "'";
@@ -44,25 +47,25 @@ namespace BLL
             return selectedConvo;
         }
 
+        public bool AddNewConversation(Conversation newConvo)
+        {
+            bool isAddedSuccessfully = false;
+
+            try
+            {
+                messageManager.AddNewConversation(newConvo);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return isAddedSuccessfully;
+        }
+
         public void InsertIntoConvoTable(Conversation newConvo)
         {
             messageManager.InsertIntoConvoTable(newConvo);
         }
-
-        /* Unused functionality
-         * 
-        public DataRow[] getReceivedMessages()
-        {
-            string filter = "ReceiverID = '" + userID + "'";
-            return allMessages.Select(filter, orderNewToOld);//filters and sorts results
-        }
-
-        public DataRow[] getSentMessages()
-        {
-            string filter = "SenderID = '" + userID + "'";
-            return allMessages.Select(filter, orderNewToOld);//filters and sorts results
-        }
-         * 
-         */
     }
 }

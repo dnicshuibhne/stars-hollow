@@ -20,7 +20,7 @@
                 <br />
                 <asp:Label ID="lblComments" runat="server" Text="Bio"></asp:Label>
                 <asp:TextBox ID="txtComments" runat="server"></asp:TextBox>
-                <asp:RegularExpressionValidator ID="regxvComments" runat="server" ControlToValidate="txtComments" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9\s\,\.\-]+" ValidationGroup="vgRegisterPage1"><br />Your bio may only contain the following characters: <br /> [A-Z] [a-z] [0-9] [space] [,] [.] [-]</asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator ID="regxvComments" runat="server" ControlToValidate="txtComments" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9\s\,\.\-\']+" ValidationGroup="vgRegisterPage1"><br />Your bio may only contain the following characters: <br /> [A-Z] [a-z] [0-9] [space] [,] [.] [-]</asp:RegularExpressionValidator>
                 <br />
                 <br />
                 <asp:Label ID="lblCounty" runat="server" Text="County"></asp:Label>

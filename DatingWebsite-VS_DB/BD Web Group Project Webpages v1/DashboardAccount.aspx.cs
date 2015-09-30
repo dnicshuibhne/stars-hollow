@@ -14,23 +14,54 @@ namespace BD_Web_Group_Project_Webpages_v1
     public partial class DashboardAccount : System.Web.UI.Page
     {
         BLLUserMngr userManager;
-        UserModel user;
+        UserModel user = new UserModel();
         protected void Page_Load(object sender, EventArgs e)
         {
-            userManager = new BLLUserMngr();
-            user = userManager.BLLGetCurrentUser(Session);
-            txtEmail.Text = user.Email;
+            try
+            {
+                userManager = new BLLUserMngr();
+                user = userManager.BLLGetCurrentUser(Session);
+                if (!IsPostBack)
+                {
+                    txtEmail.Text = user.Email;
+                }
+            }
+            catch (Exception)
+            {
+                //Log error
+                Response.Redirect("404.aspx");
+            }
         }
 
         protected void btnUpdateEmail_Click(object sender, EventArgs e)
         {
-            userManager.BLLUpdateUserEmail(txtEmail.Text);
-            user.Email = txtEmail.Text;
+            try
+            {
+                user.Email = txtNewEmail.Text;
+                userManager.BLLUpdateUserEmail(user);
+
+                lblChangeEmailFeedback.Text = "Email changed";
+                txtEmail.Text = user.Email;
+                txtNewEmail.Text = "";
+            }
+            catch (Exception)
+            {
+                //Log error
+                Response.Redirect("404.aspx");
+            }
         }
 
         protected void btnUpdatePwd_Click(object sender, EventArgs e)
         {
-            userManager.BLLUpdateUserPassword(txtNewPwd.Text);
+            try
+            {
+                userManager.BLLUpdateUserPassword(user, txtNewPwd.Text);
+            }
+            catch (Exception)
+            {
+                //Log error
+                Response.Redirect("404.aspx");
+            }
         }
     }
 }

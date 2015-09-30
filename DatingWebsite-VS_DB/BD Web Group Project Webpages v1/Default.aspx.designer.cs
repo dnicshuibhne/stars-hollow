@@ -22,15 +22,6 @@ namespace BD_Web_Group_Project_Webpages_v1 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl loginScreen;
         
         /// <summary>
-        /// valLogin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label valLogin;
-        
-        /// <summary>
         /// lblLoginUsername control.
         /// </summary>
         /// <remarks>
@@ -65,6 +56,15 @@ namespace BD_Web_Group_Project_Webpages_v1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtLoginPassword;
+        
+        /// <summary>
+        /// valLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label valLogin;
         
         /// <summary>
         /// btnCancel control.
