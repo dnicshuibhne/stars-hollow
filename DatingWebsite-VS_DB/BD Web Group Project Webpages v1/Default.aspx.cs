@@ -26,7 +26,7 @@ namespace BD_Web_Group_Project_Webpages_v1
 
                 if (user != null)
                 {
-                    Response.Redirect("DashboardPersonal.aspx");
+                    Response.Redirect("SearchFor.aspx");
                 }
                 else if (!IsPostBack)
                 {
@@ -121,7 +121,7 @@ namespace BD_Web_Group_Project_Webpages_v1
                     user.Hobbies = userManager.BLLGetHobbies(user.ID).Keys.ToList<int>();
 
                     setCurrentUser(user);
-                    Response.Redirect("DashboardPersonal.aspx", true);
+                    Response.Redirect("SearchFor.aspx", true);
                 }
                 else
                 {
