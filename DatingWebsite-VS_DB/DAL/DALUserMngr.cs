@@ -161,13 +161,17 @@ namespace DAL //Data Access Layer
 
         public void DALUpdateUserDetails(UserModel user)
         {
-            string addHobbiesQuery = "INSERT " + Resources.USER_HOBBIES_TABLE + " VALUES ";
-            foreach (int hobbyID in user.Hobbies)
-            {
-                addHobbiesQuery += string.Format("({0},{1}),", user.ID, hobbyID);
-            }
-            addHobbiesQuery = addHobbiesQuery.Substring(0, addHobbiesQuery.Length - 1);
+            string addHobbiesQuery = string.Empty;
 
+            if (user.Hobbies != null && user.Hobbies.Count > 0)
+            {
+                addHobbiesQuery = "INSERT " + Resources.USER_HOBBIES_TABLE + " VALUES ";
+                foreach (int hobbyID in user.Hobbies)
+                {
+                    addHobbiesQuery += string.Format("({0},{1}),", user.ID, hobbyID);
+                }
+                addHobbiesQuery = addHobbiesQuery.Substring(0, addHobbiesQuery.Length - 1);
+            }
             using (SqlConnection con = new SqlConnection(conString))
             {
                 using (SqlCommand cmd = new SqlCommand(Resources.USER_DETAILS_UPDATE_PROC, con))
@@ -212,11 +216,13 @@ namespace DAL //Data Access Layer
                         con.Open();
                         int rowsAffected = cmd.ExecuteNonQuery();
 
-                        cmd.Parameters.Clear();
-                        cmd.CommandType = CommandType.Text;
-                        cmd.CommandText = addHobbiesQuery;
-                        rowsAffected = cmd.ExecuteNonQuery();
-
+                        if (addHobbiesQuery != null && addHobbiesQuery.Length > 0)
+                        {
+                            cmd.Parameters.Clear();
+                            cmd.CommandType = CommandType.Text;
+                            cmd.CommandText = addHobbiesQuery;
+                            rowsAffected = cmd.ExecuteNonQuery();
+                        }
                     }
                     catch (SqlException e)
                     {
@@ -425,40 +431,40 @@ namespace DAL //Data Access Layer
         }
 
 
-        //public Dictionary<int, string> DALGetUserHobbies(int id)
-        //{
-        //    Dictionary<int, String> hobbies = null;
-        //    SqlDataReader reader;
+        public Dictionary<int, string> DALGetUserHobbies(int id)
+        {
+            Dictionary<int, String> hobbies = null;
+            SqlDataReader reader;
 
-        //    using (SqlConnection con = new SqlConnection(conString))
-        //    {
-        //        using (SqlCommand cmd = new SqlCommand(Resources.GET_USER_HOBBIES_PROC, con))
-        //        {
-        //            cmd.CommandType = CommandType.StoredProcedure;
-        //            cmd.Parameters.Add(Resources.USERID_PARAM, SqlDbType.Int).Value = id;
+            using (SqlConnection con = new SqlConnection(conString))
+            {
+                using (SqlCommand cmd = new SqlCommand(Resources.GET_USER_HOBBIES_PROC, con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(Resources.USERID_PARAM, SqlDbType.Int).Value = id;
 
-        //            try
-        //            {
-        //                con.Open();
-        //                hobbies = new Dictionary<int, string>();
-        //                reader = cmd.ExecuteReader();
-        //                while (reader.Read())
-        //                {
-        //                    hobbies.Add(reader.GetInt32(0), reader.GetString(1));
-        //                }
-        //            }
-        //            catch (SqlException e)
-        //            {
-        //                throw;
-        //            }
-        //            finally
-        //            {
-        //                con.Close();
-        //            }
-        //        }
-        //    }
-        //    return hobbies;
-        //}
+                    try
+                    {
+                        con.Open();
+                        hobbies = new Dictionary<int, string>();
+                        reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            hobbies.Add(reader.GetInt32(0), reader.GetString(1));
+                        }
+                    }
+                    catch (SqlException e)
+                    {
+                        throw;
+                    }
+                    finally
+                    {
+                        con.Close();
+                    }
+                }
+            }
+            return hobbies;
+        }
 
         public DataTable DALGetUserHobbiesTable(int id)
         {
