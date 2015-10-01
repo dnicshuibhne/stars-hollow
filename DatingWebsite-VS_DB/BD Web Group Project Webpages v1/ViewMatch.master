@@ -14,7 +14,7 @@
                 
                 <Items>
                     <asp:MenuItem NavigateUrl="~/ViewMatchProfile.aspx" Text="View Profile" value="View Profile"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/ViewMatchGallery.aspx" Text="View Gallery" value="View Details"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/404.aspx" Text="View Gallery" value="View Details"></asp:MenuItem>
                 </Items>
                 <StaticMenuItemStyle BorderColor="#CCCCCC" BorderStyle="Solid" BorderWidth="1px" HorizontalPadding="20px" VerticalPadding="35px" Width="100px" />
                 <StaticSelectedStyle BackColor="#333333" ForeColor="White" />
