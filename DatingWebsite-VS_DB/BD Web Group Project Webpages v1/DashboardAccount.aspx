@@ -33,20 +33,21 @@
             <br />
             <br />
             <asp:Label ID="lblCurrentPwd" runat="server" Text="Current Password " ></asp:Label>
-            <asp:TextBox ID="txtCurrentPwd" runat="server" CssClass="loginTextBox" ValidationGroup="vgUpdatePwd" ></asp:TextBox>
+            <asp:TextBox ID="txtCurrentPwd" runat="server" CssClass="loginTextBox" ValidationGroup="vgUpdatePwd" TextMode="Password" ></asp:TextBox>
             <asp:RegularExpressionValidator ID="regxvCurrentPwd" runat="server" ControlToValidate="txtCurrentPwd" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9_\s\!\@]{6,12}" ValidationGroup="vgUpdatePwd"> Your password must be 6-12 characters long and may only contain the following characters: [A-Z] [a-z] [0-9] [_] [!] [@]</asp:RegularExpressionValidator>
                 <asp:RequiredFieldValidator ID="rfvCurrentPwd" runat="server" ControlToValidate="txtCurrentPwd" Display="Dynamic" CssClass="validator" ValidationGroup="vgUpdatePwd"> Required</asp:RequiredFieldValidator>
             <br />      
             <asp:Label ID="lblNewPwd" runat="server" Text="New Password " ></asp:Label>
-            <asp:TextBox ID="txtNewPwd" runat="server" CssClass="loginTextBox" ValidationGroup="vgUpdatePwd" ></asp:TextBox>
+            <asp:TextBox ID="txtNewPwd" runat="server" CssClass="loginTextBox" ValidationGroup="vgUpdatePwd" TextMode="Password" ></asp:TextBox>
             <asp:RegularExpressionValidator ID="regxvNewPwd" runat="server" ControlToValidate="txtNewPwd" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9_\s\!\@]{6,12}" ValidationGroup="vgUpdatePwd"> Your password must be 6-12 characters long and may only contain the following characters: [A-Z] [a-z] [0-9] [_] [!] [@]</asp:RegularExpressionValidator>
                 <asp:RequiredFieldValidator ID="rfvNewPwd" runat="server" ControlToValidate="txtNewPwd" Display="Dynamic" CssClass="validator" ValidationGroup="vgUpdatePwd"> Required</asp:RequiredFieldValidator>
             <br />      
             <asp:Label ID="lblConfirmPwd" runat="server" Text="Confirm Password " ></asp:Label>
-            <asp:TextBox ID="txtConfirmPwd" runat="server" CssClass="loginTextBox" ValidationGroup="vgUpdatePwd" ></asp:TextBox>
+            <asp:TextBox ID="txtConfirmPwd" runat="server" CssClass="loginTextBox" ValidationGroup="vgUpdatePwd" TextMode="Password" ></asp:TextBox>
             <asp:RegularExpressionValidator ID="regxvConfirmPwd" runat="server" ControlToValidate="txtConfirmPwd" Display="Dynamic" CssClass="validator" ValidationExpression="[A-Za-z0-9_\s\!\@]{6,12}" ValidationGroup="vgUpdatePwd"> Your password must be 6-12 characters long and may only contain the following characters: [A-Z] [a-z] [0-9] [_] [!] [@]</asp:RegularExpressionValidator>
                 <asp:CompareValidator ID="cvConfirmPwd" runat="server" ControlToCompare="txtNewPwd" ControlToValidate="txtConfirmPwd" Display="Dynamic" CssClass="validator" ValidationGroup="vgUpdatePwd"> Your passwords don\'t match</asp:CompareValidator>
                 <asp:RequiredFieldValidator ID="rfvConfirmPwd" runat="server" ControlToValidate="txtConfirmPwd" Display="Dynamic" CssClass="validator" ValidationGroup="vgUpdatePwd"> Required</asp:RequiredFieldValidator>
+            <asp:Label ID="lblChangePwdFeedback" runat="server" Text=""></asp:Label>
             <br />
             <br />
             <br />

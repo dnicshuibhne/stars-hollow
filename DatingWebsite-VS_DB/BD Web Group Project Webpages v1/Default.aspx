@@ -138,9 +138,9 @@
         <div class="defaultTextBox">
             <h1>About us</h1>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed cursus tellus. Proin quis bibendum tortor. Morbi quis pulvinar ex. 
-                Suspendisse mollis ullamcorper mauris a volutpat. Morbi nec orci quis elit mollis ultrices et sit amet ante. Nunc sodales diam lacinia maximus efficitur. 
-                Pellentesque consectetur, justo nec ornare euismod, ante ligula maximus libero, sit amet gravida odio orci at ipsum.
+                Dream Date is the newest dating website dedicated to finding your match anywhere in Ireland. Whether you're looking for something romantic or 
+                just a good time, Dream date is perfect for connecting with people of all shapes and sizes. It uses the most cutting edge of software
+                technologies to ensure an accessible and memorable experience for all visitors, no matter their familiarity with contemporary dating sites.
             </p>
         </div>
         <div class="defaultCardBuffer"></div>
@@ -152,9 +152,9 @@
         <div class="defaultTextBox">
             <h1>Find your match</h1>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed cursus tellus. Proin quis bibendum tortor. Morbi quis pulvinar ex. 
-                Suspendisse mollis ullamcorper mauris a volutpat. Morbi nec orci quis elit mollis ultrices et sit amet ante. Nunc sodales diam lacinia maximus efficitur. 
-                Pellentesque consectetur, justo nec ornare euismod, ante ligula maximus libero, sit amet gravida odio orci at ipsum.
+                With our streamlined design, finding your match is easier than ever. Head over to our search page to pick what 
+                sort of person you're interested in, or fill in your own details through the dashboard to put yourelf out there.
+                You're five clicks away from messaging your perfect match.
             </p>
         </div>
         <div class="defaultCardBuffer"></div>

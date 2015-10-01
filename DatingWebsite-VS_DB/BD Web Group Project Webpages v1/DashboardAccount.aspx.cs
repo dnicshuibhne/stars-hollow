@@ -57,6 +57,11 @@ namespace BD_Web_Group_Project_Webpages_v1
             try
             {
                 userManager.BLLUpdateUserPassword(user, txtNewPwd.Text);
+
+                lblChangePwdFeedback.Text = "Password changed";
+
+                txtNewPwd.Text = "";
+                txtConfirmPwd.Text = "";
             }
             catch (Exception)
             {
