@@ -9,7 +9,7 @@
     <div class="contentWrapper">
         <div class="detailsBoxOutline">
             <asp:Label ID="lblEmail" runat="server" Text="Email Address " ></asp:Label>
-            <asp:TextBox ID="txtEmail" runat="server" CssClass="loginTextBox" ValidationGroup="vgUpdateEmail" ></asp:TextBox>
+            <asp:TextBox ID="txtEmail" runat="server" CssClass="loginTextBox" ValidationGroup="vgUpdateEmail" ReadOnly="True"></asp:TextBox>
             <asp:RegularExpressionValidator ID="regxvEmail" runat="server" ControlToValidate="txtEmail" Display="Dynamic" CssClass="validator" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" ValidationGroup="vgUpdateEmail">Please enter a valid email address, eg. example@web.com</asp:RegularExpressionValidator>
                 <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ControlToValidate="txtEmail" Display="Dynamic" CssClass="validator" ValidationGroup="vgUpdateEmail"> Required</asp:RequiredFieldValidator>
             <br />

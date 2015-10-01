@@ -22,8 +22,16 @@ namespace BD_Web_Group_Project_Webpages_v1
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
             userManager = new BLLUserMngr();
             user = userManager.BLLGetCurrentUser(Session);
+            }
+            catch (Exception)
+            {
+                //Log error
+                Response.Redirect("404.aspx", false);
+            }
             if (!IsPostBack)
             {
                 /*Retrieve and load the values of each attribute*/

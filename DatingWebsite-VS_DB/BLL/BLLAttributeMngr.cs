@@ -12,7 +12,7 @@ namespace BLL
 {
     public class BLLAttributeMngr
     {
-        /* Attribute Table Names */
+        /* Fetches the attribute values on creation, the passes the attribute subset as required */
 
         private DALAttributeMngr attributeManager; // Database Access Layer Manager
         private DataTable attributes;
@@ -37,15 +37,6 @@ namespace BLL
             return attValues;
         }
 
-        //private DataTable GetAttributeSubTable(string TableName)
-        //{
-        //    DataRow[] rows = attributes.Select("Attribute" + " = '" + TableName + "'");
-        //    DataTable table = new DataTable(TableName);
-        //    foreach(DataRow row in rows)
-        //        table.Rows.Add(row[1].ToString());
-        //    return table;
-        //}
-
         /*Methods to individually retrieve specific attributes*/
         public List<string> BLLGetEyeColor() { return GetAttributeValues(Resources.EYE_COLOR_TABLE); }
         public List<string> BLLGetGenders() { return GetAttributeValues(Resources.GENDER_TABLE); }
@@ -59,7 +50,5 @@ namespace BLL
         public List<string> BLLGetAgeRange() { return GetAttributeValues(Resources.AGE_RANGE_TABLE); }
 
         public DataTable BLLGetHobbiesTable() { return attributeManager.DALGetHobbiesTable(); }
-        //public Dictionary<int,string> BLLGetHobbies() { return attributeManager.DALGetHobbies(); }
-
     }
 }

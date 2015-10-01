@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//
+// ADDED IMPORTS
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
@@ -13,6 +13,7 @@ namespace DAL // Data Access Layer
 {
     public class DALAttributeMngr
     {
+        /* The purpose of this class is to retrieve the attributes that users can select and search.*/
         private string conString;
         private DataTable attributes;
         public DataTable Attributes { get { return attributes; } }
@@ -24,34 +25,6 @@ namespace DAL // Data Access Layer
             attributes = DALGetAllAttributes();
         }
 
-        /*
-         * Gets all the values for a particular attribute
-         * The input is the name of the attribute's table in the database
-         */
-        //public DataTable DALGetAttribute(String attributeTable)
-        //{
-        //    string sql = string.Format("SELECT * FROM {0}", attributeTable);
-        //    DataTable data = new DataTable();
-
-        //    using (SqlConnection con = new SqlConnection(conString))
-        //    {
-        //        using (SqlDataAdapter adapter = new SqlDataAdapter())
-        //        {
-        //            adapter.SelectCommand = new SqlCommand(sql, con);
-        //            adapter.SelectCommand.CommandType = CommandType.Text;
-
-        //            con.Open();
-        //            int rowsAffected = adapter.Fill(data);
-
-        //            if (rowsAffected < 1)
-        //            {
-        //                throw new Exception("No Results Returned from table: " + attributeTable);
-        //            }
-        //            con.Close();
-        //        }
-        //    }
-        //    return data;
-        //}
 
         /*
          * Returns all the possible attributes required for registration
@@ -93,6 +66,7 @@ namespace DAL // Data Access Layer
             return table;
         }
 
+        /* Returns the ids and names of all hoby values in a dictionary*/
         public Dictionary<int, string> DALGetHobbies()
         {
             Dictionary<int, string> hobbies;
@@ -126,6 +100,7 @@ namespace DAL // Data Access Layer
             return hobbies;
         }
 
+        /* Returns the ids and names of all hobby values in a table*/
         public DataTable DALGetHobbiesTable()
         {
             DataTable table = null;
@@ -158,6 +133,5 @@ namespace DAL // Data Access Layer
             }
             return table;
         }
-
     }
 }

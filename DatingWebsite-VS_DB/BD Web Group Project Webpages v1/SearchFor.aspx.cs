@@ -30,7 +30,8 @@ namespace BD_Web_Group_Project_Webpages_v1
         public string Town { get { return txtTown.Text; } }
         public List<int> Hobbies 
         { 
-            get {
+            get
+            {
                 List<int> hobbies = new List<int>();
                 foreach (ListItem item in cblHobbies.Items)
                 {
@@ -43,6 +44,8 @@ namespace BD_Web_Group_Project_Webpages_v1
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
             attributeManager = new BLLAttributeMngr();
 
             if (!IsPostBack)
@@ -50,9 +53,17 @@ namespace BD_Web_Group_Project_Webpages_v1
                 getAttributes();
             }
         }
+            catch (Exception)
+            {
+                //Log error
+                Response.Redirect("404.aspx", false);
+            }
+        }
 
         private void getAttributes()
         {
+            try
+            {
             attributes = attributeManager.BLLGetAgeRange();
             ddlAgeRange.DataSource = attributes;
             ddlAgeRange.DataBind();
@@ -85,6 +96,12 @@ namespace BD_Web_Group_Project_Webpages_v1
             cblHobbies.DataValueField = Resources.HOBBIES_ID_COLUMN;
             cblHobbies.DataTextField = Resources.HOBBIES_NAME_COLUMN;
             cblHobbies.DataBind();
+            }
+            catch (Exception)
+            {
+                //Log error
+                Response.Redirect("404.aspx", false);
+            }
         }
     }
 }

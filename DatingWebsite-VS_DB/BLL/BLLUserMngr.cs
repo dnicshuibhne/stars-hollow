@@ -53,11 +53,6 @@ namespace BLL //Business Logic Layer
             return DalUserManager.DALUserExists(username);
         }
 
-        //public void BLLAddUserInformation(Dictionary<string, string> userAttributes)
-        //{
-        //    DalUserManager.addUserInformation(userAttributes);
-        //}
-
         public void BLLUpdateUser(UserModel user)
         {
             DalUserManager.DALUpdateUserDetails(user);
@@ -68,9 +63,9 @@ namespace BLL //Business Logic Layer
             DalUserManager.DALUpdateUserEmail(selectedUser);
         }
 
-        public void BLLUpdateUserPassword(String password)
+        public void BLLUpdateUserPassword(UserModel user, String password)
         {
-            DalUserManager.DALUpdateUserPassword(password);
+            DalUserManager.DALUpdateUserPassword(user, password);
         }
 
         public UserModel BLLGetUser(int id)
