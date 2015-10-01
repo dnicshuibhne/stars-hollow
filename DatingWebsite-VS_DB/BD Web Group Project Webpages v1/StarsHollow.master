@@ -22,7 +22,7 @@
                     <asp:MenuItem NavigateUrl="~/DashboardPersonal.aspx" Text="Dashboard" Value="Dashboard">
                         <asp:MenuItem NavigateUrl="~/DashboardPersonal.aspx" Text="Edit Personal Details" value="Edit Personal Details"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/DashboardAccount.aspx" Text="Edit Account Details" value="Edit Account Details"></asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/MyGallery.aspx" Text="My Gallery" value="My Gallery"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/404.aspx" Text="My Gallery" value="My Gallery"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/MyMessages.aspx" Text="My Messages" value="My Messages"></asp:MenuItem>
                         <asp:MenuItem Text="View My Profile" value="View My Profile"></asp:MenuItem>
                     </asp:MenuItem>
@@ -49,8 +49,7 @@
                     <asp:MenuItem NavigateUrl="~/DashboardPersonal.aspx" Text="Edit Personal Details" value="Edit Personal Details"></asp:MenuItem>
                     <asp:MenuItem NavigateUrl="~/DashboardAccount.aspx" Text="Edit Account Details" value="Edit Account Details"></asp:MenuItem>
                     <asp:MenuItem NavigateUrl="~/MyGallery.aspx" Text="My Gallery" value="My Gallery"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/MyMessages.aspx" Text="My Messages" value="My Messages"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/MyProfile.aspx" Text="View My Profile" value="View My Profile"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/404.aspx" Text="My Messages" value="My Messages"></asp:MenuItem>
                     <asp:MenuItem NavigateUrl="~/SearchFor.aspx" Text="Search" Value="Search"></asp:MenuItem>
                 </Items>
         
@@ -63,8 +62,8 @@
         <div id="footerRight">
             <h3>Website created by</h3>
             <p>Doireann Nic Shuibhne</p>
-            <p>Claire Delaney</p>
             <p>Stephen Beirne</p>
+            <p>Claire Delaney</p>
         </div>
         <div id="footerbottom">
             Copyright &copy 2015

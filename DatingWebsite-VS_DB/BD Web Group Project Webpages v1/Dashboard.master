@@ -14,7 +14,7 @@
                     <Items>
                         <asp:MenuItem NavigateUrl="~/DashboardPersonal.aspx" Text="Edit Personal Details" value="Edit Personal Details"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/DashboardAccount.aspx" Text="Edit Account Details" value="Edit Account Details"></asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/MyGallery.aspx" Text="My Gallery" value="My Gallery"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/404.aspx" Text="My Gallery" value="My Gallery"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/MyMessages.aspx" Text="My Messages" value="My Messages"></asp:MenuItem>
                         <asp:MenuItem Text="View My Profile" value="View My Profile"></asp:MenuItem>
                     </Items>
