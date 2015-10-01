@@ -16,7 +16,7 @@ namespace BD_Web_Group_Project_Webpages_v1
     {
         BLLMessageMngr messageManager;
         BLLUserMngr userManager;
-        UserModel user;
+        static UserModel user;
         string sentCss = "myMessage";
         string receivedCss = "theirMessage";
         static List<Conversation> conversationList;
@@ -33,7 +33,7 @@ namespace BD_Web_Group_Project_Webpages_v1
                 // Check if query string contains ConversationID value
                 String selectedConvoID = Request.ServerVariables["QUERY_STRING"];
 
-                if (selectedConvoID.Length > 0)
+                if (selectedConvoID.Length > 0 && conversationList.Count > 0)
                 {
                     /* If a conversation was selected, retreive the selected conversation 
                      * according to its ID in conversation<List> and present its messages to the user.
@@ -55,12 +55,11 @@ namespace BD_Web_Group_Project_Webpages_v1
                         PopulateMessageThread(selectedConversation);
                     }
                 }
-            try{
+            try
+            {
                 userManager = new BLLUserMngr();
                 user = userManager.BLLGetCurrentUser(Session);
 
-            user = new UserModel();
-            user.ID = 1;
                 messageManager = new BLLMessageMngr(user.ID);
                 getMessages();
             }
