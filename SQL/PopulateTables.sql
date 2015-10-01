@@ -181,27 +181,11 @@ INSERT INTO [dbo].[Users] ([Username], [Password], [Email]) VALUES
 ('claire', 'password', 'claire@gmail.com')
 --------------------------------------------------------------------------------
 
---INSERT INTO [dbo].[UserInformation] ([UserID],[Age],[Build],[AgeRange],[County],[Ethnicity],[EyeColor],[Gender],[HairColor],[Height],[Hobbies],[IdealDate],[Profession],[RelationshipStatus],[SexualOrientation],[Town],[ProfilePicturePath])
---VALUES
---(1,18,'Athletic','18-25','Dublin','White','Brown','Male','Black','5''2"',null,'Cinema','Accountant','Single','Straight','Rathmines',null),
---(2,19,'Average','18-25','Kildare','Black','Brown','Female','Black','5''3"',null,'Picnic','Teacher','Single','Prefer Not To Say','Cellbridge',null),
---(3,21,'Slim','18-25','Kildare','Prefer Not To Say','Gree','Male','Brown','5''2"',null,'Paris','Engineer','Single','Other','Leixlip',null),
---(4,27,'Large','26-32','Dublin','White','Hazel','Female','Red','5''4"',null,'Sailing','Chef','Single','Gay','Raheny',null),
---(5,42,'Slim','40+','Dublin','East Indian','Grey','Male','Grey','5''5"',null,'Dinner','Nurse','Single','Straight','Donaghmede',null),
---(6,50,'Muscular','40+','Kildare','Asian','Gree','Female','Bald','5''5"',null,'Night I','Doctor','Single','Straight','Newbridge',null),
---(7,34,'Slim','33-39','Dublin','Latin','Blue','Male','Blonde','5''5"',null,'Hiking','Butcher','Single','Straight','Harmonstow',null),
---(8,37,'Large','33-39','Dublin','Other','Brown','Female','Black','5''5"',null,'Hanging with friends','Baker','Single','Straight','Clontarf',null),
---(9,26,'Muscular','26-32','Dublin','Black','Blue','Other','Blonde','5''5"',null,'Coffee','Fashion Designer','Single','Gay','Howth',null),
---(10,24,'Slim','26-32','Louth','White','Blue','Prefer Not To Say','Brown','5''8"',null,'Cinema','Nurse','Single','Gay','Dundalk',null),
---(11,54,'Large','40+','Kerry','White','Brown','Female','Bald','5''7"',null,'Picnic','Teacher','It''s Complicated','Other','Tralee',null),
---(12,40,'Average','40+','Sligo','White','Blue','Male','Black','5''6"',null,'Paris','Solicitor','In An Open Relationship','Straight','Sligo',null),
---(13,42,'Athletic','40+','Cork','White','Blue','Female','Blonde','6''1"',null,'Sailing','Dentist','It''s Complicated','Straight','Ballincollig',null)
-
 INSERT INTO [dbo].[UserInformation] ([UserID],[Age],[Build],[AgeRange],[County],[Ethnicity],[EyeColor],[Gender],[HairColor],[Height],[IdealDate],[Profession],[RelationshipStatus],[SexualOrientation],[Town],[ProfilePicturePath])
 VALUES
-(1,18,'Athletic','18-25','Dublin','White','Brown','Male','Black','5''2"','Cinema','Accountant','Single','Straight','Rathmines',null),
-(2,19,'Average','18-25','Kildare','Black','Brown','Female','Black','5''3"','Picnic','Teacher','Single','Prefer Not To Say','Cellbridge',null),
-(3,21,'Slim','18-25','Kildare','Prefer Not To Say','Gree','Male','Brown','5''2"','Paris','Engineer','Single','Other','Leixlip',null),
+(1,18,'Athletic','18-25','Dublin','White','Brown','Female','Black','5''2"','Cinema','Accountant','Single','Straight','Rathmines',null),
+(2,19,'Average','18-25','Kildare','Black','Brown','Male','Black','5''3"','Picnic','Teacher','Single','Prefer Not To Say','Cellbridge',null),
+(3,21,'Slim','18-25','Kildare','Prefer Not To Say','Green','Female','Brown','5''2"','Paris','Engineer','Single','Other','Leixlip',null),
 (4,27,'Large','26-32','Dublin','White','Hazel','Female','Red','5''4"','Sailing','Chef','Single','Gay','Raheny',null),
 (5,42,'Slim','40+','Dublin','East Indian','Grey','Male','Grey','5''5"','Dinner','Nurse','Single','Straight','Donaghmede',null),
 (6,50,'Muscular','40+','Kildare','Asian','Gree','Female','Bald','5''5"','Night I','Doctor','Single','Straight','Newbridge',null),
