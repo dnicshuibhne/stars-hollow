@@ -24,45 +24,50 @@ namespace BD_Web_Group_Project_Webpages_v1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Instantiate selectedConversation, if required.
-            if (selectedConversation == null)
+            try
             {
-                selectedConversation = new Conversation();
-            }
-
-            // Check if query string contains ConversationID value
-            String selectedConvoID = Request.ServerVariables["QUERY_STRING"];
-
-            if (selectedConvoID.Length > 0)
-            {
-                /* If a conversation was selected, retreive the selected conversation 
-                 * according to its ID in conversation<List> and present its messages to the user.
-                 * */
-                int selectedIDasInt;
-                if (int.TryParse(selectedConvoID, out selectedIDasInt))
+                // Instantiate selectedConversation, if required.
+                if (selectedConversation == null)
                 {
-                    for (int i = 0; i < conversationList.Count; i++ )
-                    {
-                        if (conversationList.ElementAt(i).ConversationID.Equals(selectedIDasInt))
-                        {
-                            selectedConversation = conversationList.ElementAt(i);
-                            break;
-                        }
-                    }
-
-                    mySummaries.Visible = false;
-                    MessageThread.Visible = true;
-                    PopulateMessageThread(selectedConversation);
+                    selectedConversation = new Conversation();
                 }
+
+                // Check if query string contains ConversationID value
+                String selectedConvoID = Request.ServerVariables["QUERY_STRING"];
+
+                if (selectedConvoID.Length > 0)
+                {
+                    /* If a conversation was selected, retreive the selected conversation 
+                     * according to its ID in conversation<List> and present its messages to the user.
+                     * */
+                    int selectedIDasInt;
+                    if (int.TryParse(selectedConvoID, out selectedIDasInt))
+                    {
+                        for (int i = 0; i < conversationList.Count; i++)
+                        {
+                            if (conversationList.ElementAt(i).ConversationID.Equals(selectedIDasInt))
+                            {
+                                selectedConversation = conversationList.ElementAt(i);
+                                break;
+                            }
+                        }
+
+                        mySummaries.Visible = false;
+                        MessageThread.Visible = true;
+                        PopulateMessageThread(selectedConversation);
+                    }
+                }
+
+                userManager = new BLLUserMngr();
+                user = userManager.BLLGetCurrentUser(Session);
+
+                messageManager = new BLLMessageMngr(user.ID);
+                getMessages();
             }
-
-            userManager = new BLLUserMngr();
-            user = userManager.BLLGetCurrentUser(Session);
-
-            user = new UserModel();
-            user.ID = 1;
-            messageManager = new BLLMessageMngr(user.ID);
-            getMessages();
+            catch (Exception)
+            {
+                //throw;
+            }
         }
         
         private void getMessages()
@@ -136,15 +141,12 @@ namespace BD_Web_Group_Project_Webpages_v1
 
         public string getCssClass(int senderID)
         {
-            ///* 
-            // * 
-            // * TEMPORARY WORKAROUND FOR ME WHILE I'M NOT LOGGED IN
-            // * 
-            // * */
-            //user = new UserModel();
-            //user.ID = 1;
-            ////
-            
+            if (user == null)
+            {
+                userManager = new BLLUserMngr();
+                user = userManager.BLLGetCurrentUser(Session);
+            }
+
             if (user.ID.Equals(senderID))
                 return sentCss;
             else 

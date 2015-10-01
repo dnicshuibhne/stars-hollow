@@ -53,9 +53,14 @@ namespace BLL
 
             try
             {
-                messageManager.AddNewConversation(newConvo);
+                messageManager = new DALMessageMngr();
+
+                if (messageManager.AddNewConversation(newConvo))
+	            {
+                    isAddedSuccessfully = true;
+	            }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
             }

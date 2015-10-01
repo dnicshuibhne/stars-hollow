@@ -252,8 +252,13 @@ namespace DAL
                         #endregion
 
                         con.Open();
-                        cmd.ExecuteNonQuery();
+                        int count = cmd.ExecuteNonQuery();
                         con.Close();
+
+                        if (count > 0)
+                        {
+                            isAddedSuccessfully = true;
+                        }
                     }
                 }
             }
