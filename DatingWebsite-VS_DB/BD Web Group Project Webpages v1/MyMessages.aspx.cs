@@ -24,8 +24,6 @@ namespace BD_Web_Group_Project_Webpages_v1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            try
-            {
                 // Instantiate selectedConversation, if required.
                 if (selectedConversation == null)
                 {
@@ -57,16 +55,19 @@ namespace BD_Web_Group_Project_Webpages_v1
                         PopulateMessageThread(selectedConversation);
                     }
                 }
-
+            try{
                 userManager = new BLLUserMngr();
                 user = userManager.BLLGetCurrentUser(Session);
 
+            user = new UserModel();
+            user.ID = 1;
                 messageManager = new BLLMessageMngr(user.ID);
                 getMessages();
             }
             catch (Exception)
             {
-                //throw;
+                //Log error
+                Response.Redirect("404.aspx");
             }
         }
         

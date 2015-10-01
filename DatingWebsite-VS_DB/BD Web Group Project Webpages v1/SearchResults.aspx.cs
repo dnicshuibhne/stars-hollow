@@ -20,12 +20,20 @@ namespace BD_Web_Group_Project_Webpages_v1
         BLLAttributeMngr attributeManager;
         List<string> attributes;
         List<UserModel> foundUsers;
-        int resultsAtATime = 2;
+        int resultsAtATime = 20; /* In future features a control can be added to allow the user to set this value*/
         int resultsIndex = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            try
+            {
             searchManager = new BLLSearchMngr();
+            }
+            catch (Exception)
+            {
+                //Log error
+                Response.Redirect("404.aspx", false);
+            }
 
             if (!IsPostBack)
             {
@@ -40,9 +48,10 @@ namespace BD_Web_Group_Project_Webpages_v1
                     attributeManager = new BLLAttributeMngr();
                     getAttributes();
                 }
-                catch (SqlException e2)
+                catch (Exception)
                 {
-                    throw;//???
+                    //Log error
+                    Response.Redirect("404.aspx", false);
                 }
             }
             else
@@ -55,6 +64,8 @@ namespace BD_Web_Group_Project_Webpages_v1
 
         private void getAttributes()
         {
+            try
+            {
             attributes = attributeManager.BLLGetAgeRange();
             ddlAgeRange.DataSource = attributes;
             ddlAgeRange.DataBind();
@@ -70,6 +81,12 @@ namespace BD_Web_Group_Project_Webpages_v1
             attributes = attributeManager.BLLGetSexualOrientation();
             ddlOrientation.DataSource = attributes;
             ddlOrientation.DataBind();
+        }
+            catch (Exception)
+            {
+                //Log error
+                Response.Redirect("404.aspx", false);
+            }
         }
 
         private void UpdateResultView()

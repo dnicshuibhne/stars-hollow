@@ -19,17 +19,24 @@ namespace BD_Web_Group_Project_Webpages_v1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            try
+            {
             userManager = new BLLUserMngr();
             UserModel user = userManager.BLLGetCurrentUser(Session);
             if (user != null)
             {
-                Response.Redirect("DashboardPersonal.aspx");
+                    Response.Redirect("SearchFor.aspx",false);
             }
             else if (!IsPostBack)
             {
                 //loginPage2.Visible = false;
                 fillRegistrationData();
+            }
+        }
+            catch (Exception)
+            {
+                //Log error
+                Response.Redirect("404.aspx", false);
             }
         }
 
@@ -55,7 +62,8 @@ namespace BD_Web_Group_Project_Webpages_v1
             attManager = new BLLAttributeMngr();
 
             List<string> attributes;
-
+            try
+            {
             attributes = attManager.BLLGetGenders();
             ddlGender.DataSource = attributes;
             ddlGender.DataBind();
@@ -67,6 +75,12 @@ namespace BD_Web_Group_Project_Webpages_v1
             attributes = attManager.BLLGetCounty();
             ddlCounty.DataSource = attributes;
             ddlCounty.DataBind();
+        }
+            catch (Exception)
+            {
+                //Log error
+                Response.Redirect("404.aspx", false);
+            }
         }
         #endregion
 
@@ -97,7 +111,8 @@ namespace BD_Web_Group_Project_Webpages_v1
         {
             string username = txtLoginUsername.Text;
             string password = txtLoginPassword.Text;
-
+            try
+            {
             int id = userManager.BLLLogin(username, password);
             if (id > 0)
             {
@@ -105,13 +120,19 @@ namespace BD_Web_Group_Project_Webpages_v1
                 user.Hobbies = userManager.BLLGetHobbies(user.ID).Keys.ToList<int>();
 
                 setCurrentUser(user);
-                Response.Redirect("DashboardPersonal.aspx", true);
+                    Response.Redirect("SearchFor.aspx", false);
             }
             else
             {
                 Response.Write("Login failed");
                 valLogin.Visible = true;
                 loginPage1.Visible = true;
+            }
+        }
+            catch (Exception)
+            {
+                //Log error
+                Response.Redirect("404.aspx", false);
             }
         }
         #endregion
@@ -159,7 +180,7 @@ namespace BD_Web_Group_Project_Webpages_v1
                 userManager.BLLUpdateUser(user);
                 setCurrentUser(user);
                 Response.Write("User Created");
-                Response.Redirect("DashboardPersonal.aspx");
+                Response.Redirect("DashboardPersonal.aspx",false);
             }
             else
             {
