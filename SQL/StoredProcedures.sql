@@ -268,32 +268,32 @@ GO
 DROP PROCEDURE uspAllMessages
 GO
 
+
 CREATE PROCEDURE uspAllMessages
 @userID INT
 AS  
 SELECT
-	Messages.MessageID,
-	Messages.SenderID,
-	Messages.ReceiverID,
-	Sender.Username AS SenderName,
-	Receiver.Username AS ReceiverName,
-	Messages.Timestamp,
-	Messages.Content
-FROM [Messages]
-	Inner Join Users AS Receiver
+	Conversation.ConversationID,
+	Conversation.ParticipantA_ID,
+	Conversation.ParticipantB_ID,
+	ParticipantA.Username AS ParticipantA_Name,
+	ParticipantB.Username AS ParticipantB_Name,
+	Conversation.MessageContent
+FROM [Conversation]
+	Inner Join Users AS ParticipantA
 	ON 
 		(
-			Messages.ReceiverID = Receiver.UserID 
+			Conversation.ParticipantA_ID = ParticipantA.UserID 
 		)
-	Inner Join Users AS Sender
+	Inner Join Users AS ParticipantB
 	ON 
 		(
-			Messages.SenderID = Sender.UserID 
+			Conversation.ParticipantB_ID = ParticipantB.UserID 
 		)
 WHERE 
-	Messages.SenderID = @userID
+	Conversation.ParticipantA_ID = @userID
 	OR
-	Messages.ReceiverID = @userID
+	Conversation.ParticipantB_ID= @userID
 GO
 
 -- Get a Single Conversation By ConversationID --
